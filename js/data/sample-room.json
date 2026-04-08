@@ -1,0 +1,489 @@
+{
+  "id": "room_study",
+  "name": "The Study",
+  "width": 800,
+  "height": 600,
+  "background": {
+    "type": "image",
+    "value": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9IndhbGwiIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjNGEzYzJhIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjM2EyZTFlIi8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9ImZsb29yIiB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzJhMWUxMiIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzFhMTIwOCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iNDIwIiBmaWxsPSJ1cmwoI3dhbGwpIi8+PHJlY3QgeT0iNDIwIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjE4MCIgZmlsbD0idXJsKCNmbG9vcikiLz48bGluZSB4MT0iMCIgeTE9IjQyMCIgeDI9IjgwMCIgeTI9IjQyMCIgc3Ryb2tlPSIjNWE0YTMwIiBzdHJva2Utd2lkdGg9IjMiLz48cmVjdCB5PSIzMjAiIHdpZHRoPSI4MDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjM2QyZTFhIiBvcGFjaXR5PSIwLjM1Ii8+PGxpbmUgeDE9IjAiIHkxPSIzMjAiIHgyPSI4MDAiIHkyPSIzMjAiIHN0cm9rZT0iIzVhNGEzMCIgc3Ryb2tlLXdpZHRoPSIxLjUiLz48bGluZSB4MT0iMCIgeTE9IjQ3MCIgeDI9IjgwMCIgeTI9IjQ3MCIgc3Ryb2tlPSIjMjIxYTBlIiBzdHJva2Utd2lkdGg9IjAuNSIgb3BhY2l0eT0iMC40Ii8+PGxpbmUgeDE9IjAiIHkxPSI1MjAiIHgyPSI4MDAiIHkyPSI1MjAiIHN0cm9rZT0iIzIyMWEwZSIgc3Ryb2tlLXdpZHRoPSIwLjUiIG9wYWNpdHk9IjAuNCIvPjxsaW5lIHgxPSIwIiB5MT0iNTcwIiB4Mj0iODAwIiB5Mj0iNTcwIiBzdHJva2U9IiMyMjFhMGUiIHN0cm9rZS13aWR0aD0iMC41IiBvcGFjaXR5PSIwLjQiLz48bGluZSB4MT0iMTAwIiB5MT0iNDIwIiB4Mj0iMTAwIiB5Mj0iNjAwIiBzdHJva2U9IiMyMjFhMGUiIHN0cm9rZS13aWR0aD0iMC4zIiBvcGFjaXR5PSIwLjMiLz48bGluZSB4MT0iMjUwIiB5MT0iNDIwIiB4Mj0iMjUwIiB5Mj0iNjAwIiBzdHJva2U9IiMyMjFhMGUiIHN0cm9rZS13aWR0aD0iMC4zIiBvcGFjaXR5PSIwLjMiLz48bGluZSB4MT0iNDAwIiB5MT0iNDIwIiB4Mj0iNDAwIiB5Mj0iNjAwIiBzdHJva2U9IiMyMjFhMGUiIHN0cm9rZS13aWR0aD0iMC4zIiBvcGFjaXR5PSIwLjMiLz48bGluZSB4MT0iNTUwIiB5MT0iNDIwIiB4Mj0iNTUwIiB5Mj0iNjAwIiBzdHJva2U9IiMyMjFhMGUiIHN0cm9rZS13aWR0aD0iMC4zIiBvcGFjaXR5PSIwLjMiLz48bGluZSB4MT0iNzAwIiB5MT0iNDIwIiB4Mj0iNzAwIiB5Mj0iNjAwIiBzdHJva2U9IiMyMjFhMGUiIHN0cm9rZS13aWR0aD0iMC4zIiBvcGFjaXR5PSIwLjMiLz48ZWxsaXBzZSBjeD0iNDAwIiBjeT0iMTUwIiByeD0iMzUwIiByeT0iMjAwIiBmaWxsPSIjNmE1YTNhIiBvcGFjaXR5PSIwLjA2Ii8+PC9zdmc+"
+  },
+  "hotspots": [
+    {
+      "id": "hs_painting",
+      "label": "Painting",
+      "shape": "rect",
+      "bounds": {
+        "x": 80,
+        "y": 40,
+        "w": 140,
+        "h": 100
+      },
+      "appearance": {
+        "fill": "#8B4513",
+        "stroke": "#5C3010",
+        "image": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNDAiIGhlaWdodD0iMTAwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9InNreSIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMyYTRhNmEiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM2YThhYWEiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB3aWR0aD0iMTQwIiBoZWlnaHQ9IjEwMCIgcng9IjIiIGZpbGw9IiNiODg2MGIiLz48cmVjdCB4PSIzIiB5PSIzIiB3aWR0aD0iMTM0IiBoZWlnaHQ9Ijk0IiByeD0iMSIgZmlsbD0iI2RhYTUyMCIvPjxyZWN0IHg9IjgiIHk9IjgiIHdpZHRoPSIxMjQiIGhlaWdodD0iODQiIGZpbGw9InVybCgjc2t5KSIvPjxyZWN0IHg9IjgiIHk9IjU1IiB3aWR0aD0iMTI0IiBoZWlnaHQ9IjM3IiBmaWxsPSIjMWEzYTVhIi8+PHBhdGggZD0iTTgsNjAgUTQwLDU1IDcwLDYyIFExMDAsNjggMTMyLDU4IiBmaWxsPSJub25lIiBzdHJva2U9IiMzYTZhOGEiIHN0cm9rZS13aWR0aD0iMC44Ii8+PHBhdGggZD0iTTgsNzAgUTUwLDY1IDkwLDcyIFExMjAsNzYgMTMyLDY4IiBmaWxsPSJub25lIiBzdHJva2U9IiMyYTVhN2EiIHN0cm9rZS13aWR0aD0iMC41Ii8+PHBhdGggZD0iTTU1LDQyIEw1NSw2NSBMODUsNjUgTDgwLDQyIFoiIGZpbGw9IiM1YTNhMWEiLz48bGluZSB4MT0iNjUiIHkxPSIyNSIgeDI9IjY1IiB5Mj0iNjUiIHN0cm9rZT0iIzNhMmExMCIgc3Ryb2tlLXdpZHRoPSIxLjUiLz48cGF0aCBkPSJNNjUsMjUgTDg1LDM1IEw2NSw0NSBaIiBmaWxsPSIjZThkOGM4IiBvcGFjaXR5PSIwLjkiLz48cGF0aCBkPSJNNjUsMzAgTDQ4LDQwIEw2NSw1MCBaIiBmaWxsPSIjZTBkMGMwIiBvcGFjaXR5PSIwLjgiLz48Y2lyY2xlIGN4PSIxMjAiIGN5PSIzMCIgcj0iMTAiIGZpbGw9IiNlOGEwNDAiIG9wYWNpdHk9IjAuNiIvPjxjaXJjbGUgY3g9IjEyMCIgY3k9IjMwIiByPSI2IiBmaWxsPSIjZjBjMDYwIiBvcGFjaXR5PSIwLjciLz48cmVjdCB4PSI4IiB5PSI4IiB3aWR0aD0iMTI0IiBoZWlnaHQ9Ijg0IiBmaWxsPSJub25lIiBzdHJva2U9IiM4YTZhMTAiIHN0cm9rZS13aWR0aD0iMSIvPjwvc3ZnPg=="
+      },
+      "zIndex": 2,
+      "visible": true,
+      "triggers": [
+        {
+          "type": "tap",
+          "requiredFlags": [
+            "painting_inspected"
+          ],
+          "requiredItem": null,
+          "once": true,
+          "actions": [
+            {
+              "type": "setFlag",
+              "params": {
+                "flag": "painting_moved",
+                "value": true
+              }
+            },
+            {
+              "type": "giveItem",
+              "params": {
+                "itemId": "item_brass_key"
+              }
+            },
+            {
+              "type": "showMessage",
+              "params": {
+                "message": "You pull the frame. A brass key falls out!"
+              }
+            }
+          ]
+        },
+        {
+          "type": "tap",
+          "requiredFlags": [],
+          "requiredItem": null,
+          "actions": [
+            {
+              "type": "setFlag",
+              "params": {
+                "flag": "painting_inspected",
+                "value": true
+              }
+            },
+            {
+              "type": "showMessage",
+              "params": {
+                "message": "A dusty painting of a ship. The frame feels loose."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hs_bookshelf",
+      "label": "Bookshelf",
+      "shape": "rect",
+      "bounds": {
+        "x": 300,
+        "y": 20,
+        "w": 120,
+        "h": 200
+      },
+      "appearance": {
+        "fill": "#654321",
+        "stroke": "#4a3118",
+        "image": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMTIwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzRhMzAxOCIvPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI1IiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzNhMjAxMCIvPjxyZWN0IHg9IjExNSIgeT0iMCIgd2lkdGg9IjUiIGhlaWdodD0iMjAwIiBmaWxsPSIjM2EyMDEwIi8+PHJlY3QgeD0iNSIgeT0iMCIgd2lkdGg9IjExMCIgaGVpZ2h0PSI1IiBmaWxsPSIjNmE0YTI4Ii8+PHJlY3QgeD0iNSIgeT0iNDgiIHdpZHRoPSIxMTAiIGhlaWdodD0iNSIgZmlsbD0iIzZhNGEyOCIvPjxyZWN0IHg9IjUiIHk9Ijk4IiB3aWR0aD0iMTEwIiBoZWlnaHQ9IjUiIGZpbGw9IiM2YTRhMjgiLz48cmVjdCB4PSI1IiB5PSIxNDgiIHdpZHRoPSIxMTAiIGhlaWdodD0iNSIgZmlsbD0iIzZhNGEyOCIvPjxyZWN0IHg9IjUiIHk9IjE5NSIgd2lkdGg9IjExMCIgaGVpZ2h0PSI1IiBmaWxsPSIjNmE0YTI4Ii8+PHJlY3QgeD0iMTAiIHk9IjYiIHdpZHRoPSIxMiIgaGVpZ2h0PSI0MCIgZmlsbD0iIzhiMjAyMCIgcng9IjEiLz48cmVjdCB4PSIyNCIgeT0iMTAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIzNiIgZmlsbD0iIzJhNGEyYSIgcng9IjEiLz48cmVjdCB4PSIzNiIgeT0iOCIgd2lkdGg9IjE0IiBoZWlnaHQ9IjM4IiBmaWxsPSIjMWEzYTZhIiByeD0iMSIvPjxyZWN0IHg9IjUyIiB5PSI2IiB3aWR0aD0iOCIgaGVpZ2h0PSI0MCIgZmlsbD0iIzZhMmE0YSIgcng9IjEiLz48cmVjdCB4PSI2MiIgeT0iMTEiIHdpZHRoPSIxMiIgaGVpZ2h0PSIzNSIgZmlsbD0iIzRhNGExYSIgcng9IjEiLz48cmVjdCB4PSI3NiIgeT0iNyIgd2lkdGg9IjEwIiBoZWlnaHQ9IjM5IiBmaWxsPSIjM2ExYTFhIiByeD0iMSIvPjxyZWN0IHg9Ijg4IiB5PSI5IiB3aWR0aD0iMTQiIGhlaWdodD0iMzciIGZpbGw9IiMyYTNhNGEiIHJ4PSIxIi8+PHJlY3QgeD0iMTIiIHk9IjU1IiB3aWR0aD0iMTQiIGhlaWdodD0iNDAiIGZpbGw9IiM0YTIwMjAiIHJ4PSIxIi8+PHJlY3QgeD0iMjgiIHk9IjU4IiB3aWR0aD0iMTAiIGhlaWdodD0iMzciIGZpbGw9IiMxYTRhNGEiIHJ4PSIxIi8+PHJlY3QgeD0iNDAiIHk9IjU0IiB3aWR0aD0iMTIiIGhlaWdodD0iNDIiIGZpbGw9IiM2YTVhMjAiIHJ4PSIxIi8+PHJlY3QgeD0iNTQiIHk9IjU2IiB3aWR0aD0iMTYiIGhlaWdodD0iNDAiIGZpbGw9IiMzYTJhNWEiIHJ4PSIxIi8+PHJlY3QgeD0iNzIiIHk9IjU5IiB3aWR0aD0iMTAiIGhlaWdodD0iMzciIGZpbGw9IiM1YTNhMWEiIHJ4PSIxIi8+PHJlY3QgeD0iODQiIHk9IjU1IiB3aWR0aD0iMTQiIGhlaWdodD0iNDEiIGZpbGw9IiMyYTVhM2EiIHJ4PSIxIi8+PHJlY3QgeD0iMTAiIHk9IjEwNSIgd2lkdGg9IjE2IiBoZWlnaHQ9IjQwIiBmaWxsPSIjNWExYTNhIiByeD0iMSIvPjxyZWN0IHg9IjI4IiB5PSIxMDgiIHdpZHRoPSIxMCIgaGVpZ2h0PSIzNyIgZmlsbD0iIzNhNWEyYSIgcng9IjEiLz48cmVjdCB4PSI0MCIgeT0iMTA0IiB3aWR0aD0iMTIiIGhlaWdodD0iNDIiIGZpbGw9IiMxYTJhNWEiIHJ4PSIxIi8+PHJlY3QgeD0iNTQiIHk9IjEwNyIgd2lkdGg9IjgiIGhlaWdodD0iMzgiIGZpbGw9IiM2YTRhMWEiIHJ4PSIxIi8+PHJlY3QgeD0iNjQiIHk9IjEwNSIgd2lkdGg9IjE0IiBoZWlnaHQ9IjQwIiBmaWxsPSIjMmEyYTJhIiByeD0iMSIvPjxyZWN0IHg9IjgwIiB5PSIxMDkiIHdpZHRoPSIxMiIgaGVpZ2h0PSIzNiIgZmlsbD0iIzVhMmEyMCIgcng9IjEiLz48cmVjdCB4PSI5NCIgeT0iMTA2IiB3aWR0aD0iMTAiIGhlaWdodD0iMzkiIGZpbGw9IiMxYTVhNWEiIHJ4PSIxIi8+PHJlY3QgeD0iMTQiIHk9IjE1NSIgd2lkdGg9IjEwIiBoZWlnaHQ9IjM3IiBmaWxsPSIjNGEzYTJhIiByeD0iMSIvPjxyZWN0IHg9IjI2IiB5PSIxNTIiIHdpZHRoPSIxNCIgaGVpZ2h0PSI0MiIgZmlsbD0iIzJhMWE0YSIgcng9IjEiLz48cmVjdCB4PSI0MiIgeT0iMTU2IiB3aWR0aD0iMTIiIGhlaWdodD0iMzciIGZpbGw9IiM1YTVhMWEiIHJ4PSIxIi8+PHJlY3QgeD0iNTYiIHk9IjE1MyIgd2lkdGg9IjEwIiBoZWlnaHQ9IjQxIiBmaWxsPSIjMWEzYTNhIiByeD0iMSIvPjxyZWN0IHg9IjY4IiB5PSIxNTUiIHdpZHRoPSIxNiIgaGVpZ2h0PSIzOCIgZmlsbD0iIzZhMmEyYSIgcng9IjEiLz48cmVjdCB4PSI4NiIgeT0iMTU0IiB3aWR0aD0iMTIiIGhlaWdodD0iNDAiIGZpbGw9IiMzYTRhMmEiIHJ4PSIxIi8+PC9zdmc+"
+      },
+      "zIndex": 1,
+      "visible": true,
+      "triggers": [
+        {
+          "type": "tap",
+          "requiredFlags": [],
+          "requiredItem": null,
+          "actions": [
+            {
+              "type": "showMessage",
+              "params": {
+                "message": "Rows of dusty books. One spine reads '1842 — A Maritime History.'"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hs_desk",
+      "label": "Desk",
+      "shape": "rect",
+      "bounds": {
+        "x": 40,
+        "y": 280,
+        "w": 220,
+        "h": 120
+      },
+      "appearance": {
+        "fill": "#6B4226",
+        "stroke": "#4a2e1a",
+        "image": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMjAiIGhlaWdodD0iMTIwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImR0b3AiIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjN2E1MjMyIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjNmE0MjI2Ii8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iNSIgeT0iMTAiIHdpZHRoPSIyMTAiIGhlaWdodD0iMTUiIHJ4PSIyIiBmaWxsPSJ1cmwoI2R0b3ApIi8+PHJlY3QgeD0iNSIgeT0iMTAiIHdpZHRoPSIyMTAiIGhlaWdodD0iMyIgZmlsbD0iIzhhNjI0MiIgb3BhY2l0eT0iMC42Ii8+PHJlY3QgeD0iMTAiIHk9IjI1IiB3aWR0aD0iMjAwIiBoZWlnaHQ9Ijg1IiBmaWxsPSIjNWEzYTFlIi8+PHJlY3QgeD0iMTAiIHk9IjI1IiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIiIGZpbGw9IiM0YTJhMTAiLz48cmVjdCB4PSI2MCIgeT0iMzUiIHdpZHRoPSIxMDAiIGhlaWdodD0iMzAiIHJ4PSIxIiBmaWxsPSIjNmE0YTI4IiBzdHJva2U9IiM0YTMwMTgiIHN0cm9rZS13aWR0aD0iMSIvPjxyZWN0IHg9Ijk1IiB5PSI0OCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjQiIHJ4PSIyIiBmaWxsPSIjYjg4NjBiIi8+PHJlY3QgeD0iMTUiIHk9IjExMCIgd2lkdGg9IjgiIGhlaWdodD0iMTAiIGZpbGw9IiM0YTJhMTAiLz48cmVjdCB4PSIxOTciIHk9IjExMCIgd2lkdGg9IjgiIGhlaWdodD0iMTAiIGZpbGw9IiM0YTJhMTAiLz48cmVjdCB4PSIyNSIgeT0iMiIgd2lkdGg9IjIwIiBoZWlnaHQ9IjEwIiByeD0iMSIgZmlsbD0iI2Q0YzRhMCIgb3BhY2l0eT0iMC41Ii8+PGNpcmNsZSBjeD0iMTcwIiBjeT0iOCIgcj0iNSIgZmlsbD0iIzJhMmEyYSIgb3BhY2l0eT0iMC4zIi8+PC9zdmc+"
+      },
+      "zIndex": 1,
+      "visible": true,
+      "triggers": [
+        {
+          "type": "tap",
+          "requiredFlags": [],
+          "requiredItem": null,
+          "actions": [
+            {
+              "type": "showMessage",
+              "params": {
+                "message": "A heavy wooden desk. The drawer has a small keyhole."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hs_drawer",
+      "label": "Drawer",
+      "shape": "rect",
+      "bounds": {
+        "x": 80,
+        "y": 360,
+        "w": 120,
+        "h": 40
+      },
+      "appearance": {
+        "fill": "#7a5030",
+        "stroke": "#5a3820",
+        "image": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iNDAiPjxyZWN0IHdpZHRoPSIxMjAiIGhlaWdodD0iNDAiIHJ4PSIyIiBmaWxsPSIjN2E1MDMwIi8+PHJlY3QgeD0iMiIgeT0iMiIgd2lkdGg9IjExNiIgaGVpZ2h0PSIzNiIgcng9IjEiIGZpbGw9IiM2YTQ1MjgiIHN0cm9rZT0iIzVhMzgyMCIgc3Ryb2tlLXdpZHRoPSIxIi8+PHJlY3QgeD0iOCIgeT0iNiIgd2lkdGg9IjEwNCIgaGVpZ2h0PSIyOCIgcng9IjEiIGZpbGw9IiM1YTNhMWUiIG9wYWNpdHk9IjAuNSIvPjxyZWN0IHg9IjQyIiB5PSIxNSIgd2lkdGg9IjM2IiBoZWlnaHQ9IjUiIHJ4PSIyLjUiIGZpbGw9IiNjMDk2MGIiIHN0cm9rZT0iI2EwN2EwOCIgc3Ryb2tlLXdpZHRoPSIwLjUiLz48Y2lyY2xlIGN4PSI2MCIgY3k9IjI4IiByPSIzIiBmaWxsPSIjMmExYTBhIi8+PHJlY3QgeD0iNTkiIHk9IjI4IiB3aWR0aD0iMiIgaGVpZ2h0PSI1IiBmaWxsPSIjMmExYTBhIi8+PC9zdmc+"
+      },
+      "zIndex": 3,
+      "visible": true,
+      "triggers": [
+        {
+          "type": "useItem",
+          "requiredFlags": [],
+          "requiredItem": "item_brass_key",
+          "once": true,
+          "actions": [
+            {
+              "type": "setFlag",
+              "params": {
+                "flag": "drawer_opened",
+                "value": true
+              }
+            },
+            {
+              "type": "removeItem",
+              "params": {
+                "itemId": "item_brass_key"
+              }
+            },
+            {
+              "type": "giveItem",
+              "params": {
+                "itemId": "item_code_note"
+              }
+            },
+            {
+              "type": "showMessage",
+              "params": {
+                "message": "The brass key fits! Inside the drawer you find a folded note."
+              }
+            }
+          ]
+        },
+        {
+          "type": "tap",
+          "requiredFlags": [
+            "drawer_opened"
+          ],
+          "requiredItem": null,
+          "actions": [
+            {
+              "type": "showMessage",
+              "params": {
+                "message": "The drawer is empty now."
+              }
+            }
+          ]
+        },
+        {
+          "type": "tap",
+          "requiredFlags": [],
+          "requiredItem": null,
+          "actions": [
+            {
+              "type": "showMessage",
+              "params": {
+                "message": "The drawer is locked. You need a small key."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hs_safe",
+      "label": "Safe",
+      "shape": "rect",
+      "bounds": {
+        "x": 560,
+        "y": 120,
+        "w": 100,
+        "h": 80
+      },
+      "appearance": {
+        "fill": "#555555",
+        "stroke": "#888888",
+        "image": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iODAiPjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0ic2YiIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjNmE2YTZhIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjNGE0YTRhIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSI4MCIgcng9IjMiIGZpbGw9InVybCgjc2YpIiBzdHJva2U9IiM4ODgiIHN0cm9rZS13aWR0aD0iMiIvPjxyZWN0IHg9IjUiIHk9IjUiIHdpZHRoPSI5MCIgaGVpZ2h0PSI3MCIgcng9IjIiIGZpbGw9IiM1NTUiIHN0cm9rZT0iIzY2NiIgc3Ryb2tlLXdpZHRoPSIxIi8+PGNpcmNsZSBjeD0iNTAiIGN5PSI0MCIgcj0iMTYiIGZpbGw9IiMzYTNhM2EiIHN0cm9rZT0iIzc3NyIgc3Ryb2tlLXdpZHRoPSIyIi8+PGNpcmNsZSBjeD0iNTAiIGN5PSI0MCIgcj0iMTIiIGZpbGw9IiM0NDQiIHN0cm9rZT0iIzY2NiIgc3Ryb2tlLXdpZHRoPSIxIi8+PGNpcmNsZSBjeD0iNTAiIGN5PSI0MCIgcj0iMiIgZmlsbD0iIzg4OCIvPjxsaW5lIHgxPSI1MCIgeTE9IjI2IiB4Mj0iNTAiIHkyPSIzMCIgc3Ryb2tlPSIjOTk5IiBzdHJva2Utd2lkdGg9IjEiLz48bGluZSB4MT0iNTAiIHkxPSI1MCIgeDI9IjUwIiB5Mj0iNTQiIHN0cm9rZT0iIzk5OSIgc3Ryb2tlLXdpZHRoPSIxIi8+PGxpbmUgeDE9IjM2IiB5MT0iNDAiIHgyPSI0MCIgeTI9IjQwIiBzdHJva2U9IiM5OTkiIHN0cm9rZS13aWR0aD0iMSIvPjxsaW5lIHgxPSI2MCIgeTE9IjQwIiB4Mj0iNjQiIHkyPSI0MCIgc3Ryb2tlPSIjOTk5IiBzdHJva2Utd2lkdGg9IjEiLz48bGluZSB4MT0iNTAiIHkxPSI0MCIgeDI9IjUwIiB5Mj0iMjkiIHN0cm9rZT0iI2NjMzMzMyIgc3Ryb2tlLXdpZHRoPSIxLjUiLz48cmVjdCB4PSI3NSIgeT0iMzIiIHdpZHRoPSIxMiIgaGVpZ2h0PSIxNiIgcng9IjMiIGZpbGw9IiM3NzciIHN0cm9rZT0iIzk5OSIgc3Ryb2tlLXdpZHRoPSIxIi8+PHRleHQgeD0iNTAiIHk9IjE3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjYiIGZpbGw9IiM4ODgiIGZvbnQtZmFtaWx5PSJzZXJpZiI+VkFVTFQ8L3RleHQ+PC9zdmc+"
+      },
+      "zIndex": 2,
+      "visible": true,
+      "triggers": [
+        {
+          "type": "tap",
+          "requiredFlags": [
+            "safe_opened"
+          ],
+          "requiredItem": null,
+          "actions": [
+            {
+              "type": "showMessage",
+              "params": {
+                "message": "The safe is open and empty."
+              }
+            }
+          ]
+        },
+        {
+          "type": "tap",
+          "requiredFlags": [],
+          "requiredItem": null,
+          "actions": [
+            {
+              "type": "triggerPuzzle",
+              "params": {
+                "puzzleId": "puzzle_safe"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hs_clock",
+      "label": "Clock",
+      "shape": "circle",
+      "bounds": {
+        "x": 510,
+        "y": 250,
+        "w": 80,
+        "h": 80
+      },
+      "appearance": {
+        "fill": "#444444",
+        "stroke": "#666666",
+        "image": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCI+PGNpcmNsZSBjeD0iNDAiIGN5PSI0MCIgcj0iMzgiIGZpbGw9IiMzYTNhM2EiIHN0cm9rZT0iIzY2NiIgc3Ryb2tlLXdpZHRoPSIyIi8+PGNpcmNsZSBjeD0iNDAiIGN5PSI0MCIgcj0iMzQiIGZpbGw9IiNmNWYwZTAiLz48Y2lyY2xlIGN4PSI0MCIgY3k9IjQwIiByPSIzMiIgZmlsbD0iI2YwZWJkNSIgc3Ryb2tlPSIjYWE5YTcwIiBzdHJva2Utd2lkdGg9IjEiLz48bGluZSB4MT0iNDAiIHkxPSIxMCIgeDI9IjQwIiB5Mj0iMTQiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSIyIi8+PGxpbmUgeDE9IjQwIiB5MT0iNjYiIHgyPSI0MCIgeTI9IjcwIiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMiIvPjxsaW5lIHgxPSIxMCIgeTE9IjQwIiB4Mj0iMTQiIHkyPSI0MCIgc3Ryb2tlPSIjMzMzIiBzdHJva2Utd2lkdGg9IjIiLz48bGluZSB4MT0iNjYiIHkxPSI0MCIgeDI9IjcwIiB5Mj0iNDAiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSIyIi8+PHRleHQgeD0iNDAiIHk9IjIwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjciIGZpbGw9IiMzMzMiIGZvbnQtZmFtaWx5PSJzZXJpZiI+MTI8L3RleHQ+PHRleHQgeD0iNjEiIHk9IjQzIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjciIGZpbGw9IiMzMzMiIGZvbnQtZmFtaWx5PSJzZXJpZiI+MzwvdGV4dD48dGV4dCB4PSI0MCIgeT0iNjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iNyIgZmlsbD0iIzMzMyIgZm9udC1mYW1pbHk9InNlcmlmIj42PC90ZXh0Pjx0ZXh0IHg9IjE5IiB5PSI0MyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSI3IiBmaWxsPSIjMzMzIiBmb250LWZhbWlseT0ic2VyaWYiPjk8L3RleHQ+PGxpbmUgeDE9IjQwIiB5MT0iNDAiIHgyPSI0MSIgeTI9IjU4IiBzdHJva2U9IiMyMjIiIHN0cm9rZS13aWR0aD0iMi41IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48bGluZSB4MT0iNDAiIHkxPSI0MCIgeDI9IjIxIiB5Mj0iNTAiIHN0cm9rZT0iIzIyMiIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxjaXJjbGUgY3g9IjQwIiBjeT0iNDAiIHI9IjIuNSIgZmlsbD0iIzMzMyIvPjxjaXJjbGUgY3g9IjQwIiBjeT0iNDAiIHI9IjEiIGZpbGw9IiNhYTg4NDAiLz48L3N2Zz4="
+      },
+      "zIndex": 1,
+      "visible": true,
+      "triggers": [
+        {
+          "type": "tap",
+          "requiredFlags": [],
+          "requiredItem": null,
+          "actions": [
+            {
+              "type": "showMessage",
+              "params": {
+                "message": "An old wall clock. The hands are stuck at 6:42."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hs_door",
+      "label": "Door",
+      "shape": "rect",
+      "bounds": {
+        "x": 340,
+        "y": 300,
+        "w": 100,
+        "h": 180
+      },
+      "appearance": {
+        "fill": "#5a3d20",
+        "stroke": "#3a2510",
+        "image": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTgwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImRyIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzVhM2QyMCIvPjxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjNmE0YTI4Ii8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjNGEzMDE4Ii8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxODAiIGZpbGw9IiMzYTI1MTAiLz48cmVjdCB4PSI1IiB5PSIzIiB3aWR0aD0iOTAiIGhlaWdodD0iMTc0IiByeD0iMSIgZmlsbD0idXJsKCNkcikiLz48cmVjdCB4PSIxNSIgeT0iMTIiIHdpZHRoPSI3MCIgaGVpZ2h0PSI1NSIgcng9IjIiIGZpbGw9IiM1YTNhMWUiIHN0cm9rZT0iIzRhMmExMCIgc3Ryb2tlLXdpZHRoPSIxLjUiLz48cmVjdCB4PSIxNSIgeT0iNzgiIHdpZHRoPSI3MCIgaGVpZ2h0PSI1NSIgcng9IjIiIGZpbGw9IiM1YTNhMWUiIHN0cm9rZT0iIzRhMmExMCIgc3Ryb2tlLXdpZHRoPSIxLjUiLz48cmVjdCB4PSIxNSIgeT0iMTQ0IiB3aWR0aD0iNzAiIGhlaWdodD0iMjgiIHJ4PSIyIiBmaWxsPSIjNWEzYTFlIiBzdHJva2U9IiM0YTJhMTAiIHN0cm9rZS13aWR0aD0iMS41Ii8+PGNpcmNsZSBjeD0iNzgiIGN5PSI5NSIgcj0iNiIgZmlsbD0iI2I4ODYwYiIgc3Ryb2tlPSIjOGE2YTA4IiBzdHJva2Utd2lkdGg9IjEiLz48Y2lyY2xlIGN4PSI3OCIgY3k9Ijk1IiByPSIyLjUiIGZpbGw9IiNkYWE1MjAiLz48Y2lyY2xlIGN4PSI3OCIgY3k9IjEwOCIgcj0iMyIgZmlsbD0iIzFhMGEwMCIvPjxyZWN0IHg9Ijc3IiB5PSIxMDgiIHdpZHRoPSIyIiBoZWlnaHQ9IjYiIGZpbGw9IiMxYTBhMDAiLz48cmVjdCB4PSI3IiB5PSIzMCIgd2lkdGg9IjQiIGhlaWdodD0iMTIiIHJ4PSIxIiBmaWxsPSIjOGE3YTUwIi8+PHJlY3QgeD0iNyIgeT0iMTMwIiB3aWR0aD0iNCIgaGVpZ2h0PSIxMiIgcng9IjEiIGZpbGw9IiM4YTdhNTAiLz48L3N2Zz4="
+      },
+      "zIndex": 1,
+      "visible": true,
+      "triggers": [
+        {
+          "type": "useItem",
+          "requiredFlags": [
+            "safe_opened"
+          ],
+          "requiredItem": "item_master_key",
+          "once": true,
+          "actions": [
+            {
+              "type": "removeItem",
+              "params": {
+                "itemId": "item_master_key"
+              }
+            },
+            {
+              "type": "showMessage",
+              "params": {
+                "message": "The master key turns. The door swings open. You escape!"
+              }
+            },
+            {
+              "type": "gameWin",
+              "params": {}
+            }
+          ]
+        },
+        {
+          "type": "tap",
+          "requiredFlags": [],
+          "requiredItem": null,
+          "actions": [
+            {
+              "type": "showMessage",
+              "params": {
+                "message": "A heavy oak door. It needs a large key to open."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hs_rug",
+      "label": "Rug",
+      "shape": "rect",
+      "bounds": {
+        "x": 150,
+        "y": 480,
+        "w": 300,
+        "h": 60
+      },
+      "appearance": {
+        "fill": "#8B2252",
+        "stroke": "#6a1a3f",
+        "image": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iNjAiPjxkZWZzPjxwYXR0ZXJuIGlkPSJycCIgd2lkdGg9IjIwIiBoZWlnaHQ9IjIwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cmVjdCB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIGZpbGw9IiM4QjIyNTIiLz48cmVjdCB4PSI1IiB5PSI1IiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiIGZpbGw9IiM2YTFhNDAiIG9wYWNpdHk9IjAuNSIvPjxwYXRoIGQ9Ik0wLDAgTDUsNSBNMTUsNSBMMjAsMCBNMCwyMCBMNSwxNSBNMTUsMTUgTDIwLDIwIiBzdHJva2U9IiNhYTNhNmEiIHN0cm9rZS13aWR0aD0iMC41Ii8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB4PSI0IiB5PSI0IiB3aWR0aD0iMjkyIiBoZWlnaHQ9IjUyIiByeD0iMiIgZmlsbD0idXJsKCNycCkiLz48cmVjdCB4PSI0IiB5PSI0IiB3aWR0aD0iMjkyIiBoZWlnaHQ9IjUyIiByeD0iMiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYWEzYTZhIiBzdHJva2Utd2lkdGg9IjMiLz48cmVjdCB4PSI4IiB5PSI4IiB3aWR0aD0iMjg0IiBoZWlnaHQ9IjQ0IiByeD0iMSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZDRhMDYwIiBzdHJva2Utd2lkdGg9IjEiLz48ZWxsaXBzZSBjeD0iMTUwIiBjeT0iMzAiIHJ4PSI0MCIgcnk9IjE2IiBmaWxsPSIjNmExYTNmIiBvcGFjaXR5PSIwLjQiLz48ZWxsaXBzZSBjeD0iMTUwIiBjeT0iMzAiIHJ4PSIyNSIgcnk9IjEwIiBmaWxsPSIjYWEzYTZhIiBvcGFjaXR5PSIwLjMiLz48L3N2Zz4="
+      },
+      "zIndex": 0,
+      "visible": true,
+      "triggers": [
+        {
+          "type": "tap",
+          "requiredFlags": [],
+          "requiredItem": null,
+          "actions": [
+            {
+              "type": "showMessage",
+              "params": {
+                "message": "A faded Persian rug. Nothing underneath."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "items": [
+    {
+      "id": "item_brass_key",
+      "name": "Brass Key",
+      "description": "A small brass key with an ornate handle.",
+      "icon": {
+        "shape": "key",
+        "color": "#D4A017"
+      },
+      "combinesWith": null,
+      "combineResult": null
+    },
+    {
+      "id": "item_code_note",
+      "name": "Code Note",
+      "description": "A folded note. It reads: 'The year the ship sailed.'",
+      "icon": {
+        "shape": "rect",
+        "color": "#E8D5B7"
+      },
+      "combinesWith": null,
+      "combineResult": null
+    },
+    {
+      "id": "item_master_key",
+      "name": "Master Key",
+      "description": "A large iron key with a skull emblem.",
+      "icon": {
+        "shape": "key",
+        "color": "#888888"
+      },
+      "combinesWith": null,
+      "combineResult": null
+    }
+  ],
+  "puzzles": [
+    {
+      "id": "puzzle_safe",
+      "type": "combination",
+      "hotspotId": "hs_safe",
+      "prompt": "Enter the 4-digit code:",
+      "solution": "1842",
+      "onSolve": [
+        {
+          "type": "setFlag",
+          "params": {
+            "flag": "safe_opened",
+            "value": true
+          }
+        },
+        {
+          "type": "giveItem",
+          "params": {
+            "itemId": "item_master_key"
+          }
+        },
+        {
+          "type": "showMessage",
+          "params": {
+            "message": "The safe clicks open! Inside: a heavy iron key."
+          }
+        }
+      ],
+      "onFail": [
+        {
+          "type": "showMessage",
+          "params": {
+            "message": "Wrong code. The dial resets."
+          }
+        }
+      ]
+    }
+  ],
+  "hints": [
+    "Look behind things on the wall.",
+    "The bookshelf has a clue about numbers.",
+    "Try the brass key on the desk drawer.",
+    "The note tells you what code to enter.",
+    "Use the master key on the door."
+  ],
+  "onEnter": [
+    {
+      "type": "showMessage",
+      "params": {
+        "message": "The door slams shut behind you. Find a way out!"
+      }
+    }
+  ]
+}

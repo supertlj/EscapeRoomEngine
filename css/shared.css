@@ -1,0 +1,53 @@
+/* === Reset + Base === */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --gold: #c4a35a;
+  --gold-dim: rgba(196, 163, 90, 0.4);
+  --gold-glow: rgba(196, 163, 90, 0.6);
+  --bg-deep: #1a1a2e;
+  --bg-mid: #16213e;
+  --bg-dark: #0d1b2a;
+  --bg-panel: #0f3460;
+  --text: #e0e0e0;
+  --text-dim: #888;
+  --accent: #4ecdc4;
+  --danger: #e74c3c;
+  --border: #333;
+  --touch-min: 44px;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  background: var(--bg-deep);
+  color: var(--text);
+  line-height: 1.4;
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+canvas {
+  display: block;
+  touch-action: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+a { color: var(--gold); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Utility */
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); border: 0;
+}

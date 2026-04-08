@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Escape Room Engine - Play</title>
+<link rel="stylesheet" href="css/shared.css">
+<link rel="stylesheet" href="css/play.css">
+</head>
+<body>
+<div class="game-container" id="gameContainer">
+  <div class="game-topbar">
+    <span class="room-name" id="roomName">Loading...</span>
+    <span class="timer" id="timer">--:--</span>
+    <button class="hint-btn" id="hintBtn">HINT</button>
+  </div>
+  <div class="canvas-wrapper">
+    <canvas id="gameCanvas"></canvas>
+  </div>
+  <!-- Inventory + Dialogs inserted dynamically -->
+</div>
+
+<!-- Debug overlay -->
+<div class="debug-info hidden" id="debugInfo"></div>
+
+<script type="module">
+import EventBus from './js/core/EventBus.js';
+import { Room } from './js/core/RoomData.js';
+import { validateRoom } from './js/core/SchemaValidator.js';
+import StateManager from './js/core/StateManager.js';
+import Renderer from './js/engine/Renderer.js';
+import InputHandler from './js/engine/InputHandler.js';
+import GameLoop from './js/engine/GameLoop.js';
+import PuzzleRunner from './js/game/PuzzleRunner.js';
+import DialogUI from './js/game/DialogUI.js';
+import InventoryUI from './js/game/InventoryUI.js';
+import HintSystem from './js/game/HintSystem.js';
+import RoomManager from './js/game/RoomManager.js';
+import AssetManager from './js/editor/AssetManager.js';
+
+// Debug mode
+const params = new URLSearchParams(location.search);
+if (params.get('debug') === '1') window.DEBUG = true;
+const debugEl = document.getElementById('debugInfo');
+if (window.DEBUG) debugEl.classList.remove('hidden');
+
+// DOM
+const canvas = document.getElementById('gameCanvas');
+const container = document.getElementById('gameContainer');
+const roomNameEl = document.getElementById('roomName');
+const timerEl = document.getElementById('timer');
+const hintBtn = document.getElementById('hintBtn');
+
+// --- Load Room ---
+async function loadRoom() {
+  const roomParam = params.get('room') || 'sample-room';
+  let data;
+  if (roomParam === 'imported') {
+    const raw = localStorage.getItem('ere_imported_room');
+    if (!raw) throw new Error('No imported room found');
+    data = JSON.parse(raw);
+  } else {
+    const resp = await fetch(`js/data/${roomParam}.json`);
+    if (!resp.ok) throw new Error(`Failed to load room: ${roomParam}`);
+    data = await resp.json();
+  }
+  const validation = validateRoom(data);
+  if (!validation.valid) console.warn('Room validation:', validation.errors);
+  return Room.fromJSON(data);
+}
+
+// --- Boot ---
+async function init() {
+  let room;
+  try {
+    room = await loadRoom();
+  } catch (err) {
+    roomNameEl.textContent = 'Error';
+    document.body.innerHTML += `<div class="message-overlay"><div class="message-box"><p>${err.message}</p><a href="index.html"><button class="dismiss">Back</button></a></div></div>`;
+    return;
+  }
+
+  // Preload images (background + hotspot images)
+  const assetManager = new AssetManager();
+  await assetManager.preloadRoom(room);
+
+  // State
+  const state = new StateManager(room.id);
+  state.currentRoomId = room.id;
+
+  // Timer setting (from room-set or room, default 30 min)
+  const timerSeconds = room.settings?.timerSeconds || 1800;
+
+  // Renderer
+  const renderer = new Renderer(canvas);
+  renderer.setRoom(room, state.hotspotVisibility);
+
+  // Input
+  const input = new InputHandler(canvas, renderer);
+  input.setRoom(room, state.hotspotVisibility);
+
+  // PuzzleRunner
+  const puzzleRunner = new PuzzleRunner(state, room);
+
+  // DialogUI
+  const dialogUI = new DialogUI(container);
+
+  // InventoryUI
+  const inventoryUI = new InventoryUI(container, state, room);
+
+  // GameLoop (timer)
+  const gameLoop = new GameLoop(state);
+
+  // HintSystem
+  const hintSystem = new HintSystem(state, room.hints);
+
+  // RoomManager
+  const roomManager = new RoomManager(state, {
+    onRoomLoaded: (newRoom) => {
+      roomNameEl.textContent = newRoom.name;
+      renderer.setRoom(newRoom, state.hotspotVisibility);
+      input.setRoom(newRoom, state.hotspotVisibility);
+      puzzleRunner.setRoom(newRoom);
+      inventoryUI.setRoom(newRoom);
+      hintSystem.setHints(newRoom.hints);
+      renderer.markDirty();
+    }
+  });
+  roomManager.registerRoom(room);
+
+  // --- Update UI ---
+  roomNameEl.textContent = room.name;
+
+  function updateHintButton() {
+    const remaining = hintSystem.getHintsRemaining();
+    hintBtn.textContent = `HINT (${remaining})`;
+  }
+  updateHintButton();
+
+  // --- Event Wiring ---
+
+  // Timer display
+  EventBus.on('timer:update', ({ remaining }) => {
+    timerEl.textContent = GameLoop.formatTime(remaining);
+  });
+
+  // Hint button
+  hintBtn.addEventListener('click', () => {
+    hintSystem.requestHint();
+    updateHintButton();
+  });
+
+  EventBus.on('hint:used', () => updateHintButton());
+
+  // Puzzle data requests from DialogUI
+  EventBus.on('puzzle:requestData', ({ puzzleId, callback }) => {
+    const rm = roomManager.currentRoom || room;
+    callback(rm.getPuzzle(puzzleId));
+  });
+
+  // Room enter actions
+  EventBus.on('room:enterActions', ({ actions }) => {
+    puzzleRunner.executeActions(actions);
+  });
+
+  // Hotspot tap -> pattern check first, then PuzzleRunner
+  EventBus.on('hotspot:tap', ({ hotspot }) => {
+    // If a pattern puzzle is active, route taps to it
+    if (puzzleRunner.isPatternActive()) {
+      puzzleRunner.handlePatternTap(hotspot.id);
+      return;
+    }
+
+    const selectedItemId = inventoryUI.getSelectedItemId();
+    const handled = puzzleRunner.handleHotspotTap(hotspot, selectedItemId);
+
+    if (handled && selectedItemId) {
+      inventoryUI.clearSelection();
+    }
+
+    if (window.DEBUG) {
+      debugEl.textContent = `Tap: ${hotspot.id} | Item: ${selectedItemId || '-'} | OK: ${handled}`;
+    }
+  });
+
+  // Tap empty space -> deselect
+  EventBus.on('input:tap', ({ hotspot }) => {
+    if (!hotspot && inventoryUI.getSelectedItemId()) {
+      inventoryUI.clearSelection();
+    }
+  });
+
+  // Item combining
+  EventBus.on('inventory:combine', ({ itemA, itemB }) => {
+    const rm = roomManager.currentRoom || room;
+    const a = rm.getItem(itemA);
+    const b = rm.getItem(itemB);
+    if (a && b) {
+      const combined = puzzleRunner.handleCombine(a, b);
+      if (!combined) {
+        EventBus.emit('action:showMessage', {
+          message: "These items don't combine.",
+          onDismiss: () => {}
+        });
+      }
+    }
+  });
+
+  // State changes -> re-render
+  EventBus.on('state:visibilityChanged', () => {
+    renderer.setVisibilityOverrides(state.hotspotVisibility);
+    input.setVisibilityOverrides(state.hotspotVisibility);
+  });
+  EventBus.on('state:flagChanged', () => renderer.markDirty());
+
+  // Auto-save after action chains complete
+  EventBus.on('puzzle:actionsComplete', () => {
+    state.save();
+    if (window.DEBUG) console.log('[auto-save]');
+  });
+
+  // Win -> stop timer
+  EventBus.on('action:gameWin', () => {
+    gameLoop.stop();
+    state.save();
+  });
+
+  // Lose -> already stopped by GameLoop
+  EventBus.on('action:gameLose', () => {
+    state.save();
+  });
+
+  // Long-press inspect
+  EventBus.on('input:longpress', ({ hotspot }) => {
+    if (hotspot) {
+      EventBus.emit('action:showMessage', {
+        message: `${hotspot.label}\nID: ${hotspot.id}\nTriggers: ${hotspot.triggers.length}`,
+        onDismiss: () => {}
+      });
+    }
+  });
+
+  // --- Start ---
+  gameLoop.start(timerSeconds);
+
+  // onEnter actions
+  if (room.onEnter && room.onEnter.length > 0) {
+    puzzleRunner.executeActions(room.onEnter);
+  }
+
+  // --- Debug ---
+  if (window.DEBUG) {
+    window._room = room;
+    window._state = state;
+    window._renderer = renderer;
+    window._puzzleRunner = puzzleRunner;
+    window._gameLoop = gameLoop;
+    window._hintSystem = hintSystem;
+    window._EventBus = EventBus;
+    console.log('[DEBUG] Room:', room.id, '| Hotspots:', room.hotspots.length, '| Timer:', timerSeconds + 's');
+  }
+}
+
+init();
+</script>
+</body>
+</html>

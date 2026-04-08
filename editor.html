@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Escape Room Engine - Editor</title>
+<link rel="stylesheet" href="css/shared.css">
+<link rel="stylesheet" href="css/editor.css">
+</head>
+<body>
+<div class="editor-container" id="editorContainer">
+  <!-- Toolbar -->
+  <div class="editor-toolbar" id="toolbar">
+    <input type="text" class="room-name-input" id="roomNameInput" value="Untitled Room" />
+    <div class="separator"></div>
+    <button class="primary" id="addHotspotBtn">+ Hotspot</button>
+    <button id="addItemBtn">+ Item</button>
+    <button id="addPuzzleBtn">+ Puzzle</button>
+    <button id="deleteBtn">Delete</button>
+    <button id="bgImageBtn">BG Image</button>
+    <div class="separator"></div>
+    <button id="exportBtn">Export JSON</button>
+    <button id="importBtn">Import</button>
+    <button id="previewBtn">Preview</button>
+    <button id="homeBtn">Home</button>
+    <input type="file" accept=".json" id="importFile" style="display:none" />
+  </div>
+
+  <!-- Preview mode banner (hidden by default) -->
+  <div class="preview-banner hidden" id="previewBanner">
+    <span>Preview Mode — playing your room</span>
+    <button id="exitPreviewBtn">Back to Editor</button>
+  </div>
+
+  <!-- Editor body -->
+  <div class="editor-body" id="editorBody">
+    <div class="editor-canvas-wrap" id="canvasWrap">
+      <canvas id="editorCanvas"></canvas>
+    </div>
+    <div class="property-panel" id="propertyPanel">
+      <h3>Properties</h3>
+      <div class="empty-state">Select a hotspot to edit its properties</div>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+import EventBus from './js/core/EventBus.js';
+import { Room, Hotspot } from './js/core/RoomData.js';
+import EditorCanvas from './js/editor/EditorCanvas.js';
+import PropertyPanel from './js/editor/PropertyPanel.js';
+import ToolBar from './js/editor/ToolBar.js';
+import ExportImport from './js/editor/ExportImport.js';
+import AssetManager from './js/editor/AssetManager.js';
+
+const assetManager = new AssetManager();
+
+// --- Create or load room ---
+function createDefaultRoom() {
+  return new Room({
+    id: 'room_' + Date.now().toString(36),
+    name: 'Untitled Room',
+    width: 800,
+    height: 600,
+    background: { type: 'color', value: '#2a2a1e' },
+    hotspots: [],
+    items: [],
+    puzzles: [],
+    hints: [],
+    onEnter: []
+  });
+}
+
+let room = createDefaultRoom();
+
+// Check for auto-saved draft
+const exportImport = new ExportImport(room);
+const savedRoom = exportImport.loadAutoSave();
+if (savedRoom) {
+  room = savedRoom;
+  exportImport.setRoom(room);
+}
+
+// --- DOM ---
+const canvas = document.getElementById('editorCanvas');
+const panelEl = document.getElementById('propertyPanel');
+const roomNameInput = document.getElementById('roomNameInput');
+const previewBanner = document.getElementById('previewBanner');
+const editorBody = document.getElementById('editorBody');
+const toolbar = document.getElementById('toolbar');
+
+// --- Editor Modules ---
+const editorCanvas = new EditorCanvas(canvas, room);
+const propertyPanel = new PropertyPanel(panelEl, room, assetManager);
+const toolBar = new ToolBar(room);
+
+roomNameInput.value = room.name;
+
+// Preload images from saved room, then re-render
+assetManager.preloadRoom(room).then(() => editorCanvas.render());
+
+// --- Toolbar Event Handlers ---
+
+// Add hotspot
+document.getElementById('addHotspotBtn').addEventListener('click', () => {
+  const hs = toolBar.addHotspot();
+  editorCanvas.render();
+  editorCanvas.selectHotspot(hs.id);
+});
+
+// Add item
+document.getElementById('addItemBtn').addEventListener('click', () => {
+  const item = toolBar.addItem();
+  alert(`Item added: ${item.id}\nEdit triggers to use giveItem/removeItem with this ID.`);
+});
+
+// Add puzzle
+document.getElementById('addPuzzleBtn').addEventListener('click', () => {
+  const puzzle = toolBar.addPuzzle();
+  alert(`Puzzle added: ${puzzle.id}\nType: combination, Solution: 0000\nEdit triggers to use triggerPuzzle with this ID.`);
+});
+
+// Delete selected
+document.getElementById('deleteBtn').addEventListener('click', () => {
+  editorCanvas.deleteSelected();
+});
+
+// Keyboard shortcut: Delete/Backspace to delete selected
+document.addEventListener('keydown', (e) => {
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'SELECT') return;
+  if (e.key === 'Delete' || e.key === 'Backspace') {
+    editorCanvas.deleteSelected();
+  }
+});
+
+// Export
+document.getElementById('exportBtn').addEventListener('click', () => {
+  room.name = roomNameInput.value;
+  exportImport.exportJSON();
+});
+
+// Import
+document.getElementById('importBtn').addEventListener('click', () => {
+  document.getElementById('importFile').click();
+});
+document.getElementById('importFile').addEventListener('change', async (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  try {
+    const imported = await exportImport.importFromFile(file);
+    room = imported;
+    exportImport.setRoom(room);
+    editorCanvas.setRoom(room);
+    propertyPanel.setRoom(room);
+    toolBar.setRoom(room);
+    roomNameInput.value = room.name;
+  } catch (err) {
+    alert('Import failed: ' + err.message);
+  }
+  e.target.value = '';
+});
+
+// Room name change
+roomNameInput.addEventListener('change', () => {
+  toolBar.updateRoomSettings(roomNameInput.value);
+});
+
+// Room settings changed (e.g., from resize) -> re-init canvas
+EventBus.on('editor:roomSettingsChanged', () => {
+  editorCanvas.setRoom(room);
+});
+
+// Property changes -> re-render canvas
+EventBus.on('editor:propertyChanged', () => {
+  editorCanvas.render();
+});
+
+// New hotspot added -> re-render
+EventBus.on('editor:hotspotAdded', () => {
+  editorCanvas.render();
+});
+
+// BG Image
+document.getElementById('bgImageBtn').addEventListener('click', async () => {
+  try {
+    const { dataUrl, img } = await assetManager.pickImage();
+    room.background = { type: 'image', value: dataUrl, _img: img };
+    editorCanvas.render();
+    EventBus.emit('editor:changed', {});
+  } catch {}
+});
+
+// Home
+document.getElementById('homeBtn').addEventListener('click', () => {
+  window.location.href = 'index.html';
+});
+
+// --- Preview Mode ---
+let previewMode = false;
+
+document.getElementById('previewBtn').addEventListener('click', async () => {
+  if (previewMode) return;
+  previewMode = true;
+
+  // Save current state to localStorage for the player to load
+  room.name = roomNameInput.value;
+  localStorage.setItem('ere_imported_room', JSON.stringify(room.toJSON()));
+
+  // Hide editor UI, show preview
+  toolbar.style.display = 'none';
+  previewBanner.classList.remove('hidden');
+  panelEl.style.display = 'none';
+
+  // Replace canvas with an iframe running the player
+  const wrap = document.getElementById('canvasWrap');
+  canvas.style.display = 'none';
+
+  const iframe = document.createElement('iframe');
+  iframe.id = 'previewFrame';
+  iframe.src = 'play.html?room=imported';
+  iframe.style.cssText = 'width:100%;height:100%;border:none;';
+  wrap.appendChild(iframe);
+});
+
+document.getElementById('exitPreviewBtn').addEventListener('click', () => {
+  previewMode = false;
+
+  // Restore editor UI
+  toolbar.style.display = '';
+  previewBanner.classList.add('hidden');
+  panelEl.style.display = '';
+  canvas.style.display = '';
+
+  const iframe = document.getElementById('previewFrame');
+  if (iframe) iframe.remove();
+
+  editorCanvas.render();
+});
+
+// --- Auto-save indicator ---
+EventBus.on('editor:autoSaved', () => {
+  const btn = document.getElementById('exportBtn');
+  btn.textContent = 'Saved ✓';
+  setTimeout(() => { btn.textContent = 'Export JSON'; }, 1500);
+});
+
+</script>
+</body>
+</html>

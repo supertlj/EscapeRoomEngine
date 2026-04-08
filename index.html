@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Escape Room Engine</title>
+<link rel="stylesheet" href="css/shared.css">
+<style>
+  .home {
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    text-align: center;
+  }
+  .home h1 {
+    font-size: 28px;
+    color: var(--gold);
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+  }
+  .home .subtitle {
+    color: var(--text-dim);
+    font-size: 13px;
+    margin-bottom: 36px;
+  }
+  .menu-btn {
+    display: block;
+    width: 100%;
+    max-width: 320px;
+    padding: 14px;
+    margin-bottom: 10px;
+    background: rgba(196, 163, 90, 0.1);
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    min-height: var(--touch-min);
+  }
+  .menu-btn.secondary {
+    border-color: var(--border);
+    color: var(--text-dim);
+    background: transparent;
+  }
+  .room-list {
+    width: 100%;
+    max-width: 320px;
+    margin-top: 24px;
+    text-align: left;
+  }
+  .room-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 12px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    margin-bottom: 6px;
+  }
+  .room-card .name { font-size: 14px; font-weight: 500; }
+  .room-card .meta { font-size: 11px; color: var(--text-dim); }
+  .room-card .play-btn {
+    background: var(--gold);
+    color: var(--bg-deep);
+    border: none;
+    border-radius: 4px;
+    padding: 6px 14px;
+    font-size: 11px;
+    font-weight: 700;
+    min-height: var(--touch-min);
+    min-width: var(--touch-min);
+  }
+</style>
+</head>
+<body>
+<div class="home">
+  <h1>ESCAPE</h1>
+  <p class="subtitle">Room Escape Engine</p>
+
+  <a href="play.html"><button class="menu-btn">Play Demo Room</button></a>
+  <a href="editor.html"><button class="menu-btn">Room Editor</button></a>
+
+  <label class="menu-btn secondary" style="cursor:pointer;">
+    Import Room (JSON)
+    <input type="file" accept=".json" id="importFile" style="display:none;">
+  </label>
+
+  <div class="room-list" id="roomList">
+    <div class="room-card">
+      <div>
+        <div class="name">The Study</div>
+        <div class="meta">6 puzzles</div>
+      </div>
+      <a href="play.html?room=sample-room"><button class="play-btn">PLAY</button></a>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+  const fileInput = document.getElementById('importFile');
+  fileInput.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        const data = JSON.parse(reader.result);
+        localStorage.setItem('ere_imported_room', reader.result);
+        window.location.href = 'play.html?room=imported';
+      } catch (err) {
+        alert('Invalid JSON file: ' + err.message);
+      }
+    };
+    reader.readAsText(file);
+  });
+</script>
+</body>
+</html>
