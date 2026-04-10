@@ -154,6 +154,15 @@ export default class PuzzleRunner {
         this.state.setHotspotVisible(p.hotspotId, false);
         break;
 
+      case 'openZoom': {
+        // Find the hotspot and open zoom view
+        const hs = this.room.hotspots.find(h => h.id === p.hotspotId);
+        if (hs && hs.zoomView) {
+          EventBus.emit('action:openZoom', { hotspot: hs });
+        }
+        break;
+      }
+
       case 'triggerPuzzle': {
         const puzzle = this.room.getPuzzle(p.puzzleId);
         if (puzzle && puzzle.type === 'pattern') {

@@ -1,30 +1,29 @@
 import EventBus from '../core/EventBus.js';
 
 /**
- * Inventory bar: displays items, handles selection, item-on-item combining.
- * Renders as a horizontal bar at the bottom of the game view.
+ * Inventory bar with item images, selection, combining, and pickup flash.
  */
 export default class InventoryUI {
-  /**
-   * @param {HTMLElement} container - element to append the inventory bar into
-   * @param {import('../core/StateManager.js').default} state
-   * @param {import('../core/RoomData.js').Room} room
-   */
   constructor(container, state, room) {
     this.container = container;
     this.state = state;
     this.room = room;
     this.selectedItemId = null;
     this.maxSlots = 8;
+    this._justReceived = null; // item ID that was just added (for flash)
 
     this._createElement();
 
     EventBus.on('state:inventoryChanged', () => this.render());
+    EventBus.on('action:giveItem', ({ itemId }) => {
+      this._justReceived = itemId;
+      this.render();
+      // Clear flash after animation
+      setTimeout(() => { this._justReceived = null; }, 700);
+    });
   }
 
-  setRoom(room) {
-    this.room = room;
-  }
+  setRoom(room) { this.room = room; }
 
   _createElement() {
     this.el = document.createElement('div');
@@ -45,10 +44,21 @@ export default class InventoryUI {
         const item = this.room.getItem(itemId);
         if (item) {
           slot.classList.add('filled');
-          if (itemId === this.selectedItemId) {
-            slot.classList.add('active');
+          if (itemId === this.selectedItemId) slot.classList.add('active');
+          if (itemId === this._justReceived) slot.classList.add('just-received');
+
+          // Prefer item image, fall back to emoji
+          if (item.icon && item.icon.image) {
+            const img = document.createElement('img');
+            img.className = 'inv-item-img';
+            img.src = item.icon.image;
+            img.alt = item.name;
+            img.draggable = false;
+            slot.appendChild(img);
+          } else {
+            slot.textContent = this._getItemEmoji(item);
           }
-          slot.textContent = this._getItemEmoji(item);
+
           slot.title = item.name;
           slot.dataset.itemId = itemId;
           slot.addEventListener('click', () => this._onSlotClick(itemId));
@@ -63,27 +73,19 @@ export default class InventoryUI {
 
   _onSlotClick(itemId) {
     if (this.selectedItemId === itemId) {
-      // Deselect
       this.selectedItemId = null;
       EventBus.emit('inventory:deselect', {});
     } else if (this.selectedItemId) {
-      // Attempt to combine selected item with clicked item
-      EventBus.emit('inventory:combine', {
-        itemA: this.selectedItemId,
-        itemB: itemId
-      });
+      EventBus.emit('inventory:combine', { itemA: this.selectedItemId, itemB: itemId });
       this.selectedItemId = null;
     } else {
-      // Select this item
       this.selectedItemId = itemId;
       EventBus.emit('inventory:select', { itemId });
     }
     this.render();
   }
 
-  getSelectedItemId() {
-    return this.selectedItemId;
-  }
+  getSelectedItemId() { return this.selectedItemId; }
 
   clearSelection() {
     this.selectedItemId = null;
@@ -91,18 +93,12 @@ export default class InventoryUI {
   }
 
   _getItemEmoji(item) {
-    // Map icon shapes to simple emoji/text representations
-    const shapeMap = {
-      key: '\u{1F511}',      // 🔑
-      rect: '\u{1F4C4}',     // 📄
-      circle: '\u{26AA}',     // ⚪
-      bottle: '\u{1F9EA}',   // 🧪
-      gem: '\u{1F48E}',      // 💎
+    const map = {
+      key: '\u{1F511}', rect: '\u{1F4C4}', circle: '\u{26AA}',
+      bottle: '\u{1F9EA}', gem: '\u{1F48E}',
     };
-    return shapeMap[item.icon?.shape] || '\u{1F4E6}'; // 📦 default
+    return map[item.icon?.shape] || '\u{1F4E6}';
   }
 
-  destroy() {
-    this.el.remove();
-  }
+  destroy() { this.el.remove(); }
 }

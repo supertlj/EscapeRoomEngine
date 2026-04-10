@@ -6,6 +6,7 @@
   max-width: 800px;
   margin: 0 auto;
   background: var(--bg-deep);
+  position: relative;
 }
 
 /* Top bar */
@@ -14,21 +15,24 @@
   justify-content: space-between;
   align-items: center;
   padding: 8px 12px;
-  background: rgba(0, 0, 0, 0.6);
+  background: linear-gradient(180deg, rgba(0,0,0,0.8), rgba(0,0,0,0.4));
   flex-shrink: 0;
+  border-bottom: 1px solid rgba(196,163,90,0.15);
 }
 .game-topbar .room-name {
   font-weight: 600;
   font-size: 14px;
   color: var(--gold);
+  text-shadow: 0 0 12px rgba(196,163,90,0.3);
 }
 .game-topbar .timer {
   font-family: monospace;
   color: var(--danger);
   font-size: 16px;
+  text-shadow: 0 0 8px rgba(231,76,60,0.4);
 }
 .game-topbar .hint-btn {
-  background: var(--gold);
+  background: linear-gradient(135deg, var(--gold), #d4b36a);
   color: var(--bg-deep);
   border: none;
   border-radius: 6px;
@@ -36,6 +40,12 @@
   font-size: 12px;
   font-weight: 700;
   min-height: var(--touch-min);
+  box-shadow: 0 2px 8px rgba(196,163,90,0.3);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.game-topbar .hint-btn:active {
+  transform: scale(0.95);
+  box-shadow: 0 1px 4px rgba(196,163,90,0.2);
 }
 
 /* Canvas wrapper: centers and letterboxes */
@@ -46,6 +56,7 @@
   justify-content: center;
   overflow: hidden;
   background: #000;
+  position: relative;
 }
 .canvas-wrapper canvas {
   max-width: 100%;
@@ -53,7 +64,309 @@
   object-fit: contain;
 }
 
-/* Message overlay */
+/* Vignette overlay — adds cinematic depth to the canvas */
+.canvas-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.4) 100%);
+  z-index: 1;
+}
+
+/* Ambient light flicker — subtle warm glow */
+.canvas-ambient {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0;
+  background: radial-gradient(circle at 50% 40%, rgba(255,200,100,0.06) 0%, transparent 60%);
+  animation: ambientPulse 4s ease-in-out infinite;
+}
+@keyframes ambientPulse {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+/* ===================================================
+   ZOOM / CLOSE-UP VIEW
+   Premium 3D-look with perspective and depth
+   =================================================== */
+.zoom-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 120;
+  transition: background 0.3s ease;
+  perspective: 1000px;
+}
+.zoom-overlay.hidden { display: none; }
+.zoom-overlay.active {
+  background: rgba(0, 0, 0, 0.88);
+}
+
+.zoom-viewport {
+  position: relative;
+  width: 92%;
+  max-width: 420px;
+  max-height: 75vh;
+  transform: scale(0.85) rotateX(2deg);
+  opacity: 0;
+  transition: transform 0.35s cubic-bezier(0.2, 0, 0.2, 1),
+              opacity 0.3s ease;
+}
+.zoom-overlay.active .zoom-viewport {
+  transform: scale(1) rotateX(0);
+  opacity: 1;
+}
+
+.zoom-scene {
+  position: relative;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(196,163,90,0.2),
+    0 8px 32px rgba(0,0,0,0.7),
+    0 2px 8px rgba(0,0,0,0.5),
+    inset 0 1px 0 rgba(255,255,255,0.05);
+}
+
+.zoom-bg {
+  display: block;
+  width: 100%;
+  height: auto;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* 3D depth rim around the zoom scene */
+.zoom-scene::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  pointer-events: none;
+  z-index: 10;
+  box-shadow:
+    inset 0 2px 4px rgba(255,255,255,0.08),
+    inset 0 -3px 6px rgba(0,0,0,0.4);
+}
+
+/* Subtle spotlight on zoom scene */
+.zoom-scene::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+  background: radial-gradient(ellipse at 50% 30%, rgba(255,240,200,0.06) 0%, transparent 60%);
+}
+
+/* Close button */
+.zoom-close {
+  position: absolute;
+  top: -16px;
+  right: -8px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(0,0,0,0.8);
+  color: #ccc;
+  font-size: 20px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.15s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+.zoom-close:hover, .zoom-close:active {
+  background: rgba(60,20,20,0.9);
+  color: #fff;
+  transform: scale(1.1);
+}
+
+/* ===================================================
+   SUB-HOTSPOTS inside zoom view
+   =================================================== */
+.zoom-sub {
+  position: absolute;
+  cursor: pointer;
+  z-index: 15;
+  transition: transform 0.3s cubic-bezier(0.2, 0, 0.2, 1),
+              opacity 0.3s ease,
+              filter 0.3s ease;
+}
+.zoom-sub.hidden {
+  display: none;
+}
+.zoom-sub img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+
+/* Discoverable item shimmer */
+.zoom-sub.discoverable {
+  animation: shimmer 2.5s ease-in-out infinite;
+  filter: drop-shadow(0 0 6px rgba(255,220,120,0.4));
+}
+.zoom-sub.discoverable:active {
+  transform: scale(0.92);
+  filter: drop-shadow(0 0 12px rgba(255,220,120,0.8));
+}
+@keyframes shimmer {
+  0%, 100% { filter: drop-shadow(0 0 4px rgba(255,220,120,0.2)); }
+  50% { filter: drop-shadow(0 0 10px rgba(255,220,120,0.6)); }
+}
+
+/* Animated sub-hotspot states */
+.zoom-sub[data-anim="rotate"] {
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center center;
+}
+.zoom-sub[data-anim="rotate"].activated {
+  transform: rotate(var(--rotate-to, 90deg));
+}
+
+.zoom-sub[data-anim="slide-down"] {
+  transition: top 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.zoom-sub[data-anim="slide-down"].activated {
+  top: calc(var(--slide-to, 0%));
+}
+
+.zoom-sub[data-anim="slide-right"] {
+  transition: left 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.zoom-sub[data-anim="slide-right"].activated {
+  left: calc(var(--slide-to, 0%));
+}
+
+.zoom-sub[data-anim="fade-in"] {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.zoom-sub[data-anim="fade-in"].activated {
+  opacity: 1;
+}
+
+.zoom-sub[data-anim="scale-pop"] {
+  transform: scale(0);
+  transition: transform 0.4s cubic-bezier(0.2, 0, 0.2, 1.4);
+}
+.zoom-sub[data-anim="scale-pop"].activated {
+  transform: scale(1);
+}
+
+.zoom-sub[data-anim="swing"] {
+  transform-origin: top center;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.zoom-sub[data-anim="swing"].activated {
+  transform: rotate(var(--rotate-to, -45deg));
+}
+
+/* ===================================================
+   VISUAL EFFECTS
+   =================================================== */
+
+/* Particle container for puzzle-solve celebrations */
+.fx-particles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 200;
+  overflow: hidden;
+}
+.fx-particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+@keyframes particleBurst {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--px, 0), var(--py, 0)) scale(0);
+    opacity: 0;
+  }
+}
+
+/* Screen flash effect */
+.fx-flash {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 190;
+  opacity: 0;
+}
+.fx-flash.active {
+  animation: screenFlash 0.5s ease-out forwards;
+}
+@keyframes screenFlash {
+  0% { opacity: 0.6; }
+  100% { opacity: 0; }
+}
+
+/* Screen shake */
+.game-container.fx-shake {
+  animation: screenShake 0.4s ease-out;
+}
+@keyframes screenShake {
+  0%, 100% { transform: translateX(0); }
+  15% { transform: translateX(-4px) rotate(-0.3deg); }
+  30% { transform: translateX(3px) rotate(0.2deg); }
+  45% { transform: translateX(-3px); }
+  60% { transform: translateX(2px); }
+  75% { transform: translateX(-1px); }
+}
+
+/* Glow pulse on successful action */
+@keyframes glowPulse {
+  0% { box-shadow: 0 0 0 0 rgba(196,163,90,0.6); }
+  50% { box-shadow: 0 0 30px 10px rgba(196,163,90,0.3); }
+  100% { box-shadow: 0 0 0 0 rgba(196,163,90,0); }
+}
+
+/* Unlock ripple */
+.fx-ripple {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 195;
+  border: 2px solid var(--gold);
+  animation: rippleExpand 0.8s ease-out forwards;
+}
+@keyframes rippleExpand {
+  0% {
+    width: 0; height: 0;
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    width: 300px; height: 300px;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* ===================================================
+   MESSAGE OVERLAY — upgraded with glass effect
+   =================================================== */
 .message-overlay {
   position: fixed;
   inset: 0;
@@ -61,172 +374,274 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 100;
+  z-index: 130;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 .message-overlay.hidden { display: none; }
 .message-box {
-  background: rgba(0, 0, 0, 0.95);
-  border: 1px solid var(--gold);
-  border-radius: 10px;
-  padding: 20px 24px;
-  max-width: 320px;
+  background: linear-gradient(145deg, rgba(15,15,30,0.97), rgba(8,8,20,0.98));
+  border: 1px solid rgba(196,163,90,0.3);
+  border-radius: 14px;
+  padding: 24px 28px;
+  max-width: 340px;
   width: 90%;
   text-align: center;
   font-size: 14px;
-  line-height: 1.6;
+  line-height: 1.7;
   color: var(--text);
+  box-shadow:
+    0 12px 40px rgba(0,0,0,0.6),
+    0 0 0 1px rgba(255,255,255,0.03),
+    inset 0 1px 0 rgba(255,255,255,0.04);
+  transform: translateY(0);
+  animation: dialogSlideUp 0.25s ease-out;
+}
+@keyframes dialogSlideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
 .message-box .dismiss {
   display: inline-block;
-  margin-top: 12px;
-  background: var(--gold);
+  margin-top: 16px;
+  background: linear-gradient(135deg, var(--gold), #d4b36a);
   color: var(--bg-deep);
   border: none;
-  border-radius: 6px;
-  padding: 8px 24px;
+  border-radius: 8px;
+  padding: 10px 28px;
   font-weight: 600;
   font-size: 13px;
   min-height: var(--touch-min);
+  box-shadow: 0 3px 12px rgba(196,163,90,0.25);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.message-box .dismiss:active {
+  transform: scale(0.95);
 }
 
-/* Inventory bar */
+/* ===================================================
+   INVENTORY BAR — premium with item images
+   =================================================== */
 .inventory {
   display: flex;
-  gap: 8px;
+  gap: 6px;
   padding: 10px 12px;
-  background: rgba(0, 0, 0, 0.7);
-  border-top: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(10,10,25,0.9), rgba(5,5,15,0.95));
+  border-top: 1px solid rgba(196,163,90,0.12);
   overflow-x: auto;
   flex-shrink: 0;
 }
 .inv-slot {
-  width: 48px;
-  height: 48px;
-  border: 1px solid #555;
-  border-radius: 6px;
+  width: 52px;
+  height: 52px;
+  border: 1px solid rgba(80,80,100,0.4);
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 22px;
-  background: rgba(30, 30, 50, 0.8);
+  background: linear-gradient(145deg, rgba(30,30,50,0.6), rgba(20,20,40,0.8));
   flex-shrink: 0;
   cursor: default;
   user-select: none;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+  position: relative;
+  overflow: hidden;
 }
-.inv-slot.filled { cursor: pointer; }
+.inv-slot.filled {
+  cursor: pointer;
+  border-color: rgba(196,163,90,0.25);
+}
+.inv-slot.filled:active {
+  transform: scale(0.93);
+}
 .inv-slot.active {
   border-color: var(--gold);
-  box-shadow: 0 0 8px var(--gold-glow);
-  background: rgba(196, 163, 90, 0.15);
+  box-shadow: 0 0 12px var(--gold-glow), inset 0 0 8px rgba(196,163,90,0.1);
+  background: linear-gradient(145deg, rgba(196,163,90,0.12), rgba(196,163,90,0.06));
 }
 .inv-slot.empty {
   border-style: dashed;
-  border-color: #333;
+  border-color: rgba(50,50,70,0.4);
+}
+/* Item image inside inventory slot */
+.inv-slot .inv-item-img {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.5));
+}
+/* Item pickup flash on slot */
+.inv-slot.just-received {
+  animation: slotFlash 0.6s ease-out;
+}
+@keyframes slotFlash {
+  0% { box-shadow: 0 0 20px rgba(255,220,100,0.8); border-color: #ffd700; }
+  100% { box-shadow: none; border-color: rgba(196,163,90,0.25); }
 }
 
-/* Puzzle input dialog */
+/* ===================================================
+   PUZZLE INPUT — upgraded
+   =================================================== */
 .puzzle-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 100;
-}
-.puzzle-overlay.hidden { display: none; }
-.puzzle-box {
-  background: rgba(0, 0, 0, 0.95);
-  border: 1px solid var(--gold);
-  border-radius: 10px;
-  padding: 24px;
-  max-width: 300px;
-  width: 90%;
-  text-align: center;
-}
-.puzzle-prompt {
-  color: var(--text);
-  font-size: 14px;
-  margin-bottom: 16px;
-}
-.puzzle-input {
-  width: 100%;
-  padding: 10px;
-  font-size: 20px;
-  text-align: center;
-  background: var(--bg-mid);
-  border: 1px solid #555;
-  color: var(--gold);
-  border-radius: 6px;
-  margin-bottom: 12px;
-  font-family: monospace;
-  letter-spacing: 4px;
-}
-.puzzle-buttons {
-  display: flex;
-  gap: 8px;
-  justify-content: center;
-}
-.puzzle-submit {
-  background: var(--gold);
-  color: var(--bg-deep);
-  border: none;
-  border-radius: 6px;
-  padding: 8px 24px;
-  font-weight: 600;
-  min-height: var(--touch-min);
-}
-.puzzle-cancel {
-  background: transparent;
-  color: var(--text-dim);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 8px 16px;
-  min-height: var(--touch-min);
-}
-
-/* Win/Lose overlay */
-.win-overlay {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.85);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 150;
+  z-index: 130;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
-.win-overlay.hidden { display: none; }
-.win-box {
-  background: var(--bg-mid);
-  border: 2px solid var(--gold);
-  border-radius: 12px;
-  padding: 32px;
+.puzzle-overlay.hidden { display: none; }
+.puzzle-box {
+  background: linear-gradient(145deg, rgba(15,15,30,0.97), rgba(8,8,20,0.98));
+  border: 1px solid rgba(196,163,90,0.3);
+  border-radius: 14px;
+  padding: 28px;
   max-width: 320px;
   width: 90%;
   text-align: center;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+  animation: dialogSlideUp 0.25s ease-out;
+}
+/* Puzzle image (visual puzzles) */
+.puzzle-image {
+  width: 100%;
+  max-height: 200px;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+.puzzle-prompt {
+  color: var(--text);
+  font-size: 14px;
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+.puzzle-input {
+  width: 100%;
+  padding: 12px;
+  font-size: 22px;
+  text-align: center;
+  background: rgba(20,20,40,0.8);
+  border: 1px solid rgba(80,80,100,0.4);
+  color: var(--gold);
+  border-radius: 8px;
+  margin-bottom: 14px;
+  font-family: monospace;
+  letter-spacing: 6px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.puzzle-input:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 12px rgba(196,163,90,0.2);
+}
+.puzzle-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+.puzzle-submit {
+  background: linear-gradient(135deg, var(--gold), #d4b36a);
+  color: var(--bg-deep);
+  border: none;
+  border-radius: 8px;
+  padding: 10px 28px;
+  font-weight: 600;
+  min-height: var(--touch-min);
+  box-shadow: 0 3px 12px rgba(196,163,90,0.25);
+  transition: transform 0.15s;
+}
+.puzzle-submit:active { transform: scale(0.95); }
+.puzzle-cancel {
+  background: transparent;
+  color: var(--text-dim);
+  border: 1px solid rgba(80,80,100,0.4);
+  border-radius: 8px;
+  padding: 10px 20px;
+  min-height: var(--touch-min);
+  transition: background 0.2s;
+}
+.puzzle-cancel:active { background: rgba(255,255,255,0.05); }
+
+/* Wrong answer shake on puzzle input */
+.puzzle-input.wrong {
+  animation: inputShake 0.4s ease-out;
+  border-color: var(--danger);
+}
+@keyframes inputShake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-6px); }
+  40% { transform: translateX(5px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(2px); }
+}
+
+/* ===================================================
+   WIN / LOSE — cinematic upgrade
+   =================================================== */
+.win-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 150;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.win-overlay.hidden { display: none; }
+.win-box {
+  background: linear-gradient(145deg, rgba(20,20,40,0.98), rgba(10,10,25,0.99));
+  border: 2px solid var(--gold);
+  border-radius: 16px;
+  padding: 36px 32px;
+  max-width: 340px;
+  width: 90%;
+  text-align: center;
+  box-shadow:
+    0 0 60px rgba(196,163,90,0.15),
+    0 16px 48px rgba(0,0,0,0.6);
+  animation: winAppear 0.6s cubic-bezier(0.2, 0, 0.2, 1.2);
+}
+@keyframes winAppear {
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
 }
 .win-title {
   color: var(--gold);
-  font-size: 24px;
-  margin-bottom: 8px;
+  font-size: 26px;
+  margin-bottom: 10px;
+  text-shadow: 0 0 20px rgba(196,163,90,0.4);
 }
 .win-text {
   color: var(--text);
   font-size: 14px;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
+  line-height: 1.6;
 }
 .win-btn {
-  background: var(--gold);
+  background: linear-gradient(135deg, var(--gold), #d4b36a);
   color: var(--bg-deep);
   border: none;
-  border-radius: 8px;
-  padding: 10px 24px;
+  border-radius: 10px;
+  padding: 12px 32px;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 700;
   min-height: var(--touch-min);
+  box-shadow: 0 4px 16px rgba(196,163,90,0.3);
+  transition: transform 0.15s;
 }
+.win-btn:active { transform: scale(0.95); }
 
-/* Debug info */
+/* ===================================================
+   DEBUG
+   =================================================== */
 .debug-info {
   position: fixed;
   top: 0;

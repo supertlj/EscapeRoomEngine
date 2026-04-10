@@ -18,6 +18,7 @@ export class Hotspot {
     this.zIndex = data.zIndex ?? 0;
     this.visible = data.visible ?? true;
     this.triggers = (data.triggers || []).map(t => ({ ...t }));
+    this.zoomView = data.zoomView || null; // close-up view data for ZoomViewUI
   }
 
   containsPoint(x, y) {

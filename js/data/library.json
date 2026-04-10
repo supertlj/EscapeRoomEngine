@@ -1,0 +1,455 @@
+{
+  "id": "room_library",
+  "name": "The Library",
+  "width": 800,
+  "height": 600,
+  "background": {
+    "type": "image",
+    "value": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9IndhbGwiIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjM2EyODE4Ii8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMmExZTEyIi8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9ImZsb29yIiB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzFhMTIwYSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzEyMGMwNiIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iNDMwIiBmaWxsPSJ1cmwoI3dhbGwpIi8+PHJlY3QgeT0iNDMwIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjE3MCIgZmlsbD0idXJsKCNmbG9vcikiLz48bGluZSB4MT0iMCIgeTE9IjQzMCIgeDI9IjgwMCIgeTI9IjQzMCIgc3Ryb2tlPSIjNGEzYTIwIiBzdHJva2Utd2lkdGg9IjIiLz48cmVjdCB5PSIzNTAiIHdpZHRoPSI4MDAiIGhlaWdodD0iODAiIGZpbGw9IiMyYTFlMTAiIG9wYWNpdHk9IjAuMyIvPjxsaW5lIHgxPSIwIiB5MT0iMzUwIiB4Mj0iODAwIiB5Mj0iMzUwIiBzdHJva2U9IiM0YTNhMjAiIHN0cm9rZS13aWR0aD0iMSIvPjxsaW5lIHgxPSIwIiB5MT0iNDgwIiB4Mj0iODAwIiB5Mj0iNDgwIiBzdHJva2U9IiMxYTEyMGEiIHN0cm9rZS13aWR0aD0iMC41IiBvcGFjaXR5PSIwLjQiLz48bGluZSB4MT0iMCIgeTE9IjUzMCIgeDI9IjgwMCIgeTI9IjUzMCIgc3Ryb2tlPSIjMWExMjBhIiBzdHJva2Utd2lkdGg9IjAuNSIgb3BhY2l0eT0iMC40Ii8+PGxpbmUgeDE9IjE2MCIgeTE9IjQzMCIgeDI9IjE2MCIgeTI9IjYwMCIgc3Ryb2tlPSIjMWExMjBhIiBzdHJva2Utd2lkdGg9IjAuMyIgb3BhY2l0eT0iMC4zIi8+PGxpbmUgeDE9IjMyMCIgeTE9IjQzMCIgeDI9IjMyMCIgeTI9IjYwMCIgc3Ryb2tlPSIjMWExMjBhIiBzdHJva2Utd2lkdGg9IjAuMyIgb3BhY2l0eT0iMC4zIi8+PGxpbmUgeDE9IjQ4MCIgeTE9IjQzMCIgeDI9IjQ4MCIgeTI9IjYwMCIgc3Ryb2tlPSIjMWExMjBhIiBzdHJva2Utd2lkdGg9IjAuMyIgb3BhY2l0eT0iMC4zIi8+PGxpbmUgeDE9IjY0MCIgeTE9IjQzMCIgeDI9IjY0MCIgeTI9IjYwMCIgc3Ryb2tlPSIjMWExMjBhIiBzdHJva2Utd2lkdGg9IjAuMyIgb3BhY2l0eT0iMC4zIi8+PGVsbGlwc2UgY3g9IjQwMCIgY3k9IjIwMCIgcng9IjIwMCIgcnk9IjE1MCIgZmlsbD0iIzVhNGEyYSIgb3BhY2l0eT0iMC4wNiIvPjwvc3ZnPg=="
+  },
+  "hotspots": [
+    {
+      "id": "hs_portrait",
+      "label": "Portrait",
+      "shape": "rect",
+      "bounds": {
+        "x": 50,
+        "y": 20,
+        "w": 80,
+        "h": 100
+      },
+      "appearance": {
+        "fill": "#8a7a50",
+        "stroke": "#6a5a30",
+        "image": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSIxMDAiPjxyZWN0IHdpZHRoPSI4MCIgaGVpZ2h0PSIxMDAiIHJ4PSIyIiBmaWxsPSIjOGE3YTUwIi8+PHJlY3QgeD0iMyIgeT0iMyIgd2lkdGg9Ijc0IiBoZWlnaHQ9Ijk0IiBmaWxsPSIjYWE5YTYwIi8+PHJlY3QgeD0iNyIgeT0iNyIgd2lkdGg9IjY2IiBoZWlnaHQ9Ijg2IiBmaWxsPSIjMmEyMDE4Ii8+PGNpcmNsZSBjeD0iNDAiIGN5PSIzNSIgcj0iMTQiIGZpbGw9IiNkNGE4NzgiLz48ZWxsaXBzZSBjeD0iNDAiIGN5PSI2NSIgcng9IjIwIiByeT0iMjIiIGZpbGw9IiMzYTJhMWEiLz48Y2lyY2xlIGN4PSIzNSIgY3k9IjMyIiByPSIyIiBmaWxsPSIjMmExYTBhIi8+PGNpcmNsZSBjeD0iNDUiIGN5PSIzMiIgcj0iMiIgZmlsbD0iIzJhMWEwYSIvPjxwYXRoIGQ9Ik0zNiw0MCBRNDAsNDQgNDQsNDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzJhMWEwYSIgc3Ryb2tlLXdpZHRoPSIxIi8+PHBhdGggZD0iTTI2LDIwIFE0MCwxMiA1NCwyMCIgZmlsbD0iIzRhM2EyYSIvPjxyZWN0IHg9IjMyIiB5PSI1NSIgd2lkdGg9IjE2IiBoZWlnaHQ9IjMiIGZpbGw9IiNhYTg4MjAiIG9wYWNpdHk9IjAuNiIvPjwvc3ZnPg=="
+      },
+      "zIndex": 2,
+      "visible": true,
+      "triggers": [
+        {
+          "type": "tap",
+          "requiredFlags": [
+            "found_cipher"
+          ],
+          "requiredItem": null,
+          "actions": [
+            {
+              "type": "showMessage",
+              "params": {
+                "message": "The old scholar gazes down knowingly. You've already found his secret."
+              }
+            }
+          ]
+        },
+        {
+          "type": "tap",
+          "requiredFlags": [],
+          "requiredItem": null,
+          "once": true,
+          "actions": [
+            {
+              "type": "setFlag",
+              "params": {
+                "flag": "examined_portrait",
+                "value": true
+              }
+            },
+            {
+              "type": "showMessage",
+              "params": {
+                "message": "A portrait of the library's founder. A brass plaque reads: 'Knowledge is the key. Seek the red volume on the third shelf.'"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hs_globe",
+      "label": "Globe",
+      "shape": "circle",
+      "bounds": {
+        "x": 200,
+        "y": 40,
+        "w": 80,
+        "h": 100
+      },
+      "appearance": {
+        "fill": "#2a5a8a",
+        "stroke": "#8a7a50",
+        "image": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSIxMDAiPjxyZWN0IHg9IjMwIiB5PSI4NSIgd2lkdGg9IjIwIiBoZWlnaHQ9IjEwIiByeD0iMiIgZmlsbD0iIzVhM2ExYSIvPjxyZWN0IHg9IjI1IiB5PSI5MiIgd2lkdGg9IjMwIiBoZWlnaHQ9IjUiIHJ4PSIxIiBmaWxsPSIjNmE0YTI4Ii8+PGNpcmNsZSBjeD0iNDAiIGN5PSI0NSIgcj0iMzAiIGZpbGw9IiMyYTVhOGEiIHN0cm9rZT0iIzhhN2E1MCIgc3Ryb2tlLXdpZHRoPSIyIi8+PGVsbGlwc2UgY3g9IjQwIiBjeT0iNDUiIHJ4PSIzMCIgcnk9IjMwIiBmaWxsPSJub25lIiBzdHJva2U9IiMzYTZhOWEiIHN0cm9rZS13aWR0aD0iMC41Ii8+PHBhdGggZD0iTTIwLDMwIFEzMCwyNSA0MCwyOCBRNTAsMjAgNTUsMzAiIGZpbGw9IiMzYThhM2EiIG9wYWNpdHk9IjAuNiIvPjxwYXRoIGQ9Ik0xNSw0NSBRMjUsNDAgMzUsNTAgUTQwLDU1IDUwLDQ1IFE1NSw0MCA2MCw0OCIgZmlsbD0iIzNhOGEzYSIgb3BhY2l0eT0iMC41Ii8+PHBhdGggZD0iTTI1LDYwIFEzNSw1NSA0NSw2MiBRNTAsNjUgNTUsNTgiIGZpbGw9IiMzYThhM2EiIG9wYWNpdHk9IjAuNSIvPjxlbGxpcHNlIGN4PSI0MCIgY3k9IjQ1IiByeD0iMTAiIHJ5PSIzMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNGE3YWFhIiBzdHJva2Utd2lkdGg9IjAuMyIvPjxsaW5lIHgxPSIxMCIgeTE9IjQ1IiB4Mj0iNzAiIHkyPSI0NSIgc3Ryb2tlPSIjNGE3YWFhIiBzdHJva2Utd2lkdGg9IjAuMyIvPjxwYXRoIGQ9Ik00MCwxNSBRNDIsMjAgNDAsMjUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzhhN2E1MCIgc3Ryb2tlLXdpZHRoPSIxLjUiLz48Y2lyY2xlIGN4PSI0MCIgY3k9IjEzIiByPSIyIiBmaWxsPSIjOGE3YTUwIi8+PC9zdmc+"
+      },
+      "zIndex": 2,
+      "visible": true,
+      "triggers": [
+        {
+          "type": "tap",
+          "requiredFlags": [],
+          "requiredItem": null,
+          "actions": [
+            {
+              "type": "showMessage",
+              "params": {
+                "message": "An antique globe. Spinning it, you notice a small inscription near Antarctica: 'YEAR OF THE LIBRARY: 1897'."
+              }
+            },
+            {
+              "type": "setFlag",
+              "params": {
+                "flag": "read_globe",
+                "value": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hs_tallshelf",
+      "label": "Tall Bookshelf",
+      "shape": "rect",
+      "bounds": {
+        "x": 360,
+        "y": 10,
+        "w": 100,
+        "h": 240
+      },
+      "appearance": {
+        "fill": "#3a2210",
+        "stroke": "#2a1808",
+        "image": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMjQwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjI0MCIgZmlsbD0iIzNhMjIxMCIvPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI0IiBoZWlnaHQ9IjI0MCIgZmlsbD0iIzJhMTgwOCIvPjxyZWN0IHg9Ijk2IiB5PSIwIiB3aWR0aD0iNCIgaGVpZ2h0PSIyNDAiIGZpbGw9IiMyYTE4MDgiLz48cmVjdCB4PSI0IiB5PSIwIiB3aWR0aD0iOTIiIGhlaWdodD0iNCIgZmlsbD0iIzRhMzAxOCIvPjxyZWN0IHg9IjQiIHk9IjU4IiB3aWR0aD0iOTIiIGhlaWdodD0iNCIgZmlsbD0iIzRhMzAxOCIvPjxyZWN0IHg9IjQiIHk9IjExOCIgd2lkdGg9IjkyIiBoZWlnaHQ9IjQiIGZpbGw9IiM0YTMwMTgiLz48cmVjdCB4PSI0IiB5PSIxNzgiIHdpZHRoPSI5MiIgaGVpZ2h0PSI0IiBmaWxsPSIjNGEzMDE4Ii8+PHJlY3QgeD0iNCIgeT0iMjM2IiB3aWR0aD0iOTIiIGhlaWdodD0iNCIgZmlsbD0iIzRhMzAxOCIvPjxyZWN0IHg9IjEwIiB5PSI4IiB3aWR0aD0iMTAiIGhlaWdodD0iNDYiIGZpbGw9IiM4YjIwMjAiIHJ4PSIxIi8+PHJlY3QgeD0iMjIiIHk9IjEyIiB3aWR0aD0iMTIiIGhlaWdodD0iNDIiIGZpbGw9IiMxYTNhNmEiIHJ4PSIxIi8+PHJlY3QgeD0iMzYiIHk9IjYiIHdpZHRoPSIxNCIgaGVpZ2h0PSI0OCIgZmlsbD0iIzJhNGEyYSIgcng9IjEiLz48cmVjdCB4PSI1MiIgeT0iMTAiIHdpZHRoPSI4IiBoZWlnaHQ9IjQ0IiBmaWxsPSIjNmEyYTRhIiByeD0iMSIvPjxyZWN0IHg9IjYyIiB5PSI4IiB3aWR0aD0iMTYiIGhlaWdodD0iNDYiIGZpbGw9IiM0YTRhMWEiIHJ4PSIxIi8+PHJlY3QgeD0iODAiIHk9IjE0IiB3aWR0aD0iMTAiIGhlaWdodD0iNDAiIGZpbGw9IiMzYTFhMWEiIHJ4PSIxIi8+PHJlY3QgeD0iMTAiIHk9IjY2IiB3aWR0aD0iMTQiIGhlaWdodD0iNDgiIGZpbGw9IiM1YTFhM2EiIHJ4PSIxIi8+PHJlY3QgeD0iMjYiIHk9IjcwIiB3aWR0aD0iMTAiIGhlaWdodD0iNDQiIGZpbGw9IiMzYTVhMmEiIHJ4PSIxIi8+PHJlY3QgeD0iMzgiIHk9IjY0IiB3aWR0aD0iMTIiIGhlaWdodD0iNTAiIGZpbGw9IiMxYTJhNWEiIHJ4PSIxIi8+PHJlY3QgeD0iNTIiIHk9IjY4IiB3aWR0aD0iMTYiIGhlaWdodD0iNDYiIGZpbGw9IiM2YTRhMWEiIHJ4PSIxIi8+PHJlY3QgeD0iNzAiIHk9IjY2IiB3aWR0aD0iMTAiIGhlaWdodD0iNDgiIGZpbGw9IiMyYTJhNGEiIHJ4PSIxIi8+PHJlY3QgeD0iODIiIHk9IjcyIiB3aWR0aD0iMTAiIGhlaWdodD0iNDIiIGZpbGw9IiM0YTJhMmEiIHJ4PSIxIi8+PHJlY3QgeD0iMTAiIHk9IjEyNiIgd2lkdGg9IjEyIiBoZWlnaHQ9IjQ4IiBmaWxsPSIjMmE1YTNhIiByeD0iMSIvPjxyZWN0IHg9IjI0IiB5PSIxMzAiIHdpZHRoPSIxNCIgaGVpZ2h0PSI0NCIgZmlsbD0iIzVhMmEyMCIgcng9IjEiLz48cmVjdCB4PSI0MCIgeT0iMTI0IiB3aWR0aD0iMTAiIGhlaWdodD0iNTAiIGZpbGw9IiMxYTRhNGEiIHJ4PSIxIi8+PHJlY3QgeD0iNTIiIHk9IjEyOCIgd2lkdGg9IjE2IiBoZWlnaHQ9IjQ2IiBmaWxsPSIjNGEzYTJhIiByeD0iMSIvPjxyZWN0IHg9IjcwIiB5PSIxMjYiIHdpZHRoPSIxMiIgaGVpZ2h0PSI0OCIgZmlsbD0iIzJhMWE0YSIgcng9IjEiLz48cmVjdCB4PSI4NCIgeT0iMTMyIiB3aWR0aD0iOCIgaGVpZ2h0PSI0MiIgZmlsbD0iIzVhNWExYSIgcng9IjEiLz48cmVjdCB4PSIxMCIgeT0iMTg2IiB3aWR0aD0iMTYiIGhlaWdodD0iNDYiIGZpbGw9IiMzYTJhNWEiIHJ4PSIxIi8+PHJlY3QgeD0iMjgiIHk9IjE5MCIgd2lkdGg9IjEwIiBoZWlnaHQ9IjQyIiBmaWxsPSIjNWEzYTFhIiByeD0iMSIvPjxyZWN0IHg9IjQwIiB5PSIxODQiIHdpZHRoPSIxNCIgaGVpZ2h0PSI0OCIgZmlsbD0iIzFhNWE1YSIgcng9IjEiLz48cmVjdCB4PSI1NiIgeT0iMTg4IiB3aWR0aD0iMTIiIGhlaWdodD0iNDQiIGZpbGw9IiM2YTJhMmEiIHJ4PSIxIi8+PHJlY3QgeD0iNzAiIHk9IjE4NiIgd2lkdGg9IjEwIiBoZWlnaHQ9IjQ2IiBmaWxsPSIjM2E0YTJhIiByeD0iMSIvPjxyZWN0IHg9IjgyIiB5PSIxOTIiIHdpZHRoPSIxMCIgaGVpZ2h0PSI0MCIgZmlsbD0iIzRhMWEzYSIgcng9IjEiLz48L3N2Zz4="
+      },
+      "zIndex": 1,
+      "visible": true,
+      "triggers": [
+        {
+          "type": "tap",
+          "requiredFlags": [
+            "examined_portrait"
+          ],
+          "requiredItem": null,
+          "once": true,
+          "actions": [
+            {
+              "type": "setFlag",
+              "params": {
+                "flag": "pulled_book",
+                "value": true
+              }
+            },
+            {
+              "type": "giveItem",
+              "params": {
+                "itemId": "item_old_key"
+              }
+            },
+            {
+              "type": "showMessage",
+              "params": {
+                "message": "You find the red volume on the third shelf and pull it. Click! A hidden compartment opens behind it, revealing a tarnished brass key."
+              }
+            }
+          ]
+        },
+        {
+          "type": "tap",
+          "requiredFlags": [],
+          "requiredItem": null,
+          "actions": [
+            {
+              "type": "showMessage",
+              "params": {
+                "message": "Floor-to-ceiling bookshelves packed with leather-bound volumes. Hundreds of books... but which one matters?"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hs_fireplace",
+      "label": "Fireplace",
+      "shape": "rect",
+      "bounds": {
+        "x": 530,
+        "y": 30,
+        "w": 140,
+        "h": 140
+      },
+      "appearance": {
+        "fill": "#4a3a20",
+        "stroke": "#3a2a10",
+        "image": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNDAiIGhlaWdodD0iMTQwIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjNmE1YTNhIiBzdHJva2U9IiM0YTNhMjAiIHN0cm9rZS13aWR0aD0iMSIvPjxyZWN0IHg9IjUiIHk9IjE1IiB3aWR0aD0iMTMwIiBoZWlnaHQ9IjEyNSIgZmlsbD0iIzRhM2EyMCIvPjxyZWN0IHg9IjE1IiB5PSIxNSIgd2lkdGg9IjExMCIgaGVpZ2h0PSI1IiBmaWxsPSIjNWE0YTMwIi8+PHJlY3QgeD0iMjAiIHk9IjI1IiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjkwIiByeD0iMyIgZmlsbD0iIzFhMTAwOCIvPjxwYXRoIGQ9Ik00NSwxMTAgUTUwLDcwIDU1LDkwIFE2MCw2MCA3MCw4NSBRNzUsNTUgODAsODAgUTg1LDY1IDk1LDExMCIgZmlsbD0iI2NjNDQxMSIgb3BhY2l0eT0iMC43Ii8+PHBhdGggZD0iTTUwLDExMCBRNTUsODAgNjAsOTUgUTY1LDcwIDc1LDkwIFE3OCw3NSA4NSwxMTAiIGZpbGw9IiNmZjg4MjIiIG9wYWNpdHk9IjAuNiIvPjxwYXRoIGQ9Ik01OCwxMTAgUTYyLDg1IDY4LDk1IFE3Miw4MCA3OCwxMTAiIGZpbGw9IiNmZmNjNDQiIG9wYWNpdHk9IjAuNSIvPjxyZWN0IHg9IjI1IiB5PSIxMDgiIHdpZHRoPSI5MCIgaGVpZ2h0PSI3IiByeD0iMSIgZmlsbD0iIzNhMmExOCIvPjxyZWN0IHg9IjMwIiB5PSIxMDUiIHdpZHRoPSIxNSIgaGVpZ2h0PSIxMCIgZmlsbD0iIzRhMzAxOCIgcng9IjEiLz48cmVjdCB4PSI1NSIgeT0iMTA2IiB3aWR0aD0iMjAiIGhlaWdodD0iOSIgZmlsbD0iIzNhMjIxMCIgcng9IjEiLz48cmVjdCB4PSI4MCIgeT0iMTA1IiB3aWR0aD0iMTIiIGhlaWdodD0iMTAiIGZpbGw9IiM0YTMwMTgiIHJ4PSIxIi8+PHJlY3QgeD0iMTAiIHk9IjEyMCIgd2lkdGg9IjEyMCIgaGVpZ2h0PSIyMCIgZmlsbD0iIzVhNGEzMCIvPjxyZWN0IHg9IjAiIHk9IjExOCIgd2lkdGg9IjE0MCIgaGVpZ2h0PSI1IiBmaWxsPSIjNmE1YTNhIi8+PC9zdmc+"
+      },
+      "zIndex": 1,
+      "visible": true,
+      "triggers": [
+        {
+          "type": "tap",
+          "requiredFlags": [],
+          "requiredItem": null,
+          "actions": [
+            {
+              "type": "showMessage",
+              "params": {
+                "message": "A roaring fireplace. The warmth is comforting, but the flames prevent you from reaching inside. The mantelpiece has carved ivy patterns."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hs_desk",
+      "label": "Reading Desk",
+      "shape": "rect",
+      "bounds": {
+        "x": 50,
+        "y": 300,
+        "w": 180,
+        "h": 100
+      },
+      "appearance": {
+        "fill": "#5a3a1e",
+        "stroke": "#3a2210",
+        "image": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxODAiIGhlaWdodD0iMTAwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImRrIiB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzVhM2ExZSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzRhMmUxNiIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjUiIHk9IjE1IiB3aWR0aD0iMTcwIiBoZWlnaHQ9IjEwIiByeD0iMSIgZmlsbD0idXJsKCNkaykiLz48cmVjdCB4PSI1IiB5PSIxNSIgd2lkdGg9IjE3MCIgaGVpZ2h0PSIzIiBmaWxsPSIjNmE0YTI4IiBvcGFjaXR5PSIwLjUiLz48cmVjdCB4PSIxMCIgeT0iMjUiIHdpZHRoPSIxNjAiIGhlaWdodD0iNjUiIGZpbGw9IiMzYTIyMTAiLz48cmVjdCB4PSIxNSIgeT0iOTAiIHdpZHRoPSI4IiBoZWlnaHQ9IjEwIiBmaWxsPSIjMmExYTA4Ii8+PHJlY3QgeD0iMTU3IiB5PSI5MCIgd2lkdGg9IjgiIGhlaWdodD0iMTAiIGZpbGw9IiMyYTFhMDgiLz48cmVjdCB4PSIzMCIgeT0iMyIgd2lkdGg9IjUwIiBoZWlnaHQ9IjE0IiByeD0iMSIgZmlsbD0iI2Q0YzRhMCIgb3BhY2l0eT0iMC42Ii8+PHJlY3QgeD0iMzIiIHk9IjUiIHdpZHRoPSI0NiIgaGVpZ2h0PSIxMCIgZmlsbD0iI2U4ZDhiOCIgb3BhY2l0eT0iMC40Ii8+PGNpcmNsZSBjeD0iMTMwIiBjeT0iMTAiIHI9IjgiIGZpbGw9IiNhYTg4MjAiIG9wYWNpdHk9IjAuNSIvPjxsaW5lIHgxPSIxMzAiIHkxPSIyIiB4Mj0iMTMwIiB5Mj0iMTAiIHN0cm9rZT0iIzhhNjgxMCIgc3Ryb2tlLXdpZHRoPSIxIi8+PGNpcmNsZSBjeD0iMTMwIiBjeT0iMiIgcj0iMiIgZmlsbD0iI2NjYWEzMCIgb3BhY2l0eT0iMC43Ii8+PC9zdmc+"
+      },
+      "zIndex": 1,
+      "visible": true,
+      "triggers": [
+        {
+          "type": "tap",
+          "requiredFlags": [
+            "found_cipher"
+          ],
+          "requiredItem": null,
+          "actions": [
+            {
+              "type": "showMessage",
+              "params": {
+                "message": "The cipher page is spread on the desk. It reads: 'To leave, speak the year the library was born.' The answer must go in the archway lock."
+              }
+            },
+            {
+              "type": "setFlag",
+              "params": {
+                "flag": "read_cipher",
+                "value": true
+              }
+            }
+          ]
+        },
+        {
+          "type": "tap",
+          "requiredFlags": [],
+          "requiredItem": null,
+          "actions": [
+            {
+              "type": "showMessage",
+              "params": {
+                "message": "An oak reading desk with a green lamp. Some old papers are scattered about, but nothing useful yet."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hs_chest",
+      "label": "Locked Chest",
+      "shape": "rect",
+      "bounds": {
+        "x": 300,
+        "y": 340,
+        "w": 100,
+        "h": 70
+      },
+      "appearance": {
+        "fill": "#5a3a1a",
+        "stroke": "#3a2210",
+        "image": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iNzAiPjxyZWN0IHg9IjUiIHk9IjIwIiB3aWR0aD0iOTAiIGhlaWdodD0iNDUiIHJ4PSIzIiBmaWxsPSIjNWEzYTFhIiBzdHJva2U9IiMzYTIyMTAiIHN0cm9rZS13aWR0aD0iMiIvPjxwYXRoIGQ9Ik01LDIwIFE1MCw1IDk1LDIwIiBmaWxsPSIjNmE0YTI4IiBzdHJva2U9IiMzYTIyMTAiIHN0cm9rZS13aWR0aD0iMiIvPjxyZWN0IHg9IjIwIiB5PSIyMiIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMiIGZpbGw9IiM4YTdhNTAiIG9wYWNpdHk9IjAuNiIvPjxyZWN0IHg9IjQyIiB5PSIzNSIgd2lkdGg9IjE2IiBoZWlnaHQ9IjEyIiByeD0iMiIgZmlsbD0iI2FhODgyMCIgc3Ryb2tlPSIjODg2NjEwIiBzdHJva2Utd2lkdGg9IjEiLz48Y2lyY2xlIGN4PSI1MCIgY3k9IjQzIiByPSIzIiBmaWxsPSIjMmExYTA4Ii8+PHJlY3QgeD0iMTAiIHk9IjU1IiB3aWR0aD0iODAiIGhlaWdodD0iMyIgZmlsbD0iIzhhN2E1MCIgb3BhY2l0eT0iMC40Ii8+PHJlY3QgeD0iOCIgeT0iNjIiIHdpZHRoPSIxMCIgaGVpZ2h0PSI1IiByeD0iMSIgZmlsbD0iIzNhMjIxMCIvPjxyZWN0IHg9IjgyIiB5PSI2MiIgd2lkdGg9IjEwIiBoZWlnaHQ9IjUiIHJ4PSIxIiBmaWxsPSIjM2EyMjEwIi8+PC9zdmc+"
+      },
+      "zIndex": 2,
+      "visible": true,
+      "triggers": [
+        {
+          "type": "useItem",
+          "requiredFlags": [],
+          "requiredItem": "item_old_key",
+          "once": true,
+          "actions": [
+            {
+              "type": "removeItem",
+              "params": {
+                "itemId": "item_old_key"
+              }
+            },
+            {
+              "type": "setFlag",
+              "params": {
+                "flag": "found_cipher",
+                "value": true
+              }
+            },
+            {
+              "type": "giveItem",
+              "params": {
+                "itemId": "item_cipher_page"
+              }
+            },
+            {
+              "type": "showMessage",
+              "params": {
+                "message": "The brass key fits the chest lock perfectly. Inside, you find an ancient cipher page with strange symbols."
+              }
+            }
+          ]
+        },
+        {
+          "type": "tap",
+          "requiredFlags": [
+            "found_cipher"
+          ],
+          "requiredItem": null,
+          "actions": [
+            {
+              "type": "showMessage",
+              "params": {
+                "message": "The chest is open and empty."
+              }
+            }
+          ]
+        },
+        {
+          "type": "tap",
+          "requiredFlags": [],
+          "requiredItem": null,
+          "actions": [
+            {
+              "type": "showMessage",
+              "params": {
+                "message": "A heavy wooden chest with ornate carvings and a brass lock. It won't budge."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hs_archway",
+      "label": "Archway",
+      "shape": "rect",
+      "bounds": {
+        "x": 500,
+        "y": 260,
+        "w": 100,
+        "h": 180
+      },
+      "appearance": {
+        "fill": "#4a3a20",
+        "stroke": "#3a2a10",
+        "image": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTgwIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTUiIGhlaWdodD0iMTgwIiBmaWxsPSIjNGEzYTIwIi8+PHJlY3QgeD0iODUiIHk9IjAiIHdpZHRoPSIxNSIgaGVpZ2h0PSIxODAiIGZpbGw9IiM0YTNhMjAiLz48cGF0aCBkPSJNMTUsNjAgUTUwLDAgODUsNjAiIGZpbGw9IiM0YTNhMjAiLz48cmVjdCB4PSIxNSIgeT0iNjAiIHdpZHRoPSI3MCIgaGVpZ2h0PSIxMjAiIGZpbGw9IiMxYTEyMGEiLz48cGF0aCBkPSJNMTUsNjAgUTUwLDEwIDg1LDYwIiBmaWxsPSIjMWExMjBhIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSI4IiBmaWxsPSIjNWE0YTMwIi8+PHJlY3QgeD0iMjAiIHk9IjE3MCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjEwIiBmaWxsPSIjMmExZTEyIiBvcGFjaXR5PSIwLjUiLz48bGluZSB4MT0iNTAiIHkxPSIxMDAiIHgyPSI1MCIgeTI9IjE3MCIgc3Ryb2tlPSIjM2EyYTE4IiBzdHJva2Utd2lkdGg9IjAuNSIgb3BhY2l0eT0iMC4zIi8+PC9zdmc+"
+      },
+      "zIndex": 1,
+      "visible": true,
+      "triggers": [
+        {
+          "type": "tap",
+          "requiredFlags": [
+            "read_cipher"
+          ],
+          "requiredItem": null,
+          "actions": [
+            {
+              "type": "triggerPuzzle",
+              "params": {
+                "puzzleId": "puzzle_archway"
+              }
+            }
+          ]
+        },
+        {
+          "type": "tap",
+          "requiredFlags": [],
+          "requiredItem": null,
+          "actions": [
+            {
+              "type": "showMessage",
+              "params": {
+                "message": "A stone archway leading into darkness. Ancient runes are carved around the frame, and there's a number dial embedded in the stone."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "items": [
+    {
+      "id": "item_old_key",
+      "name": "Brass Key",
+      "description": "A tarnished brass key found behind a book.",
+      "icon": {
+        "shape": "key",
+        "color": "#aa8820"
+      },
+      "combinesWith": null,
+      "combineResult": null
+    },
+    {
+      "id": "item_cipher_page",
+      "name": "Cipher Page",
+      "description": "An ancient page with cryptic symbols.",
+      "icon": {
+        "shape": "rect",
+        "color": "#d4c4a0"
+      },
+      "combinesWith": null,
+      "combineResult": null
+    }
+  ],
+  "puzzles": [
+    {
+      "id": "puzzle_archway",
+      "type": "combination",
+      "hotspotId": "hs_archway",
+      "prompt": "Enter the year the library was born:",
+      "solution": "1897",
+      "onSolve": [
+        {
+          "type": "showMessage",
+          "params": {
+            "message": "The stone dial clicks into place. The runes glow blue, and the archway fills with light. You step through and escape!"
+          }
+        },
+        {
+          "type": "gameWin",
+          "params": {}
+        }
+      ],
+      "onFail": [
+        {
+          "type": "showMessage",
+          "params": {
+            "message": "The runes flash red. Wrong year. The answer is somewhere in this room..."
+          }
+        }
+      ]
+    }
+  ],
+  "hints": [
+    "Read the portrait plaque for a clue about the bookshelf.",
+    "Pull the red book on the third shelf after reading the portrait.",
+    "Use the brass key on the locked chest.",
+    "Take the cipher page to the reading desk to decode it.",
+    "The globe tells you the year: 1897. Enter it at the archway."
+  ],
+  "onEnter": [
+    {
+      "type": "showMessage",
+      "params": {
+        "message": "The heavy library doors swing shut. Dust motes dance in the firelight. Ancient secrets fill these shelves... and one of them is your way out."
+      }
+    }
+  ]
+}

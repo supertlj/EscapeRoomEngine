@@ -104,7 +104,7 @@ export default class Renderer {
           ctx.fillStyle = hs.appearance.fill;
           ctx.fill();
         }
-        if (hs.appearance.stroke) {
+        if (hs.appearance.stroke && !hs.appearance._img) {
           ctx.beginPath();
           ctx.ellipse(b.x + b.w / 2, b.y + b.h / 2, b.w / 2, b.h / 2, 0, 0, Math.PI * 2);
           ctx.strokeStyle = hs.appearance.stroke;
@@ -119,7 +119,7 @@ export default class Renderer {
           ctx.fillStyle = hs.appearance.fill;
           ctx.fillRect(b.x, b.y, b.w, b.h);
         }
-        if (hs.appearance.stroke) {
+        if (hs.appearance.stroke && !hs.appearance._img) {
           ctx.strokeStyle = hs.appearance.stroke;
           ctx.lineWidth = 2;
           ctx.strokeRect(b.x, b.y, b.w, b.h);

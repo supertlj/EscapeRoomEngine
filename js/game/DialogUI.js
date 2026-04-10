@@ -96,7 +96,20 @@ export default class DialogUI {
     const input = this.puzzleOverlay.querySelector('.puzzle-input');
     const answer = input.value.trim();
     const solved = answer === this._puzzleSolution;
-    this.puzzleOverlay.classList.add('hidden');
+
+    if (solved) {
+      EventBus.emit('fx:success', {});
+      this.puzzleOverlay.classList.add('hidden');
+    } else {
+      // Shake input + red flash
+      input.classList.remove('wrong');
+      void input.offsetWidth;
+      input.classList.add('wrong');
+      EventBus.emit('fx:shake', {});
+      EventBus.emit('fx:flash', { color: 'rgba(231,76,60,0.2)' });
+      setTimeout(() => input.classList.remove('wrong'), 500);
+    }
+
     const cb = this._onPuzzleComplete;
     this._onPuzzleComplete = null;
     if (cb) cb(solved);

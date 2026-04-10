@@ -16,8 +16,10 @@
   </div>
   <div class="canvas-wrapper">
     <canvas id="gameCanvas"></canvas>
+    <div class="canvas-vignette"></div>
+    <div class="canvas-ambient"></div>
   </div>
-  <!-- Inventory + Dialogs inserted dynamically -->
+  <!-- Inventory, Zoom, Dialogs, FX inserted dynamically -->
 </div>
 
 <!-- Debug overlay -->
@@ -37,9 +39,11 @@ import InventoryUI from './js/game/InventoryUI.js';
 import HintSystem from './js/game/HintSystem.js';
 import RoomManager from './js/game/RoomManager.js';
 import AssetManager from './js/editor/AssetManager.js';
+import ZoomViewUI from './js/game/ZoomViewUI.js';
+import VisualFX from './js/game/VisualFX.js';
 
 // Debug mode
-const params = new URLSearchParams(location.search);
+const params = new URLSearchParams(location.search.length > 1 ? location.search : location.hash.replace('#', '?'));
 if (params.get('debug') === '1') window.DEBUG = true;
 const debugEl = document.getElementById('debugInfo');
 if (window.DEBUG) debugEl.classList.remove('hidden');
@@ -108,6 +112,12 @@ async function init() {
   // InventoryUI
   const inventoryUI = new InventoryUI(container, state, room);
 
+  // ZoomViewUI
+  const zoomViewUI = new ZoomViewUI(container, state);
+
+  // VisualFX
+  const visualFX = new VisualFX(container);
+
   // GameLoop (timer)
   const gameLoop = new GameLoop(state);
 
@@ -163,11 +173,30 @@ async function init() {
     puzzleRunner.executeActions(actions);
   });
 
-  // Hotspot tap -> pattern check first, then PuzzleRunner
+  // Zoom sub-hotspot actions → route through PuzzleRunner
+  EventBus.on('zoom:executeActions', ({ actions }) => {
+    puzzleRunner.executeActions(actions);
+  });
+
+  // FX on item pickup
+  EventBus.on('action:giveItem', () => {
+    EventBus.emit('fx:flash', { color: 'rgba(255,220,100,0.15)' });
+  });
+
+  // Hotspot tap -> zoom check first, then pattern, then PuzzleRunner
   EventBus.on('hotspot:tap', ({ hotspot }) => {
+    // If zoom is open, ignore canvas taps
+    if (zoomViewUI.isOpen()) return;
+
     // If a pattern puzzle is active, route taps to it
     if (puzzleRunner.isPatternActive()) {
       puzzleRunner.handlePatternTap(hotspot.id);
+      return;
+    }
+
+    // If hotspot has a zoomView and no item selected, open zoom directly
+    if (hotspot.zoomView && !inventoryUI.getSelectedItemId()) {
+      EventBus.emit('action:openZoom', { hotspot });
       return;
     }
 

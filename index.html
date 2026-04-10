@@ -81,7 +81,7 @@
   <h1>ESCAPE</h1>
   <p class="subtitle">Room Escape Engine</p>
 
-  <a href="play.html"><button class="menu-btn">Play Demo Room</button></a>
+  <a href="play.html#room=sample-room"><button class="menu-btn">Play Demo Room</button></a>
   <a href="editor.html"><button class="menu-btn">Room Editor</button></a>
 
   <label class="menu-btn secondary" style="cursor:pointer;">
@@ -95,7 +95,28 @@
         <div class="name">The Study</div>
         <div class="meta">6 puzzles</div>
       </div>
-      <a href="play.html?room=sample-room"><button class="play-btn">PLAY</button></a>
+      <a href="play.html#room=sample-room"><button class="play-btn">PLAY</button></a>
+    </div>
+    <div class="room-card">
+      <div>
+        <div class="name">The Laboratory</div>
+        <div class="meta">8 puzzles</div>
+      </div>
+      <a href="play.html#room=laboratory"><button class="play-btn">PLAY</button></a>
+    </div>
+    <div class="room-card">
+      <div>
+        <div class="name">The Library</div>
+        <div class="meta">7 puzzles</div>
+      </div>
+      <a href="play.html#room=library"><button class="play-btn">PLAY</button></a>
+    </div>
+    <div class="room-card">
+      <div>
+        <div class="name">The Apartment</div>
+        <div class="meta">6 puzzles</div>
+      </div>
+      <a href="play.html#room=apartment"><button class="play-btn">PLAY</button></a>
     </div>
   </div>
 </div>
@@ -110,7 +131,7 @@
       try {
         const data = JSON.parse(reader.result);
         localStorage.setItem('ere_imported_room', reader.result);
-        window.location.href = 'play.html?room=imported';
+        window.location.href = 'play.html#room=imported';
       } catch (err) {
         alert('Invalid JSON file: ' + err.message);
       }
