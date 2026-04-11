@@ -291,14 +291,18 @@ svgs.cabinet = `
   <polygon points="125,2 140,8 140,192 125,198" fill="url(#cabs)"/>
   <!-- Front face -->
   <rect x="2" y="2" width="123" height="196" rx="2" fill="url(#cabf)" stroke="#a07838" stroke-width="1"/>
-  <!-- Upper glass doors -->
+  <!-- Upper glass doors — wooden frames -->
   <rect x="8" y="8" width="55" height="78" rx="2" fill="#b89050" stroke="#987038" stroke-width="1"/>
   <rect x="67" y="8" width="55" height="78" rx="2" fill="#b89050" stroke="#987038" stroke-width="1"/>
-  <!-- Glass panes with reflection -->
-  <rect x="12" y="12" width="47" height="70" fill="rgba(180,200,210,0.12)" rx="1"/>
-  <rect x="71" y="12" width="47" height="70" fill="rgba(180,200,210,0.12)" rx="1"/>
-  <line x1="16" y1="16" x2="16" y2="76" stroke="rgba(255,255,255,0.06)" stroke-width="1.5"/>
-  <line x1="75" y1="16" x2="75" y2="76" stroke="rgba(255,255,255,0.06)" stroke-width="1.5"/>
+  <!-- Glass panes — dark interior visible through glass -->
+  <rect x="12" y="12" width="47" height="70" fill="#1a1818" rx="1"/>
+  <rect x="71" y="12" width="47" height="70" fill="#1a1818" rx="1"/>
+  <!-- Glass tint overlay -->
+  <rect x="12" y="12" width="47" height="70" fill="rgba(180,200,210,0.08)" rx="1"/>
+  <rect x="71" y="12" width="47" height="70" fill="rgba(180,200,210,0.08)" rx="1"/>
+  <!-- Glass reflections -->
+  <line x1="16" y1="76" x2="30" y2="16" stroke="rgba(255,255,255,0.06)" stroke-width="2"/>
+  <line x1="75" y1="76" x2="89" y2="16" stroke="rgba(255,255,255,0.04)" stroke-width="1.5"/>
   <!-- Glass handles -->
   <rect x="56" y="40" width="4" height="12" rx="1.5" fill="#bbb"/>
   <rect x="68" y="40" width="4" height="12" rx="1.5" fill="#bbb"/>
@@ -327,7 +331,74 @@ svgs.cabinet = `
   <line x1="3" y1="3" x2="124" y2="3" stroke="rgba(255,255,255,0.06)" stroke-width="0.8"/>
 </svg>`;
 
-// Cabinet with right door open — main room view
+// Cabinet with upper right glass door open — main room view
+svgs.cabinetGlassOpen = `
+<svg xmlns="http://www.w3.org/2000/svg" width="145" height="200">
+  <defs>
+    <linearGradient id="cabfg" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#c8a060"/>
+      <stop offset="50%" stop-color="#d4ac68"/>
+      <stop offset="100%" stop-color="#b89050"/>
+    </linearGradient>
+    <linearGradient id="cabsg" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#a88040"/>
+      <stop offset="100%" stop-color="#987038"/>
+    </linearGradient>
+    <linearGradient id="cabintg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a1210"/>
+      <stop offset="100%" stop-color="#0e0a08"/>
+    </linearGradient>
+  </defs>
+  <!-- Floor shadow -->
+  <ellipse cx="68" cy="196" rx="60" ry="5" fill="rgba(0,0,0,0.15)"/>
+  <!-- Side panel (3D depth) -->
+  <polygon points="125,2 140,8 140,192 125,198" fill="url(#cabsg)"/>
+  <!-- Front face -->
+  <rect x="2" y="2" width="123" height="196" rx="2" fill="url(#cabfg)" stroke="#a07838" stroke-width="1"/>
+  <!-- Upper left glass door (closed) -->
+  <rect x="8" y="8" width="55" height="78" rx="2" fill="#b89050" stroke="#987038" stroke-width="1"/>
+  <rect x="12" y="12" width="47" height="70" fill="#1a1818" rx="1"/>
+  <rect x="12" y="12" width="47" height="70" fill="rgba(180,200,210,0.08)" rx="1"/>
+  <line x1="16" y1="76" x2="30" y2="16" stroke="rgba(255,255,255,0.06)" stroke-width="2"/>
+  <rect x="56" y="40" width="4" height="12" rx="1.5" fill="#bbb"/>
+  <!-- Upper right: dark interior revealed (door open) -->
+  <rect x="67" y="8" width="55" height="78" rx="2" fill="url(#cabintg)" stroke="#5a3a18" stroke-width="0.5"/>
+  <!-- Interior shelf -->
+  <rect x="69" y="50" width="51" height="2" fill="#3a2818"/>
+  <!-- Lockbox silhouette inside -->
+  <rect x="78" y="22" width="30" height="22" rx="1" fill="#555" stroke="#444" stroke-width="0.5"/>
+  <rect x="86" y="30" width="14" height="8" rx="1" fill="#444"/>
+  <circle cx="93" cy="37" r="1.5" fill="#c44"/>
+  <!-- Interior shadow -->
+  <rect x="67" y="8" width="55" height="3" fill="rgba(0,0,0,0.25)"/>
+  <!-- Right glass door swung open (perspective) -->
+  <polygon points="122,8 130,11 130,84 122,87" fill="#c89858" stroke="#a07838" stroke-width="0.5"/>
+  <polygon points="130,8 134,10 134,86 130,84" fill="#b89050"/>
+  <!-- Glass on open door -->
+  <polygon points="123,11 129,13 129,82 123,84" fill="rgba(180,200,210,0.06)"/>
+  <!-- Glass handles -->
+  <rect x="68" y="40" width="4" height="12" rx="1.5" fill="#bbb"/>
+  <!-- Middle shelf divider -->
+  <rect x="4" y="90" width="119" height="8" fill="#a07838"/>
+  <rect x="4" y="90" width="119" height="2" fill="rgba(255,255,255,0.05)"/>
+  <rect x="20" y="94" width="6" height="3" rx="1" fill="#8a6a30"/>
+  <rect x="50" y="94" width="28" height="3" rx="1" fill="#8a6a30"/>
+  <rect x="100" y="94" width="6" height="3" rx="1" fill="#8a6a30"/>
+  <!-- Lower doors (both closed) -->
+  <rect x="8" y="104" width="55" height="88" rx="2" fill="#b89050" stroke="#987038" stroke-width="1"/>
+  <rect x="67" y="104" width="55" height="88" rx="2" fill="#b89050" stroke="#987038" stroke-width="1"/>
+  <rect x="14" y="110" width="43" height="76" fill="rgba(0,0,0,0.06)" rx="1"/>
+  <rect x="73" y="110" width="43" height="76" fill="rgba(0,0,0,0.06)" rx="1"/>
+  <circle cx="56" cy="148" r="4" fill="#bbb" stroke="#aaa" stroke-width="0.8"/>
+  <circle cx="56" cy="148" r="1.5" fill="#999"/>
+  <circle cx="72" cy="148" r="4" fill="#bbb" stroke="#aaa" stroke-width="0.8"/>
+  <circle cx="72" cy="148" r="1.5" fill="#999"/>
+  <ellipse cx="56" cy="165" rx="2.5" ry="4" fill="#555"/>
+  <rect x="55" y="167" width="2" height="5" fill="#555"/>
+  <line x1="3" y1="3" x2="124" y2="3" stroke="rgba(255,255,255,0.06)" stroke-width="0.8"/>
+</svg>`;
+
+// Cabinet with lower right + upper right doors open — main room view
 svgs.cabinetOpen = `
 <svg xmlns="http://www.w3.org/2000/svg" width="145" height="200">
   <defs>
@@ -344,6 +415,10 @@ svgs.cabinetOpen = `
       <stop offset="0%" stop-color="#3a2810"/>
       <stop offset="100%" stop-color="#2a1a08"/>
     </linearGradient>
+    <linearGradient id="cabint2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a1210"/>
+      <stop offset="100%" stop-color="#0e0a08"/>
+    </linearGradient>
   </defs>
   <!-- Floor shadow -->
   <ellipse cx="68" cy="196" rx="60" ry="5" fill="rgba(0,0,0,0.15)"/>
@@ -351,22 +426,29 @@ svgs.cabinetOpen = `
   <polygon points="125,2 140,8 140,192 125,198" fill="url(#cabs2)"/>
   <!-- Front face -->
   <rect x="2" y="2" width="123" height="196" rx="2" fill="url(#cabf2)" stroke="#a07838" stroke-width="1"/>
-  <!-- Upper glass doors (same as closed) -->
+  <!-- Upper left glass door (closed) -->
   <rect x="8" y="8" width="55" height="78" rx="2" fill="#b89050" stroke="#987038" stroke-width="1"/>
-  <rect x="67" y="8" width="55" height="78" rx="2" fill="#b89050" stroke="#987038" stroke-width="1"/>
-  <rect x="12" y="12" width="47" height="70" fill="rgba(180,200,210,0.12)" rx="1"/>
-  <rect x="71" y="12" width="47" height="70" fill="rgba(180,200,210,0.12)" rx="1"/>
-  <line x1="16" y1="16" x2="16" y2="76" stroke="rgba(255,255,255,0.06)" stroke-width="1.5"/>
-  <line x1="75" y1="16" x2="75" y2="76" stroke="rgba(255,255,255,0.06)" stroke-width="1.5"/>
+  <rect x="12" y="12" width="47" height="70" fill="#1a1818" rx="1"/>
+  <rect x="12" y="12" width="47" height="70" fill="rgba(180,200,210,0.08)" rx="1"/>
+  <line x1="16" y1="76" x2="30" y2="16" stroke="rgba(255,255,255,0.06)" stroke-width="2"/>
   <rect x="56" y="40" width="4" height="12" rx="1.5" fill="#bbb"/>
-  <rect x="68" y="40" width="4" height="12" rx="1.5" fill="#bbb"/>
+  <!-- Upper right: dark interior (door open) -->
+  <rect x="67" y="8" width="55" height="78" rx="2" fill="url(#cabint2)" stroke="#5a3a18" stroke-width="0.5"/>
+  <rect x="69" y="50" width="51" height="2" fill="#3a2818"/>
+  <rect x="78" y="22" width="30" height="22" rx="1" fill="#555" stroke="#444" stroke-width="0.5"/>
+  <rect x="86" y="30" width="14" height="8" rx="1" fill="#444"/>
+  <circle cx="93" cy="37" r="1.5" fill="#c44"/>
+  <rect x="67" y="8" width="55" height="3" fill="rgba(0,0,0,0.25)"/>
+  <polygon points="122,8 130,11 130,84 122,87" fill="#c89858" stroke="#a07838" stroke-width="0.5"/>
+  <polygon points="130,8 134,10 134,86 130,84" fill="#b89050"/>
+  <polygon points="123,11 129,13 129,82 123,84" fill="rgba(180,200,210,0.06)"/>
   <!-- Middle shelf divider -->
   <rect x="4" y="90" width="119" height="8" fill="#a07838"/>
   <rect x="4" y="90" width="119" height="2" fill="rgba(255,255,255,0.05)"/>
   <rect x="20" y="94" width="6" height="3" rx="1" fill="#8a6a30"/>
   <rect x="50" y="94" width="28" height="3" rx="1" fill="#8a6a30"/>
   <rect x="100" y="94" width="6" height="3" rx="1" fill="#8a6a30"/>
-  <!-- Left door stays closed -->
+  <!-- Left lower door stays closed -->
   <rect x="8" y="104" width="55" height="88" rx="2" fill="#b89050" stroke="#987038" stroke-width="1"/>
   <rect x="14" y="110" width="43" height="76" fill="rgba(0,0,0,0.06)" rx="1"/>
   <circle cx="56" cy="148" r="4" fill="#bbb" stroke="#aaa" stroke-width="0.8"/>
@@ -374,17 +456,14 @@ svgs.cabinetOpen = `
   <ellipse cx="56" cy="165" rx="2.5" ry="4" fill="#444"/>
   <circle cx="56" cy="160" r="4" fill="none" stroke="#d0a840" stroke-width="2"/>
   <rect x="55" y="163" width="2" height="6" fill="#d0a840"/>
-  <!-- Right side: dark interior visible -->
+  <!-- Lower right: dark interior visible -->
   <rect x="67" y="104" width="55" height="88" rx="2" fill="url(#cabint)" stroke="#5a3a18" stroke-width="0.5"/>
-  <!-- Interior shelf -->
   <rect x="69" y="140" width="51" height="2" fill="#5a3a18"/>
-  <!-- Interior shadow -->
   <rect x="67" y="104" width="55" height="4" fill="rgba(0,0,0,0.2)"/>
-  <!-- Right door swung open (3D perspective) -->
+  <!-- Lower right door swung open (3D perspective) -->
   <polygon points="122,104 130,108 130,190 122,194" fill="#c89858" stroke="#a07838" stroke-width="0.5"/>
   <polygon points="130,104 136,106 136,198 130,194" fill="#b89050" stroke="#987038" stroke-width="0.5"/>
   <circle cx="128" cy="148" r="2" fill="#bbb"/>
-  <!-- Top edge highlight -->
   <line x1="3" y1="3" x2="124" y2="3" stroke="rgba(255,255,255,0.06)" stroke-width="0.8"/>
 </svg>`;
 
@@ -1575,7 +1654,9 @@ const room = {
             triggers: [{
               type: "tap", requiredFlags: [], requiredItem: null, once: true,
               actions: [
-                { type: "setFlag", params: { flag: "upper_door_open", value: true } }
+                { type: "setFlag", params: { flag: "upper_door_open", value: true } },
+                { type: "hideHotspot", params: { hotspotId: "hs_cabinet" } },
+                { type: "showHotspot", params: { hotspotId: "hs_cabinet_glass_open" } }
               ]
             }]
           },
@@ -1693,6 +1774,91 @@ const room = {
             image: toDataUrl(zoom.paper),
             hideOnCollect: true,
             visibleWhen: ["cabinet_open"],
+            triggers: [{
+              type: "tap", requiredFlags: [], requiredItem: null, once: true,
+              actions: [
+                { type: "giveItem", params: { itemId: "item_paper" } }
+              ]
+            }]
+          }
+        ]
+      },
+      triggers: []
+    },
+
+    // Cabinet with upper right glass door open (lower still closed)
+    {
+      id: "hs_cabinet_glass_open",
+      label: "Cabinet (Glass Open)",
+      shape: "rect",
+      bounds: { x: 540, y: 100, w: 145, h: 200 },
+      appearance: { fill: "#c8a060", stroke: "#a88040", image: toDataUrl(svgs.cabinetGlassOpen) },
+      zIndex: 1, visible: false,
+      zoomView: {
+        image: toDataUrl(zoom.cabinetBg),
+        subHotspots: [
+          // Keyhole on lower door — use key here to unlock
+          {
+            id: "sub_keyhole",
+            label: "Keyhole",
+            bounds: { x: 43, y: 74, w: 8, h: 10 },
+            image: null,
+            animation: { type: "rotate", to: "90deg" },
+            imageOpen: toDataUrl(zoom.keyInHole),
+            triggers: [
+              {
+                type: "useItem", requiredFlags: [], requiredItem: "item_small_key", once: true,
+                actions: [
+                  { type: "removeItem", params: { itemId: "item_small_key" } },
+                  { type: "setFlag", params: { flag: "cabinet_open", value: true } },
+                  { type: "hideHotspot", params: { hotspotId: "hs_cabinet_glass_open" } },
+                  { type: "showHotspot", params: { hotspotId: "hs_cabinet_open" } }
+                ]
+              }
+            ]
+          },
+          // Upper right glass door already open
+          {
+            id: "sub_upper_door",
+            label: "Upper Right Door",
+            bounds: { x: 51, y: 7, w: 42, h: 40 },
+            image: toDataUrl(zoom.upperDoorOpen),
+            triggers: []
+          },
+          // Lockbox always visible (door already open)
+          {
+            id: "sub_lockbox_vis",
+            label: "Lockbox",
+            bounds: { x: 53, y: 14, w: 30, h: 22 },
+            image: toDataUrl(zoom.lockboxInGlass),
+            triggers: [
+              {
+                type: "tap", requiredFlags: [], requiredItem: null,
+                actions: [
+                  { type: "openZoom", params: { hotspotId: "hs_lockbox" } }
+                ]
+              }
+            ]
+          },
+          // Right lower door opens (visible after key used)
+          {
+            id: "sub_right_door",
+            label: "Right Door",
+            bounds: { x: 51, y: 50, w: 42, h: 46 },
+            image: null,
+            animation: { type: "fade-in" },
+            visibleWhen: ["cabinet_open"],
+            imageOpen: toDataUrl(zoom.cabinetRightOpen),
+            triggers: []
+          },
+          // Paper on shelf inside right door
+          {
+            id: "sub_paper",
+            label: "Paper",
+            bounds: { x: 53, y: 72, w: 30, h: 14 },
+            image: toDataUrl(zoom.paper),
+            hideOnCollect: true,
+            visibleWhen: ["cabinet_open", "_zoomAnim_sub_right_door"],
             triggers: [{
               type: "tap", requiredFlags: [], requiredItem: null, once: true,
               actions: [

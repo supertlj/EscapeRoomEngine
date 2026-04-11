@@ -311,6 +311,18 @@
                       "flag": "upper_door_open",
                       "value": true
                     }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet"
+                    }
+                  },
+                  {
+                    "type": "showHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_glass_open"
+                    }
                   }
                 ]
               }
@@ -521,6 +533,170 @@
             "hideOnCollect": true,
             "visibleWhen": [
               "cabinet_open"
+            ],
+            "triggers": [
+              {
+                "type": "tap",
+                "requiredFlags": [],
+                "requiredItem": null,
+                "once": true,
+                "actions": [
+                  {
+                    "type": "giveItem",
+                    "params": {
+                      "itemId": "item_paper"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "triggers": []
+    },
+    {
+      "id": "hs_cabinet_glass_open",
+      "label": "Cabinet (Glass Open)",
+      "shape": "rect",
+      "bounds": {
+        "x": 540,
+        "y": 100,
+        "w": 145,
+        "h": 200
+      },
+      "appearance": {
+        "fill": "#c8a060",
+        "stroke": "#a88040",
+        "image": "assets/rooms/apartment/main/cabinetGlassOpen.svg"
+      },
+      "zIndex": 1,
+      "visible": false,
+      "zoomView": {
+        "image": "assets/rooms/apartment/zoom/cabinetBg.svg",
+        "subHotspots": [
+          {
+            "id": "sub_keyhole",
+            "label": "Keyhole",
+            "bounds": {
+              "x": 43,
+              "y": 74,
+              "w": 8,
+              "h": 10
+            },
+            "image": null,
+            "animation": {
+              "type": "rotate",
+              "to": "90deg"
+            },
+            "imageOpen": "assets/rooms/apartment/zoom/keyInHole.svg",
+            "triggers": [
+              {
+                "type": "useItem",
+                "requiredFlags": [],
+                "requiredItem": "item_small_key",
+                "once": true,
+                "actions": [
+                  {
+                    "type": "removeItem",
+                    "params": {
+                      "itemId": "item_small_key"
+                    }
+                  },
+                  {
+                    "type": "setFlag",
+                    "params": {
+                      "flag": "cabinet_open",
+                      "value": true
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_glass_open"
+                    }
+                  },
+                  {
+                    "type": "showHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_open"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "sub_upper_door",
+            "label": "Upper Right Door",
+            "bounds": {
+              "x": 51,
+              "y": 7,
+              "w": 42,
+              "h": 40
+            },
+            "image": "assets/rooms/apartment/zoom/upperDoorOpen.svg",
+            "triggers": []
+          },
+          {
+            "id": "sub_lockbox_vis",
+            "label": "Lockbox",
+            "bounds": {
+              "x": 53,
+              "y": 14,
+              "w": 30,
+              "h": 22
+            },
+            "image": "assets/rooms/apartment/zoom/lockboxInGlass.svg",
+            "triggers": [
+              {
+                "type": "tap",
+                "requiredFlags": [],
+                "requiredItem": null,
+                "actions": [
+                  {
+                    "type": "openZoom",
+                    "params": {
+                      "hotspotId": "hs_lockbox"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "sub_right_door",
+            "label": "Right Door",
+            "bounds": {
+              "x": 51,
+              "y": 50,
+              "w": 42,
+              "h": 46
+            },
+            "image": null,
+            "animation": {
+              "type": "fade-in"
+            },
+            "visibleWhen": [
+              "cabinet_open"
+            ],
+            "imageOpen": "assets/rooms/apartment/zoom/cabinetRightOpen.svg",
+            "triggers": []
+          },
+          {
+            "id": "sub_paper",
+            "label": "Paper",
+            "bounds": {
+              "x": 53,
+              "y": 72,
+              "w": 30,
+              "h": 14
+            },
+            "image": "assets/rooms/apartment/zoom/paper.svg",
+            "hideOnCollect": true,
+            "visibleWhen": [
+              "cabinet_open",
+              "_zoomAnim_sub_right_door"
             ],
             "triggers": [
               {
