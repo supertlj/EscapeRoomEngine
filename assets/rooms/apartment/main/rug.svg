@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="120">
+  <defs>
+    <linearGradient id="rugf" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d8c898"/>
+      <stop offset="100%" stop-color="#c8b888"/>
+    </linearGradient>
+  </defs>
+  <!-- Rug in perspective (narrower at top, wider at bottom) -->
+  <polygon points="80,4 360,4 420,116 20,116" fill="url(#rugf)"/>
+  <!-- Border -->
+  <polygon points="80,4 360,4 420,116 20,116" fill="none" stroke="#8a5a30" stroke-width="4"/>
+  <!-- Inner border -->
+  <polygon points="95,12 345,12 400,108 40,108" fill="none" stroke="#a08060" stroke-width="1.5"/>
+  <!-- Inner inner border -->
+  <polygon points="108,20 332,20 382,100 58,100" fill="none" stroke="#c8a878" stroke-width="0.8" opacity="0.5"/>
+  <!-- Center medallion (ellipse in perspective) -->
+  <ellipse cx="220" cy="60" rx="70" ry="22" fill="#c0a870" opacity="0.25"/>
+  <ellipse cx="220" cy="60" rx="50" ry="15" fill="none" stroke="#a08060" stroke-width="0.8" opacity="0.4"/>
+  <!-- Corner flourishes -->
+  <path d="M95,16 Q120,16 115,30" fill="none" stroke="#a08060" stroke-width="0.8" opacity="0.4"/>
+  <path d="M345,16 Q320,16 325,30" fill="none" stroke="#a08060" stroke-width="0.8" opacity="0.4"/>
+  <path d="M45,104 Q70,104 60,90" fill="none" stroke="#a08060" stroke-width="0.8" opacity="0.4"/>
+  <path d="M395,104 Q370,104 380,90" fill="none" stroke="#a08060" stroke-width="0.8" opacity="0.4"/>
+  <!-- Pattern lines -->
+  <line x1="140" y1="8" x2="100" y2="112" stroke="#b8a070" stroke-width="0.5" opacity="0.2"/>
+  <line x1="220" y1="8" x2="220" y2="112" stroke="#b8a070" stroke-width="0.5" opacity="0.15"/>
+  <line x1="300" y1="8" x2="340" y2="112" stroke="#b8a070" stroke-width="0.5" opacity="0.2"/>
+</svg>

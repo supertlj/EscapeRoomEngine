@@ -423,6 +423,8 @@
    INVENTORY BAR — premium with item images
    =================================================== */
 .inventory {
+  position: relative;
+  z-index: 130;
   display: flex;
   gap: 6px;
   padding: 10px 12px;

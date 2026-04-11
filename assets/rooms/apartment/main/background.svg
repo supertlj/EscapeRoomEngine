@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600">
+  <defs>
+    <linearGradient id="backwall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ddd0b8"/>
+      <stop offset="100%" stop-color="#d0c4ac"/>
+    </linearGradient>
+    <linearGradient id="leftwall" x1="1" y1="0" x2="0" y2="0">
+      <stop offset="0%" stop-color="#ccc0a8"/>
+      <stop offset="100%" stop-color="#b8ac94"/>
+    </linearGradient>
+    <linearGradient id="rightwall" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ccc0a8"/>
+      <stop offset="100%" stop-color="#b8ac94"/>
+    </linearGradient>
+    <linearGradient id="flr" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d8c8a0"/>
+      <stop offset="100%" stop-color="#c0b090"/>
+    </linearGradient>
+    <linearGradient id="ceil" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#e8e0d0"/>
+      <stop offset="100%" stop-color="#f8f0e0"/>
+    </linearGradient>
+    <radialGradient id="ceillight" cx="50%" cy="50%" r="40%">
+      <stop offset="0%" stop-color="rgba(255,245,220,0.5)"/>
+      <stop offset="60%" stop-color="rgba(255,240,200,0.15)"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+    <radialGradient id="floorshine" cx="50%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="rgba(255,248,230,0.12)"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+  </defs>
+  <!-- Ceiling -->
+  <polygon points="0,0 800,0 700,70 100,70" fill="url(#ceil)"/>
+  <!-- Ceiling light strip -->
+  <rect x="120" y="62" width="560" height="8" rx="3" fill="#f0e8d4" stroke="#e0d8c0" stroke-width="0.5"/>
+  <rect x="120" y="62" width="560" height="8" rx="3" fill="url(#ceillight)"/>
+  <!-- Warm glow from ceiling light -->
+  <ellipse cx="400" cy="66" rx="200" ry="6" fill="rgba(255,230,180,0.3)"/>
+  <!-- Back wall -->
+  <rect x="100" y="70" width="600" height="270" fill="url(#backwall)"/>
+  <!-- Left side wall -->
+  <polygon points="0,0 100,70 100,340 0,600" fill="url(#leftwall)"/>
+  <!-- Right side wall -->
+  <polygon points="800,0 700,70 700,340 800,600" fill="url(#rightwall)"/>
+  <!-- Floor -->
+  <polygon points="100,340 700,340 800,600 0,600" fill="url(#flr)"/>
+  <!-- Floor tile grid (perspective) — horizontal lines -->
+  <line x1="130" y1="380" x2="670" y2="380" stroke="#c8b898" stroke-width="0.4" opacity="0.3"/>
+  <line x1="80" y1="420" x2="720" y2="420" stroke="#c8b898" stroke-width="0.5" opacity="0.3"/>
+  <line x1="40" y1="470" x2="760" y2="470" stroke="#c8b898" stroke-width="0.5" opacity="0.25"/>
+  <line x1="0" y1="530" x2="800" y2="530" stroke="#c8b898" stroke-width="0.6" opacity="0.2"/>
+  <!-- Floor tile grid — vertical lines converging to VP(400,180) -->
+  <line x1="200" y1="340" x2="0" y2="600" stroke="#c8b898" stroke-width="0.4" opacity="0.2"/>
+  <line x1="300" y1="340" x2="150" y2="600" stroke="#c8b898" stroke-width="0.4" opacity="0.2"/>
+  <line x1="400" y1="340" x2="400" y2="600" stroke="#c8b898" stroke-width="0.4" opacity="0.15"/>
+  <line x1="500" y1="340" x2="650" y2="600" stroke="#c8b898" stroke-width="0.4" opacity="0.2"/>
+  <line x1="600" y1="340" x2="800" y2="600" stroke="#c8b898" stroke-width="0.4" opacity="0.2"/>
+  <!-- Floor reflection/shine -->
+  <polygon points="100,340 700,340 800,600 0,600" fill="url(#floorshine)"/>
+  <!-- Baseboard along back wall -->
+  <rect x="100" y="330" width="600" height="10" fill="#b8a888"/>
+  <rect x="100" y="330" width="600" height="2" fill="rgba(255,255,255,0.06)"/>
+  <!-- Crown molding at ceiling/back wall junction -->
+  <rect x="100" y="70" width="600" height="5" fill="#e0d8c4"/>
+  <rect x="100" y="70" width="600" height="1.5" fill="rgba(255,255,255,0.1)"/>
+  <!-- Left wall edge shadow -->
+  <line x1="100" y1="70" x2="100" y2="340" stroke="rgba(0,0,0,0.08)" stroke-width="3"/>
+  <!-- Right wall edge shadow -->
+  <line x1="700" y1="70" x2="700" y2="340" stroke="rgba(0,0,0,0.08)" stroke-width="3"/>
+  <!-- Ambient warm light on back wall -->
+  <ellipse cx="400" cy="200" rx="250" ry="120" fill="rgba(255,240,210,0.05)"/>
+</svg>

@@ -114,6 +114,7 @@ async function init() {
 
   // ZoomViewUI
   const zoomViewUI = new ZoomViewUI(container, state);
+  zoomViewUI.setInventoryUI(inventoryUI);
 
   // VisualFX
   const visualFX = new VisualFX(container);
@@ -194,10 +195,15 @@ async function init() {
       return;
     }
 
-    // If hotspot has a zoomView and no item selected, open zoom directly
-    if (hotspot.zoomView && !inventoryUI.getSelectedItemId()) {
-      EventBus.emit('action:openZoom', { hotspot });
-      return;
+    // If hotspot has a zoomView, open zoom — unless a selected item matches a top-level useItem trigger
+    if (hotspot.zoomView) {
+      const selId = inventoryUI.getSelectedItemId();
+      const hasTopUseItem = selId && hotspot.triggers.some(t =>
+        t.type === 'useItem' && (!t.requiredItem || t.requiredItem === selId));
+      if (!hasTopUseItem) {
+        EventBus.emit('action:openZoom', { hotspot });
+        return;
+      }
     }
 
     const selectedItemId = inventoryUI.getSelectedItemId();

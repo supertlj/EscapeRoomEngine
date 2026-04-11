@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="350">
+  <defs>
+    <radialGradient id="lkbg" cx="50%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#1e1e1a"/>
+      <stop offset="100%" stop-color="#080806"/>
+    </radialGradient>
+    <linearGradient id="metal" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#777"/>
+      <stop offset="40%" stop-color="#666"/>
+      <stop offset="100%" stop-color="#4a4a4a"/>
+    </linearGradient>
+    <linearGradient id="metalside" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#555"/>
+      <stop offset="100%" stop-color="#3a3a3a"/>
+    </linearGradient>
+    <linearGradient id="metaltop" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#888"/>
+      <stop offset="100%" stop-color="#666"/>
+    </linearGradient>
+    <linearGradient id="shelf3d" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d0a868"/>
+      <stop offset="100%" stop-color="#b89050"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="350" fill="url(#lkbg)"/>
+  <!-- Ambient light -->
+  <ellipse cx="180" cy="100" rx="180" ry="100" fill="rgba(255,250,230,0.02)"/>
+  <!-- Shelf surface — 3D perspective -->
+  <polygon points="10,245 390,245 370,238 30,238" fill="url(#shelf3d)" stroke="#a07838" stroke-width="1"/>
+  <!-- Shelf front edge -->
+  <polygon points="10,245 390,245 390,252 10,252" fill="#a07838" stroke="#8a6828" stroke-width="0.5"/>
+  <line x1="10" y1="246" x2="390" y2="246" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <!-- Lockbox shadow on shelf -->
+  <ellipse cx="205" cy="240" rx="130" ry="8" fill="rgba(0,0,0,0.3)"/>
+  <!-- Lockbox body — 3D: front + right side + top -->
+  <!-- Right side face -->
+  <polygon points="320,100 345,88 345,240 320,240" fill="url(#metalside)" stroke="#3a3a3a" stroke-width="1"/>
+  <!-- Metal texture on side -->
+  <line x1="325" y1="95" x2="340" y2="90" stroke="#4a4a4a" stroke-width="0.5" opacity="0.3"/>
+  <line x1="325" y1="130" x2="340" y2="125" stroke="#4a4a4a" stroke-width="0.5" opacity="0.3"/>
+  <!-- Top face -->
+  <polygon points="80,100 320,100 345,88 105,88" fill="url(#metaltop)" stroke="#555" stroke-width="0.5"/>
+  <!-- Top brushed metal texture -->
+  <g stroke="#777" stroke-width="0.3" opacity="0.2">
+    <line x1="110" y1="92" x2="340" y2="90"/>
+    <line x1="110" y1="95" x2="340" y2="93"/>
+    <line x1="110" y1="98" x2="340" y2="96"/>
+  </g>
+  <!-- Front face -->
+  <rect x="80" y="100" width="240" height="140" rx="3" fill="url(#metal)" stroke="#444" stroke-width="2"/>
+  <!-- Brushed metal texture on front -->
+  <g stroke="#5a5a5a" stroke-width="0.4" opacity="0.2">
+    <line x1="85" y1="110" x2="315" y2="110"/>
+    <line x1="85" y1="120" x2="315" y2="120"/>
+    <line x1="85" y1="225" x2="315" y2="225"/>
+    <line x1="85" y1="235" x2="315" y2="235"/>
+  </g>
+  <!-- Front panel inset -->
+  <rect x="88" y="108" width="224" height="124" rx="2" fill="#4a4a4a" stroke="#3a3a3a" stroke-width="0.5"/>
+  <!-- Inner edge shadow (depth) -->
+  <line x1="88" y1="108" x2="312" y2="108" stroke="rgba(0,0,0,0.2)" stroke-width="2"/>
+  <line x1="88" y1="108" x2="88" y2="232" stroke="rgba(0,0,0,0.15)" stroke-width="2"/>
+  <line x1="312" y1="108" x2="312" y2="232" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+  <line x1="88" y1="232" x2="312" y2="232" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+  <!-- Keypad area — 3D recessed -->
+  <rect x="130" y="138" width="140" height="84" rx="4" fill="#2a2a2a" stroke="#444" stroke-width="1.5"/>
+  <!-- Keypad inner shadow -->
+  <rect x="132" y="140" width="136" height="4" fill="rgba(0,0,0,0.2)"/>
+  <!-- Display -->
+  <rect x="140" y="146" width="120" height="20" rx="3" fill="#1a1a1a" stroke="#333" stroke-width="0.5"/>
+  <!-- Display screen glow -->
+  <rect x="142" y="148" width="116" height="16" rx="2" fill="#111" stroke="rgba(0,200,100,0.1)" stroke-width="0.5"/>
+  <text x="200" y="160" text-anchor="middle" fill="#4a4" font-size="14" font-family="monospace">- - - -</text>
+  <!-- Number buttons — 3D raised -->
+  <g>
+    <rect x="143" y="172" width="24" height="18" rx="3" fill="#444" stroke="#555" stroke-width="0.5"/>
+    <rect x="143" y="172" width="24" height="8" rx="3" fill="rgba(255,255,255,0.04)"/>
+    <text x="155" y="185" text-anchor="middle" fill="#bbb" font-size="11">1</text>
+    <rect x="172" y="172" width="24" height="18" rx="3" fill="#444" stroke="#555" stroke-width="0.5"/>
+    <rect x="172" y="172" width="24" height="8" rx="3" fill="rgba(255,255,255,0.04)"/>
+    <text x="184" y="185" text-anchor="middle" fill="#bbb" font-size="11">2</text>
+    <rect x="201" y="172" width="24" height="18" rx="3" fill="#444" stroke="#555" stroke-width="0.5"/>
+    <rect x="201" y="172" width="24" height="8" rx="3" fill="rgba(255,255,255,0.04)"/>
+    <text x="213" y="185" text-anchor="middle" fill="#bbb" font-size="11">3</text>
+    <rect x="230" y="172" width="24" height="18" rx="3" fill="#444" stroke="#555" stroke-width="0.5"/>
+    <rect x="230" y="172" width="24" height="8" rx="3" fill="rgba(255,255,255,0.04)"/>
+    <text x="242" y="185" text-anchor="middle" fill="#bbb" font-size="11">4</text>
+    <rect x="143" y="194" width="24" height="18" rx="3" fill="#444" stroke="#555" stroke-width="0.5"/>
+    <rect x="143" y="194" width="24" height="8" rx="3" fill="rgba(255,255,255,0.04)"/>
+    <text x="155" y="207" text-anchor="middle" fill="#bbb" font-size="11">5</text>
+    <rect x="172" y="194" width="24" height="18" rx="3" fill="#444" stroke="#555" stroke-width="0.5"/>
+    <rect x="172" y="194" width="24" height="8" rx="3" fill="rgba(255,255,255,0.04)"/>
+    <text x="184" y="207" text-anchor="middle" fill="#bbb" font-size="11">6</text>
+    <rect x="201" y="194" width="24" height="18" rx="3" fill="#444" stroke="#555" stroke-width="0.5"/>
+    <rect x="201" y="194" width="24" height="8" rx="3" fill="rgba(255,255,255,0.04)"/>
+    <text x="213" y="207" text-anchor="middle" fill="#bbb" font-size="11">7</text>
+    <rect x="230" y="194" width="24" height="18" rx="3" fill="#444" stroke="#555" stroke-width="0.5"/>
+    <rect x="230" y="194" width="24" height="8" rx="3" fill="rgba(255,255,255,0.04)"/>
+    <text x="242" y="207" text-anchor="middle" fill="#bbb" font-size="11">8</text>
+  </g>
+  <!-- Lock hasp — 3D -->
+  <rect x="183" y="93" width="34" height="12" rx="2" fill="#555" stroke="#444" stroke-width="0.5"/>
+  <path d="M190,95 L190,78 Q200,66 210,78 L210,95" fill="none" stroke="#888" stroke-width="4"/>
+  <path d="M191,95 L191,79 Q200,68 209,79 L209,95" fill="none" stroke="#666" stroke-width="2"/>
+  <!-- Hasp highlight -->
+  <path d="M193,94 L193,80 Q200,70 207,80" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+  <!-- Status LED — 3D glowing -->
+  <circle cx="200" cy="128" r="5" fill="#300" stroke="#444" stroke-width="1"/>
+  <circle cx="200" cy="128" r="3.5" fill="#600"/>
+  <circle cx="199" cy="127" r="1.5" fill="#900" opacity="0.6"/>
+  <!-- LED glow -->
+  <circle cx="200" cy="128" r="8" fill="rgba(150,0,0,0.08)"/>
+</svg>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="50">
+  <defs>
+    <linearGradient id="paperg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f8f0d8"/>
+      <stop offset="60%" stop-color="#f0e8d0"/>
+      <stop offset="100%" stop-color="#e8dcc0"/>
+    </linearGradient>
+  </defs>
+  <!-- Paper shadow -->
+  <rect x="4" y="5" width="74" height="44" rx="1" fill="rgba(0,0,0,0.2)"/>
+  <!-- Paper body -->
+  <polygon points="2,2 72,2 78,8 78,48 2,48" fill="url(#paperg)" stroke="#d0c0a0" stroke-width="0.8"/>
+  <!-- Folded corner -->
+  <polygon points="72,2 72,8 78,8" fill="#ddd0b8" stroke="#c0b098" stroke-width="0.5"/>
+  <!-- Fold crease -->
+  <line x1="40" y1="3" x2="40" y2="47" stroke="#e0d8c0" stroke-width="0.5"/>
+  <!-- Text -->
+  <text x="39" y="26" text-anchor="middle" fill="#333" font-size="16" font-weight="bold" font-family="serif">T A K I</text>
+  <text x="39" y="40" text-anchor="middle" fill="#999" font-size="7" font-family="serif">password?</text>
+</svg>

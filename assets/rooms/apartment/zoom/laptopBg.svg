@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="350">
+  <defs>
+    <radialGradient id="lbg" cx="50%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#1e1e28"/>
+      <stop offset="100%" stop-color="#08080c"/>
+    </radialGradient>
+    <linearGradient id="scr" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0c2548"/>
+      <stop offset="100%" stop-color="#061530"/>
+    </linearGradient>
+    <linearGradient id="lcase" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#888"/>
+      <stop offset="100%" stop-color="#666"/>
+    </linearGradient>
+    <linearGradient id="lbezel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2a2a2a"/>
+      <stop offset="100%" stop-color="#1a1a1a"/>
+    </linearGradient>
+    <linearGradient id="desksurf" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5a4228"/>
+      <stop offset="100%" stop-color="#4a3220"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="350" fill="url(#lbg)"/>
+  <!-- Desk surface underneath — 3D perspective -->
+  <polygon points="0,340 400,340 380,225 20,225" fill="url(#desksurf)" opacity="0.4"/>
+  <line x1="20" y1="225" x2="380" y2="225" stroke="#6a5238" stroke-width="0.5" opacity="0.3"/>
+  <!-- Screen glow on desk -->
+  <ellipse cx="200" cy="300" rx="120" ry="30" fill="rgba(40,80,140,0.06)"/>
+  <!-- Laptop base — 3D perspective trapezoid (foreshortened) -->
+  <polygon points="45,232 355,232 340,330 60,330" fill="url(#lcase)" stroke="#555" stroke-width="1.5"/>
+  <!-- Base thickness (front edge) -->
+  <polygon points="60,330 340,330 343,335 57,335" fill="#555" stroke="#444" stroke-width="0.5"/>
+  <!-- Hinge — 3D cylinder -->
+  <rect x="50" y="228" width="300" height="8" rx="3" fill="#777" stroke="#666" stroke-width="0.5"/>
+  <rect x="52" y="229" width="296" height="3" fill="rgba(255,255,255,0.08)" rx="1"/>
+  <!-- Keyboard area — 3D recessed -->
+  <polygon points="72,245 328,245 318,310 82,310" fill="#555" stroke="#4a4a4a" stroke-width="0.5"/>
+  <!-- Keyboard keys — 3D perspective grid (foreshortened rows) -->
+  <g fill="#4a4a4a" stroke="#3a3a3a" stroke-width="0.3">
+    <!-- Row 1 (near hinge, wider) -->
+    <rect x="78" y="247" width="16" height="9" rx="1"/><rect x="96" y="247" width="16" height="9" rx="1"/>
+    <rect x="114" y="247" width="16" height="9" rx="1"/><rect x="132" y="247" width="16" height="9" rx="1"/>
+    <rect x="150" y="247" width="16" height="9" rx="1"/><rect x="168" y="247" width="16" height="9" rx="1"/>
+    <rect x="186" y="247" width="16" height="9" rx="1"/><rect x="204" y="247" width="16" height="9" rx="1"/>
+    <rect x="222" y="247" width="16" height="9" rx="1"/><rect x="240" y="247" width="16" height="9" rx="1"/>
+    <rect x="258" y="247" width="16" height="9" rx="1"/><rect x="276" y="247" width="16" height="9" rx="1"/>
+    <rect x="294" y="247" width="18" height="9" rx="1"/>
+    <!-- Row 2 -->
+    <rect x="80" y="258" width="19" height="9" rx="1"/><rect x="101" y="258" width="15" height="9" rx="1"/>
+    <rect x="118" y="258" width="15" height="9" rx="1"/><rect x="135" y="258" width="15" height="9" rx="1"/>
+    <rect x="152" y="258" width="15" height="9" rx="1"/><rect x="169" y="258" width="15" height="9" rx="1"/>
+    <rect x="186" y="258" width="15" height="9" rx="1"/><rect x="203" y="258" width="15" height="9" rx="1"/>
+    <rect x="220" y="258" width="15" height="9" rx="1"/><rect x="237" y="258" width="15" height="9" rx="1"/>
+    <rect x="254" y="258" width="15" height="9" rx="1"/><rect x="271" y="258" width="32" height="9" rx="1"/>
+    <!-- Row 3 -->
+    <rect x="82" y="269" width="22" height="9" rx="1"/><rect x="106" y="269" width="14" height="9" rx="1"/>
+    <rect x="122" y="269" width="14" height="9" rx="1"/><rect x="138" y="269" width="14" height="9" rx="1"/>
+    <rect x="154" y="269" width="14" height="9" rx="1"/><rect x="170" y="269" width="14" height="9" rx="1"/>
+    <rect x="186" y="269" width="14" height="9" rx="1"/><rect x="202" y="269" width="14" height="9" rx="1"/>
+    <rect x="218" y="269" width="14" height="9" rx="1"/><rect x="234" y="269" width="60" height="9" rx="1"/>
+    <!-- Space bar -->
+    <rect x="128" y="280" width="130" height="9" rx="1"/>
+  </g>
+  <!-- Key highlights -->
+  <g fill="rgba(255,255,255,0.03)">
+    <rect x="78" y="247" width="16" height="3" rx="1"/><rect x="96" y="247" width="16" height="3" rx="1"/>
+    <rect x="150" y="247" width="16" height="3" rx="1"/><rect x="186" y="247" width="16" height="3" rx="1"/>
+  </g>
+  <!-- Trackpad — 3D recessed -->
+  <rect x="148" y="296" width="96" height="12" rx="3" fill="#666" stroke="#555" stroke-width="0.5"/>
+  <rect x="150" y="297" width="92" height="4" fill="rgba(255,255,255,0.04)" rx="2"/>
+  <!-- Screen lid — 3D with bezel -->
+  <polygon points="42,28 358,28 355,225 45,225" fill="url(#lbezel)" stroke="#333" stroke-width="2"/>
+  <!-- Screen bezel top thickness -->
+  <polygon points="42,28 358,28 362,24 38,24" fill="#333" stroke="#444" stroke-width="0.5"/>
+  <!-- Screen panel -->
+  <rect x="56" y="40" width="288" height="178" rx="2" fill="url(#scr)"/>
+  <!-- Screen glow edge -->
+  <rect x="56" y="40" width="288" height="178" rx="2" fill="none" stroke="rgba(40,100,180,0.1)" stroke-width="1"/>
+  <!-- Camera dot -->
+  <circle cx="200" cy="33" r="2.5" fill="#333" stroke="#444" stroke-width="0.5"/>
+  <circle cx="200" cy="33" r="1" fill="#2a2a2a"/>
+  <!-- Screen content: password prompt -->
+  <rect x="110" y="80" width="180" height="90" rx="6" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+  <text x="200" y="105" text-anchor="middle" fill="#8ab" font-size="11" font-family="monospace">Enter Password</text>
+  <rect x="130" y="115" width="140" height="24" rx="4" fill="#0a1520" stroke="#335" stroke-width="1"/>
+  <text x="200" y="132" text-anchor="middle" fill="#446" font-size="14" font-family="monospace">_ _ _ _</text>
+  <rect x="155" y="148" width="90" height="18" rx="4" fill="#335" stroke="#447" stroke-width="0.5"/>
+  <text x="200" y="160" text-anchor="middle" fill="#8ab" font-size="9" font-family="monospace">SUBMIT</text>
+  <!-- Screen reflection -->
+  <line x1="60" y1="210" x2="160" y2="45" stroke="rgba(255,255,255,0.02)" stroke-width="15"/>
+</svg>

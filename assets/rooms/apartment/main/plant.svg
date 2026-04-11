@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="190">
+  <!-- Floor shadow (ellipse) -->
+  <ellipse cx="52" cy="182" rx="38" ry="8" fill="rgba(0,0,0,0.18)"/>
+  <!-- Pot body with 3D gradient -->
+  <defs>
+    <linearGradient id="pot" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1a1a1a"/>
+      <stop offset="30%" stop-color="#333"/>
+      <stop offset="70%" stop-color="#2a2a2a"/>
+      <stop offset="100%" stop-color="#1a1a1a"/>
+    </linearGradient>
+  </defs>
+  <path d="M24,140 Q22,180 28,178 L76,178 Q82,180 78,140 Z" fill="url(#pot)"/>
+  <!-- Pot horizontal ribs -->
+  <ellipse cx="52" cy="150" rx="28" ry="3" fill="none" stroke="#444" stroke-width="0.8"/>
+  <ellipse cx="52" cy="162" rx="27" ry="2.5" fill="none" stroke="#444" stroke-width="0.8"/>
+  <!-- Pot rim -->
+  <ellipse cx="52" cy="140" rx="30" ry="8" fill="#333" stroke="#444" stroke-width="1"/>
+  <ellipse cx="52" cy="138" rx="27" ry="6" fill="#2a2a1a"/>
+  <!-- Pot highlight -->
+  <path d="M34,145 Q34,170 36,175" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="2"/>
+  <!-- Soil -->
+  <ellipse cx="52" cy="138" rx="24" ry="5" fill="#3a3018"/>
+  <!-- Fronds -->
+  <path d="M52,132 Q48,80 25,30" fill="none" stroke="#2a7a2a" stroke-width="3"/>
+  <path d="M52,132 Q56,70 80,20" fill="none" stroke="#2a7a2a" stroke-width="3"/>
+  <path d="M52,132 Q42,90 18,55" fill="none" stroke="#3a8a3a" stroke-width="2.5"/>
+  <path d="M52,132 Q62,80 85,45" fill="none" stroke="#3a8a3a" stroke-width="2.5"/>
+  <path d="M52,132 Q38,95 10,70" fill="none" stroke="#4a9a4a" stroke-width="2"/>
+  <path d="M52,132 Q66,85 92,60" fill="none" stroke="#4a9a4a" stroke-width="2"/>
+  <path d="M52,132 Q46,100 22,75" fill="none" stroke="#3a8a3a" stroke-width="2"/>
+  <path d="M52,132 Q58,90 78,65" fill="none" stroke="#3a8a3a" stroke-width="2"/>
+  <!-- Leaf tips -->
+  <path d="M25,30 L18,24 M25,30 L32,26" stroke="#5aaa5a" stroke-width="1.2"/>
+  <path d="M80,20 L73,14 M80,20 L87,16" stroke="#5aaa5a" stroke-width="1.2"/>
+  <path d="M18,55 L10,50 M18,55 L22,48" stroke="#5aaa5a" stroke-width="1"/>
+  <path d="M85,45 L92,39 M85,45 L80,38" stroke="#5aaa5a" stroke-width="1"/>
+</svg>

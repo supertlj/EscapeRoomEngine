@@ -23,6 +23,7 @@ export default class ZoomViewUI {
   constructor(container, state) {
     this.container = container;
     this.state = state;
+    this._inventoryUI = null;
     this._open = false;
     this._currentHotspot = null;
     this._subEls = [];
@@ -32,6 +33,11 @@ export default class ZoomViewUI {
 
     EventBus.on('action:openZoom', (data) => this.open(data.hotspot));
     EventBus.on('state:flagChanged', () => this._updateSubVisibility());
+  }
+
+  /** Link inventory so useItem triggers work in zoom */
+  setInventoryUI(inventoryUI) {
+    this._inventoryUI = inventoryUI;
   }
 
   _createElement() {
@@ -164,9 +170,32 @@ export default class ZoomViewUI {
 
   _updateSubVisibility() {
     for (const { el, sub } of this._subEls) {
+      const wasHidden = el.classList.contains('hidden');
       const vis = this._isSubVisible(sub);
       el.classList.toggle('hidden', !vis);
+
+      // Auto-play animation when a sub transitions from hidden to visible
+      if (wasHidden && vis && sub.animation && !this._activatedSubs.has(sub.id)) {
+        this._autoAnimate(sub, el);
+      }
     }
+  }
+
+  /** Auto-play animation on a sub-hotspot (e.g. door swings open when revealed) */
+  _autoAnimate(sub, el) {
+    this._activatedSubs.add(sub.id);
+    const dur = this._animDuration(sub.animation.type);
+    // Small delay so the element is visible before animating
+    requestAnimationFrame(() => {
+      el.classList.add('activated');
+      if (sub.imageOpen) {
+        setTimeout(() => this._swapToOpenImage(el, sub), dur);
+      }
+      // Set the anim flag after animation completes so dependent subs appear in sequence
+      setTimeout(() => {
+        this.state.setFlag('_zoomAnim_' + sub.id, true);
+      }, dur + 100);
+    });
   }
 
   /* ---- Interaction ---- */
@@ -175,11 +204,18 @@ export default class ZoomViewUI {
     const trigger = this._matchTrigger(sub);
     if (!trigger) return;
 
+    // Clear inventory selection after useItem match
+    if (trigger.type === 'useItem' && this._inventoryUI) {
+      this._inventoryUI.clearSelection();
+    }
+
     const givesItem = trigger.actions.some(a => a.type === 'giveItem');
     const shouldHide = sub.hideOnCollect && givesItem;
 
     // 1) Play animation if defined
+    let justAnimated = false;
     if (sub.animation && !this._activatedSubs.has(sub.id)) {
+      justAnimated = true;
       this._activatedSubs.add(sub.id);
       this.state.setFlag('_zoomAnim_' + sub.id, true);
       el.classList.add('activated');
@@ -187,10 +223,7 @@ export default class ZoomViewUI {
       // Swap to open-state image after animation
       if (sub.imageOpen) {
         const dur = this._animDuration(sub.animation.type);
-        setTimeout(() => {
-          const img = el.querySelector('img');
-          if (img) img.src = sub.imageOpen;
-        }, dur);
+        setTimeout(() => this._swapToOpenImage(el, sub), dur);
       }
     }
 
@@ -208,10 +241,24 @@ export default class ZoomViewUI {
     }
 
     // 3) Otherwise just execute actions (with anim delay if needed)
-    const animDelay = sub.animation && !el.classList.contains('activated')
-      ? this._animDuration(sub.animation.type) : 0;
-    // Small delay so animation plays before dialog
+    const animDelay = justAnimated ? this._animDuration(sub.animation.type) : 0;
+    // Small delay so animation plays before actions fire
     setTimeout(() => this._execTrigger(trigger, sub), animDelay > 0 ? animDelay + 100 : 0);
+  }
+
+  /** Swap or create the imageOpen on a sub-hotspot element */
+  _swapToOpenImage(el, sub) {
+    if (!sub.imageOpen) return;
+    let img = el.querySelector('img');
+    if (img) {
+      img.src = sub.imageOpen;
+    } else {
+      img = document.createElement('img');
+      img.src = sub.imageOpen;
+      img.alt = sub.label || '';
+      img.draggable = false;
+      el.appendChild(img);
+    }
   }
 
   _animDuration(type) {
@@ -222,11 +269,18 @@ export default class ZoomViewUI {
 
   _matchTrigger(sub) {
     if (!sub.triggers) return null;
+    const selectedItem = this._inventoryUI ? this._inventoryUI.getSelectedItemId() : null;
     for (let i = 0; i < sub.triggers.length; i++) {
       const t = sub.triggers[i];
       if (t.once && this.state.hasOnceFired('zoom_' + sub.id, i)) continue;
       if (t.requiredFlags && !this.state.checkFlags(t.requiredFlags)) continue;
-      if (t.type === 'useItem') continue; // not supported in zoom yet
+      if (t.type === 'useItem') {
+        if (!selectedItem) continue;
+        if (t.requiredItem && t.requiredItem !== selectedItem) continue;
+      } else {
+        // For tap triggers, skip if an item is selected (prefer useItem match)
+        if (selectedItem) continue;
+      }
       return t;
     }
     return null;

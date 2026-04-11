@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="130">
+  <defs>
+    <linearGradient id="sf" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e8dcc0"/>
+      <stop offset="100%" stop-color="#d8ccb0"/>
+    </linearGradient>
+    <linearGradient id="sfs" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#d0c4a8"/>
+      <stop offset="100%" stop-color="#c0b498"/>
+    </linearGradient>
+  </defs>
+  <!-- Floor shadow -->
+  <ellipse cx="100" cy="124" rx="85" ry="6" fill="rgba(0,0,0,0.15)"/>
+  <!-- Legs -->
+  <rect x="14" y="105" width="10" height="18" rx="2" fill="#b0a080"/>
+  <rect x="176" y="105" width="10" height="18" rx="2" fill="#b0a080"/>
+  <!-- Side panel (3D depth right) -->
+  <polygon points="186,30 200,35 200,108 186,112" fill="url(#sfs)"/>
+  <!-- Sofa body -->
+  <rect x="6" y="38" width="180" height="70" rx="6" fill="url(#sf)" stroke="#c0b498" stroke-width="1"/>
+  <!-- Backrest -->
+  <rect x="6" y="22" width="180" height="24" rx="6" fill="#e0d4b8" stroke="#c8bc9c" stroke-width="0.5"/>
+  <!-- Left arm -->
+  <rect x="0" y="28" width="16" height="65" rx="5" fill="#d8ccb0" stroke="#c0b498" stroke-width="1"/>
+  <!-- Right arm -->
+  <rect x="178" y="28" width="16" height="65" rx="5" fill="#d8ccb0" stroke="#c0b498" stroke-width="1"/>
+  <!-- Seat cushion dividers -->
+  <rect x="22" y="44" width="52" height="52" fill="#d4c8ac" rx="3"/>
+  <rect x="78" y="44" width="50" height="52" fill="#d4c8ac" rx="3"/>
+  <rect x="132" y="44" width="48" height="52" fill="#d4c8ac" rx="3"/>
+  <!-- Cushion seams -->
+  <line x1="74" y1="48" x2="74" y2="92" stroke="#c4b898" stroke-width="0.8"/>
+  <line x1="128" y1="48" x2="128" y2="92" stroke="#c4b898" stroke-width="0.8"/>
+  <!-- Throw pillows -->
+  <rect x="26" y="24" width="34" height="24" rx="10" fill="#c8bca0" transform="rotate(-6 43 36)"/>
+  <rect x="70" y="24" width="30" height="22" rx="8" fill="#b8d0c0" transform="rotate(4 85 35)"/>
+  <rect x="140" y="24" width="30" height="22" rx="8" fill="#c8bca0" transform="rotate(7 155 35)"/>
+  <!-- Pillow pattern -->
+  <circle cx="85" cy="34" r="5" fill="none" stroke="#a8c0b0" stroke-width="0.5" opacity="0.5"/>
+</svg>

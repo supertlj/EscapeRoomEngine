@@ -77,13 +77,14 @@ export default class AssetManager {
   }
 
   /**
-   * Preload all images referenced in a room (background + hotspot images).
+   * Preload all images referenced in a room (background, hotspots, zoom views, items).
    * @param {import('../core/RoomData.js').Room} room
    * @returns {Promise<void>}
    */
   async preloadRoom(room) {
     const promises = [];
 
+    // Background
     if (room.background.type === 'image' && room.background.value) {
       promises.push(this.loadImage(room.background.value).then(img => {
         room.background._img = img;
@@ -91,10 +92,29 @@ export default class AssetManager {
     }
 
     for (const hs of room.hotspots) {
+      // Hotspot appearance
       if (hs.appearance.image) {
         promises.push(this.loadImage(hs.appearance.image).then(img => {
           hs.appearance._img = img;
         }).catch(() => {}));
+      }
+
+      // Zoom view background + sub-hotspot images
+      if (hs.zoomView) {
+        if (hs.zoomView.image) {
+          promises.push(this.loadImage(hs.zoomView.image).catch(() => {}));
+        }
+        for (const sub of hs.zoomView.subHotspots || []) {
+          if (sub.image) promises.push(this.loadImage(sub.image).catch(() => {}));
+          if (sub.imageOpen) promises.push(this.loadImage(sub.imageOpen).catch(() => {}));
+        }
+      }
+    }
+
+    // Item icons
+    for (const item of room.items || []) {
+      if (item.icon && item.icon.image) {
+        promises.push(this.loadImage(item.icon.image).catch(() => {}));
       }
     }
 

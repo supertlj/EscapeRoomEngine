@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="60" height="30">
+  <defs>
+    <linearGradient id="kg" x1="0" y1="0" x2="0.5" y2="1">
+      <stop offset="0%" stop-color="#f0d050"/>
+      <stop offset="40%" stop-color="#e8c040"/>
+      <stop offset="100%" stop-color="#b08020"/>
+    </linearGradient>
+    <linearGradient id="kgd" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c8a030"/>
+      <stop offset="100%" stop-color="#a07020"/>
+    </linearGradient>
+  </defs>
+  <!-- Drop shadow -->
+  <ellipse cx="32" cy="22" rx="24" ry="5" fill="rgba(0,0,0,0.3)"/>
+  <!-- Key shaft — 3D with thickness -->
+  <rect x="18" y="14" width="38" height="5" rx="1" fill="url(#kgd)"/>
+  <rect x="18" y="11" width="38" height="5" rx="1.5" fill="url(#kg)" stroke="#a88020" stroke-width="0.3"/>
+  <!-- Key head (ring) — 3D torus -->
+  <circle cx="14" cy="14" r="11" fill="url(#kgd)" opacity="0.6"/>
+  <circle cx="14" cy="13" r="11" fill="none" stroke="url(#kg)" stroke-width="4.5"/>
+  <circle cx="14" cy="13" r="5.5" fill="#4a3818" opacity="0.4"/>
+  <path d="M6,7 Q14,4 22,7" fill="none" stroke="rgba(255,255,200,0.35)" stroke-width="1.2"/>
+  <!-- Key teeth — 3D stepped -->
+  <polygon points="42,16 46,16 46,22 42,20" fill="url(#kgd)"/>
+  <polygon points="42,11 46,11 46,16 42,16" fill="url(#kg)"/>
+  <polygon points="48,16 51,16 51,24 48,22" fill="url(#kgd)"/>
+  <polygon points="48,11 51,11 51,16 48,16" fill="url(#kg)"/>
+  <polygon points="53,16 56,16 56,20 53,19" fill="url(#kgd)"/>
+  <polygon points="53,11 56,11 56,16 53,16" fill="url(#kg)"/>
+  <!-- Top highlight streak -->
+  <line x1="20" y1="11.5" x2="40" y2="11.5" stroke="rgba(255,255,200,0.4)" stroke-width="0.8"/>
+</svg>

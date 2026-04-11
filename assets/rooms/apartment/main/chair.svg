@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="90" height="110">
+  <!-- Floor shadow -->
+  <ellipse cx="45" cy="102" rx="30" ry="6" fill="rgba(0,0,0,0.2)"/>
+  <!-- Base pedestal -->
+  <rect x="38" y="78" width="14" height="24" fill="#777" rx="2"/>
+  <!-- Base star (simplified) -->
+  <ellipse cx="45" cy="100" rx="22" ry="5" fill="#888"/>
+  <ellipse cx="45" cy="99" rx="20" ry="4" fill="#999"/>
+  <!-- Seat -->
+  <path d="M12,48 Q12,70 35,72 L55,72 Q78,70 78,48" fill="#2a2a2a"/>
+  <!-- Seat cushion -->
+  <ellipse cx="45" cy="52" rx="34" ry="8" fill="#333"/>
+  <ellipse cx="45" cy="50" rx="32" ry="6" fill="#2a2a2a"/>
+  <!-- Backrest -->
+  <path d="M14,48 Q10,25 22,15 L68,15 Q80,25 76,48" fill="#333"/>
+  <path d="M16,46 Q13,27 24,18 L66,18 Q77,27 74,46" fill="#2a2a2a"/>
+  <!-- Backrest highlight -->
+  <path d="M24,20 Q44,14 66,20" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="2"/>
+  <!-- Armrests -->
+  <path d="M8,48 Q6,38 12,42 L12,58 Q8,62 8,55 Z" fill="#2a2a2a"/>
+  <path d="M82,48 Q84,38 78,42 L78,58 Q82,62 82,55 Z" fill="#2a2a2a"/>
+</svg>

@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="450">
+  <defs>
+    <linearGradient id="zdr" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#6a3a18"/>
+      <stop offset="20%" stop-color="#a06a38"/>
+      <stop offset="50%" stop-color="#b07a42"/>
+      <stop offset="80%" stop-color="#a06a38"/>
+      <stop offset="100%" stop-color="#6a3a18"/>
+    </linearGradient>
+    <linearGradient id="frame3d" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8a7858"/>
+      <stop offset="50%" stop-color="#a89878"/>
+      <stop offset="100%" stop-color="#8a7858"/>
+    </linearGradient>
+    <linearGradient id="panel3d" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8a5a30"/>
+      <stop offset="100%" stop-color="#7a4a20"/>
+    </linearGradient>
+    <linearGradient id="handlegrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ddd"/>
+      <stop offset="40%" stop-color="#c0c0c0"/>
+      <stop offset="100%" stop-color="#999"/>
+    </linearGradient>
+    <radialGradient id="doorbg" cx="50%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#1a1510"/>
+      <stop offset="100%" stop-color="#080605"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="450" fill="url(#doorbg)"/>
+  <!-- Wall visible around door -->
+  <rect x="0" y="0" width="25" height="450" fill="#c0b498" opacity="0.3"/>
+  <rect x="375" y="0" width="25" height="450" fill="#c0b498" opacity="0.3"/>
+  <!-- Door frame — 3D with depth -->
+  <!-- Frame front face -->
+  <rect x="22" y="5" width="356" height="440" fill="url(#frame3d)"/>
+  <!-- Frame inner edge (depth toward door) — creates 3D recess -->
+  <polygon points="35,12 22,5 22,445 35,438" fill="#7a6848"/>
+  <polygon points="365,12 378,5 378,445 365,438" fill="#988858"/>
+  <polygon points="35,12 365,12 378,5 22,5" fill="#9a8868"/>
+  <!-- Door panel — 3D raised -->
+  <rect x="35" y="12" width="330" height="426" rx="2" fill="url(#zdr)" stroke="#5a3018" stroke-width="1.5"/>
+  <!-- Wood grain texture -->
+  <g stroke="#8a5a30" stroke-width="0.4" opacity="0.15">
+    <line x1="40" y1="20" x2="40" y2="430"/>
+    <line x1="90" y1="20" x2="90" y2="430"/>
+    <line x1="150" y1="20" x2="150" y2="430"/>
+    <line x1="200" y1="20" x2="200" y2="430"/>
+    <line x1="260" y1="20" x2="260" y2="430"/>
+    <line x1="310" y1="20" x2="310" y2="430"/>
+    <line x1="350" y1="20" x2="350" y2="430"/>
+  </g>
+  <!-- Upper panel — 3D inset with beveled edge -->
+  <rect x="60" y="30" width="280" height="135" rx="3" fill="url(#panel3d)" stroke="#6a4020" stroke-width="2"/>
+  <!-- Panel bevel (light top-left, shadow bottom-right) -->
+  <line x1="62" y1="32" x2="338" y2="32" stroke="rgba(0,0,0,0.15)" stroke-width="2"/>
+  <line x1="62" y1="32" x2="62" y2="163" stroke="rgba(0,0,0,0.1)" stroke-width="2"/>
+  <line x1="338" y1="32" x2="338" y2="163" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+  <line x1="62" y1="163" x2="338" y2="163" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+  <rect x="68" y="38" width="264" height="121" fill="#956232" opacity="0.25" rx="2"/>
+  <!-- Middle panel — 3D inset -->
+  <rect x="60" y="180" width="280" height="120" rx="3" fill="url(#panel3d)" stroke="#6a4020" stroke-width="2"/>
+  <line x1="62" y1="182" x2="338" y2="182" stroke="rgba(0,0,0,0.15)" stroke-width="2"/>
+  <line x1="62" y1="182" x2="62" y2="298" stroke="rgba(0,0,0,0.1)" stroke-width="2"/>
+  <line x1="338" y1="182" x2="338" y2="298" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+  <line x1="62" y1="298" x2="338" y2="298" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+  <rect x="68" y="188" width="264" height="104" fill="#956232" opacity="0.25" rx="2"/>
+  <!-- Lower panel — 3D inset -->
+  <rect x="60" y="315" width="280" height="108" rx="3" fill="url(#panel3d)" stroke="#6a4020" stroke-width="2"/>
+  <line x1="62" y1="317" x2="338" y2="317" stroke="rgba(0,0,0,0.15)" stroke-width="2"/>
+  <line x1="62" y1="317" x2="62" y2="421" stroke="rgba(0,0,0,0.1)" stroke-width="2"/>
+  <line x1="338" y1="317" x2="338" y2="421" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+  <line x1="62" y1="421" x2="338" y2="421" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+  <!-- Card reader device — 3D box -->
+  <!-- Device shadow on door -->
+  <rect x="293" y="213" width="50" height="75" rx="5" fill="rgba(0,0,0,0.2)"/>
+  <!-- Device body -->
+  <rect x="288" y="208" width="52" height="78" rx="5" fill="#2a2a2a" stroke="#444" stroke-width="1.5"/>
+  <!-- Device top edge (3D) -->
+  <rect x="290" y="208" width="48" height="4" fill="rgba(255,255,255,0.06)" rx="2"/>
+  <!-- Display -->
+  <rect x="294" y="214" width="40" height="10" rx="2" fill="#111"/>
+  <text x="314" y="222" text-anchor="middle" fill="#444" font-size="5" font-family="monospace">CARD</text>
+  <!-- Card slot — 3D recessed -->
+  <rect x="296" y="230" width="36" height="6" rx="1.5" fill="#0a0a0a" stroke="#333" stroke-width="0.5"/>
+  <rect x="298" y="231" width="32" height="1" fill="rgba(255,255,255,0.03)"/>
+  <!-- LED indicator — 3D glowing -->
+  <circle cx="314" cy="252" r="7" fill="#222" stroke="#444" stroke-width="1"/>
+  <circle cx="314" cy="252" r="5" fill="#500"/>
+  <circle cx="314" cy="252" r="3.5" fill="#800"/>
+  <circle cx="313" cy="251" r="1.5" fill="#a00" opacity="0.6"/>
+  <!-- LED glow -->
+  <circle cx="314" cy="252" r="10" fill="rgba(200,0,0,0.06)"/>
+  <!-- Handle base plate — 3D -->
+  <rect x="292" y="268" width="32" height="12" rx="3" fill="#444" stroke="#333" stroke-width="0.5"/>
+  <!-- Door handle — 3D cylindrical lever -->
+  <rect x="286" y="288" width="46" height="14" rx="6" fill="url(#handlegrad)" stroke="#888" stroke-width="1"/>
+  <!-- Handle highlight -->
+  <rect x="288" y="289" width="42" height="4" fill="rgba(255,255,255,0.15)" rx="3"/>
+  <!-- Handle mount point -->
+  <circle cx="292" cy="295" r="4" fill="#888" stroke="#777" stroke-width="0.5"/>
+  <circle cx="291" cy="294" r="1.5" fill="rgba(255,255,255,0.2)"/>
+  <!-- Door bottom shadow -->
+  <rect x="35" y="432" width="330" height="6" fill="rgba(0,0,0,0.2)"/>
+</svg>
