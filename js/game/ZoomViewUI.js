@@ -217,14 +217,17 @@ export default class ZoomViewUI {
     if (sub.animation && !this._activatedSubs.has(sub.id)) {
       justAnimated = true;
       this._activatedSubs.add(sub.id);
-      this.state.setFlag('_zoomAnim_' + sub.id, true);
       el.classList.add('activated');
 
+      const dur = this._animDuration(sub.animation.type);
       // Swap to open-state image after animation
       if (sub.imageOpen) {
-        const dur = this._animDuration(sub.animation.type);
         setTimeout(() => this._swapToOpenImage(el, sub), dur);
       }
+      // Set anim flag after animation completes so dependent subs appear in sequence
+      setTimeout(() => {
+        this.state.setFlag('_zoomAnim_' + sub.id, true);
+      }, dur + 100);
     }
 
     // 2) If collecting an item, animate pickup then execute
