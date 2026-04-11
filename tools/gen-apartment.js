@@ -1540,7 +1540,7 @@ const room = {
             image: toDataUrl(zoom.lockboxInGlass),
             triggers: [
               {
-                type: "tap", requiredFlags: ["laptop_unlocked"], requiredItem: null,
+                type: "tap", requiredFlags: [], requiredItem: null,
                 actions: [
                   { type: "openZoom", params: { hotspotId: "hs_lockbox" } }
                 ]
@@ -1604,7 +1604,7 @@ const room = {
             image: toDataUrl(zoom.lockboxInGlass),
             triggers: [
               {
-                type: "tap", requiredFlags: ["laptop_unlocked"], requiredItem: null,
+                type: "tap", requiredFlags: [], requiredItem: null,
                 actions: [
                   { type: "openZoom", params: { hotspotId: "hs_lockbox" } }
                 ]

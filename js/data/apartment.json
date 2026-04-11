@@ -297,9 +297,7 @@
             "triggers": [
               {
                 "type": "tap",
-                "requiredFlags": [
-                  "laptop_unlocked"
-                ],
+                "requiredFlags": [],
                 "requiredItem": null,
                 "actions": [
                   {
@@ -412,9 +410,7 @@
             "triggers": [
               {
                 "type": "tap",
-                "requiredFlags": [
-                  "laptop_unlocked"
-                ],
+                "requiredFlags": [],
                 "requiredItem": null,
                 "actions": [
                   {
