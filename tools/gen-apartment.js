@@ -1512,7 +1512,7 @@ const room = {
       id: "hs_painting_dark",
       label: "Dark Painting",
       shape: "rect",
-      bounds: { x: 140, y: 100, w: 110, h: 90 },
+      bounds: { x: 120, y: 90, w: 100, h: 80 },
       appearance: { fill: "#444", stroke: "#333", image: toDataUrl(svgs.paintingDark) },
       zIndex: 2, visible: true,
       triggers: []
@@ -1521,7 +1521,7 @@ const room = {
       id: "hs_painting_light",
       label: "Light Painting",
       shape: "rect",
-      bounds: { x: 280, y: 105, w: 110, h: 90 },
+      bounds: { x: 240, y: 90, w: 100, h: 80 },
       appearance: { fill: "#eee", stroke: "#ccc", image: toDataUrl(svgs.paintingLight) },
       zIndex: 2, visible: true,
       triggers: []
@@ -1566,7 +1566,7 @@ const room = {
       id: "hs_bookshelf",
       label: "Bookshelf",
       shape: "rect",
-      bounds: { x: 110, y: 130, w: 190, h: 110 },
+      bounds: { x: 110, y: 175, w: 190, h: 110 },
       appearance: { fill: "#c8a878", stroke: "#a88858", image: toDataUrl(svgs.bookshelf) },
       zIndex: 1, visible: true,
       triggers: []
