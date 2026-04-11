@@ -656,7 +656,26 @@
               "h": 18
             },
             "image": null,
-            "triggers": []
+            "triggers": [
+              {
+                "type": "useItem",
+                "requiredFlags": [],
+                "requiredItem": "item_keycard",
+                "once": true,
+                "actions": [
+                  {
+                    "type": "removeItem",
+                    "params": {
+                      "itemId": "item_keycard"
+                    }
+                  },
+                  {
+                    "type": "gameWin",
+                    "params": {}
+                  }
+                ]
+              }
+            ]
           },
           {
             "id": "sub_handle",
@@ -672,26 +691,7 @@
           }
         ]
       },
-      "triggers": [
-        {
-          "type": "useItem",
-          "requiredFlags": [],
-          "requiredItem": "item_keycard",
-          "once": true,
-          "actions": [
-            {
-              "type": "removeItem",
-              "params": {
-                "itemId": "item_keycard"
-              }
-            },
-            {
-              "type": "gameWin",
-              "params": {}
-            }
-          ]
-        }
-      ]
+      "triggers": []
     }
   ],
   "items": [

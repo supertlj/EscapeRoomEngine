@@ -1740,7 +1740,15 @@ const room = {
             label: "Card Reader",
             bounds: { x: 68, y: 47, w: 18, h: 18 },
             image: null,
-            triggers: []
+            triggers: [
+              {
+                type: "useItem", requiredFlags: [], requiredItem: "item_keycard", once: true,
+                actions: [
+                  { type: "removeItem", params: { itemId: "item_keycard" } },
+                  { type: "gameWin", params: {} }
+                ]
+              }
+            ]
           },
           {
             id: "sub_handle",
@@ -1751,15 +1759,7 @@ const room = {
           }
         ]
       },
-      triggers: [
-        {
-          type: "useItem", requiredFlags: [], requiredItem: "item_keycard", once: true,
-          actions: [
-            { type: "removeItem", params: { itemId: "item_keycard" } },
-            { type: "gameWin", params: {} }
-          ]
-        }
-      ]
+      triggers: [] // zoom handles keycard interaction
     }
   ],
   items: [
