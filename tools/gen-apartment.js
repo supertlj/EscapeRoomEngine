@@ -1622,7 +1622,7 @@ const room = {
           },
           // Paper on shelf (visible, collectible)
           {
-            id: "sub_paper2",
+            id: "sub_paper",
             label: "Paper",
             bounds: { x: 53, y: 72, w: 30, h: 14 },
             image: toDataUrl(zoom.paper),

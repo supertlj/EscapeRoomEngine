@@ -443,7 +443,7 @@
             "triggers": []
           },
           {
-            "id": "sub_paper2",
+            "id": "sub_paper",
             "label": "Paper",
             "bounds": {
               "x": 53,
