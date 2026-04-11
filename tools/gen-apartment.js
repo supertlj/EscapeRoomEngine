@@ -378,9 +378,6 @@ svgs.cabinetOpen = `
   <rect x="67" y="104" width="55" height="88" rx="2" fill="url(#cabint)" stroke="#5a3a18" stroke-width="0.5"/>
   <!-- Interior shelf -->
   <rect x="69" y="140" width="51" height="2" fill="#5a3a18"/>
-  <!-- Paper on shelf inside -->
-  <rect x="75" y="150" width="35" height="22" fill="#f0e8d0" rx="1" transform="rotate(-3 92 161)"/>
-  <text x="92" y="163" text-anchor="middle" fill="#555" font-size="5" font-weight="bold" font-family="serif" transform="rotate(-3 92 161)">TAKI</text>
   <!-- Interior shadow -->
   <rect x="67" y="104" width="55" height="4" fill="rgba(0,0,0,0.2)"/>
   <!-- Right door swung open (3D perspective) -->
