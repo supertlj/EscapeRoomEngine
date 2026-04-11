@@ -194,7 +194,7 @@ export default class ZoomViewUI {
       // Set the anim flag after animation completes so dependent subs appear in sequence
       setTimeout(() => {
         this.state.setFlag('_zoomAnim_' + sub.id, true);
-      }, dur + 100);
+      }, dur + 50);
     });
   }
 
@@ -227,12 +227,12 @@ export default class ZoomViewUI {
       // Set anim flag after animation completes so dependent subs appear in sequence
       setTimeout(() => {
         this.state.setFlag('_zoomAnim_' + sub.id, true);
-      }, dur + 100);
+      }, dur + 50);
     }
 
     // 2) If collecting an item, animate pickup then execute
     if (shouldHide) {
-      const animDelay = sub.animation ? this._animDuration(sub.animation.type) + 100 : 0;
+      const animDelay = sub.animation ? this._animDuration(sub.animation.type) + 50 : 0;
       setTimeout(() => {
         this._animatePickup(el, () => {
           this.state.setFlag('_zoomHidden_' + sub.id, true);
@@ -246,7 +246,7 @@ export default class ZoomViewUI {
     // 3) Otherwise just execute actions (with anim delay if needed)
     const animDelay = justAnimated ? this._animDuration(sub.animation.type) : 0;
     // Small delay so animation plays before actions fire
-    setTimeout(() => this._execTrigger(trigger, sub), animDelay > 0 ? animDelay + 100 : 0);
+    setTimeout(() => this._execTrigger(trigger, sub), animDelay > 0 ? animDelay + 50 : 0);
   }
 
   /** Swap or create the imageOpen on a sub-hotspot element */
@@ -265,8 +265,8 @@ export default class ZoomViewUI {
   }
 
   _animDuration(type) {
-    const durations = { 'rotate': 600, 'slide-down': 500, 'slide-right': 500,
-                        'swing': 600, 'fade-in': 500, 'scale-pop': 400 };
+    const durations = { 'rotate': 400, 'slide-down': 350, 'slide-right': 350,
+                        'swing': 400, 'fade-in': 350, 'scale-pop': 300 };
     return durations[type] || 400;
   }
 
