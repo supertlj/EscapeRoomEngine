@@ -285,15 +285,50 @@
             ]
           },
           {
+            "id": "sub_upper_door",
+            "label": "Upper Right Door",
+            "bounds": {
+              "x": 51,
+              "y": 7,
+              "w": 42,
+              "h": 40
+            },
+            "image": null,
+            "animation": {
+              "type": "fade-in"
+            },
+            "imageOpen": "assets/rooms/apartment/zoom/upperDoorOpen.svg",
+            "triggers": [
+              {
+                "type": "tap",
+                "requiredFlags": [],
+                "requiredItem": null,
+                "once": true,
+                "actions": [
+                  {
+                    "type": "setFlag",
+                    "params": {
+                      "flag": "upper_door_open",
+                      "value": true
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
             "id": "sub_lockbox_vis",
             "label": "Lockbox",
             "bounds": {
-              "x": 10,
-              "y": 7,
-              "w": 40,
-              "h": 35
+              "x": 53,
+              "y": 14,
+              "w": 30,
+              "h": 22
             },
             "image": "assets/rooms/apartment/zoom/lockboxInGlass.svg",
+            "visibleWhen": [
+              "_zoomAnim_sub_upper_door"
+            ],
             "triggers": [
               {
                 "type": "tap",
@@ -398,15 +433,50 @@
             "triggers": []
           },
           {
-            "id": "sub_lockbox_vis2",
+            "id": "sub_upper_door",
+            "label": "Upper Right Door",
+            "bounds": {
+              "x": 51,
+              "y": 7,
+              "w": 42,
+              "h": 40
+            },
+            "image": null,
+            "animation": {
+              "type": "fade-in"
+            },
+            "imageOpen": "assets/rooms/apartment/zoom/upperDoorOpen.svg",
+            "triggers": [
+              {
+                "type": "tap",
+                "requiredFlags": [],
+                "requiredItem": null,
+                "once": true,
+                "actions": [
+                  {
+                    "type": "setFlag",
+                    "params": {
+                      "flag": "upper_door_open",
+                      "value": true
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "sub_lockbox_vis",
             "label": "Lockbox",
             "bounds": {
-              "x": 10,
-              "y": 7,
-              "w": 40,
-              "h": 35
+              "x": 53,
+              "y": 14,
+              "w": 30,
+              "h": 22
             },
             "image": "assets/rooms/apartment/zoom/lockboxInGlass.svg",
+            "visibleWhen": [
+              "_zoomAnim_sub_upper_door"
+            ],
             "triggers": [
               {
                 "type": "tap",

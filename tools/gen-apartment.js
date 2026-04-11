@@ -1187,6 +1187,38 @@ zoom.keyInHole = `
   <rect x="15" y="28" width="2" height="8" fill="#222"/>
 </svg>`;
 
+// Upper right glass door opened — reveals dark interior with lockbox
+zoom.upperDoorOpen = `
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="175">
+  <defs>
+    <linearGradient id="uint" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a1210"/>
+      <stop offset="100%" stop-color="#0e0a08"/>
+    </linearGradient>
+    <linearGradient id="udoor" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#a88040"/>
+      <stop offset="100%" stop-color="#c8a060"/>
+    </linearGradient>
+  </defs>
+  <!-- Dark interior revealed -->
+  <rect x="0" y="0" width="130" height="175" fill="url(#uint)" rx="2"/>
+  <!-- Top shadow -->
+  <rect x="0" y="0" width="130" height="5" fill="rgba(0,0,0,0.3)"/>
+  <!-- Left edge shadow -->
+  <rect x="0" y="0" width="3" height="175" fill="rgba(0,0,0,0.2)"/>
+  <!-- Interior shelf -->
+  <rect x="4" y="100" width="126" height="3" fill="#3a2818"/>
+  <!-- Glass door swung open (perspective) -->
+  <polygon points="130,0 160,4 160,171 130,175" fill="url(#udoor)" stroke="#987038" stroke-width="1"/>
+  <polygon points="130,0 138,1 138,174 130,175" fill="#b89050"/>
+  <!-- Glass on open door -->
+  <polygon points="133,6 156,9 156,167 133,171" fill="rgba(180,210,220,0.08)"/>
+  <!-- Glass reflection on open door -->
+  <line x1="140" y1="165" x2="150" y2="12" stroke="rgba(255,255,255,0.04)" stroke-width="4"/>
+  <!-- Door handle on open door -->
+  <rect x="131" y="78" width="4" height="14" rx="1.5" fill="#bbb" stroke="#999" stroke-width="0.3"/>
+</svg>`;
+
 // Cabinet right door open — 3D interior with shelf and paper visible
 zoom.cabinetRightOpen = `
 <svg xmlns="http://www.w3.org/2000/svg" width="160" height="195">
@@ -1532,12 +1564,28 @@ const room = {
               }
             ]
           },
-          // Lockbox visible through upper glass (always visible)
+          // Upper right glass door — tap to open and reveal lockbox
+          {
+            id: "sub_upper_door",
+            label: "Upper Right Door",
+            bounds: { x: 51, y: 7, w: 42, h: 40 },
+            image: null,
+            animation: { type: "fade-in" },
+            imageOpen: toDataUrl(zoom.upperDoorOpen),
+            triggers: [{
+              type: "tap", requiredFlags: [], requiredItem: null, once: true,
+              actions: [
+                { type: "setFlag", params: { flag: "upper_door_open", value: true } }
+              ]
+            }]
+          },
+          // Lockbox visible after upper door opens
           {
             id: "sub_lockbox_vis",
             label: "Lockbox",
-            bounds: { x: 10, y: 7, w: 40, h: 35 },
+            bounds: { x: 53, y: 14, w: 30, h: 22 },
             image: toDataUrl(zoom.lockboxInGlass),
+            visibleWhen: ["_zoomAnim_sub_upper_door"],
             triggers: [
               {
                 type: "tap", requiredFlags: [], requiredItem: null,
@@ -1597,11 +1645,28 @@ const room = {
             image: toDataUrl(zoom.keyInHole),
             triggers: []
           },
+          // Upper right glass door — tap to open (or already open)
           {
-            id: "sub_lockbox_vis2",
+            id: "sub_upper_door",
+            label: "Upper Right Door",
+            bounds: { x: 51, y: 7, w: 42, h: 40 },
+            image: null,
+            animation: { type: "fade-in" },
+            imageOpen: toDataUrl(zoom.upperDoorOpen),
+            triggers: [{
+              type: "tap", requiredFlags: [], requiredItem: null, once: true,
+              actions: [
+                { type: "setFlag", params: { flag: "upper_door_open", value: true } }
+              ]
+            }]
+          },
+          // Lockbox visible after upper door opens
+          {
+            id: "sub_lockbox_vis",
             label: "Lockbox",
-            bounds: { x: 10, y: 7, w: 40, h: 35 },
+            bounds: { x: 53, y: 14, w: 30, h: 22 },
             image: toDataUrl(zoom.lockboxInGlass),
+            visibleWhen: ["_zoomAnim_sub_upper_door"],
             triggers: [
               {
                 type: "tap", requiredFlags: [], requiredItem: null,
