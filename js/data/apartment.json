@@ -787,6 +787,45 @@
       "triggers": []
     },
     {
+      "id": "hs_laptop_unlocked",
+      "label": "Laptop (Unlocked)",
+      "shape": "rect",
+      "bounds": {
+        "x": 40,
+        "y": 320,
+        "w": 110,
+        "h": 80
+      },
+      "appearance": {
+        "fill": "#333",
+        "stroke": "#222",
+        "image": "assets/rooms/apartment/main/laptopUnlocked.svg"
+      },
+      "zIndex": 4,
+      "visible": false,
+      "zoomView": {
+        "image": "assets/rooms/apartment/zoom/laptopBg.svg",
+        "subHotspots": [
+          {
+            "id": "sub_screen_1886",
+            "label": "Screen (Unlocked)",
+            "bounds": {
+              "x": 15,
+              "y": 12,
+              "w": 70,
+              "h": 52
+            },
+            "image": "assets/rooms/apartment/zoom/screen1886.svg",
+            "visibleWhen": [
+              "laptop_unlocked"
+            ],
+            "triggers": []
+          }
+        ]
+      },
+      "triggers": []
+    },
+    {
       "id": "hs_lockbox",
       "label": "Lockbox",
       "shape": "rect",
@@ -997,9 +1036,21 @@
           }
         },
         {
-          "type": "openZoom",
+          "type": "hideHotspot",
           "params": {
             "hotspotId": "hs_laptop"
+          }
+        },
+        {
+          "type": "showHotspot",
+          "params": {
+            "hotspotId": "hs_laptop_unlocked"
+          }
+        },
+        {
+          "type": "openZoom",
+          "params": {
+            "hotspotId": "hs_laptop_unlocked"
           }
         }
       ],

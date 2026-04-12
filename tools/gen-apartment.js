@@ -535,6 +535,28 @@ svgs.laptop = `
   <line x1="19" y1="14" x2="87" y2="14" stroke="rgba(255,255,255,0.03)" stroke-width="0.8"/>
 </svg>`;
 
+// Laptop unlocked: screen showing 1886
+svgs.laptopUnlocked = `
+<svg xmlns="http://www.w3.org/2000/svg" width="110" height="80">
+  <!-- Shadow under base -->
+  <ellipse cx="55" cy="74" rx="42" ry="4" fill="rgba(0,0,0,0.15)"/>
+  <!-- Base/keyboard -->
+  <polygon points="10,55 100,55 95,72 15,72" fill="#999" stroke="#888" stroke-width="0.8"/>
+  <polygon points="14,57 96,57 92,70 18,70" fill="#777"/>
+  <rect x="22" y="59" width="66" height="8" rx="1" fill="#666" opacity="0.6"/>
+  <rect x="38" y="68" width="34" height="3" rx="1" fill="#888"/>
+  <!-- Screen (angled back) -->
+  <polygon points="12,54 98,54 92,10 18,10" fill="#333" stroke="#222" stroke-width="1.5"/>
+  <polygon points="18,50 92,50 87,15 23,15" fill="#0a2a10"/>
+  <!-- Screen glow -->
+  <polygon points="18,50 92,50 87,15 23,15" fill="rgba(0,180,80,0.06)"/>
+  <!-- 1886 on screen -->
+  <text x="55" y="38" text-anchor="middle" fill="#5c8" font-size="14" font-weight="bold" font-family="monospace">1886</text>
+  <!-- Camera -->
+  <circle cx="55" cy="8" r="1.5" fill="#444"/>
+  <line x1="19" y1="14" x2="87" y2="14" stroke="rgba(255,255,255,0.03)" stroke-width="0.8"/>
+</svg>`;
+
 // Sofa: 3D perspective with depth, cushions, pillows, legs
 svgs.sofa = `
 <svg xmlns="http://www.w3.org/2000/svg" width="200" height="130">
@@ -1911,6 +1933,30 @@ const room = {
       triggers: [] // zoom handles
     },
 
+    // Laptop unlocked (shown after solving password)
+    {
+      id: "hs_laptop_unlocked",
+      label: "Laptop (Unlocked)",
+      shape: "rect",
+      bounds: { x: 40, y: 320, w: 110, h: 80 },
+      appearance: { fill: "#333", stroke: "#222", image: toDataUrl(svgs.laptopUnlocked) },
+      zIndex: 4, visible: false,
+      zoomView: {
+        image: toDataUrl(zoom.laptopBg),
+        subHotspots: [
+          {
+            id: "sub_screen_1886",
+            label: "Screen (Unlocked)",
+            bounds: { x: 15, y: 12, w: 70, h: 52 },
+            image: toDataUrl(zoom.screen1886),
+            visibleWhen: ["laptop_unlocked"],
+            triggers: []
+          }
+        ]
+      },
+      triggers: []
+    },
+
     // Lockbox (hidden hotspot — accessed from cabinet zoom)
     {
       id: "hs_lockbox",
@@ -2023,7 +2069,9 @@ const room = {
       onSolve: [
         { type: "setFlag", params: { flag: "laptop_unlocked", value: true } },
         { type: "setFlag", params: { flag: "_zoomHidden_sub_screen", value: true } },
-        { type: "openZoom", params: { hotspotId: "hs_laptop" } }
+        { type: "hideHotspot", params: { hotspotId: "hs_laptop" } },
+        { type: "showHotspot", params: { hotspotId: "hs_laptop_unlocked" } },
+        { type: "openZoom", params: { hotspotId: "hs_laptop_unlocked" } }
       ],
       onFail: []
     },
