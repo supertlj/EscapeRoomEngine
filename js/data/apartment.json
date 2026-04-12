@@ -251,6 +251,71 @@
             "triggers": [
               {
                 "type": "useItem",
+                "requiredFlags": [
+                  "upper_door_open"
+                ],
+                "requiredItem": "item_small_key",
+                "once": true,
+                "actions": [
+                  {
+                    "type": "removeItem",
+                    "params": {
+                      "itemId": "item_small_key"
+                    }
+                  },
+                  {
+                    "type": "setFlag",
+                    "params": {
+                      "flag": "cabinet_open",
+                      "value": true
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_glass_open"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_lower_open"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_lower_open_no_notes"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_open"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_open_no_notes"
+                    }
+                  },
+                  {
+                    "type": "showHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_open"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "useItem",
                 "requiredFlags": [],
                 "requiredItem": "item_small_key",
                 "once": true,
@@ -275,9 +340,39 @@
                     }
                   },
                   {
-                    "type": "showHotspot",
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_glass_open"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_lower_open"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_lower_open_no_notes"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
                     "params": {
                       "hotspotId": "hs_cabinet_open"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_open_no_notes"
+                    }
+                  },
+                  {
+                    "type": "showHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_lower_open"
                     }
                   }
                 ]
@@ -301,6 +396,125 @@
             "triggers": [
               {
                 "type": "tap",
+                "requiredFlags": [
+                  "cabinet_open",
+                  "_zoomHidden_sub_paper"
+                ],
+                "requiredItem": null,
+                "once": true,
+                "actions": [
+                  {
+                    "type": "setFlag",
+                    "params": {
+                      "flag": "upper_door_open",
+                      "value": true
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_glass_open"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_lower_open"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_lower_open_no_notes"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_open"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_open_no_notes"
+                    }
+                  },
+                  {
+                    "type": "showHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_open_no_notes"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "tap",
+                "requiredFlags": [
+                  "cabinet_open"
+                ],
+                "requiredItem": null,
+                "once": true,
+                "actions": [
+                  {
+                    "type": "setFlag",
+                    "params": {
+                      "flag": "upper_door_open",
+                      "value": true
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_glass_open"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_lower_open"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_lower_open_no_notes"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_open"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_open_no_notes"
+                    }
+                  },
+                  {
+                    "type": "showHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_open"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "tap",
                 "requiredFlags": [],
                 "requiredItem": null,
                 "once": true,
@@ -316,6 +530,36 @@
                     "type": "hideHotspot",
                     "params": {
                       "hotspotId": "hs_cabinet"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_glass_open"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_lower_open"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_lower_open_no_notes"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_open"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_open_no_notes"
                     }
                   },
                   {
@@ -394,6 +638,64 @@
             "triggers": [
               {
                 "type": "tap",
+                "requiredFlags": [
+                  "upper_door_open"
+                ],
+                "requiredItem": null,
+                "once": true,
+                "actions": [
+                  {
+                    "type": "giveItem",
+                    "params": {
+                      "itemId": "item_paper"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_glass_open"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_lower_open"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_lower_open_no_notes"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_open"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_open_no_notes"
+                    }
+                  },
+                  {
+                    "type": "showHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_open_no_notes"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "tap",
                 "requiredFlags": [],
                 "requiredItem": null,
                 "once": true,
@@ -402,6 +704,48 @@
                     "type": "giveItem",
                     "params": {
                       "itemId": "item_paper"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_glass_open"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_lower_open"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_lower_open_no_notes"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_open"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_open_no_notes"
+                    }
+                  },
+                  {
+                    "type": "showHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_lower_open_no_notes"
                     }
                   }
                 ]
@@ -546,10 +890,141 @@
                     "params": {
                       "itemId": "item_paper"
                     }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_glass_open"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_lower_open"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_lower_open_no_notes"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_open"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_open_no_notes"
+                    }
+                  },
+                  {
+                    "type": "showHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_open_no_notes"
+                    }
                   }
                 ]
               }
             ]
+          }
+        ]
+      },
+      "triggers": []
+    },
+    {
+      "id": "hs_cabinet_open_no_notes",
+      "label": "Cabinet (Open, No Notes)",
+      "shape": "rect",
+      "bounds": {
+        "x": 540,
+        "y": 100,
+        "w": 145,
+        "h": 200
+      },
+      "appearance": {
+        "fill": "#c8a060",
+        "stroke": "#a88040",
+        "image": "assets/rooms/apartment/main/cabinetOpenNoNotes.svg"
+      },
+      "zIndex": 1,
+      "visible": false,
+      "zoomView": {
+        "image": "assets/rooms/apartment/zoom/cabinetBg.svg",
+        "subHotspots": [
+          {
+            "id": "sub_keyhole2",
+            "label": "Keyhole",
+            "bounds": {
+              "x": 43,
+              "y": 74,
+              "w": 8,
+              "h": 10
+            },
+            "image": "assets/rooms/apartment/zoom/keyInHole.svg",
+            "triggers": []
+          },
+          {
+            "id": "sub_upper_door",
+            "label": "Upper Right Door",
+            "bounds": {
+              "x": 51,
+              "y": 7,
+              "w": 42,
+              "h": 40
+            },
+            "image": "assets/rooms/apartment/zoom/upperDoorOpen.svg",
+            "triggers": []
+          },
+          {
+            "id": "sub_lockbox_vis",
+            "label": "Lockbox",
+            "bounds": {
+              "x": 53,
+              "y": 14,
+              "w": 30,
+              "h": 22
+            },
+            "image": "assets/rooms/apartment/zoom/lockboxInGlass.svg",
+            "triggers": [
+              {
+                "type": "tap",
+                "requiredFlags": [],
+                "requiredItem": null,
+                "actions": [
+                  {
+                    "type": "openZoom",
+                    "params": {
+                      "hotspotId": "hs_lockbox"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "sub_right_door2",
+            "label": "Right Door Open",
+            "bounds": {
+              "x": 51,
+              "y": 50,
+              "w": 42,
+              "h": 46
+            },
+            "image": "assets/rooms/apartment/zoom/cabinetRightOpen.svg",
+            "visibleWhen": [
+              "cabinet_open"
+            ],
+            "triggers": []
           }
         ]
       },
@@ -613,7 +1088,37 @@
                   {
                     "type": "hideHotspot",
                     "params": {
+                      "hotspotId": "hs_cabinet"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
                       "hotspotId": "hs_cabinet_glass_open"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_lower_open"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_lower_open_no_notes"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_open"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_open_no_notes"
                     }
                   },
                   {
@@ -710,10 +1215,550 @@
                     "params": {
                       "itemId": "item_paper"
                     }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_glass_open"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_lower_open"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_lower_open_no_notes"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_open"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_open_no_notes"
+                    }
+                  },
+                  {
+                    "type": "showHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_open_no_notes"
+                    }
                   }
                 ]
               }
             ]
+          }
+        ]
+      },
+      "triggers": []
+    },
+    {
+      "id": "hs_cabinet_lower_open",
+      "label": "Cabinet (Lower Open)",
+      "shape": "rect",
+      "bounds": {
+        "x": 540,
+        "y": 100,
+        "w": 145,
+        "h": 200
+      },
+      "appearance": {
+        "fill": "#c8a060",
+        "stroke": "#a88040",
+        "image": "assets/rooms/apartment/main/cabinetLowerOpen.svg"
+      },
+      "zIndex": 1,
+      "visible": false,
+      "zoomView": {
+        "image": "assets/rooms/apartment/zoom/cabinetBg.svg",
+        "subHotspots": [
+          {
+            "id": "sub_keyhole2",
+            "label": "Keyhole",
+            "bounds": {
+              "x": 43,
+              "y": 74,
+              "w": 8,
+              "h": 10
+            },
+            "image": "assets/rooms/apartment/zoom/keyInHole.svg",
+            "triggers": []
+          },
+          {
+            "id": "sub_upper_door",
+            "label": "Upper Right Door",
+            "bounds": {
+              "x": 51,
+              "y": 7,
+              "w": 42,
+              "h": 40
+            },
+            "image": null,
+            "animation": {
+              "type": "fade-in"
+            },
+            "imageOpen": "assets/rooms/apartment/zoom/upperDoorOpen.svg",
+            "triggers": [
+              {
+                "type": "tap",
+                "requiredFlags": [
+                  "_zoomHidden_sub_paper"
+                ],
+                "requiredItem": null,
+                "once": true,
+                "actions": [
+                  {
+                    "type": "setFlag",
+                    "params": {
+                      "flag": "upper_door_open",
+                      "value": true
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_glass_open"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_lower_open"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_lower_open_no_notes"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_open"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_open_no_notes"
+                    }
+                  },
+                  {
+                    "type": "showHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_open_no_notes"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "tap",
+                "requiredFlags": [],
+                "requiredItem": null,
+                "once": true,
+                "actions": [
+                  {
+                    "type": "setFlag",
+                    "params": {
+                      "flag": "upper_door_open",
+                      "value": true
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_glass_open"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_lower_open"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_lower_open_no_notes"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_open"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_open_no_notes"
+                    }
+                  },
+                  {
+                    "type": "showHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_open"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "sub_lockbox_vis",
+            "label": "Lockbox",
+            "bounds": {
+              "x": 53,
+              "y": 14,
+              "w": 30,
+              "h": 22
+            },
+            "image": "assets/rooms/apartment/zoom/lockboxInGlass.svg",
+            "visibleWhen": [
+              "_zoomAnim_sub_upper_door"
+            ],
+            "triggers": [
+              {
+                "type": "tap",
+                "requiredFlags": [],
+                "requiredItem": null,
+                "actions": [
+                  {
+                    "type": "openZoom",
+                    "params": {
+                      "hotspotId": "hs_lockbox"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "sub_right_door2",
+            "label": "Right Door Open",
+            "bounds": {
+              "x": 51,
+              "y": 50,
+              "w": 42,
+              "h": 46
+            },
+            "image": "assets/rooms/apartment/zoom/cabinetRightOpen.svg",
+            "visibleWhen": [
+              "cabinet_open"
+            ],
+            "triggers": []
+          },
+          {
+            "id": "sub_paper",
+            "label": "Paper",
+            "bounds": {
+              "x": 53,
+              "y": 72,
+              "w": 30,
+              "h": 14
+            },
+            "image": "assets/rooms/apartment/zoom/paper.svg",
+            "hideOnCollect": true,
+            "visibleWhen": [
+              "cabinet_open"
+            ],
+            "triggers": [
+              {
+                "type": "tap",
+                "requiredFlags": [
+                  "upper_door_open"
+                ],
+                "requiredItem": null,
+                "once": true,
+                "actions": [
+                  {
+                    "type": "giveItem",
+                    "params": {
+                      "itemId": "item_paper"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_glass_open"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_lower_open"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_lower_open_no_notes"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_open"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_open_no_notes"
+                    }
+                  },
+                  {
+                    "type": "showHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_open_no_notes"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "tap",
+                "requiredFlags": [],
+                "requiredItem": null,
+                "once": true,
+                "actions": [
+                  {
+                    "type": "giveItem",
+                    "params": {
+                      "itemId": "item_paper"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_glass_open"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_lower_open"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_lower_open_no_notes"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_open"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_open_no_notes"
+                    }
+                  },
+                  {
+                    "type": "showHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_lower_open_no_notes"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "triggers": []
+    },
+    {
+      "id": "hs_cabinet_lower_open_no_notes",
+      "label": "Cabinet (Lower Open, No Notes)",
+      "shape": "rect",
+      "bounds": {
+        "x": 540,
+        "y": 100,
+        "w": 145,
+        "h": 200
+      },
+      "appearance": {
+        "fill": "#c8a060",
+        "stroke": "#a88040",
+        "image": "assets/rooms/apartment/main/cabinetLowerOpenNoNotes.svg"
+      },
+      "zIndex": 1,
+      "visible": false,
+      "zoomView": {
+        "image": "assets/rooms/apartment/zoom/cabinetBg.svg",
+        "subHotspots": [
+          {
+            "id": "sub_keyhole2",
+            "label": "Keyhole",
+            "bounds": {
+              "x": 43,
+              "y": 74,
+              "w": 8,
+              "h": 10
+            },
+            "image": "assets/rooms/apartment/zoom/keyInHole.svg",
+            "triggers": []
+          },
+          {
+            "id": "sub_upper_door",
+            "label": "Upper Right Door",
+            "bounds": {
+              "x": 51,
+              "y": 7,
+              "w": 42,
+              "h": 40
+            },
+            "image": null,
+            "animation": {
+              "type": "fade-in"
+            },
+            "imageOpen": "assets/rooms/apartment/zoom/upperDoorOpen.svg",
+            "triggers": [
+              {
+                "type": "tap",
+                "requiredFlags": [],
+                "requiredItem": null,
+                "once": true,
+                "actions": [
+                  {
+                    "type": "setFlag",
+                    "params": {
+                      "flag": "upper_door_open",
+                      "value": true
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_glass_open"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_lower_open"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_lower_open_no_notes"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_open"
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_open_no_notes"
+                    }
+                  },
+                  {
+                    "type": "showHotspot",
+                    "params": {
+                      "hotspotId": "hs_cabinet_open_no_notes"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "sub_lockbox_vis",
+            "label": "Lockbox",
+            "bounds": {
+              "x": 53,
+              "y": 14,
+              "w": 30,
+              "h": 22
+            },
+            "image": "assets/rooms/apartment/zoom/lockboxInGlass.svg",
+            "visibleWhen": [
+              "_zoomAnim_sub_upper_door"
+            ],
+            "triggers": [
+              {
+                "type": "tap",
+                "requiredFlags": [],
+                "requiredItem": null,
+                "actions": [
+                  {
+                    "type": "openZoom",
+                    "params": {
+                      "hotspotId": "hs_lockbox"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "sub_right_door2",
+            "label": "Right Door Open",
+            "bounds": {
+              "x": 51,
+              "y": 50,
+              "w": 42,
+              "h": 46
+            },
+            "image": "assets/rooms/apartment/zoom/cabinetRightOpen.svg",
+            "visibleWhen": [
+              "cabinet_open"
+            ],
+            "triggers": []
           }
         ]
       },

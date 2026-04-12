@@ -460,6 +460,192 @@ svgs.cabinetOpen = `
   <rect x="67" y="104" width="55" height="88" rx="2" fill="url(#cabint)" stroke="#5a3a18" stroke-width="0.5"/>
   <rect x="69" y="140" width="51" height="2" fill="#5a3a18"/>
   <rect x="67" y="104" width="55" height="4" fill="rgba(0,0,0,0.2)"/>
+  <!-- Notes on shelf -->
+  <rect x="78" y="130" width="20" height="7" rx="0.5" fill="#f4e8c8" stroke="#d4c498" stroke-width="0.3"/>
+  <line x1="81" y1="132" x2="94" y2="132" stroke="#bba878" stroke-width="0.3"/>
+  <line x1="81" y1="134" x2="91" y2="134" stroke="#bba878" stroke-width="0.3"/>
+  <!-- Lower right door swung open (3D perspective) -->
+  <polygon points="122,104 130,108 130,190 122,194" fill="#c89858" stroke="#a07838" stroke-width="0.5"/>
+  <polygon points="130,104 136,106 136,198 130,194" fill="#b89050" stroke="#987038" stroke-width="0.5"/>
+  <circle cx="128" cy="148" r="2" fill="#bbb"/>
+  <line x1="3" y1="3" x2="124" y2="3" stroke="rgba(255,255,255,0.06)" stroke-width="0.8"/>
+</svg>`;
+
+// Cabinet with both doors open, notes collected — main room view
+svgs.cabinetOpenNoNotes = `
+<svg xmlns="http://www.w3.org/2000/svg" width="145" height="200">
+  <defs>
+    <linearGradient id="cabf4" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#c8a060"/>
+      <stop offset="50%" stop-color="#d4ac68"/>
+      <stop offset="100%" stop-color="#b89050"/>
+    </linearGradient>
+    <linearGradient id="cabs4" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#a88040"/>
+      <stop offset="100%" stop-color="#987038"/>
+    </linearGradient>
+    <linearGradient id="cabint4a" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3a2810"/>
+      <stop offset="100%" stop-color="#2a1a08"/>
+    </linearGradient>
+    <linearGradient id="cabint4b" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a1210"/>
+      <stop offset="100%" stop-color="#0e0a08"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="68" cy="196" rx="60" ry="5" fill="rgba(0,0,0,0.15)"/>
+  <polygon points="125,2 140,8 140,192 125,198" fill="url(#cabs4)"/>
+  <rect x="2" y="2" width="123" height="196" rx="2" fill="url(#cabf4)" stroke="#a07838" stroke-width="1"/>
+  <!-- Upper left glass door (closed) -->
+  <rect x="8" y="8" width="55" height="78" rx="2" fill="#b89050" stroke="#987038" stroke-width="1"/>
+  <rect x="12" y="12" width="47" height="70" fill="#1a1818" rx="1"/>
+  <rect x="12" y="12" width="47" height="70" fill="rgba(180,200,210,0.08)" rx="1"/>
+  <line x1="16" y1="76" x2="30" y2="16" stroke="rgba(255,255,255,0.06)" stroke-width="2"/>
+  <rect x="56" y="40" width="4" height="12" rx="1.5" fill="#bbb"/>
+  <!-- Upper right: dark interior (door open) -->
+  <rect x="67" y="8" width="55" height="78" rx="2" fill="url(#cabint4b)" stroke="#5a3a18" stroke-width="0.5"/>
+  <rect x="69" y="50" width="51" height="2" fill="#3a2818"/>
+  <rect x="78" y="22" width="30" height="22" rx="1" fill="#555" stroke="#444" stroke-width="0.5"/>
+  <rect x="86" y="30" width="14" height="8" rx="1" fill="#444"/>
+  <circle cx="93" cy="37" r="1.5" fill="#c44"/>
+  <rect x="67" y="8" width="55" height="3" fill="rgba(0,0,0,0.25)"/>
+  <polygon points="122,8 130,11 130,84 122,87" fill="#c89858" stroke="#a07838" stroke-width="0.5"/>
+  <polygon points="130,8 134,10 134,86 130,84" fill="#b89050"/>
+  <polygon points="123,11 129,13 129,82 123,84" fill="rgba(180,200,210,0.06)"/>
+  <!-- Middle shelf divider -->
+  <rect x="4" y="90" width="119" height="8" fill="#a07838"/>
+  <rect x="4" y="90" width="119" height="2" fill="rgba(255,255,255,0.05)"/>
+  <rect x="20" y="94" width="6" height="3" rx="1" fill="#8a6a30"/>
+  <rect x="50" y="94" width="28" height="3" rx="1" fill="#8a6a30"/>
+  <rect x="100" y="94" width="6" height="3" rx="1" fill="#8a6a30"/>
+  <!-- Left lower door (closed) -->
+  <rect x="8" y="104" width="55" height="88" rx="2" fill="#b89050" stroke="#987038" stroke-width="1"/>
+  <rect x="14" y="110" width="43" height="76" fill="rgba(0,0,0,0.06)" rx="1"/>
+  <circle cx="56" cy="148" r="4" fill="#bbb" stroke="#aaa" stroke-width="0.8"/>
+  <ellipse cx="56" cy="165" rx="2.5" ry="4" fill="#444"/>
+  <circle cx="56" cy="160" r="4" fill="none" stroke="#d0a840" stroke-width="2"/>
+  <rect x="55" y="163" width="2" height="6" fill="#d0a840"/>
+  <!-- Lower right: dark interior (no notes) -->
+  <rect x="67" y="104" width="55" height="88" rx="2" fill="url(#cabint4a)" stroke="#5a3a18" stroke-width="0.5"/>
+  <rect x="69" y="140" width="51" height="2" fill="#5a3a18"/>
+  <rect x="67" y="104" width="55" height="4" fill="rgba(0,0,0,0.2)"/>
+  <polygon points="122,104 130,108 130,190 122,194" fill="#c89858" stroke="#a07838" stroke-width="0.5"/>
+  <polygon points="130,104 136,106 136,198 130,194" fill="#b89050" stroke="#987038" stroke-width="0.5"/>
+  <circle cx="128" cy="148" r="2" fill="#bbb"/>
+  <line x1="3" y1="3" x2="124" y2="3" stroke="rgba(255,255,255,0.06)" stroke-width="0.8"/>
+</svg>`;
+
+// Cabinet with lower right door open, upper glass closed, notes present — main room view
+svgs.cabinetLowerOpen = `
+<svg xmlns="http://www.w3.org/2000/svg" width="145" height="200">
+  <defs>
+    <linearGradient id="cabf5" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#c8a060"/>
+      <stop offset="50%" stop-color="#d4ac68"/>
+      <stop offset="100%" stop-color="#b89050"/>
+    </linearGradient>
+    <linearGradient id="cabs5" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#a88040"/>
+      <stop offset="100%" stop-color="#987038"/>
+    </linearGradient>
+    <linearGradient id="cabint5" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3a2810"/>
+      <stop offset="100%" stop-color="#2a1a08"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="68" cy="196" rx="60" ry="5" fill="rgba(0,0,0,0.15)"/>
+  <polygon points="125,2 140,8 140,192 125,198" fill="url(#cabs5)"/>
+  <rect x="2" y="2" width="123" height="196" rx="2" fill="url(#cabf5)" stroke="#a07838" stroke-width="1"/>
+  <!-- Upper glass doors (both closed) -->
+  <rect x="8" y="8" width="55" height="78" rx="2" fill="#b89050" stroke="#987038" stroke-width="1"/>
+  <rect x="67" y="8" width="55" height="78" rx="2" fill="#b89050" stroke="#987038" stroke-width="1"/>
+  <rect x="12" y="12" width="47" height="70" fill="#1a1818" rx="1"/>
+  <rect x="71" y="12" width="47" height="70" fill="#1a1818" rx="1"/>
+  <rect x="12" y="12" width="47" height="70" fill="rgba(180,200,210,0.08)" rx="1"/>
+  <rect x="71" y="12" width="47" height="70" fill="rgba(180,200,210,0.08)" rx="1"/>
+  <line x1="16" y1="76" x2="30" y2="16" stroke="rgba(255,255,255,0.06)" stroke-width="2"/>
+  <line x1="75" y1="76" x2="89" y2="16" stroke="rgba(255,255,255,0.04)" stroke-width="1.5"/>
+  <rect x="56" y="40" width="4" height="12" rx="1.5" fill="#bbb"/>
+  <rect x="68" y="40" width="4" height="12" rx="1.5" fill="#bbb"/>
+  <!-- Middle shelf divider -->
+  <rect x="4" y="90" width="119" height="8" fill="#a07838"/>
+  <rect x="4" y="90" width="119" height="2" fill="rgba(255,255,255,0.05)"/>
+  <rect x="20" y="94" width="6" height="3" rx="1" fill="#8a6a30"/>
+  <rect x="50" y="94" width="28" height="3" rx="1" fill="#8a6a30"/>
+  <rect x="100" y="94" width="6" height="3" rx="1" fill="#8a6a30"/>
+  <!-- Left lower door (closed) -->
+  <rect x="8" y="104" width="55" height="88" rx="2" fill="#b89050" stroke="#987038" stroke-width="1"/>
+  <rect x="14" y="110" width="43" height="76" fill="rgba(0,0,0,0.06)" rx="1"/>
+  <circle cx="56" cy="148" r="4" fill="#bbb" stroke="#aaa" stroke-width="0.8"/>
+  <!-- Key in keyhole -->
+  <ellipse cx="56" cy="165" rx="2.5" ry="4" fill="#444"/>
+  <circle cx="56" cy="160" r="4" fill="none" stroke="#d0a840" stroke-width="2"/>
+  <rect x="55" y="163" width="2" height="6" fill="#d0a840"/>
+  <!-- Lower right: open interior -->
+  <rect x="67" y="104" width="55" height="88" rx="2" fill="url(#cabint5)" stroke="#5a3a18" stroke-width="0.5"/>
+  <rect x="69" y="140" width="51" height="2" fill="#5a3a18"/>
+  <rect x="67" y="104" width="55" height="4" fill="rgba(0,0,0,0.2)"/>
+  <!-- Notes on shelf -->
+  <rect x="78" y="130" width="20" height="7" rx="0.5" fill="#f4e8c8" stroke="#d4c498" stroke-width="0.3"/>
+  <line x1="81" y1="132" x2="94" y2="132" stroke="#bba878" stroke-width="0.3"/>
+  <line x1="81" y1="134" x2="91" y2="134" stroke="#bba878" stroke-width="0.3"/>
+  <!-- Lower right door swung open (3D perspective) -->
+  <polygon points="122,104 130,108 130,190 122,194" fill="#c89858" stroke="#a07838" stroke-width="0.5"/>
+  <polygon points="130,104 136,106 136,198 130,194" fill="#b89050" stroke="#987038" stroke-width="0.5"/>
+  <circle cx="128" cy="148" r="2" fill="#bbb"/>
+  <line x1="3" y1="3" x2="124" y2="3" stroke="rgba(255,255,255,0.06)" stroke-width="0.8"/>
+</svg>`;
+
+// Cabinet with lower right door open, upper glass closed, notes collected — main room view
+svgs.cabinetLowerOpenNoNotes = `
+<svg xmlns="http://www.w3.org/2000/svg" width="145" height="200">
+  <defs>
+    <linearGradient id="cabf6" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#c8a060"/>
+      <stop offset="50%" stop-color="#d4ac68"/>
+      <stop offset="100%" stop-color="#b89050"/>
+    </linearGradient>
+    <linearGradient id="cabs6" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#a88040"/>
+      <stop offset="100%" stop-color="#987038"/>
+    </linearGradient>
+    <linearGradient id="cabint6" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3a2810"/>
+      <stop offset="100%" stop-color="#2a1a08"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="68" cy="196" rx="60" ry="5" fill="rgba(0,0,0,0.15)"/>
+  <polygon points="125,2 140,8 140,192 125,198" fill="url(#cabs6)"/>
+  <rect x="2" y="2" width="123" height="196" rx="2" fill="url(#cabf6)" stroke="#a07838" stroke-width="1"/>
+  <!-- Upper glass doors (both closed) -->
+  <rect x="8" y="8" width="55" height="78" rx="2" fill="#b89050" stroke="#987038" stroke-width="1"/>
+  <rect x="67" y="8" width="55" height="78" rx="2" fill="#b89050" stroke="#987038" stroke-width="1"/>
+  <rect x="12" y="12" width="47" height="70" fill="#1a1818" rx="1"/>
+  <rect x="71" y="12" width="47" height="70" fill="#1a1818" rx="1"/>
+  <rect x="12" y="12" width="47" height="70" fill="rgba(180,200,210,0.08)" rx="1"/>
+  <rect x="71" y="12" width="47" height="70" fill="rgba(180,200,210,0.08)" rx="1"/>
+  <line x1="16" y1="76" x2="30" y2="16" stroke="rgba(255,255,255,0.06)" stroke-width="2"/>
+  <line x1="75" y1="76" x2="89" y2="16" stroke="rgba(255,255,255,0.04)" stroke-width="1.5"/>
+  <rect x="56" y="40" width="4" height="12" rx="1.5" fill="#bbb"/>
+  <rect x="68" y="40" width="4" height="12" rx="1.5" fill="#bbb"/>
+  <!-- Middle shelf divider -->
+  <rect x="4" y="90" width="119" height="8" fill="#a07838"/>
+  <rect x="4" y="90" width="119" height="2" fill="rgba(255,255,255,0.05)"/>
+  <rect x="20" y="94" width="6" height="3" rx="1" fill="#8a6a30"/>
+  <rect x="50" y="94" width="28" height="3" rx="1" fill="#8a6a30"/>
+  <rect x="100" y="94" width="6" height="3" rx="1" fill="#8a6a30"/>
+  <!-- Left lower door (closed) -->
+  <rect x="8" y="104" width="55" height="88" rx="2" fill="#b89050" stroke="#987038" stroke-width="1"/>
+  <rect x="14" y="110" width="43" height="76" fill="rgba(0,0,0,0.06)" rx="1"/>
+  <circle cx="56" cy="148" r="4" fill="#bbb" stroke="#aaa" stroke-width="0.8"/>
+  <!-- Key in keyhole -->
+  <ellipse cx="56" cy="165" rx="2.5" ry="4" fill="#444"/>
+  <circle cx="56" cy="160" r="4" fill="none" stroke="#d0a840" stroke-width="2"/>
+  <rect x="55" y="163" width="2" height="6" fill="#d0a840"/>
+  <!-- Lower right: open interior (no notes) -->
+  <rect x="67" y="104" width="55" height="88" rx="2" fill="url(#cabint6)" stroke="#5a3a18" stroke-width="0.5"/>
+  <rect x="69" y="140" width="51" height="2" fill="#5a3a18"/>
+  <rect x="67" y="104" width="55" height="4" fill="rgba(0,0,0,0.2)"/>
   <!-- Lower right door swung open (3D perspective) -->
   <polygon points="122,104 130,108 130,190 122,194" fill="#c89858" stroke="#a07838" stroke-width="0.5"/>
   <polygon points="130,104 136,106 136,198 130,194" fill="#b89050" stroke="#987038" stroke-width="0.5"/>
@@ -1520,6 +1706,16 @@ zoom.doorBg = `
 
 // ============================================================
 //  ROOM DATA
+// Helper: hide all cabinet variants (ensures only one is visible after a swap)
+const hideAllCabinets = [
+  { type: "hideHotspot", params: { hotspotId: "hs_cabinet" } },
+  { type: "hideHotspot", params: { hotspotId: "hs_cabinet_glass_open" } },
+  { type: "hideHotspot", params: { hotspotId: "hs_cabinet_lower_open" } },
+  { type: "hideHotspot", params: { hotspotId: "hs_cabinet_lower_open_no_notes" } },
+  { type: "hideHotspot", params: { hotspotId: "hs_cabinet_open" } },
+  { type: "hideHotspot", params: { hotspotId: "hs_cabinet_open_no_notes" } },
+];
+
 // ============================================================
 
 const room = {
@@ -1635,6 +1831,8 @@ const room = {
     },
 
     // Step 2: Cabinet → use key → door opens visually → drawer → paper
+    // 6 cabinet states: (upper closed/open) × (lower closed/open) × (notes present/collected)
+    // All transitions use hideAllCabinets + showHotspot for robustness
     {
       id: "hs_cabinet",
       label: "Cabinet",
@@ -1654,13 +1852,24 @@ const room = {
             animation: { type: "rotate", to: "90deg" },
             imageOpen: toDataUrl(zoom.keyInHole),
             triggers: [
+              // If upper door already opened in this zoom session → both open
+              {
+                type: "useItem", requiredFlags: ["upper_door_open"], requiredItem: "item_small_key", once: true,
+                actions: [
+                  { type: "removeItem", params: { itemId: "item_small_key" } },
+                  { type: "setFlag", params: { flag: "cabinet_open", value: true } },
+                  ...hideAllCabinets,
+                  { type: "showHotspot", params: { hotspotId: "hs_cabinet_open" } }
+                ]
+              },
+              // Upper door still closed → only lower opens
               {
                 type: "useItem", requiredFlags: [], requiredItem: "item_small_key", once: true,
                 actions: [
                   { type: "removeItem", params: { itemId: "item_small_key" } },
                   { type: "setFlag", params: { flag: "cabinet_open", value: true } },
-                  { type: "hideHotspot", params: { hotspotId: "hs_cabinet" } },
-                  { type: "showHotspot", params: { hotspotId: "hs_cabinet_open" } }
+                  ...hideAllCabinets,
+                  { type: "showHotspot", params: { hotspotId: "hs_cabinet_lower_open" } }
                 ]
               }
             ]
@@ -1673,14 +1882,35 @@ const room = {
             image: null,
             animation: { type: "fade-in" },
             imageOpen: toDataUrl(zoom.upperDoorOpen),
-            triggers: [{
-              type: "tap", requiredFlags: [], requiredItem: null, once: true,
-              actions: [
-                { type: "setFlag", params: { flag: "upper_door_open", value: true } },
-                { type: "hideHotspot", params: { hotspotId: "hs_cabinet" } },
-                { type: "showHotspot", params: { hotspotId: "hs_cabinet_glass_open" } }
-              ]
-            }]
+            triggers: [
+              // If lower door already opened + paper collected
+              {
+                type: "tap", requiredFlags: ["cabinet_open", "_zoomHidden_sub_paper"], requiredItem: null, once: true,
+                actions: [
+                  { type: "setFlag", params: { flag: "upper_door_open", value: true } },
+                  ...hideAllCabinets,
+                  { type: "showHotspot", params: { hotspotId: "hs_cabinet_open_no_notes" } }
+                ]
+              },
+              // If lower door already opened + paper still present
+              {
+                type: "tap", requiredFlags: ["cabinet_open"], requiredItem: null, once: true,
+                actions: [
+                  { type: "setFlag", params: { flag: "upper_door_open", value: true } },
+                  ...hideAllCabinets,
+                  { type: "showHotspot", params: { hotspotId: "hs_cabinet_open" } }
+                ]
+              },
+              // Lower door still closed
+              {
+                type: "tap", requiredFlags: [], requiredItem: null, once: true,
+                actions: [
+                  { type: "setFlag", params: { flag: "upper_door_open", value: true } },
+                  ...hideAllCabinets,
+                  { type: "showHotspot", params: { hotspotId: "hs_cabinet_glass_open" } }
+                ]
+              }
+            ]
           },
           // Lockbox visible after upper door opens
           {
@@ -1698,7 +1928,7 @@ const room = {
               }
             ]
           },
-          // Right door opens (swing animation, visible after key used)
+          // Right door opens (animation, visible after key used)
           {
             id: "sub_right_door",
             label: "Right Door",
@@ -1717,16 +1947,30 @@ const room = {
             image: toDataUrl(zoom.paper),
             hideOnCollect: true,
             visibleWhen: ["cabinet_open", "_zoomAnim_sub_right_door"],
-            triggers: [{
-              type: "tap", requiredFlags: [], requiredItem: null, once: true,
-              actions: [
-                { type: "giveItem", params: { itemId: "item_paper" } }
-              ]
-            }]
+            triggers: [
+              // If upper door also opened → both open, no notes
+              {
+                type: "tap", requiredFlags: ["upper_door_open"], requiredItem: null, once: true,
+                actions: [
+                  { type: "giveItem", params: { itemId: "item_paper" } },
+                  ...hideAllCabinets,
+                  { type: "showHotspot", params: { hotspotId: "hs_cabinet_open_no_notes" } }
+                ]
+              },
+              // Upper door still closed → lower open, no notes
+              {
+                type: "tap", requiredFlags: [], requiredItem: null, once: true,
+                actions: [
+                  { type: "giveItem", params: { itemId: "item_paper" } },
+                  ...hideAllCabinets,
+                  { type: "showHotspot", params: { hotspotId: "hs_cabinet_lower_open_no_notes" } }
+                ]
+              }
+            ]
           }
         ]
       },
-      triggers: [] // zoom handles interaction (key used on keyhole sub-hotspot)
+      triggers: [] // zoom handles interaction
     },
 
     // Cabinet with doors open (shown after key used)
@@ -1799,10 +2043,69 @@ const room = {
             triggers: [{
               type: "tap", requiredFlags: [], requiredItem: null, once: true,
               actions: [
-                { type: "giveItem", params: { itemId: "item_paper" } }
+                { type: "giveItem", params: { itemId: "item_paper" } },
+                ...hideAllCabinets,
+                { type: "showHotspot", params: { hotspotId: "hs_cabinet_open_no_notes" } }
               ]
             }]
           }
+        ]
+      },
+      triggers: []
+    },
+
+    // Cabinet with both doors open, notes collected
+    {
+      id: "hs_cabinet_open_no_notes",
+      label: "Cabinet (Open, No Notes)",
+      shape: "rect",
+      bounds: { x: 540, y: 100, w: 145, h: 200 },
+      appearance: { fill: "#c8a060", stroke: "#a88040", image: toDataUrl(svgs.cabinetOpenNoNotes) },
+      zIndex: 1, visible: false,
+      zoomView: {
+        image: toDataUrl(zoom.cabinetBg),
+        subHotspots: [
+          // Key already in keyhole
+          {
+            id: "sub_keyhole2",
+            label: "Keyhole",
+            bounds: { x: 43, y: 74, w: 8, h: 10 },
+            image: toDataUrl(zoom.keyInHole),
+            triggers: []
+          },
+          // Upper right glass door already open
+          {
+            id: "sub_upper_door",
+            label: "Upper Right Door",
+            bounds: { x: 51, y: 7, w: 42, h: 40 },
+            image: toDataUrl(zoom.upperDoorOpen),
+            triggers: []
+          },
+          // Lockbox always visible (both doors open)
+          {
+            id: "sub_lockbox_vis",
+            label: "Lockbox",
+            bounds: { x: 53, y: 14, w: 30, h: 22 },
+            image: toDataUrl(zoom.lockboxInGlass),
+            triggers: [
+              {
+                type: "tap", requiredFlags: [], requiredItem: null,
+                actions: [
+                  { type: "openZoom", params: { hotspotId: "hs_lockbox" } }
+                ]
+              }
+            ]
+          },
+          // Right door already open
+          {
+            id: "sub_right_door2",
+            label: "Right Door Open",
+            bounds: { x: 51, y: 50, w: 42, h: 46 },
+            image: toDataUrl(zoom.cabinetRightOpen),
+            visibleWhen: ["cabinet_open"],
+            triggers: []
+          }
+          // No paper — already collected
         ]
       },
       triggers: []
@@ -1819,7 +2122,7 @@ const room = {
       zoomView: {
         image: toDataUrl(zoom.cabinetBg),
         subHotspots: [
-          // Keyhole on lower door — use key here to unlock
+          // Keyhole on lower door — use key here to unlock (upper already open → both open)
           {
             id: "sub_keyhole",
             label: "Keyhole",
@@ -1833,7 +2136,7 @@ const room = {
                 actions: [
                   { type: "removeItem", params: { itemId: "item_small_key" } },
                   { type: "setFlag", params: { flag: "cabinet_open", value: true } },
-                  { type: "hideHotspot", params: { hotspotId: "hs_cabinet_glass_open" } },
+                  ...hideAllCabinets,
                   { type: "showHotspot", params: { hotspotId: "hs_cabinet_open" } }
                 ]
               }
@@ -1873,7 +2176,7 @@ const room = {
             imageOpen: toDataUrl(zoom.cabinetRightOpen),
             triggers: []
           },
-          // Paper on shelf inside right door
+          // Paper on shelf inside right door (upper already open → swap to both-open-no-notes)
           {
             id: "sub_paper",
             label: "Paper",
@@ -1884,10 +2187,186 @@ const room = {
             triggers: [{
               type: "tap", requiredFlags: [], requiredItem: null, once: true,
               actions: [
-                { type: "giveItem", params: { itemId: "item_paper" } }
+                { type: "giveItem", params: { itemId: "item_paper" } },
+                ...hideAllCabinets,
+                { type: "showHotspot", params: { hotspotId: "hs_cabinet_open_no_notes" } }
               ]
             }]
           }
+        ]
+      },
+      triggers: []
+    },
+
+    // Cabinet with lower right door open, upper glass closed, notes present
+    {
+      id: "hs_cabinet_lower_open",
+      label: "Cabinet (Lower Open)",
+      shape: "rect",
+      bounds: { x: 540, y: 100, w: 145, h: 200 },
+      appearance: { fill: "#c8a060", stroke: "#a88040", image: toDataUrl(svgs.cabinetLowerOpen) },
+      zIndex: 1, visible: false,
+      zoomView: {
+        image: toDataUrl(zoom.cabinetBg),
+        subHotspots: [
+          // Key already in keyhole (visual only)
+          {
+            id: "sub_keyhole2",
+            label: "Keyhole",
+            bounds: { x: 43, y: 74, w: 8, h: 10 },
+            image: toDataUrl(zoom.keyInHole),
+            triggers: []
+          },
+          // Upper right glass door — tap to open
+          {
+            id: "sub_upper_door",
+            label: "Upper Right Door",
+            bounds: { x: 51, y: 7, w: 42, h: 40 },
+            image: null,
+            animation: { type: "fade-in" },
+            imageOpen: toDataUrl(zoom.upperDoorOpen),
+            triggers: [
+              // Paper already collected → both open, no notes
+              {
+                type: "tap", requiredFlags: ["_zoomHidden_sub_paper"], requiredItem: null, once: true,
+                actions: [
+                  { type: "setFlag", params: { flag: "upper_door_open", value: true } },
+                  ...hideAllCabinets,
+                  { type: "showHotspot", params: { hotspotId: "hs_cabinet_open_no_notes" } }
+                ]
+              },
+              // Paper still present → both open, with notes
+              {
+                type: "tap", requiredFlags: [], requiredItem: null, once: true,
+                actions: [
+                  { type: "setFlag", params: { flag: "upper_door_open", value: true } },
+                  ...hideAllCabinets,
+                  { type: "showHotspot", params: { hotspotId: "hs_cabinet_open" } }
+                ]
+              }
+            ]
+          },
+          // Lockbox visible after upper door opens
+          {
+            id: "sub_lockbox_vis",
+            label: "Lockbox",
+            bounds: { x: 53, y: 14, w: 30, h: 22 },
+            image: toDataUrl(zoom.lockboxInGlass),
+            visibleWhen: ["_zoomAnim_sub_upper_door"],
+            triggers: [
+              {
+                type: "tap", requiredFlags: [], requiredItem: null,
+                actions: [
+                  { type: "openZoom", params: { hotspotId: "hs_lockbox" } }
+                ]
+              }
+            ]
+          },
+          // Right door already open (shows immediately)
+          {
+            id: "sub_right_door2",
+            label: "Right Door Open",
+            bounds: { x: 51, y: 50, w: 42, h: 46 },
+            image: toDataUrl(zoom.cabinetRightOpen),
+            visibleWhen: ["cabinet_open"],
+            triggers: []
+          },
+          // Paper on shelf (visible, collectible)
+          {
+            id: "sub_paper",
+            label: "Paper",
+            bounds: { x: 53, y: 72, w: 30, h: 14 },
+            image: toDataUrl(zoom.paper),
+            hideOnCollect: true,
+            visibleWhen: ["cabinet_open"],
+            triggers: [
+              // Upper door also opened → both open, no notes
+              {
+                type: "tap", requiredFlags: ["upper_door_open"], requiredItem: null, once: true,
+                actions: [
+                  { type: "giveItem", params: { itemId: "item_paper" } },
+                  ...hideAllCabinets,
+                  { type: "showHotspot", params: { hotspotId: "hs_cabinet_open_no_notes" } }
+                ]
+              },
+              // Upper door still closed → lower open, no notes
+              {
+                type: "tap", requiredFlags: [], requiredItem: null, once: true,
+                actions: [
+                  { type: "giveItem", params: { itemId: "item_paper" } },
+                  ...hideAllCabinets,
+                  { type: "showHotspot", params: { hotspotId: "hs_cabinet_lower_open_no_notes" } }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      triggers: []
+    },
+
+    // Cabinet with lower right door open, upper glass closed, notes collected
+    {
+      id: "hs_cabinet_lower_open_no_notes",
+      label: "Cabinet (Lower Open, No Notes)",
+      shape: "rect",
+      bounds: { x: 540, y: 100, w: 145, h: 200 },
+      appearance: { fill: "#c8a060", stroke: "#a88040", image: toDataUrl(svgs.cabinetLowerOpenNoNotes) },
+      zIndex: 1, visible: false,
+      zoomView: {
+        image: toDataUrl(zoom.cabinetBg),
+        subHotspots: [
+          // Key already in keyhole (visual only)
+          {
+            id: "sub_keyhole2",
+            label: "Keyhole",
+            bounds: { x: 43, y: 74, w: 8, h: 10 },
+            image: toDataUrl(zoom.keyInHole),
+            triggers: []
+          },
+          // Upper right glass door — tap to open → both open, no notes
+          {
+            id: "sub_upper_door",
+            label: "Upper Right Door",
+            bounds: { x: 51, y: 7, w: 42, h: 40 },
+            image: null,
+            animation: { type: "fade-in" },
+            imageOpen: toDataUrl(zoom.upperDoorOpen),
+            triggers: [{
+              type: "tap", requiredFlags: [], requiredItem: null, once: true,
+              actions: [
+                { type: "setFlag", params: { flag: "upper_door_open", value: true } },
+                ...hideAllCabinets,
+                { type: "showHotspot", params: { hotspotId: "hs_cabinet_open_no_notes" } }
+              ]
+            }]
+          },
+          // Lockbox visible after upper door opens
+          {
+            id: "sub_lockbox_vis",
+            label: "Lockbox",
+            bounds: { x: 53, y: 14, w: 30, h: 22 },
+            image: toDataUrl(zoom.lockboxInGlass),
+            visibleWhen: ["_zoomAnim_sub_upper_door"],
+            triggers: [
+              {
+                type: "tap", requiredFlags: [], requiredItem: null,
+                actions: [
+                  { type: "openZoom", params: { hotspotId: "hs_lockbox" } }
+                ]
+              }
+            ]
+          },
+          // Right door already open
+          {
+            id: "sub_right_door2",
+            label: "Right Door Open",
+            bounds: { x: 51, y: 50, w: 42, h: 46 },
+            image: toDataUrl(zoom.cabinetRightOpen),
+            visibleWhen: ["cabinet_open"],
+            triggers: []
+          }
+          // No paper — already collected
         ]
       },
       triggers: []
