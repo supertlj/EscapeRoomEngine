@@ -767,9 +767,7 @@
             "triggers": [
               {
                 "type": "tap",
-                "requiredFlags": [
-                  "cabinet_open"
-                ],
+                "requiredFlags": [],
                 "requiredItem": null,
                 "actions": [
                   {

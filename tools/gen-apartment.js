@@ -1921,7 +1921,7 @@ const room = {
             image: null,
             triggers: [
               {
-                type: "tap", requiredFlags: ["cabinet_open"], requiredItem: null,
+                type: "tap", requiredFlags: [], requiredItem: null,
                 actions: [
                   { type: "triggerPuzzle", params: { puzzleId: "puzzle_laptop" } }
                 ]
