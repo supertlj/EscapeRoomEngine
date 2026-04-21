@@ -1994,8 +1994,23 @@
                     }
                   },
                   {
-                    "type": "gameWin",
-                    "params": {}
+                    "type": "setFlag",
+                    "params": {
+                      "flag": "door_unlocked",
+                      "value": true
+                    }
+                  },
+                  {
+                    "type": "hideHotspot",
+                    "params": {
+                      "hotspotId": "hs_door"
+                    }
+                  },
+                  {
+                    "type": "showHotspot",
+                    "params": {
+                      "hotspotId": "hs_door_open"
+                    }
                   }
                 ]
               }
@@ -2012,10 +2027,73 @@
             },
             "image": null,
             "triggers": []
+          },
+          {
+            "id": "sub_door_open",
+            "label": "Open Door",
+            "bounds": {
+              "x": 8.75,
+              "y": 2.67,
+              "w": 82.5,
+              "h": 94.67
+            },
+            "image": "assets/rooms/apartment/zoom/doorOpenOverlay.svg",
+            "animation": {
+              "type": "fade-in"
+            },
+            "visibleWhen": [
+              "door_unlocked"
+            ],
+            "triggers": [
+              {
+                "type": "tap",
+                "requiredFlags": [],
+                "requiredItem": null,
+                "once": true,
+                "actions": [
+                  {
+                    "type": "gameWin",
+                    "params": {}
+                  }
+                ]
+              }
+            ]
           }
         ]
       },
       "triggers": []
+    },
+    {
+      "id": "hs_door_open",
+      "label": "Door (Open)",
+      "shape": "rect",
+      "bounds": {
+        "x": 420,
+        "y": 80,
+        "w": 130,
+        "h": 260
+      },
+      "appearance": {
+        "fill": "#e8d8b8",
+        "stroke": "#a89878",
+        "image": "assets/rooms/apartment/main/doorOpen.svg"
+      },
+      "zIndex": 1,
+      "visible": false,
+      "triggers": [
+        {
+          "type": "tap",
+          "requiredFlags": [],
+          "requiredItem": null,
+          "once": true,
+          "actions": [
+            {
+              "type": "gameWin",
+              "params": {}
+            }
+          ]
+        }
+      ]
     }
   ],
   "items": [

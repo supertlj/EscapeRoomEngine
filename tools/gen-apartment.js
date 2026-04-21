@@ -697,6 +697,52 @@ svgs.door = `
   <line x1="120" y1="5" x2="120" y2="255" stroke="rgba(0,0,0,0.08)" stroke-width="1"/>
 </svg>`;
 
+// Door open: frame visible, door swung open revealing bright hallway
+svgs.doorOpen = `
+<svg xmlns="http://www.w3.org/2000/svg" width="130" height="260">
+  <defs>
+    <linearGradient id="drhall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f8f0d8"/>
+      <stop offset="60%" stop-color="#e8d8b8"/>
+      <stop offset="100%" stop-color="#c8b898"/>
+    </linearGradient>
+    <linearGradient id="dropen" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7a4a28"/>
+      <stop offset="100%" stop-color="#6a3a18"/>
+    </linearGradient>
+  </defs>
+  <!-- Door frame -->
+  <rect x="0" y="0" width="130" height="260" fill="#a89878"/>
+  <rect x="4" y="2" width="122" height="256" fill="#988868"/>
+  <!-- Bright hallway visible through opening -->
+  <rect x="10" y="5" width="110" height="250" fill="url(#drhall)"/>
+  <!-- Hallway floor -->
+  <rect x="10" y="200" width="110" height="55" fill="#c8b898"/>
+  <line x1="10" y1="200" x2="120" y2="200" stroke="#b8a888" stroke-width="0.5"/>
+  <!-- Hallway far wall detail -->
+  <rect x="40" y="30" width="50" height="80" rx="2" fill="rgba(0,0,0,0.04)" stroke="rgba(0,0,0,0.06)" stroke-width="0.5"/>
+  <!-- Light glow from hallway -->
+  <rect x="10" y="5" width="110" height="250" fill="rgba(255,255,200,0.08)"/>
+  <!-- Door swung open to the left — 3D perspective foreshortened -->
+  <polygon points="10,5 30,20 30,240 10,255" fill="url(#dropen)"/>
+  <!-- Door panel detail on foreshortened door -->
+  <polygon points="13,16 28,28 28,78 13,68" fill="#8a5a30" stroke="#6a4020" stroke-width="0.5" opacity="0.7"/>
+  <polygon points="13,80 28,90 28,140 13,130" fill="#8a5a30" stroke="#6a4020" stroke-width="0.5" opacity="0.7"/>
+  <polygon points="13,142 28,152 28,200 13,190" fill="#8a5a30" stroke="#6a4020" stroke-width="0.5" opacity="0.7"/>
+  <!-- Door edge thickness -->
+  <polygon points="30,20 34,22 34,238 30,240" fill="#5a3a18"/>
+  <!-- Card reader on open door (barely visible) -->
+  <rect x="15" y="108" width="5" height="12" rx="1" fill="#333" opacity="0.6"/>
+  <!-- Green LED on card reader -->
+  <circle cx="17" cy="115" r="1.5" fill="#0a0"/>
+  <circle cx="17" cy="115" r="2.5" fill="rgba(0,200,0,0.15)"/>
+  <!-- Floor light spill from hallway -->
+  <polygon points="34,255 60,260 120,260 120,255" fill="rgba(255,255,200,0.06)"/>
+  <!-- Frame shadows -->
+  <line x1="10" y1="5" x2="10" y2="255" stroke="rgba(0,0,0,0.15)" stroke-width="2"/>
+  <line x1="120" y1="5" x2="120" y2="255" stroke="rgba(0,0,0,0.08)" stroke-width="1"/>
+</svg>`;
+
 // Laptop: 3D perspective - screen angled back, base flat on desk
 svgs.laptop = `
 <svg xmlns="http://www.w3.org/2000/svg" width="110" height="80">
@@ -1703,6 +1749,88 @@ zoom.doorBg = `
   <rect x="35" y="432" width="330" height="6" fill="rgba(0,0,0,0.2)"/>
 </svg>`;
 
+// --- Door open overlay (fades in over doorBg when unlocked) ---
+// Covers the door panel area (35,12 to 365,438 in doorBg = 330x426)
+// Positioned via sub-hotspot bounds so it aligns perfectly.
+zoom.doorOpenOverlay = `
+<svg xmlns="http://www.w3.org/2000/svg" width="330" height="426" viewBox="0 0 330 426">
+  <defs>
+    <linearGradient id="hallgrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fff4d8"/>
+      <stop offset="50%" stop-color="#f0e0b8"/>
+      <stop offset="100%" stop-color="#c8b488"/>
+    </linearGradient>
+    <radialGradient id="hallglow" cx="55%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#fffbe8" stop-opacity="0.95"/>
+      <stop offset="60%" stop-color="#f8e8c0" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#f8e8c0" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="openpanel" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3a1e08"/>
+      <stop offset="60%" stop-color="#6a3a18"/>
+      <stop offset="100%" stop-color="#a06a38"/>
+    </linearGradient>
+    <linearGradient id="wallgrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#b8a888"/>
+      <stop offset="100%" stop-color="#8a7858"/>
+    </linearGradient>
+    <linearGradient id="floorgrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#806848"/>
+      <stop offset="100%" stop-color="#c0a878"/>
+    </linearGradient>
+  </defs>
+  <!-- Hallway background (bright beyond the door) -->
+  <rect x="0" y="0" width="330" height="426" fill="url(#hallgrad)"/>
+  <!-- Warm hallway glow -->
+  <rect x="0" y="0" width="330" height="426" fill="url(#hallglow)"/>
+  <!-- Ceiling wedge (perspective) -->
+  <polygon points="80,0 250,0 230,55 100,55" fill="#a89878" opacity="0.7"/>
+  <!-- Left hallway wall (vanishing toward center) -->
+  <polygon points="80,55 80,380 95,375 95,65" fill="url(#wallgrad)" opacity="0.85"/>
+  <!-- Right hallway wall -->
+  <polygon points="250,55 250,380 235,375 235,65" fill="url(#wallgrad)" opacity="0.85"/>
+  <!-- Hallway floor perspective -->
+  <polygon points="80,380 250,380 275,426 55,426" fill="url(#floorgrad)"/>
+  <line x1="80" y1="380" x2="55" y2="426" stroke="#5a4828" stroke-width="0.8" opacity="0.5"/>
+  <line x1="250" y1="380" x2="275" y2="426" stroke="#5a4828" stroke-width="0.8" opacity="0.5"/>
+  <line x1="165" y1="380" x2="165" y2="426" stroke="#5a4828" stroke-width="0.5" opacity="0.3"/>
+  <!-- Distant wall with a picture frame -->
+  <rect x="80" y="55" width="170" height="325" fill="#c8b898" opacity="0.5"/>
+  <rect x="135" y="130" width="60" height="85" fill="#5a4828" stroke="#8a7858" stroke-width="1.5" opacity="0.7"/>
+  <rect x="140" y="135" width="50" height="75" fill="#a89878" opacity="0.8"/>
+  <!-- Ambient light patch on floor -->
+  <ellipse cx="165" cy="400" rx="90" ry="14" fill="rgba(255,240,200,0.35)"/>
+  <!-- Door swung open — foreshortened on left side -->
+  <polygon points="0,0 95,35 95,395 0,426" fill="url(#openpanel)" stroke="#2a1408" stroke-width="1.5"/>
+  <!-- Open door wood grain -->
+  <g stroke="#4a2810" stroke-width="0.5" opacity="0.4">
+    <line x1="15" y1="5" x2="22" y2="420"/>
+    <line x1="38" y1="12" x2="42" y2="415"/>
+    <line x1="62" y1="22" x2="65" y2="410"/>
+  </g>
+  <!-- Door edge (right edge of open door — catches light) -->
+  <polygon points="95,35 95,395 91,390 91,40" fill="#d8b888"/>
+  <!-- Inner panel inset on open door -->
+  <polygon points="15,40 80,60 80,200 15,205" fill="#5a3018" stroke="#3a1e08" stroke-width="0.8" opacity="0.7"/>
+  <polygon points="15,220 80,215 80,370 15,385" fill="#5a3018" stroke="#3a1e08" stroke-width="0.8" opacity="0.7"/>
+  <!-- Card reader on open door (moved with door) -->
+  <rect x="30" y="155" width="22" height="34" rx="2" fill="#2a2a2a" stroke="#444" stroke-width="0.5"/>
+  <rect x="32" y="159" width="18" height="5" rx="1" fill="#0a0a0a"/>
+  <rect x="33" y="168" width="16" height="3" rx="0.8" fill="#0a0a0a"/>
+  <!-- Green LED (unlocked) -->
+  <circle cx="41" cy="180" r="3.5" fill="#050"/>
+  <circle cx="41" cy="180" r="2.2" fill="#0c8"/>
+  <circle cx="40.5" cy="179" r="0.8" fill="#afe"/>
+  <circle cx="41" cy="180" r="5.5" fill="rgba(0,220,120,0.18)"/>
+  <!-- Inner handle on open door -->
+  <rect x="10" y="210" width="22" height="7" rx="3" fill="#ccc" stroke="#888" stroke-width="0.5"/>
+  <rect x="12" y="211" width="18" height="2" fill="rgba(255,255,255,0.3)" rx="1"/>
+  <!-- Door frame inner reveal (wood thickness visible where door swung open) -->
+  <polygon points="95,35 100,30 100,400 95,395" fill="#8a6838"/>
+  <!-- Soft shadow cast by door onto floor -->
+  <polygon points="0,410 95,395 95,410 0,426" fill="rgba(0,0,0,0.35)"/>
+</svg>`;
+
 
 // ============================================================
 //  ROOM DATA
@@ -2480,7 +2608,7 @@ const room = {
       triggers: []
     },
 
-    // Step 4: Door → use keycard → escape
+    // Step 4: Door → use keycard → door opens → tap to escape
     {
       id: "hs_door",
       label: "Door",
@@ -2501,7 +2629,9 @@ const room = {
                 type: "useItem", requiredFlags: [], requiredItem: "item_keycard", once: true,
                 actions: [
                   { type: "removeItem", params: { itemId: "item_keycard" } },
-                  { type: "gameWin", params: {} }
+                  { type: "setFlag", params: { flag: "door_unlocked", value: true } },
+                  { type: "hideHotspot", params: { hotspotId: "hs_door" } },
+                  { type: "showHotspot", params: { hotspotId: "hs_door_open" } }
                 ]
               }
             ]
@@ -2512,10 +2642,46 @@ const room = {
             bounds: { x: 68, y: 64, w: 16, h: 6 },
             image: null,
             triggers: []
+          },
+          {
+            // Fades in over the closed-door art once door_unlocked is set.
+            // Tapping it escapes the room.
+            id: "sub_door_open",
+            label: "Open Door",
+            bounds: { x: 8.75, y: 2.67, w: 82.5, h: 94.67 },
+            image: toDataUrl(zoom.doorOpenOverlay),
+            animation: { type: "fade-in" },
+            visibleWhen: ["door_unlocked"],
+            triggers: [
+              {
+                type: "tap", requiredFlags: [], requiredItem: null, once: true,
+                actions: [
+                  { type: "gameWin", params: {} }
+                ]
+              }
+            ]
           }
         ]
       },
       triggers: [] // zoom handles keycard interaction
+    },
+
+    // Door open — tap to walk through and escape
+    {
+      id: "hs_door_open",
+      label: "Door (Open)",
+      shape: "rect",
+      bounds: { x: 420, y: 80, w: 130, h: 260 },
+      appearance: { fill: "#e8d8b8", stroke: "#a89878", image: toDataUrl(svgs.doorOpen) },
+      zIndex: 1, visible: false,
+      triggers: [
+        {
+          type: "tap", requiredFlags: [], requiredItem: null, once: true,
+          actions: [
+            { type: "gameWin", params: {} }
+          ]
+        }
+      ]
     }
   ],
   items: [
