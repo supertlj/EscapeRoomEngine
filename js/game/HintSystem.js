@@ -13,8 +13,6 @@ export default class HintSystem {
   constructor(state, hints = []) {
     this.state = state;
     this.hints = hints;
-    this.cooldownMs = 30000; // 30 second cooldown between hints
-    this._lastHintTime = -Infinity;
   }
 
   setHints(hints) {
@@ -23,18 +21,7 @@ export default class HintSystem {
 
   /** Can the player request a hint right now? */
   canUseHint() {
-    // Must have hints remaining
-    if (this.state.hintsUsed >= this.hints.length) return false;
-    // Cooldown check
-    if (performance.now() - this._lastHintTime < this.cooldownMs) return false;
-    return true;
-  }
-
-  /** Get cooldown remaining in seconds (0 if ready) */
-  getCooldownRemaining() {
-    const elapsed = performance.now() - this._lastHintTime;
-    const remaining = this.cooldownMs - elapsed;
-    return remaining > 0 ? Math.ceil(remaining / 1000) : 0;
+    return this.state.hintsUsed < this.hints.length;
   }
 
   /** Get the total number of hints available */
@@ -55,24 +42,15 @@ export default class HintSystem {
   /** Request a hint. Returns the hint text or null. */
   requestHint() {
     if (!this.canUseHint()) {
-      const cooldown = this.getCooldownRemaining();
-      if (cooldown > 0) {
-        EventBus.emit('action:showMessage', {
-          message: `Hint cooldown: wait ${cooldown}s`,
-          onDismiss: () => {}
-        });
-      } else {
-        EventBus.emit('action:showMessage', {
-          message: 'No more hints available!',
-          onDismiss: () => {}
-        });
-      }
+      EventBus.emit('action:showMessage', {
+        message: 'No more hints available!',
+        onDismiss: () => {}
+      });
       return null;
     }
 
     const hint = this.hints[this.state.hintsUsed];
     this.state.hintsUsed++;
-    this._lastHintTime = performance.now();
 
     EventBus.emit('hint:used', {
       hint,
