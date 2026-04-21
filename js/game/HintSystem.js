@@ -80,10 +80,16 @@ export default class HintSystem {
       hintsRemaining: this.getHintsRemaining()
     });
 
-    EventBus.emit('action:showMessage', {
-      message: `Hint: ${hint}`,
-      onDismiss: () => {}
-    });
+    // Object hint { hotspotId } → visual circle on the canvas (no words)
+    // String hint → legacy text popup (other rooms still use this)
+    if (hint && typeof hint === 'object' && hint.hotspotId) {
+      EventBus.emit('hint:show', { hotspotId: hint.hotspotId });
+    } else if (typeof hint === 'string') {
+      EventBus.emit('action:showMessage', {
+        message: `Hint: ${hint}`,
+        onDismiss: () => {}
+      });
+    }
 
     return hint;
   }

@@ -143,6 +143,71 @@ export default class Renderer {
     }
   }
 
+  /**
+   * Pulse a red circle around a hotspot (used for wordless hints).
+   * Runs its own RAF loop, layered on top of a fresh scene redraw each frame.
+   * @param {string} hotspotId
+   * @param {number} durationMs total animation length (defaults 3500ms)
+   */
+  pulseHint(hotspotId, durationMs = 3500) {
+    if (!this.room) return;
+    const hs = this.room.hotspots.find(h => h.id === hotspotId);
+    if (!hs) return;
+    this._hintTarget = hs;
+    this._hintStart = performance.now();
+    this._hintDuration = durationMs;
+    if (this._hintRaf !== null && this._hintRaf !== undefined) return;
+    const tick = () => {
+      if (!this._hintTarget) { this._hintRaf = null; return; }
+      const elapsed = performance.now() - this._hintStart;
+      if (elapsed >= this._hintDuration) {
+        this._hintTarget = null;
+        this._hintRaf = null;
+        this.markDirty(); // clean draw after hint ends
+        return;
+      }
+      // Redraw full scene, then overlay the hint circle
+      this._draw();
+      this._drawHintCircle(this._hintTarget, elapsed);
+      this._hintRaf = requestAnimationFrame(tick);
+    };
+    this._hintRaf = requestAnimationFrame(tick);
+  }
+
+  _drawHintCircle(hs, elapsed) {
+    const ctx = this.ctx;
+    const b = hs.bounds;
+    const cx = b.x + b.w / 2;
+    const cy = b.y + b.h / 2;
+    // Radius hugs the hotspot bounds with a small margin
+    const baseR = Math.max(b.w, b.h) / 2 + 14;
+    // Pulse: ~1.2s period, +/-10%
+    const pulse = 1 + 0.1 * Math.sin(elapsed / 1200 * Math.PI * 2);
+    const r = baseR * pulse;
+    // Fade in first 250ms, out last 600ms
+    const fadeIn = Math.min(1, elapsed / 250);
+    const fadeOut = Math.min(1, (this._hintDuration - elapsed) / 600);
+    const alpha = Math.min(fadeIn, fadeOut);
+
+    ctx.save();
+    // Outer glow ring
+    ctx.strokeStyle = `rgba(255, 60, 60, ${alpha})`;
+    ctx.lineWidth = 4;
+    ctx.shadowColor = 'rgba(255, 60, 60, 0.95)';
+    ctx.shadowBlur = 14;
+    ctx.beginPath();
+    ctx.ellipse(cx, cy, r, r, 0, 0, Math.PI * 2);
+    ctx.stroke();
+    // Inner softer ring
+    ctx.shadowBlur = 0;
+    ctx.strokeStyle = `rgba(255, 140, 140, ${alpha * 0.55})`;
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.ellipse(cx, cy, r * 0.9, r * 0.9, 0, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.restore();
+  }
+
   /** Convert screen (mouse/touch) coordinates to logical room coordinates */
   screenToLogical(screenX, screenY) {
     const rect = this.canvas.getBoundingClientRect();

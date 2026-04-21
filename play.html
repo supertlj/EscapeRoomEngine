@@ -163,6 +163,11 @@ async function init() {
 
   EventBus.on('hint:used', () => updateHintButton());
 
+  // Visual hint — pulse a red circle around the target hotspot on the canvas
+  EventBus.on('hint:show', ({ hotspotId }) => {
+    renderer.pulseHint(hotspotId);
+  });
+
   // Puzzle data requests from DialogUI
   EventBus.on('puzzle:requestData', ({ puzzleId, callback }) => {
     const rm = roomManager.currentRoom || room;

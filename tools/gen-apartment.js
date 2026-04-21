@@ -2734,12 +2734,15 @@ const room = {
       onFail: []
     }
   ],
+  // Progressive hints — wordless. Each hint circles the next thing to
+  // investigate on the canvas in red. Order matches puzzle progression:
+  // plant → lower cabinet → laptop → upper cabinet (lockbox) → door.
   hints: [
-    "Look carefully at the plant pot — the soil seems disturbed.",
-    "Dig in the soil to find a key. Use it on the lower cabinet.",
-    "The paper from the cabinet has the laptop password: TAKI.",
-    "The laptop shows 1886. Use that on the lockbox in the upper cabinet.",
-    "Swipe the keycard from the lockbox on the door's card reader."
+    { hotspotId: "hs_plant" },
+    { hotspotId: "hs_cabinet" },
+    { hotspotId: "hs_laptop" },
+    { hotspotId: "hs_cabinet" },
+    { hotspotId: "hs_door" }
   ],
   onEnter: []
 };
