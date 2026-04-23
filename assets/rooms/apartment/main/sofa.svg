@@ -1,40 +1,144 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="200" height="130">
   <defs>
-    <linearGradient id="sf" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#e8dcc0"/>
-      <stop offset="100%" stop-color="#d8ccb0"/>
+    <linearGradient id="sofaBody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="#f0e4c8"/>
+      <stop offset="55%" stop-color="#e0d2b0"/>
+      <stop offset="100%" stop-color="#b8a78a"/>
     </linearGradient>
-    <linearGradient id="sfs" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#d0c4a8"/>
-      <stop offset="100%" stop-color="#c0b498"/>
+    <linearGradient id="sofaBack" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="#eadcba"/>
+      <stop offset="100%" stop-color="#c8b896"/>
+    </linearGradient>
+    <linearGradient id="sofaArm" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"  stop-color="#d8c8a4"/>
+      <stop offset="50%" stop-color="#e4d4b0"/>
+      <stop offset="100%" stop-color="#bca88a"/>
+    </linearGradient>
+    <linearGradient id="sofaSide" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#b8a88a"/>
+      <stop offset="100%" stop-color="#907d60"/>
+    </linearGradient>
+    <linearGradient id="cushion" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="#ead8b4"/>
+      <stop offset="55%" stop-color="#d0be98"/>
+      <stop offset="100%" stop-color="#b8a686"/>
+    </linearGradient>
+    <linearGradient id="pillowA" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d0958a"/>
+      <stop offset="100%" stop-color="#a0604e"/>
+    </linearGradient>
+    <linearGradient id="pillowB" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#a8c8b8"/>
+      <stop offset="100%" stop-color="#6a988a"/>
+    </linearGradient>
+    <linearGradient id="throw" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c89878"/>
+      <stop offset="100%" stop-color="#8a5e3a"/>
     </linearGradient>
   </defs>
+
   <!-- Floor shadow -->
-  <ellipse cx="100" cy="124" rx="85" ry="6" fill="rgba(0,0,0,0.15)"/>
-  <!-- Legs -->
-  <rect x="14" y="105" width="10" height="18" rx="2" fill="#b0a080"/>
-  <rect x="176" y="105" width="10" height="18" rx="2" fill="#b0a080"/>
-  <!-- Side panel (3D depth right) -->
-  <polygon points="186,30 200,35 200,108 186,112" fill="url(#sfs)"/>
-  <!-- Sofa body -->
-  <rect x="6" y="38" width="180" height="70" rx="6" fill="url(#sf)" stroke="#c0b498" stroke-width="1"/>
-  <!-- Backrest -->
-  <rect x="6" y="22" width="180" height="24" rx="6" fill="#e0d4b8" stroke="#c8bc9c" stroke-width="0.5"/>
-  <!-- Left arm -->
-  <rect x="0" y="28" width="16" height="65" rx="5" fill="#d8ccb0" stroke="#c0b498" stroke-width="1"/>
-  <!-- Right arm -->
-  <rect x="178" y="28" width="16" height="65" rx="5" fill="#d8ccb0" stroke="#c0b498" stroke-width="1"/>
-  <!-- Seat cushion dividers -->
-  <rect x="22" y="44" width="52" height="52" fill="#d4c8ac" rx="3"/>
-  <rect x="78" y="44" width="50" height="52" fill="#d4c8ac" rx="3"/>
-  <rect x="132" y="44" width="48" height="52" fill="#d4c8ac" rx="3"/>
-  <!-- Cushion seams -->
-  <line x1="74" y1="48" x2="74" y2="92" stroke="#c4b898" stroke-width="0.8"/>
-  <line x1="128" y1="48" x2="128" y2="92" stroke="#c4b898" stroke-width="0.8"/>
-  <!-- Throw pillows -->
-  <rect x="26" y="24" width="34" height="24" rx="10" fill="#c8bca0" transform="rotate(-6 43 36)"/>
-  <rect x="70" y="24" width="30" height="22" rx="8" fill="#b8d0c0" transform="rotate(4 85 35)"/>
-  <rect x="140" y="24" width="30" height="22" rx="8" fill="#c8bca0" transform="rotate(7 155 35)"/>
-  <!-- Pillow pattern -->
-  <circle cx="85" cy="34" r="5" fill="none" stroke="#a8c0b0" stroke-width="0.5" opacity="0.5"/>
+  <ellipse cx="100" cy="126" rx="92" ry="5" fill="rgba(0,0,0,0.25)"/>
+
+  <!-- Legs (darker wood, small turned feet) -->
+  <rect x="14"  y="108" width="10" height="16" rx="2" fill="#6a4a2a"/>
+  <rect x="14"  y="108" width="10" height="3"  fill="#8a6438"/>
+  <rect x="176" y="108" width="10" height="16" rx="2" fill="#6a4a2a"/>
+  <rect x="176" y="108" width="10" height="3"  fill="#8a6438"/>
+
+  <!-- 3D depth side panel on right -->
+  <polygon points="186,30 200,36 200,110 186,114" fill="url(#sofaSide)"/>
+
+  <!-- Sofa main body (seat box) -->
+  <rect x="6" y="38" width="180" height="72" rx="7" fill="url(#sofaBody)" stroke="#a89478" stroke-width="1"/>
+  <!-- Seat front skirt shadow -->
+  <rect x="8" y="100" width="176" height="8" fill="rgba(60,40,20,0.12)"/>
+
+  <!-- Backrest (tufted feel via seam grid) -->
+  <rect x="6" y="20" width="180" height="28" rx="7" fill="url(#sofaBack)" stroke="#b0a080" stroke-width="0.6"/>
+  <!-- Tufting diamond pattern on backrest -->
+  <g stroke="rgba(80,60,36,0.25)" stroke-width="0.6" fill="none">
+    <path d="M30 24 L50 34 L30 44 M60 24 L80 34 L60 44 M90 24 L110 34 L90 44 M120 24 L140 34 L120 44 M150 24 L170 34 L150 44"/>
+    <path d="M50 34 L70 24 M50 34 L70 44 M80 34 L100 24 M80 34 L100 44 M110 34 L130 24 M110 34 L130 44 M140 34 L160 24 M140 34 L160 44"/>
+  </g>
+  <!-- Tuft button dots -->
+  <g fill="rgba(90,68,42,0.55)">
+    <circle cx="30" cy="34" r="0.8"/>
+    <circle cx="50" cy="24" r="0.8"/>
+    <circle cx="50" cy="44" r="0.8"/>
+    <circle cx="70" cy="34" r="0.8"/>
+    <circle cx="90" cy="24" r="0.8"/>
+    <circle cx="90" cy="44" r="0.8"/>
+    <circle cx="110" cy="34" r="0.8"/>
+    <circle cx="130" cy="24" r="0.8"/>
+    <circle cx="130" cy="44" r="0.8"/>
+    <circle cx="150" cy="34" r="0.8"/>
+    <circle cx="170" cy="24" r="0.8"/>
+    <circle cx="170" cy="44" r="0.8"/>
+  </g>
+
+  <!-- Arms -->
+  <rect x="0"  y="26" width="18" height="70" rx="6" fill="url(#sofaArm)" stroke="#a89478" stroke-width="1"/>
+  <rect x="182" y="26" width="18" height="70" rx="6" fill="url(#sofaArm)" stroke="#a89478" stroke-width="1"/>
+  <!-- Arm top highlights -->
+  <rect x="2" y="28" width="14" height="2" rx="1" fill="rgba(255,248,220,0.45)"/>
+  <rect x="184" y="28" width="14" height="2" rx="1" fill="rgba(255,248,220,0.45)"/>
+
+  <!-- Seat cushions with soft rounded corners -->
+  <g>
+    <rect x="22" y="48" width="52" height="56" rx="5" fill="url(#cushion)" stroke="#a89478" stroke-width="0.8"/>
+    <path d="M22 52 Q48 50 74 52" fill="none" stroke="rgba(255,248,220,0.35)" stroke-width="0.8"/>
+    <rect x="24" y="96" width="48" height="4" fill="rgba(60,40,20,0.1)"/>
+  </g>
+  <g>
+    <rect x="74" y="48" width="52" height="56" rx="5" fill="url(#cushion)" stroke="#a89478" stroke-width="0.8"/>
+    <path d="M74 52 Q100 50 126 52" fill="none" stroke="rgba(255,248,220,0.35)" stroke-width="0.8"/>
+    <rect x="76" y="96" width="48" height="4" fill="rgba(60,40,20,0.1)"/>
+  </g>
+  <g>
+    <rect x="126" y="48" width="52" height="56" rx="5" fill="url(#cushion)" stroke="#a89478" stroke-width="0.8"/>
+    <path d="M126 52 Q152 50 178 52" fill="none" stroke="rgba(255,248,220,0.35)" stroke-width="0.8"/>
+    <rect x="128" y="96" width="48" height="4" fill="rgba(60,40,20,0.1)"/>
+  </g>
+
+  <!-- Throw blanket draped over right arm -->
+  <path d="M148 44 Q168 40 190 46 Q200 62 188 84 Q176 88 160 82 Q150 60 148 44 Z"
+        fill="url(#throw)" stroke="#6a4420" stroke-width="0.6"/>
+  <!-- Blanket fold lines -->
+  <g stroke="rgba(50,30,10,0.35)" stroke-width="0.5" fill="none">
+    <path d="M156 52 Q172 56 186 52"/>
+    <path d="M160 62 Q176 66 188 62"/>
+    <path d="M164 72 Q176 76 186 74"/>
+  </g>
+  <!-- Blanket fringe at the end -->
+  <g stroke="#6a4420" stroke-width="0.5">
+    <line x1="160" y1="82" x2="160" y2="86"/>
+    <line x1="166" y1="85" x2="166" y2="89"/>
+    <line x1="172" y1="86" x2="172" y2="90"/>
+    <line x1="178" y1="85" x2="178" y2="89"/>
+    <line x1="184" y1="84" x2="184" y2="88"/>
+  </g>
+
+  <!-- Throw pillow left -->
+  <g transform="rotate(-8 42 32)">
+    <rect x="22" y="20" width="40" height="26" rx="9" fill="url(#pillowA)" stroke="#7a3e2a" stroke-width="0.7"/>
+    <!-- Tassel dots in corners -->
+    <circle cx="24" cy="22" r="1.2" fill="#efcfa0"/>
+    <circle cx="60" cy="22" r="1.2" fill="#efcfa0"/>
+    <circle cx="24" cy="44" r="1.2" fill="#efcfa0"/>
+    <circle cx="60" cy="44" r="1.2" fill="#efcfa0"/>
+    <!-- Pattern: small diamonds -->
+    <g stroke="#efcfa0" stroke-width="0.5" fill="none">
+      <path d="M32 28 L42 33 L32 38 L22 33 Z" opacity="0"/>
+      <path d="M42 27 L50 32 L42 37 L34 32 Z"/>
+    </g>
+  </g>
+
+  <!-- Throw pillow center -->
+  <g transform="rotate(3 86 32)">
+    <rect x="68" y="22" width="36" height="24" rx="8" fill="url(#pillowB)" stroke="#3e5e52" stroke-width="0.7"/>
+    <circle cx="86" cy="34" r="5" fill="none" stroke="#d0e4da" stroke-width="0.7" opacity="0.85"/>
+    <circle cx="86" cy="34" r="2.5" fill="none" stroke="#d0e4da" stroke-width="0.5" opacity="0.7"/>
+    <circle cx="86" cy="34" r="1" fill="#d0e4da" opacity="0.8"/>
+  </g>
 </svg>

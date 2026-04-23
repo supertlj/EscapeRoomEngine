@@ -1,38 +1,85 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="100" height="190">
-  <!-- Floor shadow (ellipse) -->
-  <ellipse cx="52" cy="182" rx="38" ry="8" fill="rgba(0,0,0,0.18)"/>
-  <!-- Pot body with 3D gradient -->
   <defs>
     <linearGradient id="pot" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#1a1a1a"/>
-      <stop offset="30%" stop-color="#333"/>
-      <stop offset="70%" stop-color="#2a2a2a"/>
+      <stop offset="0%"  stop-color="#1a1a1a"/>
+      <stop offset="25%" stop-color="#3a3a3a"/>
+      <stop offset="55%" stop-color="#4a4a4a"/>
+      <stop offset="100%" stop-color="#151515"/>
+    </linearGradient>
+    <radialGradient id="potRim" cx="50%" cy="40%" r="60%">
+      <stop offset="0%"  stop-color="#555"/>
       <stop offset="100%" stop-color="#1a1a1a"/>
+    </radialGradient>
+    <linearGradient id="bladeDark" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="#4a7a3a"/>
+      <stop offset="100%" stop-color="#1a3e1a"/>
+    </linearGradient>
+    <linearGradient id="bladeMid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="#6ea850"/>
+      <stop offset="100%" stop-color="#2a5e28"/>
+    </linearGradient>
+    <linearGradient id="bladeLight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="#9ccc78"/>
+      <stop offset="100%" stop-color="#4a8438"/>
     </linearGradient>
   </defs>
-  <path d="M24,140 Q22,180 28,178 L76,178 Q82,180 78,140 Z" fill="url(#pot)"/>
-  <!-- Pot horizontal ribs -->
-  <ellipse cx="52" cy="150" rx="28" ry="3" fill="none" stroke="#444" stroke-width="0.8"/>
-  <ellipse cx="52" cy="162" rx="27" ry="2.5" fill="none" stroke="#444" stroke-width="0.8"/>
-  <!-- Pot rim -->
-  <ellipse cx="52" cy="140" rx="30" ry="8" fill="#333" stroke="#444" stroke-width="1"/>
-  <ellipse cx="52" cy="138" rx="27" ry="6" fill="#2a2a1a"/>
-  <!-- Pot highlight -->
-  <path d="M34,145 Q34,170 36,175" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="2"/>
+
+  <!-- Floor shadow -->
+  <ellipse cx="52" cy="182" rx="40" ry="7" fill="rgba(0,0,0,0.3)"/>
+
+  <!-- Snake-plant-style upright blades. Blade = pointed leaf, base at ~52,138 -->
+  <!-- Back row (darkest) -->
+  <g stroke="#1a3e1a" stroke-width="0.4">
+    <path d="M52 138 Q46 90 44 40 Q46 34 48 40 Q52 92 54 138 Z"
+          fill="url(#bladeDark)" transform="rotate(-14 52 138)"/>
+    <path d="M52 138 Q58 90 60 40 Q58 34 56 40 Q52 92 50 138 Z"
+          fill="url(#bladeDark)" transform="rotate(14 52 138)"/>
+    <path d="M52 138 Q50 96 52 52 Q52 46 52 52 Q54 96 54 138 Z"
+          fill="url(#bladeDark)"/>
+  </g>
+
+  <!-- Middle row -->
+  <g stroke="#2a5e28" stroke-width="0.4">
+    <path d="M52 138 Q44 96 38 56 Q40 50 42 56 Q50 98 54 138 Z"
+          fill="url(#bladeMid)" transform="rotate(-22 52 138)"/>
+    <path d="M52 138 Q60 96 66 56 Q64 50 62 56 Q54 98 50 138 Z"
+          fill="url(#bladeMid)" transform="rotate(22 52 138)"/>
+    <path d="M52 138 Q48 94 46 48 Q48 42 50 48 Q52 94 54 138 Z"
+          fill="url(#bladeMid)" transform="rotate(-6 52 138)"/>
+    <path d="M52 138 Q56 94 58 48 Q56 42 54 48 Q52 94 50 138 Z"
+          fill="url(#bladeMid)" transform="rotate(6 52 138)"/>
+  </g>
+
+  <!-- Front row (lightest, curving outward) -->
+  <g stroke="#3a7038" stroke-width="0.4">
+    <path d="M52 138 Q40 100 28 66 Q30 60 32 66 Q48 102 54 138 Z"
+          fill="url(#bladeLight)" transform="rotate(-32 52 138)"/>
+    <path d="M52 138 Q64 100 76 66 Q74 60 72 66 Q56 102 50 138 Z"
+          fill="url(#bladeLight)" transform="rotate(32 52 138)"/>
+    <path d="M52 138 Q46 100 40 62 Q42 56 44 62 Q50 102 54 138 Z"
+          fill="url(#bladeLight)" transform="rotate(-18 52 138)"/>
+    <path d="M52 138 Q58 100 64 62 Q62 56 60 62 Q54 102 50 138 Z"
+          fill="url(#bladeLight)" transform="rotate(18 52 138)"/>
+  </g>
+
+  <!-- Light yellow-green variegation stripe down center of tallest blade -->
+  <path d="M52 60 Q52 100 52 132" fill="none" stroke="rgba(200,240,150,0.35)" stroke-width="1.2"/>
+
+  <!-- Pot body -->
+  <path d="M24,140 Q22,180 30,180 L74,180 Q82,180 78,140 Z" fill="url(#pot)" stroke="#0a0a0a" stroke-width="0.8"/>
+  <path d="M30,145 Q28,170 32,178" fill="none" stroke="rgba(255,255,255,0.14)" stroke-width="2"/>
+  <path d="M25,152 Q52,156 79,152" fill="none" stroke="rgba(0,0,0,0.5)" stroke-width="0.7"/>
+  <path d="M26,164 Q52,168 78,164" fill="none" stroke="rgba(0,0,0,0.5)" stroke-width="0.7"/>
+  <!-- Rim -->
+  <ellipse cx="52" cy="140" rx="30" ry="8" fill="url(#potRim)" stroke="#555" stroke-width="0.8"/>
+  <ellipse cx="52" cy="138" rx="27" ry="5.5" fill="#2a241a"/>
+  <ellipse cx="52" cy="135" rx="24" ry="1.5" fill="rgba(255,255,255,0.14)"/>
   <!-- Soil -->
-  <ellipse cx="52" cy="138" rx="24" ry="5" fill="#3a3018"/>
-  <!-- Fronds -->
-  <path d="M52,132 Q48,80 25,30" fill="none" stroke="#2a7a2a" stroke-width="3"/>
-  <path d="M52,132 Q56,70 80,20" fill="none" stroke="#2a7a2a" stroke-width="3"/>
-  <path d="M52,132 Q42,90 18,55" fill="none" stroke="#3a8a3a" stroke-width="2.5"/>
-  <path d="M52,132 Q62,80 85,45" fill="none" stroke="#3a8a3a" stroke-width="2.5"/>
-  <path d="M52,132 Q38,95 10,70" fill="none" stroke="#4a9a4a" stroke-width="2"/>
-  <path d="M52,132 Q66,85 92,60" fill="none" stroke="#4a9a4a" stroke-width="2"/>
-  <path d="M52,132 Q46,100 22,75" fill="none" stroke="#3a8a3a" stroke-width="2"/>
-  <path d="M52,132 Q58,90 78,65" fill="none" stroke="#3a8a3a" stroke-width="2"/>
-  <!-- Leaf tips -->
-  <path d="M25,30 L18,24 M25,30 L32,26" stroke="#5aaa5a" stroke-width="1.2"/>
-  <path d="M80,20 L73,14 M80,20 L87,16" stroke="#5aaa5a" stroke-width="1.2"/>
-  <path d="M18,55 L10,50 M18,55 L22,48" stroke="#5aaa5a" stroke-width="1"/>
-  <path d="M85,45 L92,39 M85,45 L80,38" stroke="#5aaa5a" stroke-width="1"/>
+  <ellipse cx="52" cy="138" rx="24" ry="4.5" fill="#2e2414"/>
+  <g fill="#4a3820">
+    <circle cx="42" cy="138" r="0.8"/>
+    <circle cx="50" cy="136" r="0.7"/>
+    <circle cx="58" cy="139" r="0.8"/>
+    <circle cx="64" cy="137" r="0.7"/>
+  </g>
 </svg>

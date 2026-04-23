@@ -1,73 +1,211 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="600">
   <defs>
+    <!-- Walls -->
     <linearGradient id="backwall" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#ddd0b8"/>
-      <stop offset="100%" stop-color="#d0c4ac"/>
+      <stop offset="0%" stop-color="#e4d7be"/>
+      <stop offset="55%" stop-color="#d9cbb0"/>
+      <stop offset="100%" stop-color="#c6b795"/>
     </linearGradient>
     <linearGradient id="leftwall" x1="1" y1="0" x2="0" y2="0">
-      <stop offset="0%" stop-color="#ccc0a8"/>
-      <stop offset="100%" stop-color="#b8ac94"/>
+      <stop offset="0%" stop-color="#c2b69c"/>
+      <stop offset="100%" stop-color="#9e9076"/>
     </linearGradient>
     <linearGradient id="rightwall" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#ccc0a8"/>
-      <stop offset="100%" stop-color="#b8ac94"/>
-    </linearGradient>
-    <linearGradient id="flr" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#d8c8a0"/>
-      <stop offset="100%" stop-color="#c0b090"/>
+      <stop offset="0%" stop-color="#c2b69c"/>
+      <stop offset="100%" stop-color="#9e9076"/>
     </linearGradient>
     <linearGradient id="ceil" x1="0" y1="1" x2="0" y2="0">
-      <stop offset="0%" stop-color="#e8e0d0"/>
-      <stop offset="100%" stop-color="#f8f0e0"/>
+      <stop offset="0%" stop-color="#eae3d2"/>
+      <stop offset="100%" stop-color="#f8f1df"/>
     </linearGradient>
-    <radialGradient id="ceillight" cx="50%" cy="50%" r="40%">
-      <stop offset="0%" stop-color="rgba(255,245,220,0.5)"/>
-      <stop offset="60%" stop-color="rgba(255,240,200,0.15)"/>
-      <stop offset="100%" stop-color="transparent"/>
+
+    <!-- Soft warm ceiling wash onto back wall -->
+    <radialGradient id="ceilWash" cx="50%" cy="0%" r="70%">
+      <stop offset="0%" stop-color="rgba(255,232,188,0.45)"/>
+      <stop offset="55%" stop-color="rgba(255,222,172,0.15)"/>
+      <stop offset="100%" stop-color="rgba(255,222,172,0)"/>
     </radialGradient>
-    <radialGradient id="floorshine" cx="50%" cy="30%" r="60%">
-      <stop offset="0%" stop-color="rgba(255,248,230,0.12)"/>
-      <stop offset="100%" stop-color="transparent"/>
+
+    <!-- Subtle damask wall pattern (very low opacity) -->
+    <pattern id="wallDamask" x="0" y="0" width="40" height="56" patternUnits="userSpaceOnUse">
+      <path d="M20 8 Q28 20 20 28 Q12 20 20 8 Z
+               M20 28 Q28 40 20 48 Q12 40 20 28 Z"
+            fill="none" stroke="#a99a7c" stroke-width="0.6" opacity="0.22"/>
+      <circle cx="20" cy="28" r="1" fill="#a99a7c" opacity="0.25"/>
+    </pattern>
+
+    <!-- Wood plank base color -->
+    <linearGradient id="plankA" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="#b58656"/>
+      <stop offset="55%" stop-color="#a07245"/>
+      <stop offset="100%" stop-color="#8c6038"/>
+    </linearGradient>
+    <linearGradient id="plankB" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="#ac7e4e"/>
+      <stop offset="55%" stop-color="#986a3d"/>
+      <stop offset="100%" stop-color="#835732"/>
+    </linearGradient>
+
+    <!-- Warm floor bloom (center spot where ceiling light hits) -->
+    <radialGradient id="floorBloom" cx="50%" cy="35%" r="55%">
+      <stop offset="0%"  stop-color="rgba(255,238,196,0.35)"/>
+      <stop offset="70%" stop-color="rgba(255,238,196,0)"/>
+    </radialGradient>
+
+    <!-- Corner vignette -->
+    <radialGradient id="vignette" cx="50%" cy="50%" r="75%">
+      <stop offset="65%" stop-color="rgba(0,0,0,0)"/>
+      <stop offset="100%" stop-color="rgba(0,0,0,0.4)"/>
+    </radialGradient>
+
+    <!-- Cornice gold trim -->
+    <linearGradient id="cornice" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f0e4c0"/>
+      <stop offset="50%" stop-color="#c9ac76"/>
+      <stop offset="100%" stop-color="#8a6e3e"/>
+    </linearGradient>
+
+    <!-- Floor polygon clip -->
+    <clipPath id="floorClip">
+      <polygon points="100,340 700,340 800,600 0,600"/>
+    </clipPath>
+  </defs>
+
+  <!-- ===== CEILING ===== -->
+  <polygon points="0,0 800,0 700,70 100,70" fill="url(#ceil)"/>
+  <!-- Crown molding along ceiling -->
+  <rect x="100" y="68" width="600" height="4" fill="url(#cornice)"/>
+  <!-- Pendant ceiling light: chain + brass cap + frosted globe with halo -->
+  <!-- Halo glow on ceiling around mount -->
+  <ellipse cx="400" cy="70" rx="120" ry="10" fill="rgba(255,232,180,0.35)"/>
+  <!-- Ceiling mount cap -->
+  <rect x="390" y="66" width="20" height="5" rx="1.5" fill="#c9a45a" stroke="#8a6624" stroke-width="0.5"/>
+  <rect x="390" y="66" width="20" height="1.5" fill="#efdca0"/>
+  <!-- Chain -->
+  <line x1="400" y1="71" x2="400" y2="96" stroke="#8a6624" stroke-width="1.2"/>
+  <g fill="none" stroke="#c9a45a" stroke-width="0.8">
+    <circle cx="400" cy="76" r="1.3"/>
+    <circle cx="400" cy="82" r="1.3"/>
+    <circle cx="400" cy="88" r="1.3"/>
+    <circle cx="400" cy="94" r="1.3"/>
+  </g>
+  <!-- Brass fitter -->
+  <rect x="393" y="96" width="14" height="6" rx="1.5" fill="#c9a45a" stroke="#8a6624" stroke-width="0.6"/>
+  <!-- Frosted globe -->
+  <defs>
+    <radialGradient id="bulbGlow" cx="50%" cy="40%" r="60%">
+      <stop offset="0%"  stop-color="#fff8d8"/>
+      <stop offset="55%" stop-color="#fde4a8"/>
+      <stop offset="100%" stop-color="#e8b870"/>
+    </radialGradient>
+    <radialGradient id="bulbHalo" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"  stop-color="rgba(255,232,170,0.55)"/>
+      <stop offset="100%" stop-color="rgba(255,232,170,0)"/>
     </radialGradient>
   </defs>
-  <!-- Ceiling -->
-  <polygon points="0,0 800,0 700,70 100,70" fill="url(#ceil)"/>
-  <!-- Ceiling light strip -->
-  <rect x="120" y="62" width="560" height="8" rx="3" fill="#f0e8d4" stroke="#e0d8c0" stroke-width="0.5"/>
-  <rect x="120" y="62" width="560" height="8" rx="3" fill="url(#ceillight)"/>
-  <!-- Warm glow from ceiling light -->
-  <ellipse cx="400" cy="66" rx="200" ry="6" fill="rgba(255,230,180,0.3)"/>
-  <!-- Back wall -->
+  <ellipse cx="400" cy="118" rx="40" ry="18" fill="url(#bulbHalo)"/>
+  <ellipse cx="400" cy="118" rx="22" ry="14" fill="url(#bulbGlow)" stroke="#b8904c" stroke-width="0.7"/>
+  <ellipse cx="394" cy="113" rx="6" ry="3" fill="rgba(255,255,220,0.8)"/>
+  <!-- Light cast down on back wall (warm cone) -->
+  <path d="M378 128 L360 200 L440 200 L422 128 Z" fill="rgba(255,228,170,0.12)"/>
+
+  <!-- ===== BACK WALL ===== -->
   <rect x="100" y="70" width="600" height="270" fill="url(#backwall)"/>
-  <!-- Left side wall -->
+  <!-- Damask wallpaper (very subtle) -->
+  <rect x="100" y="70" width="600" height="270" fill="url(#wallDamask)"/>
+  <!-- Warm ceiling wash bleeding onto back wall -->
+  <rect x="100" y="70" width="600" height="220" fill="url(#ceilWash)"/>
+  <!-- Chair rail / wainscot molding -->
+  <rect x="100" y="256" width="600" height="3" fill="#b8a078"/>
+  <rect x="100" y="259" width="600" height="1" fill="rgba(255,255,255,0.12)"/>
+  <!-- Wainscot panel (lower half of back wall slightly darker, with vertical panel lines) -->
+  <rect x="100" y="260" width="600" height="70" fill="rgba(120,90,50,0.08)"/>
+  <g stroke="rgba(120,90,50,0.15)" stroke-width="0.6">
+    <line x1="160" y1="262" x2="160" y2="328"/>
+    <line x1="240" y1="262" x2="240" y2="328"/>
+    <line x1="320" y1="262" x2="320" y2="328"/>
+    <line x1="480" y1="262" x2="480" y2="328"/>
+    <line x1="560" y1="262" x2="560" y2="328"/>
+    <line x1="640" y1="262" x2="640" y2="328"/>
+  </g>
+  <!-- Baseboard -->
+  <rect x="100" y="328" width="600" height="12" fill="#a8906a"/>
+  <rect x="100" y="328" width="600" height="2" fill="rgba(255,255,255,0.14)"/>
+  <rect x="100" y="338" width="600" height="2" fill="rgba(0,0,0,0.15)"/>
+
+  <!-- ===== SIDE WALLS ===== -->
   <polygon points="0,0 100,70 100,340 0,600" fill="url(#leftwall)"/>
-  <!-- Right side wall -->
   <polygon points="800,0 700,70 700,340 800,600" fill="url(#rightwall)"/>
-  <!-- Floor -->
-  <polygon points="100,340 700,340 800,600 0,600" fill="url(#flr)"/>
-  <!-- Floor tile grid (perspective) — horizontal lines -->
-  <line x1="130" y1="380" x2="670" y2="380" stroke="#c8b898" stroke-width="0.4" opacity="0.3"/>
-  <line x1="80" y1="420" x2="720" y2="420" stroke="#c8b898" stroke-width="0.5" opacity="0.3"/>
-  <line x1="40" y1="470" x2="760" y2="470" stroke="#c8b898" stroke-width="0.5" opacity="0.25"/>
-  <line x1="0" y1="530" x2="800" y2="530" stroke="#c8b898" stroke-width="0.6" opacity="0.2"/>
-  <!-- Floor tile grid — vertical lines converging to VP(400,180) -->
-  <line x1="200" y1="340" x2="0" y2="600" stroke="#c8b898" stroke-width="0.4" opacity="0.2"/>
-  <line x1="300" y1="340" x2="150" y2="600" stroke="#c8b898" stroke-width="0.4" opacity="0.2"/>
-  <line x1="400" y1="340" x2="400" y2="600" stroke="#c8b898" stroke-width="0.4" opacity="0.15"/>
-  <line x1="500" y1="340" x2="650" y2="600" stroke="#c8b898" stroke-width="0.4" opacity="0.2"/>
-  <line x1="600" y1="340" x2="800" y2="600" stroke="#c8b898" stroke-width="0.4" opacity="0.2"/>
-  <!-- Floor reflection/shine -->
-  <polygon points="100,340 700,340 800,600 0,600" fill="url(#floorshine)"/>
-  <!-- Baseboard along back wall -->
-  <rect x="100" y="330" width="600" height="10" fill="#b8a888"/>
-  <rect x="100" y="330" width="600" height="2" fill="rgba(255,255,255,0.06)"/>
-  <!-- Crown molding at ceiling/back wall junction -->
-  <rect x="100" y="70" width="600" height="5" fill="#e0d8c4"/>
-  <rect x="100" y="70" width="600" height="1.5" fill="rgba(255,255,255,0.1)"/>
-  <!-- Left wall edge shadow -->
-  <line x1="100" y1="70" x2="100" y2="340" stroke="rgba(0,0,0,0.08)" stroke-width="3"/>
-  <!-- Right wall edge shadow -->
-  <line x1="700" y1="70" x2="700" y2="340" stroke="rgba(0,0,0,0.08)" stroke-width="3"/>
-  <!-- Ambient warm light on back wall -->
-  <ellipse cx="400" cy="200" rx="250" ry="120" fill="rgba(255,240,210,0.05)"/>
+  <!-- Wall-to-wall corner shadows -->
+  <line x1="100" y1="70" x2="100" y2="340" stroke="rgba(0,0,0,0.12)" stroke-width="3"/>
+  <line x1="700" y1="70" x2="700" y2="340" stroke="rgba(0,0,0,0.12)" stroke-width="3"/>
+
+  <!-- ===== FLOOR ===== -->
+  <g clip-path="url(#floorClip)">
+    <!-- Base fill -->
+    <polygon points="100,340 700,340 800,600 0,600" fill="#a07245"/>
+
+    <!-- Horizontal wood planks parallel to back wall, 10 rows, perspective (thicker toward viewer).
+         Each row is a trapezoid exactly matching the floor's tapering sides — no gaps, no wedges.
+         Alternates plankA/plankB fills for subtle tonal variation. -->
+    <polygon points="100,340 700,340 703.5,349 96.5,349"     fill="url(#plankB)"/>
+    <polygon points="96.5,349 703.5,349 707.7,360 92.3,360"  fill="url(#plankA)"/>
+    <polygon points="92.3,360 707.7,360 713.1,374 86.9,374"  fill="url(#plankB)"/>
+    <polygon points="86.9,374 713.1,374 720.0,392 80.0,392"  fill="url(#plankA)"/>
+    <polygon points="80.0,392 720.0,392 728.5,414 71.5,414"  fill="url(#plankB)"/>
+    <polygon points="71.5,414 728.5,414 739.2,442 60.8,442"  fill="url(#plankA)"/>
+    <polygon points="60.8,442 739.2,442 753.1,478 46.9,478"  fill="url(#plankB)"/>
+    <polygon points="46.9,478 753.1,478 769.2,520 30.8,520"  fill="url(#plankA)"/>
+    <polygon points="30.8,520 769.2,520 787.7,568 12.3,568"  fill="url(#plankB)"/>
+    <polygon points="12.3,568 787.7,568 800,600 0,600"       fill="url(#plankA)"/>
+
+    <!-- Grout lines between plank rows -->
+    <g stroke="rgba(40,20,8,0.55)" stroke-width="0.9" fill="none">
+      <line x1="96.5" y1="349" x2="703.5" y2="349"/>
+      <line x1="92.3" y1="360" x2="707.7" y2="360"/>
+      <line x1="86.9" y1="374" x2="713.1" y2="374"/>
+      <line x1="80.0" y1="392" x2="720.0" y2="392"/>
+      <line x1="71.5" y1="414" x2="728.5" y2="414"/>
+      <line x1="60.8" y1="442" x2="739.2" y2="442"/>
+      <line x1="46.9" y1="478" x2="753.1" y2="478"/>
+      <line x1="30.8" y1="520" x2="769.2" y2="520"/>
+      <line x1="12.3" y1="568" x2="787.7" y2="568"/>
+    </g>
+
+    <!-- Subtle wood grain streaks (horizontal, within each plank, one streak per row). -->
+    <g stroke="rgba(40,20,8,0.18)" stroke-width="0.6" fill="none">
+      <line x1="160" y1="345" x2="640" y2="345"/>
+      <line x1="140" y1="355" x2="660" y2="355"/>
+      <line x1="130" y1="368" x2="670" y2="368"/>
+      <line x1="120" y1="383" x2="680" y2="383"/>
+      <line x1="100" y1="403" x2="700" y2="403"/>
+      <line x1="90"  y1="428" x2="710" y2="428"/>
+      <line x1="80"  y1="460" x2="720" y2="460"/>
+      <line x1="60"  y1="500" x2="740" y2="500"/>
+      <line x1="40"  y1="545" x2="760" y2="545"/>
+      <line x1="20"  y1="585" x2="780" y2="585"/>
+    </g>
+
+    <!-- Sparse wood knots for character -->
+    <g fill="rgba(40,20,8,0.35)">
+      <ellipse cx="180" cy="465" rx="4" ry="1.6"/>
+      <ellipse cx="460" cy="430" rx="3" ry="1.3"/>
+      <ellipse cx="615" cy="500" rx="3.5" ry="1.5"/>
+      <ellipse cx="280" cy="540" rx="3" ry="1.3"/>
+      <ellipse cx="540" cy="560" rx="2.5" ry="1"/>
+      <ellipse cx="350" cy="405" rx="2.2" ry="1"/>
+    </g>
+
+    <!-- Warm center bloom (from ceiling light only) -->
+    <ellipse cx="400" cy="470" rx="340" ry="110" fill="url(#floorBloom)"/>
+
+    <!-- Floor sheen highlight near front -->
+    <ellipse cx="400" cy="555" rx="300" ry="18" fill="rgba(255,245,220,0.12)"/>
+  </g>
+
+  <!-- Baseboard shadow on floor just below back wall -->
+  <rect x="100" y="340" width="600" height="4" fill="rgba(0,0,0,0.2)"/>
+
+  <!-- ===== Overall vignette ===== -->
+  <rect width="800" height="600" fill="url(#vignette)"/>
 </svg>

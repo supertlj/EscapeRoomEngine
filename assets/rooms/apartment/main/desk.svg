@@ -1,34 +1,73 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="200" height="120">
   <defs>
-    <linearGradient id="dsk" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#8a6a3a"/>
-      <stop offset="30%" stop-color="#a07a48"/>
-      <stop offset="100%" stop-color="#7a5a30"/>
+    <linearGradient id="dskTop" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="#c89868"/>
+      <stop offset="60%" stop-color="#a87a48"/>
+      <stop offset="100%" stop-color="#8a6638"/>
     </linearGradient>
-    <linearGradient id="dsks" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#6a4a22"/>
-      <stop offset="100%" stop-color="#5a3a1a"/>
+    <linearGradient id="dskFront" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="#9a7438"/>
+      <stop offset="100%" stop-color="#6a4a22"/>
+    </linearGradient>
+    <linearGradient id="dskLeg" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"  stop-color="#5a3a1a"/>
+      <stop offset="50%" stop-color="#7a5628"/>
+      <stop offset="100%" stop-color="#4a2e14"/>
+    </linearGradient>
+    <linearGradient id="drawer" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="#a87a48"/>
+      <stop offset="100%" stop-color="#7a5428"/>
     </linearGradient>
   </defs>
+
   <!-- Floor shadow -->
-  <ellipse cx="100" cy="116" rx="80" ry="5" fill="rgba(0,0,0,0.15)"/>
-  <!-- Left leg -->
-  <rect x="8" y="40" width="8" height="75" fill="#7a5a30"/>
-  <!-- Right leg -->
-  <rect x="174" y="40" width="8" height="75" fill="#7a5a30"/>
-  <!-- Side panel (3D depth) -->
-  <polygon points="182" y="4" fill="url(#dsks)"/>
-  <!-- Cross bar -->
-  <rect x="12" y="80" width="166" height="5" fill="#6a4a28" rx="1"/>
-  <!-- Desktop surface top (3D) -->
-  <polygon points="0,32 190,32 194,38 4,38" fill="#b08a58"/>
-  <!-- Desktop surface front -->
-  <rect x="0" y="38" width="194" height="6" fill="url(#dsk)" stroke="#6a4a28" stroke-width="0.5"/>
-  <!-- Desktop top plane -->
-  <rect x="0" y="24" width="194" height="10" fill="#a07a48" rx="1"/>
-  <!-- Top surface highlight -->
-  <line x1="4" y1="26" x2="190" y2="26" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-  <!-- Drawer -->
-  <rect x="120" y="44" width="60" height="28" rx="2" fill="#906a38" stroke="#7a5a30" stroke-width="0.8"/>
-  <rect x="140" y="56" width="20" height="4" rx="1.5" fill="#bbb"/>
+  <ellipse cx="100" cy="117" rx="90" ry="4" fill="rgba(0,0,0,0.28)"/>
+
+  <!-- Back leg -->
+  <rect x="176" y="42" width="8" height="72" fill="url(#dskLeg)"/>
+  <rect x="10" y="42" width="8" height="72" fill="url(#dskLeg)"/>
+  <!-- Leg caps -->
+  <rect x="10" y="110" width="8" height="4" fill="#3a2410"/>
+  <rect x="176" y="110" width="8" height="4" fill="#3a2410"/>
+
+  <!-- Cross stretcher -->
+  <rect x="16" y="82" width="162" height="5" rx="1" fill="#6a4828"/>
+  <rect x="16" y="82" width="162" height="1" fill="rgba(255,230,180,0.2)"/>
+
+  <!-- Desktop 3D depth (right-side panel) -->
+  <polygon points="190,30 198,34 198,42 190,38" fill="#6a4a22"/>
+
+  <!-- Desktop top surface -->
+  <rect x="0" y="26" width="194" height="12" rx="1.5" fill="url(#dskTop)" stroke="#6a4828" stroke-width="0.6"/>
+  <!-- Wood grain on top -->
+  <g stroke="rgba(60,36,16,0.22)" stroke-width="0.4" fill="none">
+    <path d="M10 30 Q90 28 188 30"/>
+    <path d="M14 34 Q100 32 186 34"/>
+  </g>
+  <!-- Top edge highlight -->
+  <line x1="3" y1="27" x2="190" y2="27" stroke="rgba(255,240,200,0.5)" stroke-width="0.8"/>
+
+  <!-- Desktop front apron -->
+  <rect x="4" y="38" width="186" height="10" fill="url(#dskFront)" stroke="#5a3a1a" stroke-width="0.5"/>
+  <!-- Apron shadow under top -->
+  <rect x="4" y="38" width="186" height="1.5" fill="rgba(0,0,0,0.3)"/>
+
+  <!-- Drawer (right side) with brass pull -->
+  <rect x="110" y="52" width="72" height="28" rx="2" fill="url(#drawer)" stroke="#5a3a1a" stroke-width="0.8"/>
+  <rect x="112" y="54" width="68" height="24" rx="1" fill="none" stroke="rgba(255,230,180,0.2)" stroke-width="0.5"/>
+  <!-- Brass pull -->
+  <rect x="138" y="62" width="16" height="6" rx="2.5" fill="#d4b060" stroke="#8a6628" stroke-width="0.5"/>
+  <rect x="139" y="63" width="14" height="1.5" fill="rgba(255,248,220,0.55)"/>
+  <!-- Keyhole on drawer -->
+  <circle cx="175" cy="65" r="1.2" fill="#2a1a0a"/>
+  <rect x="174.5" y="65" width="1" height="2.5" fill="#2a1a0a"/>
+
+  <!-- Left open shelf / cubby -->
+  <rect x="22" y="52" width="82" height="28" rx="1" fill="#2a1a0a"/>
+  <rect x="22" y="52" width="82" height="2" fill="rgba(0,0,0,0.5)"/>
+  <!-- A couple of books in the cubby -->
+  <rect x="26" y="58" width="5" height="20" fill="#7a2a2a"/>
+  <rect x="32" y="56" width="5" height="22" fill="#2a4a7a"/>
+  <rect x="38" y="60" width="5" height="18" fill="#3a6a3a"/>
+  <rect x="44" y="55" width="5" height="23" fill="#5a3a6a"/>
 </svg>

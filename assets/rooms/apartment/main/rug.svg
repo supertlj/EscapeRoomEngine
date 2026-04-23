@@ -1,28 +1,79 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="440" height="120">
   <defs>
-    <linearGradient id="rugf" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#d8c898"/>
-      <stop offset="100%" stop-color="#c8b888"/>
+    <linearGradient id="rugField" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7a2828"/>
+      <stop offset="50%" stop-color="#8f3030"/>
+      <stop offset="100%" stop-color="#5e1a1a"/>
     </linearGradient>
+
+    <pattern id="diamondBorder" x="0" y="0" width="22" height="12" patternUnits="userSpaceOnUse">
+      <rect width="22" height="12" fill="#4a1212"/>
+      <path d="M11 2 L20 6 L11 10 L2 6 Z" fill="none" stroke="#d4b266" stroke-width="0.8"/>
+      <circle cx="11" cy="6" r="1" fill="#d4b266"/>
+    </pattern>
+
+    <pattern id="trefoilField" x="0" y="0" width="34" height="22" patternUnits="userSpaceOnUse">
+      <rect width="34" height="22" fill="transparent"/>
+      <path d="M17 4 Q22 9 17 14 Q12 9 17 4 Z"
+            fill="none" stroke="#c89a4a" stroke-width="0.5" opacity="0.55"/>
+      <circle cx="17" cy="9" r="0.8" fill="#c89a4a" opacity="0.6"/>
+      <circle cx="4" cy="17" r="0.6" fill="#c89a4a" opacity="0.4"/>
+      <circle cx="30" cy="17" r="0.6" fill="#c89a4a" opacity="0.4"/>
+    </pattern>
+
+    <radialGradient id="rugShadow" cx="50%" cy="100%" r="60%">
+      <stop offset="0%" stop-color="rgba(0,0,0,0.25)"/>
+      <stop offset="100%" stop-color="rgba(0,0,0,0)"/>
+    </radialGradient>
+
+    <pattern id="fringe" x="0" y="0" width="4" height="5" patternUnits="userSpaceOnUse">
+      <rect width="4" height="5" fill="transparent"/>
+      <line x1="2" y1="0" x2="2" y2="5" stroke="#e0cca0" stroke-width="0.6"/>
+    </pattern>
   </defs>
-  <!-- Rug in perspective (narrower at top, wider at bottom) -->
-  <polygon points="80,4 360,4 420,116 20,116" fill="url(#rugf)"/>
-  <!-- Border -->
-  <polygon points="80,4 360,4 420,116 20,116" fill="none" stroke="#8a5a30" stroke-width="4"/>
-  <!-- Inner border -->
-  <polygon points="95,12 345,12 400,108 40,108" fill="none" stroke="#a08060" stroke-width="1.5"/>
-  <!-- Inner inner border -->
-  <polygon points="108,20 332,20 382,100 58,100" fill="none" stroke="#c8a878" stroke-width="0.8" opacity="0.5"/>
-  <!-- Center medallion (ellipse in perspective) -->
-  <ellipse cx="220" cy="60" rx="70" ry="22" fill="#c0a870" opacity="0.25"/>
-  <ellipse cx="220" cy="60" rx="50" ry="15" fill="none" stroke="#a08060" stroke-width="0.8" opacity="0.4"/>
-  <!-- Corner flourishes -->
-  <path d="M95,16 Q120,16 115,30" fill="none" stroke="#a08060" stroke-width="0.8" opacity="0.4"/>
-  <path d="M345,16 Q320,16 325,30" fill="none" stroke="#a08060" stroke-width="0.8" opacity="0.4"/>
-  <path d="M45,104 Q70,104 60,90" fill="none" stroke="#a08060" stroke-width="0.8" opacity="0.4"/>
-  <path d="M395,104 Q370,104 380,90" fill="none" stroke="#a08060" stroke-width="0.8" opacity="0.4"/>
-  <!-- Pattern lines -->
-  <line x1="140" y1="8" x2="100" y2="112" stroke="#b8a070" stroke-width="0.5" opacity="0.2"/>
-  <line x1="220" y1="8" x2="220" y2="112" stroke="#b8a070" stroke-width="0.5" opacity="0.15"/>
-  <line x1="300" y1="8" x2="340" y2="112" stroke="#b8a070" stroke-width="0.5" opacity="0.2"/>
+
+  <!-- Soft floor shadow under the rug -->
+  <ellipse cx="220" cy="118" rx="220" ry="7" fill="url(#rugShadow)"/>
+
+  <!-- Main rug trapezoid (perspective, narrower at back/top) -->
+  <polygon points="80,4 360,4 420,116 20,116" fill="url(#rugField)"/>
+
+  <!-- Outer gold border -->
+  <polygon points="80,4 360,4 420,116 20,116" fill="none" stroke="#8a6220" stroke-width="2"/>
+
+  <!-- Diamond-pattern border band -->
+  <polygon points="88,10 352,10 406,112 34,112" fill="url(#diamondBorder)" opacity="0.9"/>
+  <polygon points="88,10 352,10 406,112 34,112" fill="none" stroke="#c89a4a" stroke-width="0.5"/>
+
+  <!-- Inner field -->
+  <polygon points="108,22 332,22 382,102 58,102" fill="url(#rugField)"/>
+  <polygon points="108,22 332,22 382,102 58,102" fill="url(#trefoilField)"/>
+  <polygon points="108,22 332,22 382,102 58,102" fill="none" stroke="#c89a4a" stroke-width="0.6"/>
+
+  <!-- Center medallion -->
+  <g transform="translate(220 62)">
+    <ellipse cx="0" cy="0" rx="90" ry="22" fill="#4a1212"/>
+    <ellipse cx="0" cy="0" rx="90" ry="22" fill="none" stroke="#d4b266" stroke-width="1"/>
+    <ellipse cx="0" cy="0" rx="72" ry="17" fill="none" stroke="#c89a4a" stroke-width="0.8" opacity="0.85"/>
+    <ellipse cx="0" cy="0" rx="50" ry="12" fill="#6e1f1f"/>
+    <ellipse cx="0" cy="0" rx="50" ry="12" fill="none" stroke="#d4b266" stroke-width="0.6"/>
+    <path d="M-40 0 L-15 -6 L0 -14 L15 -6 L40 0 L15 6 L0 14 L-15 6 Z"
+          fill="none" stroke="#d4b266" stroke-width="0.7"/>
+    <ellipse cx="0" cy="0" rx="20" ry="6" fill="#d4b266" opacity="0.25"/>
+    <circle cx="0" cy="0" r="3" fill="#d4b266"/>
+  </g>
+
+  <!-- Corner floral flourishes -->
+  <g stroke="#c89a4a" stroke-width="0.8" fill="none" opacity="0.85">
+    <path d="M116 26 Q130 32 124 44 Q118 38 116 26 Z"/>
+    <path d="M324 26 Q310 32 316 44 Q322 38 324 26 Z"/>
+    <path d="M66 98 Q78 92 84 102 Q74 104 66 98 Z"/>
+    <path d="M374 98 Q362 92 356 102 Q366 104 374 98 Z"/>
+  </g>
+
+  <!-- Subtle sheen -->
+  <polygon points="80,4 200,4 260,116 20,116" fill="rgba(255,240,200,0.05)"/>
+
+  <!-- Fringed front edge -->
+  <rect x="20" y="116" width="400" height="4" fill="url(#fringe)"/>
 </svg>

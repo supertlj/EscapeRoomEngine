@@ -1,42 +1,199 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="190" height="110">
-  <!-- Shadow behind unit -->
-  <rect x="6" y="6" width="184" height="104" rx="1" fill="rgba(0,0,0,0.1)"/>
-  <!-- Back panel -->
-  <rect x="0" y="0" width="184" height="104" rx="1" fill="#c8b898"/>
-  <!-- Shelf 1 top surface (3D) -->
-  <polygon points="2,38 182,38 180,42 4,42" fill="#d0b888"/>
-  <rect x="2" y="42" width="180" height="5" fill="#c0a878" stroke="#a88858" stroke-width="0.5"/>
-  <!-- Shelf 2 top surface (3D) -->
-  <polygon points="2,76 182,76 180,80 4,80" fill="#d0b888"/>
-  <rect x="2" y="80" width="180" height="5" fill="#c0a878" stroke="#a88858" stroke-width="0.5"/>
-  <!-- Books top shelf -->
-  <rect x="8" y="6" width="14" height="32" fill="#8b2020" rx="1"/>
-  <rect x="24" y="10" width="11" height="28" fill="#1a4a6a" rx="1"/>
-  <rect x="37" y="4" width="15" height="34" fill="#2a6a2a" rx="1"/>
-  <rect x="54" y="8" width="9" height="30" fill="#6a4a1a" rx="1"/>
-  <rect x="65" y="6" width="13" height="32" fill="#4a2a5a" rx="1"/>
-  <rect x="80" y="12" width="11" height="26" fill="#aa4422" rx="1"/>
-  <rect x="93" y="7" width="15" height="31" fill="#2a3a5a" rx="1"/>
-  <rect x="110" y="10" width="9" height="28" fill="#5a5a1a" rx="1"/>
-  <!-- White vase -->
-  <ellipse cx="135" cy="30" rx="9" ry="8" fill="#f0ece4" stroke="#ddd" stroke-width="0.5"/>
-  <rect x="128" y="10" width="14" height="20" rx="4" fill="#f4f0e8" stroke="#ddd" stroke-width="0.5"/>
-  <!-- Small decor -->
-  <circle cx="158" cy="26" r="7" fill="#eee" stroke="#ccc" stroke-width="0.5"/>
-  <rect x="170" y="8" width="8" height="30" fill="#884422" rx="1"/>
-  <!-- Books bottom shelf -->
-  <rect x="8" y="48" width="15" height="28" fill="#1a5a3a" rx="1"/>
-  <rect x="25" y="52" width="11" height="24" fill="#5a2a1a" rx="1"/>
-  <rect x="38" y="46" width="13" height="30" fill="#3a3a6a" rx="1"/>
-  <rect x="53" y="50" width="17" height="26" fill="#6a1a3a" rx="1"/>
-  <rect x="72" y="48" width="11" height="28" fill="#4a5a2a" rx="1"/>
-  <rect x="85" y="52" width="15" height="24" fill="#1a3a5a" rx="1"/>
-  <!-- Photo frame on lower shelf -->
-  <rect x="114" y="48" width="22" height="28" fill="#c8b898" rx="1" stroke="#a08060" stroke-width="0.5"/>
-  <rect x="116" y="50" width="18" height="24" fill="#e8e0d0" rx="1"/>
-  <rect x="142" y="50" width="11" height="26" fill="#5a1a4a" rx="1"/>
-  <rect x="156" y="46" width="15" height="30" fill="#2a5a5a" rx="1"/>
-  <!-- Shelf front edge highlight -->
-  <line x1="2" y1="42" x2="182" y2="42" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
-  <line x1="2" y1="80" x2="182" y2="80" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+  <defs>
+    <linearGradient id="shelfWood" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#cbb990"/>
+      <stop offset="100%" stop-color="#a68a5c"/>
+    </linearGradient>
+    <linearGradient id="shelfFront" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#a88858"/>
+      <stop offset="100%" stop-color="#7e6236"/>
+    </linearGradient>
+    <linearGradient id="spineRed" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#6e1414"/>
+      <stop offset="50%" stop-color="#922626"/>
+      <stop offset="100%" stop-color="#6e1414"/>
+    </linearGradient>
+    <linearGradient id="spineBlue" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0e2e4a"/>
+      <stop offset="50%" stop-color="#1e4a6e"/>
+      <stop offset="100%" stop-color="#0e2e4a"/>
+    </linearGradient>
+    <linearGradient id="spineGreen" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1e4a1e"/>
+      <stop offset="50%" stop-color="#356a35"/>
+      <stop offset="100%" stop-color="#1e4a1e"/>
+    </linearGradient>
+    <linearGradient id="spineBrown" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#4a2e10"/>
+      <stop offset="50%" stop-color="#6a4418"/>
+      <stop offset="100%" stop-color="#4a2e10"/>
+    </linearGradient>
+    <linearGradient id="spinePurple" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3a1e4a"/>
+      <stop offset="50%" stop-color="#55305f"/>
+      <stop offset="100%" stop-color="#3a1e4a"/>
+    </linearGradient>
+    <linearGradient id="spineOrange" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8a3016"/>
+      <stop offset="50%" stop-color="#aa4422"/>
+      <stop offset="100%" stop-color="#8a3016"/>
+    </linearGradient>
+    <linearGradient id="spineTeal" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0e3a3a"/>
+      <stop offset="50%" stop-color="#225a5a"/>
+      <stop offset="100%" stop-color="#0e3a3a"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Cast shadow behind shelf -->
+  <rect x="6" y="6" width="184" height="104" rx="1" fill="rgba(0,0,0,0.2)"/>
+  <!-- Back panel (dark interior, books sit against it) -->
+  <rect x="0" y="0" width="184" height="104" rx="1" fill="#3a2a18"/>
+  <!-- Top rim -->
+  <rect x="0" y="0" width="184" height="3" fill="url(#shelfFront)"/>
+
+  <!-- Shelf 1 (middle divider at y=38) — 3D top surface -->
+  <polygon points="2,38 182,38 180,42 4,42" fill="url(#shelfWood)"/>
+  <rect x="2" y="42" width="180" height="5" fill="url(#shelfFront)" stroke="#5e4420" stroke-width="0.4"/>
+  <!-- Shelf 2 divider at y=76 -->
+  <polygon points="2,76 182,76 180,80 4,80" fill="url(#shelfWood)"/>
+  <rect x="2" y="80" width="180" height="5" fill="url(#shelfFront)" stroke="#5e4420" stroke-width="0.4"/>
+  <!-- Bottom rim -->
+  <rect x="0" y="101" width="184" height="3" fill="url(#shelfFront)"/>
+
+  <!-- ===== TOP SHELF (books + vase + decor) ===== -->
+  <!-- Book: red, tall, with gold bands + title -->
+  <g>
+    <rect x="8" y="6" width="14" height="32" fill="url(#spineRed)" rx="1"/>
+    <rect x="8" y="12" width="14" height="1.5" fill="#d8b368" opacity="0.9"/>
+    <rect x="8" y="28" width="14" height="1.5" fill="#d8b368" opacity="0.9"/>
+    <rect x="10" y="18" width="10" height="0.8" fill="#d8b368" opacity="0.7"/>
+    <rect x="10" y="20.5" width="8" height="0.8" fill="#d8b368" opacity="0.5"/>
+  </g>
+  <!-- Book blue -->
+  <g>
+    <rect x="24" y="10" width="11" height="28" fill="url(#spineBlue)" rx="1"/>
+    <rect x="24" y="14" width="11" height="1.2" fill="#b8a060" opacity="0.8"/>
+    <rect x="24" y="33" width="11" height="1.2" fill="#b8a060" opacity="0.8"/>
+  </g>
+  <!-- Book green tall -->
+  <g>
+    <rect x="37" y="4" width="15" height="34" fill="url(#spineGreen)" rx="1"/>
+    <rect x="37" y="10" width="15" height="1.5" fill="#e0c878" opacity="0.85"/>
+    <rect x="37" y="30" width="15" height="1.5" fill="#e0c878" opacity="0.85"/>
+    <rect x="40" y="17" width="9" height="0.8" fill="#e0c878" opacity="0.7"/>
+  </g>
+  <!-- Book brown thin -->
+  <g>
+    <rect x="54" y="8" width="9" height="30" fill="url(#spineBrown)" rx="1"/>
+    <rect x="54" y="13" width="9" height="1" fill="#c09050" opacity="0.7"/>
+    <rect x="54" y="33" width="9" height="1" fill="#c09050" opacity="0.7"/>
+  </g>
+  <!-- Book purple -->
+  <g>
+    <rect x="65" y="6" width="13" height="32" fill="url(#spinePurple)" rx="1"/>
+    <rect x="65" y="12" width="13" height="1.2" fill="#d0b870" opacity="0.85"/>
+    <rect x="65" y="30" width="13" height="1.2" fill="#d0b870" opacity="0.85"/>
+    <rect x="68" y="19" width="7" height="0.8" fill="#d0b870" opacity="0.7"/>
+  </g>
+  <!-- Book orange short -->
+  <g>
+    <rect x="80" y="12" width="11" height="26" fill="url(#spineOrange)" rx="1"/>
+    <rect x="80" y="16" width="11" height="1" fill="#ead090" opacity="0.7"/>
+    <rect x="80" y="33" width="11" height="1" fill="#ead090" opacity="0.7"/>
+  </g>
+  <!-- Book navy tall -->
+  <g>
+    <rect x="93" y="7" width="15" height="31" fill="#1a2e5a" rx="1"/>
+    <rect x="93" y="13" width="15" height="1.5" fill="#c8a86c" opacity="0.85"/>
+    <rect x="93" y="30" width="15" height="1.5" fill="#c8a86c" opacity="0.85"/>
+    <rect x="96" y="19" width="9" height="0.8" fill="#c8a86c" opacity="0.7"/>
+  </g>
+  <!-- Book olive thin -->
+  <g>
+    <rect x="110" y="10" width="9" height="28" fill="#4a5018" rx="1"/>
+    <rect x="110" y="15" width="9" height="1" fill="#b8a848" opacity="0.7"/>
+    <rect x="110" y="33" width="9" height="1" fill="#b8a848" opacity="0.7"/>
+  </g>
+
+  <!-- Vase on top shelf -->
+  <g>
+    <ellipse cx="135" cy="30" rx="9" ry="8" fill="#f0ece4" stroke="#b0a090" stroke-width="0.5"/>
+    <rect x="128" y="12" width="14" height="18" rx="4" fill="#f4f0e8" stroke="#b0a090" stroke-width="0.5"/>
+    <ellipse cx="135" cy="13" rx="6" ry="1.5" fill="#d0c8b8"/>
+    <!-- Vase sheen -->
+    <rect x="130" y="16" width="1.5" height="12" fill="#ffffff" opacity="0.4"/>
+  </g>
+  <!-- Sphere decor -->
+  <g>
+    <circle cx="158" cy="26" r="7" fill="#e8e0d0" stroke="#b8a890" stroke-width="0.4"/>
+    <circle cx="156" cy="24" r="2" fill="#ffffff" opacity="0.5"/>
+  </g>
+  <!-- Narrow book at far right -->
+  <g>
+    <rect x="170" y="8" width="8" height="30" fill="#6a2a14" rx="1"/>
+    <rect x="170" y="13" width="8" height="0.8" fill="#c8a050" opacity="0.7"/>
+    <rect x="170" y="33" width="8" height="0.8" fill="#c8a050" opacity="0.7"/>
+  </g>
+
+  <!-- ===== MIDDLE SHELF ===== -->
+  <g>
+    <rect x="8" y="48" width="15" height="28" fill="url(#spineGreen)" rx="1"/>
+    <rect x="8" y="53" width="15" height="1.2" fill="#d8c080" opacity="0.8"/>
+    <rect x="8" y="71" width="15" height="1.2" fill="#d8c080" opacity="0.8"/>
+  </g>
+  <g>
+    <rect x="25" y="52" width="11" height="24" fill="url(#spineBrown)" rx="1"/>
+    <rect x="25" y="56" width="11" height="1" fill="#c89060" opacity="0.7"/>
+    <rect x="25" y="72" width="11" height="1" fill="#c89060" opacity="0.7"/>
+  </g>
+  <g>
+    <rect x="38" y="46" width="13" height="30" fill="url(#spineBlue)" rx="1"/>
+    <rect x="38" y="52" width="13" height="1.3" fill="#c8a868" opacity="0.85"/>
+    <rect x="38" y="69" width="13" height="1.3" fill="#c8a868" opacity="0.85"/>
+    <rect x="41" y="58" width="7" height="0.7" fill="#c8a868" opacity="0.6"/>
+  </g>
+  <g>
+    <rect x="53" y="50" width="17" height="26" fill="#6a1a3a" rx="1"/>
+    <rect x="53" y="55" width="17" height="1.3" fill="#d8b870" opacity="0.85"/>
+    <rect x="53" y="71" width="17" height="1.3" fill="#d8b870" opacity="0.85"/>
+    <rect x="57" y="60" width="9" height="0.7" fill="#d8b870" opacity="0.7"/>
+    <rect x="57" y="62" width="7" height="0.7" fill="#d8b870" opacity="0.5"/>
+  </g>
+  <g>
+    <rect x="72" y="48" width="11" height="28" fill="url(#spineGreen)" rx="1"/>
+    <rect x="72" y="53" width="11" height="1.2" fill="#d0b870" opacity="0.8"/>
+    <rect x="72" y="71" width="11" height="1.2" fill="#d0b870" opacity="0.8"/>
+  </g>
+  <g>
+    <rect x="85" y="52" width="15" height="24" fill="url(#spineTeal)" rx="1"/>
+    <rect x="85" y="56" width="15" height="1" fill="#b8c898" opacity="0.7"/>
+    <rect x="85" y="72" width="15" height="1" fill="#b8c898" opacity="0.7"/>
+  </g>
+  <!-- Photo frame -->
+  <g>
+    <rect x="114" y="48" width="22" height="28" fill="#b0906a" rx="1" stroke="#7a5a36" stroke-width="0.5"/>
+    <rect x="116" y="50" width="18" height="24" fill="#e8dcc0" rx="1"/>
+    <!-- Tiny figure suggestion -->
+    <circle cx="125" cy="58" r="2" fill="#c8a880"/>
+    <path d="M120 64 Q125 68 130 64 L130 72 L120 72 Z" fill="#6a7a8a"/>
+  </g>
+  <g>
+    <rect x="142" y="50" width="11" height="26" fill="#5a1a4a" rx="1"/>
+    <rect x="142" y="55" width="11" height="1.2" fill="#d0b068" opacity="0.8"/>
+    <rect x="142" y="71" width="11" height="1.2" fill="#d0b068" opacity="0.8"/>
+  </g>
+  <g>
+    <rect x="156" y="46" width="15" height="30" fill="url(#spineTeal)" rx="1"/>
+    <rect x="156" y="52" width="15" height="1.3" fill="#c8d8a8" opacity="0.8"/>
+    <rect x="156" y="69" width="15" height="1.3" fill="#c8d8a8" opacity="0.8"/>
+    <rect x="159" y="58" width="9" height="0.7" fill="#c8d8a8" opacity="0.6"/>
+  </g>
+
+  <!-- Shelf front edge highlights -->
+  <line x1="2" y1="42" x2="182" y2="42" stroke="rgba(255,248,220,0.15)" stroke-width="0.5"/>
+  <line x1="2" y1="80" x2="182" y2="80" stroke="rgba(255,248,220,0.15)" stroke-width="0.5"/>
+  <!-- Shelf front edge shadows (under each shelf edge onto next shelf contents) -->
+  <rect x="2" y="47" width="180" height="1.5" fill="rgba(0,0,0,0.25)"/>
+  <rect x="2" y="85" width="180" height="1.5" fill="rgba(0,0,0,0.25)"/>
 </svg>

@@ -1965,7 +1965,7 @@ const room = {
       id: "hs_cabinet",
       label: "Cabinet",
       shape: "rect",
-      bounds: { x: 540, y: 100, w: 145, h: 200 },
+      bounds: { x: 540, y: 140, w: 145, h: 200 },
       appearance: { fill: "#c8a060", stroke: "#a88040", image: toDataUrl(svgs.cabinet) },
       zIndex: 1, visible: true,
       zoomView: {
@@ -2106,7 +2106,7 @@ const room = {
       id: "hs_cabinet_open",
       label: "Cabinet (Open)",
       shape: "rect",
-      bounds: { x: 540, y: 100, w: 145, h: 200 },
+      bounds: { x: 540, y: 140, w: 145, h: 200 },
       appearance: { fill: "#c8a060", stroke: "#a88040", image: toDataUrl(svgs.cabinetOpen) },
       zIndex: 1, visible: false,
       zoomView: {
@@ -2187,7 +2187,7 @@ const room = {
       id: "hs_cabinet_open_no_notes",
       label: "Cabinet (Open, No Notes)",
       shape: "rect",
-      bounds: { x: 540, y: 100, w: 145, h: 200 },
+      bounds: { x: 540, y: 140, w: 145, h: 200 },
       appearance: { fill: "#c8a060", stroke: "#a88040", image: toDataUrl(svgs.cabinetOpenNoNotes) },
       zIndex: 1, visible: false,
       zoomView: {
@@ -2244,7 +2244,7 @@ const room = {
       id: "hs_cabinet_glass_open",
       label: "Cabinet (Glass Open)",
       shape: "rect",
-      bounds: { x: 540, y: 100, w: 145, h: 200 },
+      bounds: { x: 540, y: 140, w: 145, h: 200 },
       appearance: { fill: "#c8a060", stroke: "#a88040", image: toDataUrl(svgs.cabinetGlassOpen) },
       zIndex: 1, visible: false,
       zoomView: {
@@ -2331,7 +2331,7 @@ const room = {
       id: "hs_cabinet_lower_open",
       label: "Cabinet (Lower Open)",
       shape: "rect",
-      bounds: { x: 540, y: 100, w: 145, h: 200 },
+      bounds: { x: 540, y: 140, w: 145, h: 200 },
       appearance: { fill: "#c8a060", stroke: "#a88040", image: toDataUrl(svgs.cabinetLowerOpen) },
       zIndex: 1, visible: false,
       zoomView: {
@@ -2438,7 +2438,7 @@ const room = {
       id: "hs_cabinet_lower_open_no_notes",
       label: "Cabinet (Lower Open, No Notes)",
       shape: "rect",
-      bounds: { x: 540, y: 100, w: 145, h: 200 },
+      bounds: { x: 540, y: 140, w: 145, h: 200 },
       appearance: { fill: "#c8a060", stroke: "#a88040", image: toDataUrl(svgs.cabinetLowerOpenNoNotes) },
       zIndex: 1, visible: false,
       zoomView: {

@@ -1,22 +1,85 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="90" height="110">
+  <defs>
+    <linearGradient id="chBack" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="#4a4a4a"/>
+      <stop offset="100%" stop-color="#1a1a1a"/>
+    </linearGradient>
+    <linearGradient id="chSeat" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="#3a3a3a"/>
+      <stop offset="100%" stop-color="#151515"/>
+    </linearGradient>
+    <radialGradient id="chBase" cx="50%" cy="40%" r="60%">
+      <stop offset="0%"  stop-color="#b8b8b8"/>
+      <stop offset="60%" stop-color="#888"/>
+      <stop offset="100%" stop-color="#4a4a4a"/>
+    </radialGradient>
+    <linearGradient id="chStem" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"  stop-color="#555"/>
+      <stop offset="50%" stop-color="#aaa"/>
+      <stop offset="100%" stop-color="#555"/>
+    </linearGradient>
+  </defs>
+
   <!-- Floor shadow -->
-  <ellipse cx="45" cy="102" rx="30" ry="6" fill="rgba(0,0,0,0.2)"/>
-  <!-- Base pedestal -->
-  <rect x="38" y="78" width="14" height="24" fill="#777" rx="2"/>
-  <!-- Base star (simplified) -->
-  <ellipse cx="45" cy="100" rx="22" ry="5" fill="#888"/>
-  <ellipse cx="45" cy="99" rx="20" ry="4" fill="#999"/>
-  <!-- Seat -->
-  <path d="M12,48 Q12,70 35,72 L55,72 Q78,70 78,48" fill="#2a2a2a"/>
-  <!-- Seat cushion -->
-  <ellipse cx="45" cy="52" rx="34" ry="8" fill="#333"/>
-  <ellipse cx="45" cy="50" rx="32" ry="6" fill="#2a2a2a"/>
-  <!-- Backrest -->
-  <path d="M14,48 Q10,25 22,15 L68,15 Q80,25 76,48" fill="#333"/>
-  <path d="M16,46 Q13,27 24,18 L66,18 Q77,27 74,46" fill="#2a2a2a"/>
-  <!-- Backrest highlight -->
-  <path d="M24,20 Q44,14 66,20" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="2"/>
-  <!-- Armrests -->
-  <path d="M8,48 Q6,38 12,42 L12,58 Q8,62 8,55 Z" fill="#2a2a2a"/>
-  <path d="M82,48 Q84,38 78,42 L78,58 Q82,62 82,55 Z" fill="#2a2a2a"/>
+  <ellipse cx="45" cy="103" rx="32" ry="5" fill="rgba(0,0,0,0.3)"/>
+
+  <!-- 5-star base -->
+  <g>
+    <ellipse cx="45" cy="100" rx="28" ry="5" fill="url(#chBase)"/>
+    <!-- Star spokes -->
+    <g stroke="#333" stroke-width="0.7" fill="#888">
+      <polygon points="45,98 22,102 25,99"/>
+      <polygon points="45,98 68,102 65,99"/>
+      <polygon points="45,98 35,103 38,100"/>
+      <polygon points="45,98 55,103 52,100"/>
+      <polygon points="45,98 45,103 45,100"/>
+    </g>
+    <!-- Caster wheels -->
+    <circle cx="22" cy="102" r="2" fill="#222"/>
+    <circle cx="68" cy="102" r="2" fill="#222"/>
+    <circle cx="33" cy="104" r="2" fill="#222"/>
+    <circle cx="57" cy="104" r="2" fill="#222"/>
+  </g>
+
+  <!-- Gas lift stem -->
+  <rect x="42" y="74" width="6" height="24" rx="1" fill="url(#chStem)"/>
+  <ellipse cx="45" cy="74" rx="8" ry="2.5" fill="#888"/>
+  <ellipse cx="45" cy="74" rx="8" ry="1" fill="rgba(255,255,255,0.3)"/>
+
+  <!-- Seat base -->
+  <ellipse cx="45" cy="70" rx="30" ry="6" fill="#0f0f0f"/>
+  <!-- Seat cushion top -->
+  <ellipse cx="45" cy="66" rx="32" ry="8" fill="url(#chSeat)" stroke="#0a0a0a" stroke-width="0.5"/>
+  <!-- Seat highlight -->
+  <ellipse cx="45" cy="62" rx="26" ry="2.5" fill="rgba(255,255,255,0.08)"/>
+  <!-- Seat seam -->
+  <ellipse cx="45" cy="66" rx="24" ry="4.5" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+
+  <!-- High backrest with mesh pattern -->
+  <path d="M14,60 Q8,28 22,14 L68,14 Q82,28 76,60 Q72,58 68,58 L22,58 Q18,58 14,60 Z"
+        fill="url(#chBack)" stroke="#0a0a0a" stroke-width="0.8"/>
+  <!-- Mesh pattern -->
+  <g stroke="rgba(255,255,255,0.07)" stroke-width="0.4" fill="none">
+    <line x1="22" y1="22" x2="68" y2="22"/>
+    <line x1="20" y1="30" x2="70" y2="30"/>
+    <line x1="18" y1="40" x2="72" y2="40"/>
+    <line x1="17" y1="50" x2="73" y2="50"/>
+    <line x1="30" y1="18" x2="30" y2="56"/>
+    <line x1="40" y1="16" x2="40" y2="56"/>
+    <line x1="50" y1="16" x2="50" y2="56"/>
+    <line x1="60" y1="18" x2="60" y2="56"/>
+  </g>
+  <!-- Backrest frame highlight -->
+  <path d="M22,16 Q45,12 68,16" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  <!-- Backrest frame shadow -->
+  <path d="M22,58 L68,58" stroke="rgba(0,0,0,0.4)" stroke-width="1"/>
+  <!-- Lumbar support bar -->
+  <rect x="26" y="44" width="38" height="3" rx="1.5" fill="#333" stroke="#0a0a0a" stroke-width="0.4"/>
+  <rect x="26" y="44" width="38" height="1" fill="rgba(255,255,255,0.08)"/>
+
+  <!-- Armrests (sculpted) -->
+  <path d="M8,54 Q4,40 12,44 Q14,54 12,62 Q6,60 8,54 Z" fill="#2a2a2a" stroke="#0a0a0a" stroke-width="0.4"/>
+  <path d="M82,54 Q86,40 78,44 Q76,54 78,62 Q84,60 82,54 Z" fill="#2a2a2a" stroke="#0a0a0a" stroke-width="0.4"/>
+  <rect x="6" y="46" width="8" height="3" rx="1" fill="#1a1a1a"/>
+  <rect x="76" y="46" width="8" height="3" rx="1" fill="#1a1a1a"/>
 </svg>
