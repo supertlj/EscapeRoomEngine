@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <radialGradient id="hotelDark" cx="50%" cy="55%" r="80%">
+      <stop offset="0%"  stop-color="#0c1220"/>
+      <stop offset="100%" stop-color="#02030a"/>
+    </radialGradient>
+    <radialGradient id="hotelPhoneGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"  stop-color="rgba(120,200,255,0.45)"/>
+      <stop offset="60%" stop-color="rgba(60,140,220,0.10)"/>
+      <stop offset="100%" stop-color="rgba(0,0,0,0)"/>
+    </radialGradient>
+    <linearGradient id="hotelBed" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="#1a1820"/>
+      <stop offset="100%" stop-color="#080810"/>
+    </linearGradient>
+    <radialGradient id="hotelLamp" cx="50%" cy="50%" r="55%">
+      <stop offset="0%"  stop-color="rgba(255,200,140,0.20)"/>
+      <stop offset="100%" stop-color="rgba(0,0,0,0)"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Backdrop -->
+  <rect width="1280" height="720" fill="url(#hotelDark)"/>
+
+  <!-- Distant window with moonlight -->
+  <g opacity="0.35">
+    <rect x="80" y="80" width="220" height="280" fill="#0a1428"/>
+    <rect x="84" y="84" width="212" height="272" fill="none" stroke="#2a3a5a" stroke-width="2"/>
+    <line x1="190" y1="84" x2="190" y2="356" stroke="#2a3a5a" stroke-width="2"/>
+    <line x1="84"  y1="220" x2="296" y2="220" stroke="#2a3a5a" stroke-width="2"/>
+    <!-- Moon -->
+    <circle cx="240" cy="160" r="22" fill="#dde4f0" opacity="0.55"/>
+    <circle cx="244" cy="158" r="14" fill="#f0f4ff" opacity="0.4"/>
+  </g>
+  <!-- Window light spill on floor -->
+  <polygon points="80,360 300,360 380,720 0,720" fill="rgba(150,180,220,0.05)"/>
+
+  <!-- Bed (low silhouette across foreground bottom) -->
+  <rect x="0" y="510" width="1280" height="210" fill="url(#hotelBed)"/>
+  <rect x="0" y="500" width="1280" height="20" fill="#1a1828"/>
+  <!-- Rumpled sheets -->
+  <g fill="#0e0e18" opacity="0.75">
+    <ellipse cx="320" cy="540" rx="180" ry="20"/>
+    <ellipse cx="700" cy="555" rx="220" ry="22"/>
+    <ellipse cx="1020" cy="535" rx="180" ry="20"/>
+  </g>
+
+  <!-- Nightstand -->
+  <g transform="translate(800,420)">
+    <rect x="0" y="0" width="220" height="120" fill="#0a0a14" stroke="#1a1822" stroke-width="2"/>
+    <rect x="0" y="0" width="220" height="6" fill="#22202c"/>
+    <ellipse cx="110" cy="120" rx="100" ry="6" fill="#000"/>
+    <!-- Drawer pull -->
+    <rect x="98" y="60" width="24" height="3" rx="1.5" fill="#3a3a44"/>
+  </g>
+
+  <!-- Bedside lamp (off — faint warm cast) -->
+  <g transform="translate(870,300)">
+    <rect x="-3" y="0" width="6" height="120" fill="#1a1820"/>
+    <path d="M-30,-12 Q0,-50 30,-12 L22,8 Q0,0 -22,8 Z" fill="#1a1820" stroke="#2a2a32" stroke-width="1"/>
+  </g>
+  <ellipse cx="870" cy="320" rx="180" ry="120" fill="url(#hotelLamp)"/>
+
+  <!-- Phone face-up on nightstand, glowing -->
+  <g transform="translate(910,440) rotate(8)">
+    <rect x="-50" y="-22" width="100" height="48" rx="10" fill="#08080c" stroke="#2a3a5a" stroke-width="1.5"/>
+    <rect x="-46" y="-18" width="92"  height="40" rx="6"  fill="#1a3a8a"/>
+    <!-- Notification line -->
+    <rect x="-38" y="-10" width="76" height="3" rx="1.5" fill="#a8d8ff" opacity="0.85"/>
+    <rect x="-38" y="0"   width="50" height="2" rx="1"   fill="#a8d8ff" opacity="0.6"/>
+    <rect x="-38" y="8"   width="60" height="2" rx="1"   fill="#a8d8ff" opacity="0.5"/>
+  </g>
+  <!-- Phone glow -->
+  <ellipse cx="910" cy="442" rx="140" ry="80" fill="url(#hotelPhoneGlow)"/>
+
+  <!-- Glass on nightstand (small, hint of refracted light) -->
+  <g transform="translate(840,400)" opacity="0.6">
+    <rect x="-12" y="0" width="24" height="32" rx="3" fill="rgba(180,200,220,0.08)" stroke="rgba(220,240,255,0.18)" stroke-width="1"/>
+    <ellipse cx="0" cy="0" rx="12" ry="3" fill="rgba(140,180,220,0.25)"/>
+  </g>
+
+  <!-- Strong vignette + cool tone -->
+  <radialGradient id="hotelVig" cx="50%" cy="50%" r="80%">
+    <stop offset="40%" stop-color="rgba(0,0,0,0)"/>
+    <stop offset="100%" stop-color="rgba(0,0,0,0.78)"/>
+  </radialGradient>
+  <rect width="1280" height="720" fill="url(#hotelVig)"/>
+</svg>

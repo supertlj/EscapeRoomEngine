@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <radialGradient id="ceilSpot" cx="50%" cy="48%" r="55%">
+      <stop offset="0%"  stop-color="#3a2a14"/>
+      <stop offset="100%" stop-color="#0a0608"/>
+    </radialGradient>
+    <linearGradient id="ceilSurface" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="#2a1c10"/>
+      <stop offset="100%" stop-color="#1a1208"/>
+    </linearGradient>
+    <radialGradient id="bulbGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"  stop-color="#fff4c8"/>
+      <stop offset="40%" stop-color="rgba(255,200,120,0.55)"/>
+      <stop offset="100%" stop-color="rgba(0,0,0,0)"/>
+    </radialGradient>
+    <linearGradient id="bladeGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="#5a4030"/>
+      <stop offset="100%" stop-color="#2a1810"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Ceiling backdrop -->
+  <rect width="1280" height="720" fill="url(#ceilSpot)"/>
+  <rect width="1280" height="720" fill="url(#ceilSurface)" opacity="0.7"/>
+
+  <!-- Plaster texture lines -->
+  <g stroke="#2a1c10" stroke-width="1" opacity="0.4">
+    <line x1="0" y1="120" x2="1280" y2="120"/>
+    <line x1="0" y1="220" x2="1280" y2="220"/>
+    <line x1="0" y1="500" x2="1280" y2="500"/>
+    <line x1="0" y1="600" x2="1280" y2="600"/>
+  </g>
+  <!-- Stained patches -->
+  <g opacity="0.25">
+    <ellipse cx="200" cy="180" rx="120" ry="40" fill="#5a3818"/>
+    <ellipse cx="1080" cy="540" rx="160" ry="50" fill="#3a2410"/>
+    <ellipse cx="980" cy="220" rx="60" ry="20" fill="#5a3818"/>
+  </g>
+
+  <!-- Crown molding hint at edges (very subtle) -->
+  <rect x="0" y="0" width="1280" height="14" fill="#4a3018" opacity="0.8"/>
+  <rect x="0" y="706" width="1280" height="14" fill="#4a3018" opacity="0.8"/>
+
+  <!-- Ceiling fan, dead-center -->
+  <g transform="translate(640, 360)">
+    <!-- Mount disk -->
+    <circle r="36" fill="#1a1008" stroke="#3a2410" stroke-width="2"/>
+    <!-- Stem -->
+    <rect x="-4" y="-58" width="8" height="36" fill="#1a1008"/>
+    <!-- Hub -->
+    <circle r="28" fill="#3a2410" stroke="#5a3818" stroke-width="1"/>
+    <circle r="20" fill="#1a1008"/>
+    <circle r="8"  fill="#5a3818"/>
+
+    <!-- Four blades, slight rotation feel -->
+    <g transform="rotate(15)">
+      <!-- Blade arms -->
+      <rect x="20"   y="-10" width="220" height="20" rx="3" fill="url(#bladeGrad)" stroke="#1a0e04" stroke-width="1"/>
+      <rect x="-240" y="-10" width="220" height="20" rx="3" fill="url(#bladeGrad)" stroke="#1a0e04" stroke-width="1"/>
+      <rect x="-10" y="20"   width="20" height="220" rx="3" fill="url(#bladeGrad)" stroke="#1a0e04" stroke-width="1"/>
+      <rect x="-10" y="-240" width="20" height="220" rx="3" fill="url(#bladeGrad)" stroke="#1a0e04" stroke-width="1"/>
+    </g>
+
+    <!-- Pull chain -->
+    <line x1="0" y1="36" x2="6" y2="120" stroke="#5a4830" stroke-width="2"/>
+    <circle cx="6" cy="124" r="3" fill="#a08850"/>
+
+    <!-- Bulb under hub -->
+    <circle cx="0" cy="0" r="120" fill="url(#bulbGlow)" opacity="0.55"/>
+    <circle cx="0" cy="0" r="14" fill="#fff8d8"/>
+  </g>
+
+  <!-- Soft motion blur trail on blades (sense of slow rotation) -->
+  <g transform="translate(640, 360) rotate(15)" opacity="0.18">
+    <ellipse cx="130" cy="0" rx="120" ry="22" fill="#5a4030"/>
+    <ellipse cx="-130" cy="0" rx="120" ry="22" fill="#5a4030"/>
+    <ellipse cx="0" cy="130" rx="22" ry="120" fill="#5a4030"/>
+    <ellipse cx="0" cy="-130" rx="22" ry="120" fill="#5a4030"/>
+  </g>
+
+  <!-- Vignette -->
+  <radialGradient id="ceilVig" cx="50%" cy="50%" r="80%">
+    <stop offset="50%" stop-color="rgba(0,0,0,0)"/>
+    <stop offset="100%" stop-color="rgba(0,0,0,0.78)"/>
+  </radialGradient>
+  <rect width="1280" height="720" fill="url(#ceilVig)"/>
+</svg>

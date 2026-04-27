@@ -1,0 +1,45 @@
+{
+  "id": "c01",
+  "title": "Awakening",
+  "version": 1,
+  "schemaVersion": 1,
+  "order": 1,
+  "status": "released",
+
+  "intro": {
+    "type": "cinematic",
+    "asset": "intro.json",
+    "skippable": true,
+    "skippableAfterFirstView": true
+  },
+  "outro": {
+    "type": "cinematic",
+    "asset": "outro.json",
+    "skippable": false
+  },
+
+  "rooms": [
+    { "id": "apartment",  "file": "rooms/apartment.json",  "isStartRoom": true },
+    { "id": "hotel",      "file": "rooms/hotel.json" },
+    { "id": "laundromat", "file": "rooms/laundromat.json" },
+    { "id": "office",     "file": "rooms/office.json",     "isEndRoom": true }
+  ],
+
+  "audio": {
+    "bgm": [
+      { "id": "main",  "file": "audio/main_theme.mp3" },
+      { "id": "tense", "file": "audio/tense_ambient.mp3" }
+    ],
+    "defaultBgm": "tense"
+  },
+
+  "unlockRequires": [],
+
+  "completion": {
+    "trigger": "endRoomComplete",
+    "endRoomId": "office",
+    "onComplete": ["mark_chapter_complete:c01", "show_outro"]
+  },
+
+  "kits": ["woodKit", "labKit"]
+}

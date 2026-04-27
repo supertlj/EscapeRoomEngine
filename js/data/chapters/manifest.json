@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "game": {
+    "id": "cipher-1892",
+    "title": "Cipher 1892",
+    "subtitle": "Escape Room Mystery"
+  },
+  "chapters": [
+    {
+      "id": "c01",
+      "path": "c01-awakening",
+      "order": 1,
+      "status": "released"
+    },
+    {
+      "id": "c02",
+      "path": "c02-the-trail",
+      "order": 2,
+      "status": "coming_soon"
+    }
+  ]
+}

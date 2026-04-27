@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>Escape Room Engine</title>
+<title>Cipher 1892</title>
 <link rel="stylesheet" href="css/shared.css">
 <style>
   .home {
@@ -11,133 +11,204 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 40px 20px;
+    justify-content: flex-start;
+    padding: 60px 20px 40px;
     text-align: center;
+    max-width: 520px;
+    margin: 0 auto;
   }
   .home h1 {
-    font-size: 28px;
+    font-size: 36px;
     color: var(--gold);
-    letter-spacing: 2px;
+    letter-spacing: 4px;
     margin-bottom: 4px;
+    font-weight: 700;
   }
   .home .subtitle {
     color: var(--text-dim);
     font-size: 13px;
-    margin-bottom: 36px;
+    letter-spacing: 2px;
+    margin-bottom: 32px;
+    text-transform: uppercase;
   }
+
+  .continue-card {
+    width: 100%;
+    max-width: 360px;
+    padding: 14px 16px;
+    margin-bottom: 16px;
+    background: rgba(196, 163, 90, 0.08);
+    border: 1px solid var(--gold);
+    border-radius: 8px;
+    text-align: left;
+  }
+  .continue-card .continue-meta {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--gold);
+    opacity: 0.8;
+    margin-bottom: 4px;
+  }
+  .continue-card .continue-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .continue-card .continue-room {
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-top: 2px;
+  }
+
+  .hub-actions {
+    width: 100%;
+    max-width: 360px;
+    display: flex;
+    gap: 8px;
+    margin-bottom: 28px;
+  }
+  .hub-actions .menu-btn { flex: 1; margin-bottom: 0; }
+  .hub-actions .menu-btn.primary {
+    background: var(--gold);
+    color: var(--bg-deep);
+    border: 1px solid var(--gold);
+    font-weight: 700;
+  }
+
   .menu-btn {
     display: block;
     width: 100%;
-    max-width: 320px;
     padding: 14px;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     background: rgba(196, 163, 90, 0.1);
     border: 1px solid var(--gold);
     color: var(--gold);
     border-radius: 8px;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 500;
     min-height: var(--touch-min);
+    cursor: pointer;
   }
   .menu-btn.secondary {
     border-color: var(--border);
     color: var(--text-dim);
     background: transparent;
+    font-size: 12px;
+    padding: 10px 12px;
   }
+  .menu-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  .hub-section-label {
+    width: 100%;
+    max-width: 360px;
+    text-align: left;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-dim);
+    margin: 8px 0 8px;
+  }
+
   .room-list {
     width: 100%;
-    max-width: 320px;
-    margin-top: 24px;
+    max-width: 360px;
     text-align: left;
+    margin-bottom: 24px;
   }
   .room-card {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 12px;
+    padding: 12px 14px;
     background: rgba(255,255,255,0.03);
     border: 1px solid var(--border);
     border-radius: 6px;
     margin-bottom: 6px;
   }
-  .room-card .name { font-size: 14px; font-weight: 500; }
-  .room-card .meta { font-size: 11px; color: var(--text-dim); }
-  .room-card .play-btn {
-    background: var(--gold);
-    color: var(--bg-deep);
-    border: none;
-    border-radius: 4px;
-    padding: 6px 14px;
-    font-size: 11px;
-    font-weight: 700;
-    min-height: var(--touch-min);
-    min-width: var(--touch-min);
+  .room-card.disabled { opacity: 0.55; }
+  .room-card .name { font-size: 14px; font-weight: 500; color: var(--text); }
+  .room-card .meta { font-size: 11px; color: var(--text-dim); margin-top: 2px; }
+
+  .badge {
+    display: inline-block;
+    padding: 2px 6px;
+    margin-left: 6px;
+    font-size: 9px;
+    border-radius: 3px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    vertical-align: 1px;
   }
+  .badge.complete  { background: rgba(80, 200, 120, 0.18); color: #7fdca0; }
+  .badge.released  { background: rgba(196, 163, 90, 0.18); color: var(--gold); }
+  .badge.soon      { background: rgba(160, 160, 160, 0.15); color: #aaa; }
+
+  .hub-footer {
+    width: 100%;
+    max-width: 360px;
+    margin-top: 12px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+  .hub-footer .menu-btn { margin-bottom: 0; }
+  .hub-footer label.menu-btn input { display: none; }
 </style>
 </head>
 <body>
-<div class="home">
-  <h1>ESCAPE</h1>
-  <p class="subtitle">Room Escape Engine</p>
-
-  <a href="play.html#room=sample-room"><button class="menu-btn">Play Demo Room</button></a>
-  <a href="editor.html"><button class="menu-btn">Room Editor</button></a>
-
-  <label class="menu-btn secondary" style="cursor:pointer;">
-    Import Room (JSON)
-    <input type="file" accept=".json" id="importFile" style="display:none;">
-  </label>
-
-  <div class="room-list" id="roomList">
-    <div class="room-card">
-      <div>
-        <div class="name">The Study</div>
-        <div class="meta">6 puzzles</div>
-      </div>
-      <a href="play.html#room=sample-room"><button class="play-btn">PLAY</button></a>
-    </div>
-    <div class="room-card">
-      <div>
-        <div class="name">The Laboratory</div>
-        <div class="meta">8 puzzles</div>
-      </div>
-      <a href="play.html#room=laboratory"><button class="play-btn">PLAY</button></a>
-    </div>
-    <div class="room-card">
-      <div>
-        <div class="name">The Library</div>
-        <div class="meta">7 puzzles</div>
-      </div>
-      <a href="play.html#room=library"><button class="play-btn">PLAY</button></a>
-    </div>
-    <div class="room-card">
-      <div>
-        <div class="name">The Apartment</div>
-        <div class="meta">6 puzzles</div>
-      </div>
-      <a href="play.html#room=apartment"><button class="play-btn">PLAY</button></a>
-    </div>
+<div id="hubRoot">
+  <div class="home">
+    <h1>CIPHER 1892</h1>
+    <p class="subtitle">Loading…</p>
   </div>
 </div>
 
 <script type="module">
-  const fileInput = document.getElementById('importFile');
-  fileInput.addEventListener('change', (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = () => {
-      try {
-        const data = JSON.parse(reader.result);
-        localStorage.setItem('ere_imported_room', reader.result);
-        window.location.href = 'play.html#room=imported';
-      } catch (err) {
-        alert('Invalid JSON file: ' + err.message);
+  import { buildIndex, ChapterIndexLoadError, ChapterManifestParseError } from './js/core/ChapterIndex.js';
+  import HubUI from './js/game/HubUI.js';
+
+  const root = document.getElementById('hubRoot');
+
+  async function boot() {
+    try {
+      await buildIndex();
+    } catch (err) {
+      const msg = err instanceof ChapterIndexLoadError
+        ? 'Site is loading. Please refresh in a moment.'
+        : err instanceof ChapterManifestParseError
+          ? 'Game data is malformed. Please refresh; if this persists, contact the developer.'
+          : err.message;
+      root.innerHTML = `<div class="home"><h1>CIPHER 1892</h1><p class="subtitle">Error</p><p style="color:var(--text-dim); margin: 16px 0 24px; max-width: 360px;">${msg}</p><button class="menu-btn primary" onclick="location.reload()" style="max-width: 200px;">Refresh</button></div>`;
+      console.error('Hub boot failed:', err);
+      return;
+    }
+
+    const hub = new HubUI(root, {
+      onPlay: () => {
+        // Continue from saved room, or start at chapter's start room
+        const raw = localStorage.getItem('ere_save_cipher-1892');
+        if (raw) {
+          try {
+            const save = JSON.parse(raw);
+            window.location.href = `play.html#room=${save.currentRoomId || 'apartment'}`;
+            return;
+          } catch {}
+        }
+        window.location.href = 'play.html#room=apartment';
+      },
+      onNewGame: () => {
+        localStorage.removeItem('ere_save_cipher-1892');
+        window.location.href = 'play.html#room=apartment';
       }
-    };
-    reader.readAsText(file);
-  });
+    });
+    hub.render();
+  }
+
+  boot();
 </script>
 </body>
 </html>

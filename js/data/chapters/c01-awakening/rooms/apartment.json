@@ -1793,7 +1793,7 @@
               "w": 70,
               "h": 52
             },
-            "image": "assets/rooms/apartment/zoom/screen1886.svg",
+            "image": "assets/rooms/apartment/zoom/screen1892.svg",
             "visibleWhen": [
               "laptop_unlocked"
             ],
@@ -1858,7 +1858,7 @@
               "w": 70,
               "h": 52
             },
-            "image": "assets/rooms/apartment/zoom/screen1886.svg",
+            "image": "assets/rooms/apartment/zoom/screen1892.svg",
             "visibleWhen": [
               "laptop_unlocked"
             ],
@@ -2182,7 +2182,7 @@
       "type": "combination",
       "hotspotId": "hs_lockbox",
       "prompt": "_ _ _ _",
-      "solution": "1886",
+      "solution": "1892",
       "onSolve": [
         {
           "type": "setFlag",

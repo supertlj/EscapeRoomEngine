@@ -5,8 +5,8 @@
  * Puzzle chain:
  *   1. Tap plant → zoom in → see key in soil → tap key → flies to inventory
  *   2. Use key on cabinet → zoom in → drawer slides open → find paper "TAKI"
- *   3. Tap laptop → zoom in → password puzzle "TAKI" → shows "1886"
- *   4. Tap lockbox → zoom in → code puzzle "1886" → keycard appears → pick up
+ *   3. Tap laptop → zoom in → password puzzle "TAKI" → shows "1892"
+ *   4. Tap lockbox → zoom in → code puzzle "1892" → keycard appears → pick up
  *   5. Use keycard on door → card reader beeps → escape!
  *
  * Run: node tools/gen-apartment.js
@@ -767,7 +767,7 @@ svgs.laptop = `
   <line x1="19" y1="14" x2="87" y2="14" stroke="rgba(255,255,255,0.03)" stroke-width="0.8"/>
 </svg>`;
 
-// Laptop unlocked: screen showing 1886
+// Laptop unlocked: screen showing 1892
 svgs.laptopUnlocked = `
 <svg xmlns="http://www.w3.org/2000/svg" width="110" height="80">
   <!-- Shadow under base -->
@@ -782,8 +782,8 @@ svgs.laptopUnlocked = `
   <polygon points="18,50 92,50 87,15 23,15" fill="#0a2a10"/>
   <!-- Screen glow -->
   <polygon points="18,50 92,50 87,15 23,15" fill="rgba(0,180,80,0.06)"/>
-  <!-- 1886 on screen -->
-  <text x="55" y="38" text-anchor="middle" fill="#5c8" font-size="14" font-weight="bold" font-family="monospace">1886</text>
+  <!-- 1892 on screen -->
+  <text x="55" y="38" text-anchor="middle" fill="#5c8" font-size="14" font-weight="bold" font-family="monospace">1892</text>
   <!-- Camera -->
   <circle cx="55" cy="8" r="1.5" fill="#444"/>
   <line x1="19" y1="14" x2="87" y2="14" stroke="rgba(255,255,255,0.03)" stroke-width="0.8"/>
@@ -1450,8 +1450,8 @@ zoom.keycard = `
   <polygon points="72,44 76,40 76,44" fill="#b0b8c8"/>
 </svg>`;
 
-// Laptop screen unlocked — showing "1886" with CRT glow effect
-zoom.screen1886 = `
+// Laptop screen unlocked — showing "1892" with CRT glow effect
+zoom.screen1892 = `
 <svg xmlns="http://www.w3.org/2000/svg" width="280" height="175">
   <defs>
     <radialGradient id="scrglow" cx="50%" cy="50%" r="60%">
@@ -1487,9 +1487,9 @@ zoom.screen1886 = `
   <!-- Inner glow ring -->
   <rect x="40" y="63" width="200" height="74" rx="6" fill="none" stroke="rgba(0,255,100,0.05)" stroke-width="2"/>
   <!-- Big number with glow layers -->
-  <text x="140" y="116" text-anchor="middle" fill="rgba(0,200,80,0.15)" font-size="56" font-weight="bold" font-family="monospace">1886</text>
-  <text x="140" y="115" text-anchor="middle" fill="#5c8" font-size="54" font-weight="bold" font-family="monospace">1886</text>
-  <text x="140" y="114" text-anchor="middle" fill="#8ea" font-size="52" font-weight="bold" font-family="monospace" opacity="0.4">1886</text>
+  <text x="140" y="116" text-anchor="middle" fill="rgba(0,200,80,0.15)" font-size="56" font-weight="bold" font-family="monospace">1892</text>
+  <text x="140" y="115" text-anchor="middle" fill="#5c8" font-size="54" font-weight="bold" font-family="monospace">1892</text>
+  <text x="140" y="114" text-anchor="middle" fill="#8ea" font-size="52" font-weight="bold" font-family="monospace" opacity="0.4">1892</text>
   <!-- Small status text -->
   <text x="140" y="160" text-anchor="middle" fill="#2a4a5a" font-size="9" font-family="monospace">FILE #0042 — CLASSIFIED</text>
   <!-- Screen edge vignette -->
@@ -2500,7 +2500,7 @@ const room = {
       triggers: []
     },
 
-    // Step 3: Laptop → zoom → password puzzle → screen shows 1886
+    // Step 3: Laptop → zoom → password puzzle → screen shows 1892
     {
       id: "hs_laptop",
       label: "Laptop",
@@ -2511,12 +2511,12 @@ const room = {
       zoomView: {
         image: toDataUrl(zoom.laptopBg),
         subHotspots: [
-          // Unlocked screen showing 1886 (visible after solving)
+          // Unlocked screen showing 1892 (visible after solving)
           {
-            id: "sub_screen_1886",
+            id: "sub_screen_1892",
             label: "Screen (Unlocked)",
             bounds: { x: 15, y: 12, w: 70, h: 52 },
-            image: toDataUrl(zoom.screen1886),
+            image: toDataUrl(zoom.screen1892),
             visibleWhen: ["laptop_unlocked"],
             triggers: []
           },
@@ -2552,10 +2552,10 @@ const room = {
         image: toDataUrl(zoom.laptopBg),
         subHotspots: [
           {
-            id: "sub_screen_1886",
+            id: "sub_screen_1892",
             label: "Screen (Unlocked)",
             bounds: { x: 15, y: 12, w: 70, h: 52 },
-            image: toDataUrl(zoom.screen1886),
+            image: toDataUrl(zoom.screen1892),
             visibleWhen: ["laptop_unlocked"],
             triggers: []
           }
@@ -2725,7 +2725,7 @@ const room = {
       type: "combination",
       hotspotId: "hs_lockbox",
       prompt: "_ _ _ _",
-      solution: "1886",
+      solution: "1892",
       onSolve: [
         { type: "setFlag", params: { flag: "lockbox_open", value: true } },
         { type: "setFlag", params: { flag: "_zoomHidden_sub_keypad", value: true } },
@@ -2779,8 +2779,10 @@ function replaceImages(obj) {
 
 const roomWithPaths = replaceImages(room);
 
-const outPath = path.join(__dirname, '..', 'js', 'data', 'apartment.json');
+const outDir = path.join(__dirname, '..', 'js', 'data', 'chapters', 'c01-awakening', 'rooms');
+fs.mkdirSync(outDir, { recursive: true });
+const outPath = path.join(outDir, 'apartment.json');
 fs.writeFileSync(outPath, JSON.stringify(roomWithPaths, null, 2) + '\n');
 const jsonSize = Math.round(fs.statSync(outPath).size / 1024);
 const svgCount = Object.keys(mainImgs).length + Object.keys(zoomImgs).length;
-console.log(`Generated apartment.json (${jsonSize} KB) + ${svgCount} SVG files in assets/rooms/apartment/`);
+console.log(`Generated chapters/c01-awakening/rooms/apartment.json (${jsonSize} KB) + ${svgCount} SVG files in assets/rooms/apartment/`);

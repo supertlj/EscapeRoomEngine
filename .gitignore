@@ -1,0 +1,16 @@
+node_modules/
+.DS_Store
+*.log
+
+# Test output
+test-results/
+playwright-report/
+playwright/.cache/
+
+# Editor / OS
+.vscode/
+.idea/
+
+# Dev tooling state
+.gstack/
+tools/previews/

@@ -30,6 +30,17 @@ import EventBus from './js/core/EventBus.js';
 import { Room } from './js/core/RoomData.js';
 import { validateRoom } from './js/core/SchemaValidator.js';
 import StateManager from './js/core/StateManager.js';
+import {
+  buildIndex,
+  resolveRoomPath,
+  resolveChapterAssetPath,
+  getChapterForRoom,
+  getChapter,
+  getAllChapters,
+  RoomNotFoundError,
+  ChapterIndexLoadError,
+  ChapterManifestParseError
+} from './js/core/ChapterIndex.js';
 import Renderer from './js/engine/Renderer.js';
 import InputHandler from './js/engine/InputHandler.js';
 import GameLoop from './js/engine/GameLoop.js';
@@ -41,6 +52,8 @@ import RoomManager from './js/game/RoomManager.js';
 import AssetManager from './js/editor/AssetManager.js';
 import ZoomViewUI from './js/game/ZoomViewUI.js';
 import VisualFX from './js/game/VisualFX.js';
+import EndScreen from './js/game/EndScreen.js';
+import CinematicPlayer from './js/game/CinematicPlayer.js';
 
 // Debug mode
 const params = new URLSearchParams(location.search.length > 1 ? location.search : location.hash.replace('#', '?'));
@@ -57,14 +70,16 @@ const hintBtn = document.getElementById('hintBtn');
 
 // --- Load Room ---
 async function loadRoom() {
-  const roomParam = params.get('room') || 'sample-room';
+  const roomParam = params.get('room') || 'apartment';
   let data;
   if (roomParam === 'imported') {
     const raw = localStorage.getItem('ere_imported_room');
     if (!raw) throw new Error('No imported room found');
     data = JSON.parse(raw);
   } else {
-    const resp = await fetch(`js/data/${roomParam}.json`);
+    // Resolve via ChapterIndex (chapter-folder layout)
+    const path = resolveRoomPath(roomParam);
+    const resp = await fetch(path);
     if (!resp.ok) throw new Error(`Failed to load room: ${roomParam}`);
     data = await resp.json();
   }
@@ -75,12 +90,32 @@ async function loadRoom() {
 
 // --- Boot ---
 async function init() {
+  const roomParam = params.get('room') || 'apartment';
+
+  // Build chapter index first — must precede any room load.
+  try {
+    await buildIndex();
+  } catch (err) {
+    roomNameEl.textContent = 'Error';
+    const msg = err instanceof ChapterIndexLoadError
+      ? 'Site is loading. Please refresh in a moment.'
+      : err instanceof ChapterManifestParseError
+        ? 'Game data is malformed. Please refresh; if this persists, contact the developer.'
+        : err.message;
+    document.body.innerHTML += `<div class="message-overlay"><div class="message-box"><p>${msg}</p><button class="dismiss" onclick="location.reload()">Refresh</button></div></div>`;
+    console.error('ChapterIndex boot failed:', err);
+    return;
+  }
+
   let room;
   try {
     room = await loadRoom();
   } catch (err) {
     roomNameEl.textContent = 'Error';
-    document.body.innerHTML += `<div class="message-overlay"><div class="message-box"><p>${err.message}</p><a href="index.html"><button class="dismiss">Back</button></a></div></div>`;
+    const msg = err instanceof RoomNotFoundError
+      ? `This room isn't ready yet: ${err.roomId}`
+      : err.message;
+    document.body.innerHTML += `<div class="message-overlay"><div class="message-box"><p>${msg}</p><a href="index.html"><button class="dismiss">Back</button></a></div></div>`;
     return;
   }
 
@@ -88,9 +123,71 @@ async function init() {
   const assetManager = new AssetManager();
   await assetManager.preloadRoom(room);
 
-  // State
-  const state = new StateManager(room.id);
-  state.currentRoomId = room.id;
+  // State — keyed by game id, not per-room. Try to load existing save.
+  const state = new StateManager();
+  try {
+    const loaded = state.load();
+    if (!loaded) {
+      // No save yet — first-time player. Initialize with the URL room
+      // and write the save immediately so returning visitors see "Continue".
+      state.currentRoomId = roomParam;
+      const ch = (await import('./js/core/ChapterIndex.js')).getChapterForRoom(roomParam);
+      if (ch) state.setCurrentChapter(ch.id);
+      try { state.save(); } catch (e) { console.warn('Initial save failed:', e); }
+    }
+  } catch (err) {
+    // Corrupt or version-ahead save. Show recovery dialog.
+    console.error('Save load failed:', err);
+    const isVersionAhead = err.name === 'SaveVersionAheadError';
+    const msg = isVersionAhead
+      ? 'Your save is from a newer version of the game. Please refresh.'
+      : 'Your save data is corrupt. Reset it to continue (your progress will be lost).';
+    const buttons = isVersionAhead
+      ? `<button class="dismiss" onclick="location.reload()">Refresh</button>`
+      : `<button class="dismiss" onclick="localStorage.removeItem('ere_save_cipher-1892'); location.reload()">Reset Save Data</button>
+         <a href="index.html"><button class="dismiss" style="margin-left:8px">Back</button></a>`;
+    document.body.innerHTML += `<div class="message-overlay"><div class="message-box"><p>${msg}</p>${buttons}</div></div>`;
+    return;
+  }
+
+  // --- Intro cinematic gate ---
+  // Show the chapter intro on first play. URL ?skipIntro=1 always bypasses
+  // (used for tests + dev). After watching once, settings.introSeen=true so
+  // returning players don't sit through it again.
+  const skipIntroParam = params.get('skipIntro') === '1';
+  const ch = getChapterForRoom(roomParam);
+  const isStartRoom = ch && ch.rooms?.find(r => r.id === roomParam)?.isStartRoom;
+  const introSeen = state.settings?.introSeen === true;
+  const shouldShowIntro = !skipIntroParam && isStartRoom && ch?.intro?.asset && !introSeen;
+
+  if (shouldShowIntro) {
+    try {
+      const introPath = resolveChapterAssetPath(ch.id, ch.intro.asset);
+      const introResp = await fetch(introPath);
+      if (introResp.ok) {
+        const introScript = await introResp.json();
+        await new Promise((resolve) => {
+          const player = new CinematicPlayer(document.body, {
+            onComplete: () => {
+              state.setSetting('introSeen', true);
+              try { state.save(); } catch {}
+              resolve();
+            },
+            onSkip: () => {
+              state.setSetting('introSeen', true);
+              try { state.save(); } catch {}
+              resolve();
+            },
+            resolveAsset: (rel) => resolveChapterAssetPath(ch.id, rel)
+          });
+          player.play(introScript);
+        });
+      }
+    } catch (introErr) {
+      // Cinematic is non-blocking — if it fails, log and continue.
+      console.warn('Intro cinematic failed to load, skipping:', introErr);
+    }
+  }
 
   // Timer setting (from room-set or room, default 30 min)
   const timerSeconds = room.settings?.timerSeconds || 1800;
@@ -259,16 +356,63 @@ async function init() {
     if (window.DEBUG) console.log('[auto-save]');
   });
 
-  // Win -> stop timer
+  // End screen — used by chapter completion flow.
+  const endScreen = new EndScreen(document.body, {
+    onReplay: () => {
+      // Replay this chapter: clear save and reload the start room.
+      const ch = getChapterForRoom(state.currentRoomId);
+      if (ch) {
+        const startRoom = ch.rooms?.find(r => r.isStartRoom);
+        // Soft-reset chapter-local state, keep choices/global flags.
+        state.chapterFlags[ch.id] = {};
+        state.completedRooms = state.completedRooms.filter(r => !ch.rooms?.some(cr => cr.id === r));
+        state.completedChapters = state.completedChapters.filter(c => c !== ch.id);
+        state.currentRoomId = startRoom ? startRoom.id : state.currentRoomId;
+        try { state.save(); } catch {}
+      }
+      location.reload();
+    },
+    onBackToHub: () => { window.location.href = 'index.html'; }
+  });
+
+  // Win -> stop timer + chapter completion check
   EventBus.on('action:gameWin', () => {
     gameLoop.stop();
-    state.save();
+    // Mark current room complete
+    state.markRoomComplete(state.currentRoomId);
+    // Check if this room is the chapter's end room
+    const ch = getChapterForRoom(state.currentRoomId);
+    if (ch && ch.completion && ch.completion.trigger === 'endRoomComplete') {
+      const endRoomId = ch.completion.endRoomId;
+      if (state.currentRoomId === endRoomId) {
+        state.markChapterComplete(ch.id);
+        try { state.save(); } catch {}
+        // Find next chapter for the teaser
+        const all = getAllChapters();
+        const next = all.find(c => c._indexOrder === ch._indexOrder + 1) || null;
+        endScreen.show(ch, next);
+        return;
+      }
+    }
+    try { state.save(); } catch {}
   });
 
   // Lose -> already stopped by GameLoop
   EventBus.on('action:gameLose', () => {
-    state.save();
+    try { state.save(); } catch {}
   });
+
+  // Debug: trigger end screen manually via console.
+  if (window.DEBUG) {
+    window._cipher = window._cipher || {};
+    window._cipher.showEndScreen = () => {
+      const ch = getChapterForRoom(state.currentRoomId);
+      const all = getAllChapters();
+      const next = ch ? all.find(c => c._indexOrder === ch._indexOrder + 1) : null;
+      endScreen.show(ch, next);
+    };
+    console.log('[debug] _cipher.showEndScreen() available');
+  }
 
   // Long-press inspect
   EventBus.on('input:longpress', ({ hotspot }) => {
