@@ -16,6 +16,11 @@
       <stop offset="0%" stop-color="#987038"/>
       <stop offset="100%" stop-color="#8a6228"/>
     </linearGradient>
+    <radialGradient id="cobrass" cx="35%" cy="35%" r="65%">
+      <stop offset="0%"  stop-color="#fff4c8"/>
+      <stop offset="55%" stop-color="#c89030"/>
+      <stop offset="100%" stop-color="#6a4818"/>
+    </radialGradient>
   </defs>
   <!-- Back wall of cabinet interior -->
   <rect x="25" y="5" width="290" height="185" rx="2" fill="url(#cointback)"/>
@@ -37,18 +42,16 @@
   <polygon points="0,0 10,2 10,193 0,195" fill="url(#doorinner)"/>
   <!-- Door panel inset -->
   <polygon points="6,15 25,22 25,175 6,180" fill="rgba(0,0,0,0.06)"/>
-  <!-- Left door knob — 3D sphere -->
-  <circle cx="26" cy="95" r="5" fill="#999" stroke="#777" stroke-width="0.5"/>
-  <circle cx="25" cy="94" r="3" fill="#bbb"/>
-  <circle cx="24" cy="93" r="1" fill="rgba(255,255,255,0.3)"/>
+  <!-- Left door knob — brass sphere -->
+  <circle cx="26" cy="95" r="5" fill="url(#cobrass)" stroke="#6a4818" stroke-width="0.5"/>
+  <circle cx="24.5" cy="93.5" r="1.4" fill="#fff4c8" opacity="0.85"/>
   <!-- Right door (swung open — 3D mirror) -->
   <polygon points="340,0 312,10 312,185 340,195" fill="url(#doorface)" stroke="#987038" stroke-width="1"/>
   <polygon points="340,0 330,2 330,193 340,195" fill="url(#doorinner)"/>
   <polygon points="334,15 315,22 315,175 334,180" fill="rgba(0,0,0,0.06)"/>
-  <!-- Right door knob -->
-  <circle cx="314" cy="95" r="5" fill="#999" stroke="#777" stroke-width="0.5"/>
-  <circle cx="313" cy="94" r="3" fill="#bbb"/>
-  <circle cx="312" cy="93" r="1" fill="rgba(255,255,255,0.3)"/>
+  <!-- Right door knob — brass -->
+  <circle cx="314" cy="95" r="5" fill="url(#cobrass)" stroke="#6a4818" stroke-width="0.5"/>
+  <circle cx="312.5" cy="93.5" r="1.4" fill="#fff4c8" opacity="0.85"/>
   <!-- Drawer — 3D with front face and visible top -->
   <!-- Drawer top face -->
   <polygon points="60,100 280,100 275,97 65,97" fill="#b88848"/>
@@ -58,9 +61,9 @@
   <rect x="68" y="108" width="204" height="54" fill="rgba(0,0,0,0.06)" rx="1"/>
   <line x1="68" y1="108" x2="272" y2="108" stroke="rgba(0,0,0,0.1)" stroke-width="1"/>
   <line x1="68" y1="162" x2="272" y2="162" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
-  <!-- Drawer handle — 3D arc -->
-  <rect x="136" y="168" width="68" height="7" rx="3" fill="#aaa" stroke="#888" stroke-width="0.5"/>
-  <rect x="138" y="169" width="64" height="2.5" fill="rgba(255,255,255,0.15)" rx="1"/>
+  <!-- Drawer handle — brass arc -->
+  <rect x="136" y="168" width="68" height="7" rx="3" fill="url(#cobrass)" stroke="#6a4818" stroke-width="0.5"/>
+  <rect x="138" y="169" width="64" height="2.5" fill="rgba(255,248,220,0.55)" rx="1"/>
   <!-- Interior shadow from above -->
   <rect x="25" y="5" width="290" height="3" fill="rgba(0,0,0,0.2)"/>
 </svg>

@@ -1,19 +1,117 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="110" height="80">
+  <defs>
+    <linearGradient id="ulapBase" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="#c0c0c0"/>
+      <stop offset="50%" stop-color="#9a9a9a"/>
+      <stop offset="100%" stop-color="#666"/>
+    </linearGradient>
+    <linearGradient id="ulapLid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="#b8b8b8"/>
+      <stop offset="100%" stop-color="#6a6a6a"/>
+    </linearGradient>
+    <radialGradient id="uscreen" cx="50%" cy="50%" r="65%">
+      <stop offset="0%"  stop-color="#0e3028"/>
+      <stop offset="60%" stop-color="#08201c"/>
+      <stop offset="100%" stop-color="#040c0a"/>
+    </radialGradient>
+    <radialGradient id="uscreenGlow" cx="50%" cy="50%" r="65%">
+      <stop offset="0%"  stop-color="rgba(80,255,150,0.45)"/>
+      <stop offset="60%" stop-color="rgba(40,200,120,0.10)"/>
+      <stop offset="100%" stop-color="rgba(0,120,60,0)"/>
+    </radialGradient>
+    <radialGradient id="uunlockGold" cx="35%" cy="35%" r="65%">
+      <stop offset="0%"  stop-color="#fff4c8"/>
+      <stop offset="55%" stop-color="#d8a838"/>
+      <stop offset="100%" stop-color="#7a4810"/>
+    </radialGradient>
+  </defs>
+
   <!-- Shadow under base -->
-  <ellipse cx="55" cy="74" rx="42" ry="4" fill="rgba(0,0,0,0.15)"/>
-  <!-- Base/keyboard -->
-  <polygon points="10,55 100,55 95,72 15,72" fill="#999" stroke="#888" stroke-width="0.8"/>
-  <polygon points="14,57 96,57 92,70 18,70" fill="#777"/>
-  <rect x="22" y="59" width="66" height="8" rx="1" fill="#666" opacity="0.6"/>
-  <rect x="38" y="68" width="34" height="3" rx="1" fill="#888"/>
-  <!-- Screen (angled back) -->
-  <polygon points="12,54 98,54 92,10 18,10" fill="#333" stroke="#222" stroke-width="1.5"/>
-  <polygon points="18,50 92,50 87,15 23,15" fill="#0a2a10"/>
-  <!-- Screen glow -->
-  <polygon points="18,50 92,50 87,15 23,15" fill="rgba(0,180,80,0.06)"/>
-  <!-- 1886 on screen -->
-  <text x="55" y="38" text-anchor="middle" fill="#5c8" font-size="14" font-weight="bold" font-family="monospace">1886</text>
+  <ellipse cx="55" cy="75" rx="46" ry="4" fill="rgba(0,0,0,0.3)"/>
+
+  <!-- Green spill light on desk in front of laptop -->
+  <ellipse cx="55" cy="76" rx="38" ry="3" fill="rgba(80,255,150,0.10)"/>
+
+  <!-- Base (3D trapezoid) -->
+  <polygon points="10,55 100,55 96,72 14,72" fill="url(#ulapBase)" stroke="#4a4a4a" stroke-width="0.6"/>
+  <!-- Base front edge shadow -->
+  <polygon points="14,72 96,72 94,74 16,74" fill="#3a3a3a"/>
+  <!-- Base top plane -->
+  <polygon points="12,55 98,55 96,58 14,58" fill="#d4d4d4"/>
+
+  <!-- Keyboard area (recessed) -->
+  <polygon points="20,58 90,58 87,69 23,69" fill="#2a2a2a" stroke="#1a1a1a" stroke-width="0.4"/>
+  <!-- Keyboard keys grid -->
+  <g fill="#4a4a4a" stroke="#1a1a1a" stroke-width="0.2">
+    <rect x="22" y="59" width="6" height="2.2" rx="0.3"/>
+    <rect x="29" y="59" width="6" height="2.2" rx="0.3"/>
+    <rect x="36" y="59" width="6" height="2.2" rx="0.3"/>
+    <rect x="43" y="59" width="6" height="2.2" rx="0.3"/>
+    <rect x="50" y="59" width="6" height="2.2" rx="0.3"/>
+    <rect x="57" y="59" width="6" height="2.2" rx="0.3"/>
+    <rect x="64" y="59" width="6" height="2.2" rx="0.3"/>
+    <rect x="71" y="59" width="6" height="2.2" rx="0.3"/>
+    <rect x="78" y="59" width="6" height="2.2" rx="0.3"/>
+    <rect x="22" y="62" width="6" height="2.2" rx="0.3"/>
+    <rect x="29" y="62" width="6" height="2.2" rx="0.3"/>
+    <rect x="36" y="62" width="6" height="2.2" rx="0.3"/>
+    <rect x="43" y="62" width="6" height="2.2" rx="0.3"/>
+    <rect x="50" y="62" width="6" height="2.2" rx="0.3"/>
+    <rect x="57" y="62" width="6" height="2.2" rx="0.3"/>
+    <rect x="64" y="62" width="6" height="2.2" rx="0.3"/>
+    <rect x="71" y="62" width="6" height="2.2" rx="0.3"/>
+    <rect x="78" y="62" width="6" height="2.2" rx="0.3"/>
+    <rect x="22" y="65" width="14" height="2.2" rx="0.3"/>
+    <rect x="37" y="65" width="36" height="2.2" rx="0.3"/>
+    <rect x="74" y="65" width="10" height="2.2" rx="0.3"/>
+  </g>
+  <!-- Faint green keyboard backlight -->
+  <polygon points="20,58 90,58 87,69 23,69" fill="rgba(80,255,150,0.05)"/>
+  <!-- Trackpad -->
+  <rect x="40" y="68.3" width="30" height="2" rx="0.5" fill="#444" stroke="#222" stroke-width="0.3"/>
+
+  <!-- Screen lid (angled) -->
+  <polygon points="12,54 98,54 92,8 18,8" fill="url(#ulapLid)" stroke="#333" stroke-width="1.2"/>
+  <!-- Screen bezel -->
+  <polygon points="17,50 93,50 88,13 22,13" fill="#0a0a0a"/>
+  <!-- Screen display -->
+  <polygon points="19,48 91,48 87,15 23,15" fill="url(#uscreen)"/>
+  <!-- Screen glow overlay -->
+  <polygon points="19,48 91,48 87,15 23,15" fill="url(#uscreenGlow)"/>
+
+  <!-- Open padlock icon (gold) -->
+  <g transform="translate(35 22)">
+    <path d="M-3,0 Q-3,-3 0,-3 Q3,-3 3.5,-1" fill="none" stroke="url(#uunlockGold)" stroke-width="0.9"/>
+    <rect x="-3.2" y="-0.2" width="6.4" height="5" rx="0.8" fill="url(#uunlockGold)" stroke="#7a4810" stroke-width="0.25"/>
+    <rect x="-2.8" y="0.2" width="5.6" height="1" rx="0.5" fill="rgba(255,248,200,0.5)"/>
+    <circle cx="0" cy="2.2" r="0.6" fill="#3a2008"/>
+  </g>
+
+  <!-- ACCESS GRANTED label -->
+  <text x="60" y="25" fill="#7fdca0" font-size="3.2" font-family="monospace" font-weight="bold" letter-spacing="0.4">GRANTED</text>
+
+  <!-- Number frame with corner brackets -->
+  <rect x="28" y="29" width="54" height="16" rx="1.5" fill="rgba(0,40,20,0.4)" stroke="rgba(80,255,150,0.4)" stroke-width="0.4"/>
+  <g stroke="rgba(120,255,170,0.7)" stroke-width="0.4" fill="none">
+    <path d="M30,31 L30,33 M30,31 L32,31"/>
+    <path d="M80,31 L80,33 M80,31 L78,31"/>
+    <path d="M30,43 L30,41 M30,43 L32,43"/>
+    <path d="M80,43 L80,41 M80,43 L78,43"/>
+  </g>
+
+  <!-- 1892 with phosphor glow layers -->
+  <text x="55" y="42" text-anchor="middle" fill="rgba(80,255,150,0.25)" font-size="13" font-weight="bold" font-family="monospace" letter-spacing="0.6">1892</text>
+  <text x="55" y="41.5" text-anchor="middle" fill="rgba(120,255,170,0.6)" font-size="12" font-weight="bold" font-family="monospace" letter-spacing="0.6">1892</text>
+  <text x="55" y="41" text-anchor="middle" fill="#a8ffd0" font-size="11.5" font-weight="bold" font-family="monospace" letter-spacing="0.6">1892</text>
+
   <!-- Camera -->
-  <circle cx="55" cy="8" r="1.5" fill="#444"/>
-  <line x1="19" y1="14" x2="87" y2="14" stroke="rgba(255,255,255,0.03)" stroke-width="0.8"/>
+  <circle cx="55" cy="10.5" r="1" fill="#1a1a1a" stroke="#333" stroke-width="0.3"/>
+  <circle cx="55" cy="10.5" r="0.4" fill="#6a8ab0"/>
+
+  <!-- Hinge line -->
+  <line x1="12" y1="54" x2="98" y2="54" stroke="#333" stroke-width="0.8"/>
+  <!-- Lid top highlight -->
+  <line x1="22" y1="11" x2="88" y2="11" stroke="rgba(255,255,255,0.25)" stroke-width="0.6"/>
+  <!-- Diagonal CRT shine -->
+  <path d="M22 46 L40 16" stroke="rgba(255,255,255,0.06)" stroke-width="3" fill="none"/>
 </svg>

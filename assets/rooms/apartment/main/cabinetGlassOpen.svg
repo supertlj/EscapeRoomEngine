@@ -1,64 +1,107 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="145" height="200">
   <defs>
-    <linearGradient id="cabfg" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#c8a060"/>
-      <stop offset="50%" stop-color="#d4ac68"/>
-      <stop offset="100%" stop-color="#b89050"/>
+    <linearGradient id="cabf" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"  stop-color="#a07a38"/>
+      <stop offset="20%" stop-color="#c8a060"/>
+      <stop offset="55%" stop-color="#d8b272"/>
+      <stop offset="85%" stop-color="#b88c48"/>
+      <stop offset="100%" stop-color="#8a6628"/>
     </linearGradient>
-    <linearGradient id="cabsg" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#a88040"/>
-      <stop offset="100%" stop-color="#987038"/>
+    <linearGradient id="cabs" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"  stop-color="#a88040"/>
+      <stop offset="100%" stop-color="#6a4820"/>
     </linearGradient>
-    <linearGradient id="cabintg" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#1a1210"/>
-      <stop offset="100%" stop-color="#0e0a08"/>
+    <linearGradient id="cabDoor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="#c8a060"/>
+      <stop offset="100%" stop-color="#a07838"/>
+    </linearGradient>
+    <linearGradient id="glassPane" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"  stop-color="rgba(200,220,230,0.25)"/>
+      <stop offset="50%" stop-color="rgba(140,160,180,0.08)"/>
+      <stop offset="100%" stop-color="rgba(60,80,100,0.15)"/>
+    </linearGradient>
+    <linearGradient id="cabInterior" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="#1a120a"/>
+      <stop offset="100%" stop-color="#0a0604"/>
+    </linearGradient>
+    <radialGradient id="brassKnob" cx="35%" cy="35%" r="65%">
+      <stop offset="0%"  stop-color="#fff4c8"/>
+      <stop offset="55%" stop-color="#c89030"/>
+      <stop offset="100%" stop-color="#6a4818"/>
+    </radialGradient>
+    <linearGradient id="lockBoxBody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="#5a5e64"/>
+      <stop offset="100%" stop-color="#2e3238"/>
     </linearGradient>
   </defs>
-  <!-- Floor shadow -->
-  <ellipse cx="68" cy="196" rx="60" ry="5" fill="rgba(0,0,0,0.15)"/>
-  <!-- Side panel (3D depth) -->
-  <polygon points="125,2 140,8 140,192 125,198" fill="url(#cabsg)"/>
-  <!-- Front face -->
-  <rect x="2" y="2" width="123" height="196" rx="2" fill="url(#cabfg)" stroke="#a07838" stroke-width="1"/>
-  <!-- Upper left glass door (closed) -->
-  <rect x="8" y="8" width="55" height="78" rx="2" fill="#b89050" stroke="#987038" stroke-width="1"/>
-  <rect x="12" y="12" width="47" height="70" fill="#1a1818" rx="1"/>
-  <rect x="12" y="12" width="47" height="70" fill="rgba(180,200,210,0.08)" rx="1"/>
-  <line x1="16" y1="76" x2="30" y2="16" stroke="rgba(255,255,255,0.06)" stroke-width="2"/>
-  <rect x="56" y="40" width="4" height="12" rx="1.5" fill="#bbb"/>
-  <!-- Upper right: dark interior revealed (door open) -->
-  <rect x="67" y="8" width="55" height="78" rx="2" fill="url(#cabintg)" stroke="#5a3a18" stroke-width="0.5"/>
+
+  <ellipse cx="68" cy="196" rx="60" ry="5" fill="rgba(0,0,0,0.22)"/>
+  <polygon points="125,2 140,8 140,192 125,198" fill="url(#cabs)"/>
+  <line x1="125" y1="2" x2="125" y2="198" stroke="rgba(0,0,0,0.25)" stroke-width="0.8"/>
+  <rect x="2" y="2" width="123" height="196" rx="2" fill="url(#cabf)" stroke="#6a4820" stroke-width="1"/>
+  <rect x="0" y="0" width="127" height="6" fill="#8a6628"/>
+  <rect x="0" y="0" width="127" height="2" fill="#d4b472"/>
+
+  <!-- Upper LEFT glass door (closed) -->
+  <rect x="8" y="10" width="55" height="78" rx="2" fill="url(#cabDoor)" stroke="#6a4820" stroke-width="1.2"/>
+  <rect x="12" y="14" width="47" height="70" fill="#151310" rx="1"/>
+  <line x1="12" y1="44" x2="59" y2="44" stroke="rgba(120,90,60,0.35)" stroke-width="0.8"/>
+  <rect x="12" y="14" width="47" height="70" fill="url(#glassPane)" rx="1"/>
+  <path d="M14 78 L30 16" stroke="rgba(255,255,255,0.22)" stroke-width="2" fill="none" opacity="0.7"/>
+  <line x1="35" y1="14" x2="35" y2="84" stroke="#6a4820" stroke-width="1"/>
+  <line x1="12" y1="49" x2="59" y2="49" stroke="#6a4820" stroke-width="0.8"/>
+  <rect x="55" y="42" width="3" height="12" rx="1.2" fill="url(#brassKnob)"/>
+
+  <!-- Upper RIGHT: open interior with lockbox + swung door -->
+  <rect x="67" y="10" width="55" height="76" rx="2" fill="url(#cabInterior)" stroke="#5a3a18" stroke-width="0.5"/>
   <!-- Interior shelf -->
   <rect x="69" y="50" width="51" height="2" fill="#3a2818"/>
-  <!-- Lockbox silhouette inside -->
-  <rect x="78" y="22" width="30" height="22" rx="1" fill="#555" stroke="#444" stroke-width="0.5"/>
-  <rect x="86" y="30" width="14" height="8" rx="1" fill="#444"/>
-  <circle cx="93" cy="37" r="1.5" fill="#c44"/>
-  <!-- Interior shadow -->
-  <rect x="67" y="8" width="55" height="3" fill="rgba(0,0,0,0.25)"/>
+  <line x1="69" y1="52" x2="120" y2="52" stroke="rgba(255,230,180,0.08)" stroke-width="0.4"/>
+  <!-- Top inside shadow -->
+  <rect x="67" y="10" width="55" height="4" fill="rgba(0,0,0,0.4)"/>
+  <!-- Lockbox -->
+  <rect x="78" y="22" width="32" height="24" rx="1.5" fill="url(#lockBoxBody)" stroke="#1a1c20" stroke-width="0.6"/>
+  <rect x="78" y="22" width="32" height="3" fill="rgba(255,255,255,0.12)"/>
+  <rect x="84" y="29" width="20" height="9" rx="1" fill="#1a1c20" stroke="#444" stroke-width="0.4"/>
+  <text x="94" y="35.6" text-anchor="middle" fill="#3a8a3a" font-size="4" font-family="monospace">— — —</text>
+  <!-- Lockbox handle -->
+  <rect x="89" y="40" width="10" height="2" rx="1" fill="#888"/>
+  <!-- LED -->
+  <circle cx="106" cy="42" r="1.4" fill="#c44"/>
+  <circle cx="106" cy="42" r="0.5" fill="#ffd0d0"/>
   <!-- Right glass door swung open (perspective) -->
-  <polygon points="122,8 130,11 130,84 122,87" fill="#c89858" stroke="#a07838" stroke-width="0.5"/>
-  <polygon points="130,8 134,10 134,86 130,84" fill="#b89050"/>
-  <!-- Glass on open door -->
-  <polygon points="123,11 129,13 129,82 123,84" fill="rgba(180,200,210,0.06)"/>
-  <!-- Glass handles -->
-  <rect x="68" y="40" width="4" height="12" rx="1.5" fill="#bbb"/>
+  <polygon points="122,10 132,13 132,86 122,89" fill="url(#cabDoor)" stroke="#6a4820" stroke-width="0.5"/>
+  <polygon points="132,10 137,12 137,88 132,86" fill="#a07838"/>
+  <polygon points="123,13 131,15 131,84 123,86" fill="url(#glassPane)"/>
+  <line x1="127" y1="14" x2="127" y2="85" stroke="#6a4820" stroke-width="0.6"/>
+  <rect x="68" y="42" width="3" height="12" rx="1.2" fill="url(#brassKnob)"/>
+
   <!-- Middle shelf divider -->
-  <rect x="4" y="90" width="119" height="8" fill="#a07838"/>
-  <rect x="4" y="90" width="119" height="2" fill="rgba(255,255,255,0.05)"/>
-  <rect x="20" y="94" width="6" height="3" rx="1" fill="#8a6a30"/>
-  <rect x="50" y="94" width="28" height="3" rx="1" fill="#8a6a30"/>
-  <rect x="100" y="94" width="6" height="3" rx="1" fill="#8a6a30"/>
-  <!-- Lower doors (both closed) -->
-  <rect x="8" y="104" width="55" height="88" rx="2" fill="#b89050" stroke="#987038" stroke-width="1"/>
-  <rect x="67" y="104" width="55" height="88" rx="2" fill="#b89050" stroke="#987038" stroke-width="1"/>
-  <rect x="14" y="110" width="43" height="76" fill="rgba(0,0,0,0.06)" rx="1"/>
-  <rect x="73" y="110" width="43" height="76" fill="rgba(0,0,0,0.06)" rx="1"/>
-  <circle cx="56" cy="148" r="4" fill="#bbb" stroke="#aaa" stroke-width="0.8"/>
-  <circle cx="56" cy="148" r="1.5" fill="#999"/>
-  <circle cx="72" cy="148" r="4" fill="#bbb" stroke="#aaa" stroke-width="0.8"/>
-  <circle cx="72" cy="148" r="1.5" fill="#999"/>
-  <ellipse cx="56" cy="165" rx="2.5" ry="4" fill="#555"/>
-  <rect x="55" y="167" width="2" height="5" fill="#555"/>
-  <line x1="3" y1="3" x2="124" y2="3" stroke="rgba(255,255,255,0.06)" stroke-width="0.8"/>
+  <rect x="4" y="90" width="119" height="10" fill="#8a6628"/>
+  <rect x="4" y="90" width="119" height="2" fill="rgba(255,240,200,0.3)"/>
+  <rect x="4" y="98" width="119" height="2" fill="rgba(0,0,0,0.25)"/>
+  <rect x="18" y="93" width="8" height="4" rx="1" fill="#6a4820"/>
+  <rect x="40" y="93" width="45" height="4" rx="1" fill="#6a4820"/>
+  <rect x="99" y="93" width="8" height="4" rx="1" fill="#6a4820"/>
+  <circle cx="32" cy="95" r="1.2" fill="url(#brassKnob)"/>
+  <circle cx="93" cy="95" r="1.2" fill="url(#brassKnob)"/>
+
+  <!-- Lower doors closed (no key) -->
+  <rect x="8" y="104" width="55" height="88" rx="2" fill="url(#cabDoor)" stroke="#6a4820" stroke-width="1.2"/>
+  <rect x="67" y="104" width="55" height="88" rx="2" fill="url(#cabDoor)" stroke="#6a4820" stroke-width="1.2"/>
+  <rect x="13" y="109" width="45" height="78" rx="2" fill="#6a4820"/>
+  <rect x="15" y="111" width="41" height="74" rx="1.5" fill="url(#cabDoor)" stroke="rgba(255,230,180,0.25)" stroke-width="0.5"/>
+  <rect x="72" y="109" width="45" height="78" rx="2" fill="#6a4820"/>
+  <rect x="74" y="111" width="41" height="74" rx="1.5" fill="url(#cabDoor)" stroke="rgba(255,230,180,0.25)" stroke-width="0.5"/>
+  <circle cx="56" cy="148" r="4.5" fill="url(#brassKnob)" stroke="#6a4818" stroke-width="0.6"/>
+  <circle cx="54.5" cy="146.5" r="1.2" fill="#fff4c8" opacity="0.85"/>
+  <circle cx="72" cy="148" r="4.5" fill="url(#brassKnob)" stroke="#6a4818" stroke-width="0.6"/>
+  <circle cx="70.5" cy="146.5" r="1.2" fill="#fff4c8" opacity="0.85"/>
+  <rect x="51.5" y="161" width="9" height="12" rx="1.5" fill="url(#brassKnob)" stroke="#6a4818" stroke-width="0.4"/>
+  <circle cx="56" cy="165" r="1.8" fill="#1a0f04"/>
+  <rect x="55.2" y="165" width="1.6" height="5" fill="#1a0f04"/>
+
+  <line x1="3" y1="6" x2="124" y2="6" stroke="rgba(255,240,200,0.35)" stroke-width="0.6"/>
+  <rect x="0" y="192" width="127" height="7" fill="#6a4820"/>
+  <rect x="0" y="192" width="127" height="1.5" fill="rgba(255,240,200,0.18)"/>
 </svg>

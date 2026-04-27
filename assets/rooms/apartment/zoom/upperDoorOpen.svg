@@ -1,29 +1,46 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="160" height="175">
   <defs>
     <linearGradient id="uint" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#1a1210"/>
-      <stop offset="100%" stop-color="#0e0a08"/>
+      <stop offset="0%"  stop-color="#1a120a"/>
+      <stop offset="100%" stop-color="#0a0604"/>
     </linearGradient>
-    <linearGradient id="udoor" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#a88040"/>
-      <stop offset="100%" stop-color="#c8a060"/>
+    <linearGradient id="udoor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="#c8a060"/>
+      <stop offset="100%" stop-color="#a07838"/>
     </linearGradient>
+    <linearGradient id="uglass" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"  stop-color="rgba(200,220,230,0.2)"/>
+      <stop offset="50%" stop-color="rgba(140,160,180,0.06)"/>
+      <stop offset="100%" stop-color="rgba(60,80,100,0.12)"/>
+    </linearGradient>
+    <radialGradient id="ubrass" cx="35%" cy="35%" r="65%">
+      <stop offset="0%"  stop-color="#fff4c8"/>
+      <stop offset="55%" stop-color="#c89030"/>
+      <stop offset="100%" stop-color="#6a4818"/>
+    </radialGradient>
   </defs>
   <!-- Dark interior revealed -->
   <rect x="0" y="0" width="130" height="175" fill="url(#uint)" rx="2"/>
   <!-- Top shadow -->
-  <rect x="0" y="0" width="130" height="5" fill="rgba(0,0,0,0.3)"/>
+  <rect x="0" y="0" width="130" height="6" fill="rgba(0,0,0,0.45)"/>
   <!-- Left edge shadow -->
-  <rect x="0" y="0" width="3" height="175" fill="rgba(0,0,0,0.2)"/>
+  <rect x="0" y="0" width="4" height="175" fill="rgba(0,0,0,0.35)"/>
   <!-- Interior shelf -->
   <rect x="4" y="100" width="126" height="3" fill="#3a2818"/>
-  <!-- Glass door swung open (perspective) -->
-  <polygon points="130,0 160,4 160,171 130,175" fill="url(#udoor)" stroke="#987038" stroke-width="1"/>
-  <polygon points="130,0 138,1 138,174 130,175" fill="#b89050"/>
-  <!-- Glass on open door -->
-  <polygon points="133,6 156,9 156,167 133,171" fill="rgba(180,210,220,0.08)"/>
-  <!-- Glass reflection on open door -->
-  <line x1="140" y1="165" x2="150" y2="12" stroke="rgba(255,255,255,0.04)" stroke-width="4"/>
-  <!-- Door handle on open door -->
-  <rect x="131" y="78" width="4" height="14" rx="1.5" fill="#bbb" stroke="#999" stroke-width="0.3"/>
+  <line x1="4" y1="103" x2="130" y2="103" stroke="rgba(255,230,180,0.08)" stroke-width="0.5"/>
+
+  <!-- Glass door swung open (3D perspective with thickness) -->
+  <polygon points="130,0 158,4 158,171 130,175" fill="url(#udoor)" stroke="#6a4820" stroke-width="1"/>
+  <polygon points="130,0 138,1 138,174 130,175" fill="#6a4820"/>
+  <polygon points="158,4 160,5 160,170 158,171" fill="#a07838"/>
+  <!-- Inner glass pane on swung door -->
+  <polygon points="135,8 154,11 154,165 135,170" fill="#151310"/>
+  <polygon points="135,8 154,11 154,165 135,170" fill="url(#uglass)"/>
+  <!-- Muntin cross on swung door -->
+  <line x1="144" y1="9" x2="144" y2="167" stroke="#6a4820" stroke-width="1.5"/>
+  <line x1="135" y1="89" x2="154" y2="89" stroke="#6a4820" stroke-width="1.2"/>
+  <!-- Glass shine -->
+  <path d="M137 165 L150 12" stroke="rgba(255,255,255,0.18)" stroke-width="3" fill="none" opacity="0.7"/>
+  <!-- Brass pull on swung door -->
+  <rect x="131" y="78" width="4" height="14" rx="1.5" fill="url(#ubrass)" stroke="#6a4818" stroke-width="0.4"/>
 </svg>

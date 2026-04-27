@@ -1,104 +1,158 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="400" height="450">
   <defs>
     <linearGradient id="zdr" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#6a3a18"/>
+      <stop offset="0%"  stop-color="#5a3010"/>
       <stop offset="20%" stop-color="#a06a38"/>
-      <stop offset="50%" stop-color="#b07a42"/>
+      <stop offset="50%" stop-color="#b88450"/>
       <stop offset="80%" stop-color="#a06a38"/>
-      <stop offset="100%" stop-color="#6a3a18"/>
+      <stop offset="100%" stop-color="#5a3010"/>
     </linearGradient>
     <linearGradient id="frame3d" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#8a7858"/>
-      <stop offset="50%" stop-color="#a89878"/>
+      <stop offset="0%"  stop-color="#7a6848"/>
+      <stop offset="50%" stop-color="#b0a080"/>
+      <stop offset="100%" stop-color="#7a6848"/>
+    </linearGradient>
+    <linearGradient id="casing" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="#c8b898"/>
       <stop offset="100%" stop-color="#8a7858"/>
     </linearGradient>
     <linearGradient id="panel3d" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#8a5a30"/>
-      <stop offset="100%" stop-color="#7a4a20"/>
+      <stop offset="0%"  stop-color="#7a4a20"/>
+      <stop offset="50%" stop-color="#9a6230"/>
+      <stop offset="100%" stop-color="#6a3a18"/>
     </linearGradient>
-    <linearGradient id="handlegrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#ddd"/>
-      <stop offset="40%" stop-color="#c0c0c0"/>
-      <stop offset="100%" stop-color="#999"/>
+    <linearGradient id="diamond" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="#c8945a"/>
+      <stop offset="100%" stop-color="#8a5828"/>
     </linearGradient>
+    <radialGradient id="brassDoor" cx="35%" cy="35%" r="65%">
+      <stop offset="0%"  stop-color="#fff4c8"/>
+      <stop offset="55%" stop-color="#c89030"/>
+      <stop offset="100%" stop-color="#6a4818"/>
+    </radialGradient>
+    <radialGradient id="ledRed" cx="40%" cy="40%" r="60%">
+      <stop offset="0%"  stop-color="#ff8060"/>
+      <stop offset="55%" stop-color="#c01818"/>
+      <stop offset="100%" stop-color="#400808"/>
+    </radialGradient>
     <radialGradient id="doorbg" cx="50%" cy="40%" r="65%">
-      <stop offset="0%" stop-color="#1a1510"/>
+      <stop offset="0%"  stop-color="#1e1612"/>
       <stop offset="100%" stop-color="#080605"/>
     </radialGradient>
   </defs>
+
   <rect width="400" height="450" fill="url(#doorbg)"/>
-  <!-- Wall visible around door -->
-  <rect x="0" y="0" width="25" height="450" fill="#c0b498" opacity="0.3"/>
-  <rect x="375" y="0" width="25" height="450" fill="#c0b498" opacity="0.3"/>
-  <!-- Door frame — 3D with depth -->
-  <!-- Frame front face -->
+
+  <!-- Wall around door -->
+  <rect x="0" y="0" width="400" height="450" fill="#a89878" opacity="0.18"/>
+
+  <!-- Outer casing trim (decorative molding) -->
+  <rect x="10" y="0" width="380" height="450" fill="url(#casing)" opacity="0.7"/>
+  <rect x="14" y="0" width="372" height="450" fill="none" stroke="rgba(0,0,0,0.25)" stroke-width="0.8"/>
+  <line x1="14" y1="0" x2="14" y2="450" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+  <line x1="386" y1="0" x2="386" y2="450" stroke="rgba(0,0,0,0.3)" stroke-width="1"/>
+
+  <!-- Door jamb / frame (deeper, rich color) -->
   <rect x="22" y="5" width="356" height="440" fill="url(#frame3d)"/>
-  <!-- Frame inner edge (depth toward door) — creates 3D recess -->
-  <polygon points="35,12 22,5 22,445 35,438" fill="#7a6848"/>
-  <polygon points="365,12 378,5 378,445 365,438" fill="#988858"/>
-  <polygon points="35,12 365,12 378,5 22,5" fill="#9a8868"/>
-  <!-- Door panel — 3D raised -->
-  <rect x="35" y="12" width="330" height="426" rx="2" fill="url(#zdr)" stroke="#5a3018" stroke-width="1.5"/>
-  <!-- Wood grain texture -->
-  <g stroke="#8a5a30" stroke-width="0.4" opacity="0.15">
-    <line x1="40" y1="20" x2="40" y2="430"/>
-    <line x1="90" y1="20" x2="90" y2="430"/>
-    <line x1="150" y1="20" x2="150" y2="430"/>
-    <line x1="200" y1="20" x2="200" y2="430"/>
-    <line x1="260" y1="20" x2="260" y2="430"/>
-    <line x1="310" y1="20" x2="310" y2="430"/>
-    <line x1="350" y1="20" x2="350" y2="430"/>
+  <!-- Frame inner edge — 3D recess into the door -->
+  <polygon points="35,12 22,5 22,445 35,438" fill="#5a4830"/>
+  <polygon points="365,12 378,5 378,445 365,438" fill="#9a8868"/>
+  <polygon points="35,12 365,12 378,5 22,5" fill="#a89878"/>
+  <!-- Frame highlight / shadow lines -->
+  <line x1="35" y1="12" x2="365" y2="12" stroke="rgba(255,255,255,0.3)" stroke-width="0.8"/>
+
+  <!-- Door panel — main face -->
+  <rect x="35" y="12" width="330" height="426" rx="2" fill="url(#zdr)" stroke="#3a1e08" stroke-width="1.5"/>
+
+  <!-- Vertical wood grain -->
+  <g stroke="#5a3018" stroke-width="0.5" opacity="0.35">
+    <line x1="50" y1="14" x2="48" y2="436"/>
+    <line x1="78" y1="14" x2="76" y2="436"/>
+    <line x1="108" y1="14" x2="110" y2="436"/>
+    <line x1="148" y1="14" x2="150" y2="436"/>
+    <line x1="188" y1="14" x2="186" y2="436"/>
+    <line x1="220" y1="14" x2="222" y2="436"/>
+    <line x1="252" y1="14" x2="250" y2="436"/>
+    <line x1="278" y1="14" x2="280" y2="436"/>
+    <line x1="312" y1="14" x2="310" y2="436"/>
+    <line x1="350" y1="14" x2="352" y2="436"/>
   </g>
-  <!-- Upper panel — 3D inset with beveled edge -->
-  <rect x="60" y="30" width="280" height="135" rx="3" fill="url(#panel3d)" stroke="#6a4020" stroke-width="2"/>
-  <!-- Panel bevel (light top-left, shadow bottom-right) -->
-  <line x1="62" y1="32" x2="338" y2="32" stroke="rgba(0,0,0,0.15)" stroke-width="2"/>
-  <line x1="62" y1="32" x2="62" y2="163" stroke="rgba(0,0,0,0.1)" stroke-width="2"/>
-  <line x1="338" y1="32" x2="338" y2="163" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
-  <line x1="62" y1="163" x2="338" y2="163" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
-  <rect x="68" y="38" width="264" height="121" fill="#956232" opacity="0.25" rx="2"/>
-  <!-- Middle panel — 3D inset -->
-  <rect x="60" y="180" width="280" height="120" rx="3" fill="url(#panel3d)" stroke="#6a4020" stroke-width="2"/>
-  <line x1="62" y1="182" x2="338" y2="182" stroke="rgba(0,0,0,0.15)" stroke-width="2"/>
-  <line x1="62" y1="182" x2="62" y2="298" stroke="rgba(0,0,0,0.1)" stroke-width="2"/>
-  <line x1="338" y1="182" x2="338" y2="298" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
-  <line x1="62" y1="298" x2="338" y2="298" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
-  <rect x="68" y="188" width="264" height="104" fill="#956232" opacity="0.25" rx="2"/>
-  <!-- Lower panel — 3D inset -->
-  <rect x="60" y="315" width="280" height="108" rx="3" fill="url(#panel3d)" stroke="#6a4020" stroke-width="2"/>
-  <line x1="62" y1="317" x2="338" y2="317" stroke="rgba(0,0,0,0.15)" stroke-width="2"/>
-  <line x1="62" y1="317" x2="62" y2="421" stroke="rgba(0,0,0,0.1)" stroke-width="2"/>
-  <line x1="338" y1="317" x2="338" y2="421" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
-  <line x1="62" y1="421" x2="338" y2="421" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+  <!-- Knot / grain accents -->
+  <ellipse cx="98" cy="98" rx="6" ry="2" fill="#3a1e08" opacity="0.4"/>
+  <ellipse cx="280" cy="370" rx="5" ry="1.8" fill="#3a1e08" opacity="0.4"/>
+
+  <!-- ===== UPPER PANEL (raised + diamond ornament) ===== -->
+  <rect x="60" y="30" width="220" height="135" rx="3" fill="#5a3018"/>
+  <rect x="64" y="34" width="212" height="127" rx="2" fill="url(#panel3d)" stroke="rgba(0,0,0,0.4)" stroke-width="0.8"/>
+  <!-- Bevel highlights/shadows -->
+  <line x1="64" y1="34" x2="276" y2="34" stroke="rgba(255,230,180,0.45)" stroke-width="1.2"/>
+  <line x1="64" y1="34" x2="64" y2="161" stroke="rgba(255,230,180,0.3)" stroke-width="1"/>
+  <line x1="276" y1="34" x2="276" y2="161" stroke="rgba(0,0,0,0.4)" stroke-width="1.2"/>
+  <line x1="64" y1="161" x2="276" y2="161" stroke="rgba(0,0,0,0.4)" stroke-width="1.2"/>
+  <!-- Diamond ornament -->
+  <polygon points="170,55 215,97 170,140 125,97" fill="url(#diamond)" stroke="#5a3018" stroke-width="1.2"/>
+  <polygon points="170,65 207,97 170,130 133,97" fill="none" stroke="rgba(255,230,180,0.35)" stroke-width="0.8"/>
+  <line x1="170" y1="55" x2="170" y2="140" stroke="rgba(0,0,0,0.25)" stroke-width="0.6"/>
+  <line x1="125" y1="97" x2="215" y2="97" stroke="rgba(255,230,180,0.2)" stroke-width="0.6"/>
+  <circle cx="170" cy="97" r="3" fill="url(#brassDoor)" stroke="#6a4818" stroke-width="0.5"/>
+
+  <!-- ===== MIDDLE PANEL ===== -->
+  <rect x="60" y="180" width="220" height="120" rx="3" fill="#5a3018"/>
+  <rect x="64" y="184" width="212" height="112" rx="2" fill="url(#panel3d)" stroke="rgba(0,0,0,0.4)" stroke-width="0.8"/>
+  <line x1="64" y1="184" x2="276" y2="184" stroke="rgba(255,230,180,0.45)" stroke-width="1.2"/>
+  <line x1="64" y1="184" x2="64" y2="296" stroke="rgba(255,230,180,0.3)" stroke-width="1"/>
+  <line x1="276" y1="184" x2="276" y2="296" stroke="rgba(0,0,0,0.4)" stroke-width="1.2"/>
+  <line x1="64" y1="296" x2="276" y2="296" stroke="rgba(0,0,0,0.4)" stroke-width="1.2"/>
+  <polygon points="170,200 213,240 170,280 127,240" fill="url(#diamond)" stroke="#5a3018" stroke-width="1.2"/>
+  <polygon points="170,210 205,240 170,270 135,240" fill="none" stroke="rgba(255,230,180,0.35)" stroke-width="0.8"/>
+  <line x1="170" y1="200" x2="170" y2="280" stroke="rgba(0,0,0,0.25)" stroke-width="0.6"/>
+  <line x1="127" y1="240" x2="213" y2="240" stroke="rgba(255,230,180,0.2)" stroke-width="0.6"/>
+  <circle cx="170" cy="240" r="3" fill="url(#brassDoor)" stroke="#6a4818" stroke-width="0.5"/>
+
+  <!-- ===== LOWER PANEL ===== -->
+  <rect x="60" y="315" width="220" height="108" rx="3" fill="#5a3018"/>
+  <rect x="64" y="319" width="212" height="100" rx="2" fill="url(#panel3d)" stroke="rgba(0,0,0,0.4)" stroke-width="0.8"/>
+  <line x1="64" y1="319" x2="276" y2="319" stroke="rgba(255,230,180,0.45)" stroke-width="1.2"/>
+  <line x1="64" y1="319" x2="64" y2="419" stroke="rgba(255,230,180,0.3)" stroke-width="1"/>
+  <line x1="276" y1="319" x2="276" y2="419" stroke="rgba(0,0,0,0.4)" stroke-width="1.2"/>
+  <line x1="64" y1="419" x2="276" y2="419" stroke="rgba(0,0,0,0.4)" stroke-width="1.2"/>
+  <polygon points="170,332 211,369 170,406 129,369" fill="url(#diamond)" stroke="#5a3018" stroke-width="1.2"/>
+  <polygon points="170,342 203,369 170,396 137,369" fill="none" stroke="rgba(255,230,180,0.35)" stroke-width="0.8"/>
+  <line x1="170" y1="332" x2="170" y2="406" stroke="rgba(0,0,0,0.25)" stroke-width="0.6"/>
+  <line x1="129" y1="369" x2="211" y2="369" stroke="rgba(255,230,180,0.2)" stroke-width="0.6"/>
+  <circle cx="170" cy="369" r="3" fill="url(#brassDoor)" stroke="#6a4818" stroke-width="0.5"/>
+
+  <!-- ===== HARDWARE COLUMN (right side) ===== -->
   <!-- Card reader device — 3D box -->
-  <!-- Device shadow on door -->
-  <rect x="293" y="213" width="50" height="75" rx="5" fill="rgba(0,0,0,0.2)"/>
-  <!-- Device body -->
-  <rect x="288" y="208" width="52" height="78" rx="5" fill="#2a2a2a" stroke="#444" stroke-width="1.5"/>
-  <!-- Device top edge (3D) -->
-  <rect x="290" y="208" width="48" height="4" fill="rgba(255,255,255,0.06)" rx="2"/>
+  <rect x="295" y="215" width="50" height="78" rx="5" fill="rgba(0,0,0,0.4)"/>
+  <rect x="290" y="210" width="52" height="78" rx="5" fill="#2a2a2a" stroke="#444" stroke-width="1.5"/>
+  <rect x="292" y="210" width="48" height="4" fill="rgba(255,255,255,0.1)" rx="2"/>
   <!-- Display -->
-  <rect x="294" y="214" width="40" height="10" rx="2" fill="#111"/>
-  <text x="314" y="222" text-anchor="middle" fill="#444" font-size="5" font-family="monospace">CARD</text>
+  <rect x="296" y="216" width="40" height="11" rx="2" fill="#080808" stroke="#2a2a2a" stroke-width="0.5"/>
+  <text x="316" y="225" text-anchor="middle" fill="#5a5a5a" font-size="6" font-family="monospace" letter-spacing="0.5">CARD</text>
   <!-- Card slot — 3D recessed -->
-  <rect x="296" y="230" width="36" height="6" rx="1.5" fill="#0a0a0a" stroke="#333" stroke-width="0.5"/>
-  <rect x="298" y="231" width="32" height="1" fill="rgba(255,255,255,0.03)"/>
-  <!-- LED indicator — 3D glowing -->
-  <circle cx="314" cy="252" r="7" fill="#222" stroke="#444" stroke-width="1"/>
-  <circle cx="314" cy="252" r="5" fill="#500"/>
-  <circle cx="314" cy="252" r="3.5" fill="#800"/>
-  <circle cx="313" cy="251" r="1.5" fill="#a00" opacity="0.6"/>
-  <!-- LED glow -->
-  <circle cx="314" cy="252" r="10" fill="rgba(200,0,0,0.06)"/>
-  <!-- Handle base plate — 3D -->
-  <rect x="292" y="268" width="32" height="12" rx="3" fill="#444" stroke="#333" stroke-width="0.5"/>
-  <!-- Door handle — 3D cylindrical lever -->
-  <rect x="286" y="288" width="46" height="14" rx="6" fill="url(#handlegrad)" stroke="#888" stroke-width="1"/>
-  <!-- Handle highlight -->
-  <rect x="288" y="289" width="42" height="4" fill="rgba(255,255,255,0.15)" rx="3"/>
-  <!-- Handle mount point -->
-  <circle cx="292" cy="295" r="4" fill="#888" stroke="#777" stroke-width="0.5"/>
-  <circle cx="291" cy="294" r="1.5" fill="rgba(255,255,255,0.2)"/>
-  <!-- Door bottom shadow -->
-  <rect x="35" y="432" width="330" height="6" fill="rgba(0,0,0,0.2)"/>
+  <rect x="298" y="232" width="36" height="6" rx="1.5" fill="#050505" stroke="#3a3a3a" stroke-width="0.5"/>
+  <rect x="300" y="233" width="32" height="1.2" fill="rgba(255,255,255,0.05)"/>
+  <!-- LED indicator — 3D glowing red (locked) -->
+  <circle cx="316" cy="256" r="8.5" fill="rgba(220,40,40,0.18)"/>
+  <circle cx="316" cy="256" r="6.5" fill="#222" stroke="#444" stroke-width="0.8"/>
+  <circle cx="316" cy="256" r="5" fill="url(#ledRed)"/>
+  <circle cx="314" cy="254" r="1.6" fill="#ffd0c0" opacity="0.85"/>
+  <!-- Brand label -->
+  <text x="316" y="282" text-anchor="middle" fill="#5a5a5a" font-size="4.5" font-family="monospace" letter-spacing="0.4">SECURE-X</text>
+
+  <!-- Brass escutcheon plate -->
+  <rect x="300" y="305" width="32" height="50" rx="3" fill="url(#brassDoor)" stroke="#6a4818" stroke-width="0.8"/>
+  <rect x="302" y="306" width="28" height="3" fill="rgba(255,248,200,0.6)" rx="1"/>
+  <!-- Brass knob — 3D sphere -->
+  <circle cx="316" cy="318" r="9" fill="url(#brassDoor)" stroke="#6a4818" stroke-width="1"/>
+  <circle cx="313" cy="315" r="3" fill="#fff4c8" opacity="0.85"/>
+  <!-- Keyhole below knob -->
+  <ellipse cx="316" cy="338" rx="3" ry="3.5" fill="#1a0f04"/>
+  <rect x="314.5" y="338" width="3" height="9" fill="#1a0f04"/>
+
+  <!-- Door bottom shadow / threshold -->
+  <rect x="35" y="432" width="330" height="6" fill="rgba(0,0,0,0.3)"/>
+  <rect x="22" y="438" width="356" height="7" fill="#5a4830" stroke="#3a2818" stroke-width="0.5"/>
+  <rect x="22" y="438" width="356" height="1.5" fill="rgba(255,240,200,0.25)"/>
 </svg>

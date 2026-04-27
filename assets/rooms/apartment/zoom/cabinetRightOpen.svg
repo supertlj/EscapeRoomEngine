@@ -12,6 +12,11 @@
       <stop offset="0%" stop-color="#987038"/>
       <stop offset="100%" stop-color="#8a6228"/>
     </linearGradient>
+    <radialGradient id="crobrass" cx="35%" cy="35%" r="65%">
+      <stop offset="0%"  stop-color="#fff4c8"/>
+      <stop offset="55%" stop-color="#c89030"/>
+      <stop offset="100%" stop-color="#6a4818"/>
+    </radialGradient>
   </defs>
   <!-- Dark interior revealed -->
   <rect x="0" y="0" width="130" height="195" fill="url(#coint)" rx="1"/>
@@ -29,7 +34,7 @@
   <polygon points="130,0 140,1 140,194 130,195" fill="url(#doorinner)"/>
   <!-- Door panel inset on open door -->
   <polygon points="134,12 156,16 156,180 134,184" fill="rgba(0,0,0,0.06)"/>
-  <!-- Door knob on open door -->
-  <circle cx="135" cy="95" r="4" fill="#999" stroke="#777" stroke-width="0.5"/>
-  <circle cx="134" cy="94" r="2" fill="#bbb"/>
+  <!-- Door knob on open door — brass -->
+  <circle cx="135" cy="95" r="5" fill="url(#crobrass)" stroke="#6a4818" stroke-width="0.7"/>
+  <circle cx="133.5" cy="93.5" r="1.4" fill="#fff4c8" opacity="0.85"/>
 </svg>
