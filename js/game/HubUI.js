@@ -32,6 +32,7 @@
 
 import { getAllChapters, getGameInfo, getChapterForRoom } from '../core/ChapterIndex.js';
 import { GAME_ID } from '../core/SaveSchema.js';
+import { t, listLocales, getActiveLocale } from '../core/I18n.js';
 
 export default class HubUI {
   /**
@@ -55,9 +56,10 @@ export default class HubUI {
     const save = this._readSave();
     const hasSave = save !== null;
 
+    // Title pulls from i18n (subtitle localized; title is a brand name kept as-is)
     const titleHtml = `
-      <h1>${game?.title || 'Cipher 1892'}</h1>
-      <p class="subtitle">${game?.subtitle || 'Escape Room Mystery'}</p>
+      <h1>${t('game.title')}</h1>
+      <p class="subtitle">${t('game.subtitle')}</p>
     `;
 
     const continueHtml = hasSave
@@ -66,10 +68,10 @@ export default class HubUI {
 
     const primaryButtonsHtml = hasSave
       ? `
-        <button class="menu-btn primary" id="hub-play">CONTINUE</button>
-        <button class="menu-btn secondary" id="hub-newgame">New Game</button>
+        <button class="menu-btn primary" id="hub-play">${t('hub.continue')}</button>
+        <button class="menu-btn secondary" id="hub-newgame">${t('hub.newGame')}</button>
       `
-      : `<button class="menu-btn primary" id="hub-play">PLAY</button>`;
+      : `<button class="menu-btn primary" id="hub-play">${t('hub.playFresh')}</button>`;
 
     const chaptersHtml = chapters.map(ch => this._renderChapterCard(ch, save)).join('');
 
@@ -83,19 +85,29 @@ export default class HubUI {
           ${primaryButtonsHtml}
         </div>
 
-        <div class="hub-section-label">Chapters</div>
+        <div class="hub-section-label">${t('hub.chapterListLabel')}</div>
         <div class="room-list">
           ${chaptersHtml}
         </div>
 
         <div class="hub-footer">
           <button class="menu-btn secondary" id="hub-reset" ${hasSave ? '' : 'disabled'}>
-            Reset Save Data
+            ${t('hub.resetSaveData')}
           </button>
-          <a href="editor.html"><button class="menu-btn secondary">Editor (dev)</button></a>
+          <a href="editor.html"><button class="menu-btn secondary">${t('hub.editorDev')}</button></a>
           <label class="menu-btn secondary" style="cursor:pointer;">
-            Import Room (JSON)
+            ${t('hub.importRoomJson')}
             <input type="file" accept=".json" id="importFile" style="display:none;">
+          </label>
+          <label class="menu-btn secondary hub-language" for="hub-language-select">
+            <span class="hub-language-label">${t('hub.language')}</span>
+            <select id="hub-language-select" class="hub-language-select" aria-label="${t('hub.language')}">
+              ${listLocales().map(loc => `
+                <option value="${loc.code}" ${loc.code === getActiveLocale() ? 'selected' : ''}>
+                  ${loc.nativeName}
+                </option>
+              `).join('')}
+            </select>
           </label>
         </div>
       </div>
@@ -116,13 +128,20 @@ export default class HubUI {
 
   _renderContinueCard(save) {
     const chapter = save.currentChapter ? this._chapterById(save.currentChapter) : null;
-    const chapterTitle = chapter ? chapter.title : 'Unknown Chapter';
+    // Chapter title resolves through i18n (e.g. "Awakening" / "苏醒")
+    const chapterTitle = chapter ? t(`chapters.${chapter.id}.title`) : '';
     const roomLabel = save.currentRoomId || '?';
+    const roomDisplay = t(`rooms.${roomLabel}.name`);
+    // If no translation found, t() returns the key — use a friendly fallback.
+    const roomFinal = roomDisplay.startsWith('rooms.') ? this._titleCase(roomLabel) : roomDisplay;
+    const titleLine = chapter
+      ? `Ch. ${chapter.order}: ${chapterTitle}`
+      : chapterTitle;
     return `
       <div class="continue-card">
-        <div class="continue-meta">Continue</div>
-        <div class="continue-title">${chapter ? `Ch. ${chapter.order}: ${chapterTitle}` : chapterTitle}</div>
-        <div class="continue-room">Room: ${this._titleCase(roomLabel)}</div>
+        <div class="continue-meta">${t('hub.continueLabel')}</div>
+        <div class="continue-title">${titleLine}</div>
+        <div class="continue-room">${t('hub.continueRoomLine', { room: roomFinal })}</div>
       </div>
     `;
   }
@@ -132,20 +151,24 @@ export default class HubUI {
     const isComingSoon = chapter._indexStatus === 'coming_soon';
     const isComplete = save && Array.isArray(save.completedChapters) && save.completedChapters.includes(chapter.id);
     const roomCount = chapter.rooms?.length || 0;
+    const localizedTitle = t(`chapters.${chapter.id}.title`);
+    const titleFinal = localizedTitle.startsWith('chapters.') ? chapter.title : localizedTitle;
 
     let badge = '';
-    if (isComplete) badge = '<span class="badge complete">✓ Complete</span>';
-    else if (isComingSoon) badge = '<span class="badge soon">Coming soon</span>';
-    else if (isReleased) badge = '<span class="badge released">Available</span>';
+    if (isComplete) badge = `<span class="badge complete">${t('hub.badgeComplete')}</span>`;
+    else if (isComingSoon) badge = `<span class="badge soon">${t('hub.badgeComingSoon')}</span>`;
+    else if (isReleased) badge = `<span class="badge released">${t('hub.badgeAvailable')}</span>`;
 
     const meta = isComingSoon
-      ? '— in development —'
-      : `${roomCount} room${roomCount === 1 ? '' : 's'}`;
+      ? t('hub.chapterCardInDevelopment')
+      : (roomCount === 1
+          ? t('hub.chapterCardRoomCountSingular')
+          : t('hub.chapterCardRoomCount', { count: roomCount }));
 
     return `
       <div class="room-card ${isComingSoon ? 'disabled' : ''}">
         <div>
-          <div class="name">Chapter ${chapter.order}: ${chapter.title} ${badge}</div>
+          <div class="name">${t('hub.chapterCardTitle', { order: chapter.order, title: titleFinal })} ${badge}</div>
           <div class="meta">${meta}</div>
         </div>
       </div>
@@ -167,7 +190,7 @@ export default class HubUI {
     const newGameBtn = this.container.querySelector('#hub-newgame');
     if (newGameBtn) {
       newGameBtn.addEventListener('click', () => {
-        if (confirm('Start a new game? Your current progress will be lost.')) {
+        if (confirm(t('hub.newGameConfirm'))) {
           this.onNewGame();
         }
       });
@@ -176,10 +199,44 @@ export default class HubUI {
     const resetBtn = this.container.querySelector('#hub-reset');
     if (resetBtn) {
       resetBtn.addEventListener('click', () => {
-        if (confirm('Reset all save data? This cannot be undone.')) {
+        if (confirm(t('hub.resetSaveConfirm'))) {
           localStorage.removeItem(`ere_save_${GAME_ID}`);
           this.render();
         }
+      });
+    }
+
+    const langSelect = this.container.querySelector('#hub-language-select');
+    if (langSelect) {
+      langSelect.addEventListener('change', (e) => {
+        const code = e.target.value;
+        // Persist into the save (creating one if none exists yet) so the
+        // choice survives across sessions and play.html boot picks it up.
+        const key = `ere_save_${GAME_ID}`;
+        let blob;
+        try {
+          const raw = localStorage.getItem(key);
+          blob = raw ? JSON.parse(raw) : null;
+        } catch { blob = null; }
+        if (!blob) {
+          // No save yet — write a minimal blob with just the locale set.
+          // play.html will fully hydrate / overwrite on first launch.
+          blob = {
+            version: 1, gameId: GAME_ID,
+            currentChapter: 'c01', currentRoomId: 'apartment',
+            completedChapters: [], completedRooms: [], inventory: [],
+            chapterFlags: {}, globalFlags: {}, choices: {},
+            puzzleAttempts: {}, firedOnceTriggers: [], patternProgress: {}, hotspotVisibility: {},
+            timerRemaining: 0, hintsUsed: 0,
+            settings: { bgmVolume: 0.7, sfxVolume: 0.9, muted: false, introSeen: false, locale: code },
+            meta: { createdAt: new Date().toISOString(), updatedAt: new Date().toISOString() }
+          };
+        } else {
+          blob.settings = { ...(blob.settings || {}), locale: code };
+        }
+        localStorage.setItem(key, JSON.stringify(blob));
+        // Reload — i18n boots fresh and re-renders everything in the new locale.
+        location.reload();
       });
     }
 
@@ -195,7 +252,7 @@ export default class HubUI {
             localStorage.setItem('ere_imported_room', reader.result);
             window.location.href = 'play.html#room=imported';
           } catch (err) {
-            alert('Invalid JSON file: ' + err.message);
+            alert(t('hub.importInvalidJson', { message: err.message }));
           }
         };
         reader.readAsText(file);

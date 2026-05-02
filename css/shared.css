@@ -51,3 +51,56 @@ a:hover { text-decoration: underline; }
   padding: 0; margin: -1px; overflow: hidden;
   clip: rect(0,0,0,0); border: 0;
 }
+
+/* === Landscape-only orientation prompt ===
+ *
+ * Cipher 1892 ships landscape-only on mobile. On phones/small tablets
+ * held portrait, show a fullscreen prompt asking the player to rotate.
+ * Hidden on desktop, hidden when actually in landscape.
+ *
+ * Trigger: portrait orientation AND viewport ≤ 1023px (covers phones +
+ * small tablets, excludes desktop browsers in narrow windows).
+ */
+.rotate-prompt {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--bg-deep);
+  color: var(--gold);
+  z-index: 99999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 24px;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+.rotate-prompt-icon {
+  width: 92px;
+  height: 92px;
+  margin-bottom: 28px;
+  animation: rp-bounce 1.6s ease-in-out infinite;
+}
+.rotate-prompt h2 {
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+.rotate-prompt p {
+  font-size: 14px;
+  color: var(--text-dim);
+  max-width: 320px;
+  letter-spacing: 0.5px;
+}
+@keyframes rp-bounce {
+  0%, 100% { transform: rotate(-90deg); }
+  50%      { transform: rotate(0deg); }
+}
+
+@media (orientation: portrait) and (max-width: 1023px) {
+  .rotate-prompt { display: flex; }
+  /* Hide everything else while the prompt is up */
+  body > *:not(.rotate-prompt) { visibility: hidden; }
+}

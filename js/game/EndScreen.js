@@ -27,6 +27,8 @@
  * tip jar. Those CTAs are deferred until the mobile public launch.
  */
 
+import { t } from '../core/I18n.js';
+
 export default class EndScreen {
   /**
    * @param {HTMLElement} mountTo — element to attach the overlay to (typically document.body)
@@ -52,42 +54,49 @@ export default class EndScreen {
   show(chapter = this.chapter, nextChapter = null) {
     if (this.el) this.dismiss();
 
+    const chapterTitle = chapter ? this._localizedTitle(chapter) : '';
     const chapterLabel = chapter
-      ? `Chapter ${chapter.order}: ${chapter.title}`
-      : 'Chapter Complete';
+      ? `Chapter ${chapter.order}: ${chapterTitle}`
+      : t('common.error');
+    const completeTag = t('endScreen.chapterCompleteLabel', { chapterLabel });
 
     const teaserHtml = nextChapter
       ? `
         <div class="es-divider"></div>
-        <div class="es-teaser-label">CHAPTER ${nextChapter.order} — ${nextChapter.title.toUpperCase()}</div>
-        <div class="es-teaser-status">${nextChapter._indexStatus === 'released' ? 'Available now' : 'Coming soon'}</div>
+        <div class="es-teaser-label">${t('endScreen.nextChapterLabel', {
+          order: nextChapter.order,
+          title: this._localizedTitle(nextChapter).toUpperCase()
+        })}</div>
+        <div class="es-teaser-status">${nextChapter._indexStatus === 'released'
+          ? t('endScreen.nextChapterAvailable')
+          : t('endScreen.nextChapterComingSoon')}</div>
       `
       : `
         <div class="es-divider"></div>
-        <div class="es-teaser-label">MORE TO COME</div>
-        <div class="es-teaser-status">Chapter 2 in development</div>
+        <div class="es-teaser-label">${t('endScreen.moreToCome')}</div>
+        <div class="es-teaser-status">${t('endScreen.noNextChapter')}</div>
       `;
 
     this.el = document.createElement('div');
     this.el.className = 'end-screen-overlay';
     this.el.innerHTML = `
       <div class="es-content">
-        <div class="es-chapter-tag">${chapterLabel} — Complete</div>
+        <div class="es-chapter-tag">${completeTag}</div>
 
         <div class="es-cliffhanger">
-          <div class="es-line es-line-1">He's alive.</div>
-          <div class="es-line es-line-2">And he's not on your side.</div>
+          <div class="es-line es-line-1">${t('endScreen.marcusLine1')}</div>
+          <div class="es-line es-line-2">${t('endScreen.marcusLine2')}</div>
         </div>
 
         ${teaserHtml}
 
         <div class="es-actions">
-          <button class="es-btn es-btn-secondary" id="es-replay">Replay Chapter</button>
-          <button class="es-btn es-btn-primary" id="es-hub">Back to Hub</button>
+          <button class="es-btn es-btn-secondary" id="es-replay">${t('endScreen.replayButton')}</button>
+          <button class="es-btn es-btn-primary" id="es-hub">${t('endScreen.hubButton')}</button>
         </div>
 
         <div class="es-footer-note">
-          <em>(Cinematic outro placeholder — Marcus eye-track shot ships in Week 4 polish.)</em>
+          <em>${t('endScreen.footerNote')}</em>
         </div>
       </div>
     `;
@@ -116,6 +125,12 @@ export default class EndScreen {
 
   isVisible() {
     return this.el !== null;
+  }
+
+  _localizedTitle(chapter) {
+    const k = `chapters.${chapter.id}.title`;
+    const v = t(k);
+    return v === k ? chapter.title : v;
   }
 
   _injectStyles() {

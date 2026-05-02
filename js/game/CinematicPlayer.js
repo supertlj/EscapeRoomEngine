@@ -45,6 +45,8 @@
  *   so this module stays decoupled from ChapterIndex.
  */
 
+import { t } from '../core/I18n.js';
+
 export default class CinematicPlayer {
   /**
    * @param {HTMLElement} mountTo
@@ -107,8 +109,8 @@ export default class CinematicPlayer {
     // Skip button
     const skipBtn = document.createElement('button');
     skipBtn.className = 'cm-skip';
-    skipBtn.textContent = 'Skip ›';
-    skipBtn.setAttribute('aria-label', 'Skip cinematic');
+    skipBtn.textContent = t('cinematic.skip');
+    skipBtn.setAttribute('aria-label', t('common.skip'));
     skipBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       this._skip();
@@ -159,7 +161,8 @@ export default class CinematicPlayer {
       el.className = 'cm-caption';
       if (cap.style === 'subtle') el.classList.add('cm-caption-subtle');
       if (cap.style === 'large') el.classList.add('cm-caption-large');
-      el.textContent = cap.text;
+      // Caption can be either a literal "text" or an "i18n" key.
+      el.textContent = cap.i18n ? t(cap.i18n) : (cap.text || '');
       this._captionLayer.appendChild(el);
 
       const delayIn = cap.delayIn || 0;

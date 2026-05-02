@@ -1,0 +1,181 @@
+{
+  "game": {
+    "title": "Cipher 1892",
+    "subtitle": "Escape Room Mystery"
+  },
+
+  "common": {
+    "back": "Back",
+    "refresh": "Refresh",
+    "skip": "Skip",
+    "skipArrow": "Skip ›",
+    "loading": "Loading...",
+    "error": "Error",
+    "yes": "Yes",
+    "no": "No",
+    "cancel": "Cancel",
+    "confirm": "Confirm"
+  },
+
+  "rotatePrompt": {
+    "title": "Rotate to Landscape",
+    "body": "Cipher 1892 plays in landscape mode. Turn your device sideways to continue."
+  },
+
+  "hub": {
+    "playFresh": "PLAY",
+    "continue": "CONTINUE",
+    "newGame": "New Game",
+    "newGameConfirm": "Start a new game? Your current progress will be lost.",
+    "continueLabel": "Continue",
+    "continueRoomLine": "Room: {room}",
+    "chapterListLabel": "Chapters",
+    "chapterCardTitle": "Chapter {order}: {title}",
+    "chapterCardRoomCount": "{count} rooms",
+    "chapterCardRoomCountSingular": "1 room",
+    "chapterCardInDevelopment": "— in development —",
+    "badgeAvailable": "Available",
+    "badgeComingSoon": "Coming soon",
+    "badgeComplete": "✓ Complete",
+    "resetSaveData": "Reset Save Data",
+    "resetSaveConfirm": "Reset all save data? This cannot be undone.",
+    "editorDev": "Editor (dev)",
+    "importRoomJson": "Import Room (JSON)",
+    "importInvalidJson": "Invalid JSON file: {message}",
+    "language": "Language"
+  },
+
+  "boot": {
+    "errorIndexLoad": "Site is loading. Please refresh in a moment.",
+    "errorManifestParse": "Game data is malformed. Please refresh; if this persists, contact the developer.",
+    "errorRoomNotFound": "This room isn't ready yet: {roomId}",
+    "errorRoomLoadFailed": "Failed to load room: {roomId}",
+    "errorSaveCorrupt": "Your save data is corrupt. Reset it to continue (your progress will be lost).",
+    "errorSaveVersionAhead": "Your save is from a newer version of the game. Please refresh.",
+    "errorSaveQuota": "Browser storage is full. Clear site data to continue.",
+    "errorAssetLoad": "Some game assets failed to load. The game may not display correctly.",
+    "errorImportNotFound": "No imported room found"
+  },
+
+  "topbar": {
+    "hintButton": "HINT ({remaining})",
+    "timer": "{minutes}:{seconds}"
+  },
+
+  "hint": {
+    "noHintsAvailable": "No more hints available.",
+    "cooldown": "Hint available in {seconds}s"
+  },
+
+  "endScreen": {
+    "chapterCompleteLabel": "{chapterLabel} — Complete",
+    "marcusLine1": "He's alive.",
+    "marcusLine2": "And he's not on your side.",
+    "nextChapterLabel": "CHAPTER {order} — {title}",
+    "nextChapterAvailable": "Available now",
+    "nextChapterComingSoon": "Coming soon",
+    "moreToCome": "MORE TO COME",
+    "noNextChapter": "Chapter 2 in development",
+    "replayButton": "Replay Chapter",
+    "hubButton": "Back to Hub",
+    "footerNote": "(Cinematic outro placeholder — Marcus eye-track shot ships in Week 4 polish.)"
+  },
+
+  "cinematic": {
+    "skip": "Skip ›",
+    "intro": {
+      "scenes": {
+        "newsroom": {
+          "captions": ["SAM REYES, 2024."]
+        },
+        "fakeId": {
+          "captions": ["Eighteen months undercover."]
+        },
+        "hotel": {
+          "captions": ["Three nights ago,", "your cover blew."]
+        },
+        "glass": {
+          "captions": ["They drugged you."]
+        },
+        "white": {
+          "captions": ["You don't remember the last 72 hours."]
+        },
+        "ceiling": {
+          "captions": ["Wake up."]
+        }
+      }
+    }
+  },
+
+  "chapters": {
+    "c01": {
+      "title": "Awakening"
+    },
+    "c02": {
+      "title": "The Trail"
+    },
+    "c03": {
+      "title": "Going Underground"
+    },
+    "c04": {
+      "title": "Striking Back"
+    },
+    "c05": {
+      "title": "The Vault"
+    }
+  },
+
+  "rooms": {
+    "apartment": {
+      "name": "The Apartment",
+      "hotspots": {
+        "hs_painting_dark":  "Dark Painting",
+        "hs_painting_light": "Light Painting",
+        "hs_sofa":           "Sofa",
+        "hs_desk":           "Desk",
+        "hs_chair":          "Chair",
+        "hs_rug":            "Rug",
+        "hs_bookshelf":      "Bookshelf",
+        "hs_plant":          "Potted Plant",
+        "hs_disturbed_soil": "Disturbed Soil",
+        "hs_brass_key":      "Brass Key",
+        "hs_cabinet":        "Cabinet",
+        "hs_keyhole":        "Keyhole",
+        "hs_upper_right_door": "Upper Right Door",
+        "hs_lockbox":        "Lockbox",
+        "hs_right_door":     "Right Door",
+        "hs_paper":          "Paper",
+        "hs_cabinet_open":   "Cabinet (Open)",
+        "hs_drawer_open":    "Drawer (Open)",
+        "hs_upper_door_open": "Upper Door (Open)",
+        "hs_laptop":         "Laptop",
+        "hs_laptop_unlocked": "Laptop (Unlocked)",
+        "hs_door":           "Door",
+        "hs_door_open":      "Door (Open)"
+      },
+      "items": {
+        "item_brass_key":   "Brass Key",
+        "item_keycard":     "Keycard",
+        "item_paper_taki":  "Paper (TAKI)"
+      },
+      "messages": {
+        "drawerStuck":          "The drawer is stuck.",
+        "needKey":              "Locked. You'll need a key.",
+        "tooDarkToRead":        "It's too dark to read.",
+        "lockboxLocked":        "The lockbox needs a 4-digit code.",
+        "doorLocked":           "The door is locked. The card reader is dark.",
+        "cardReaderDark":       "The card reader is unpowered.",
+        "noUseHere":            "You can't use that here.",
+        "win":                  "You step out into the hallway. Free."
+      },
+      "hints": [
+        "Search the room. The plant looks recently disturbed.",
+        "Look for a key hidden in the soil of the houseplant.",
+        "Use the brass key on the cabinet's keyhole.",
+        "Open the cabinet drawer to find a clue.",
+        "The paper says \"TAKI\" — use it as the laptop password.",
+        "1892 is the lockbox code. Use the keycard on the door."
+      ]
+    }
+  }
+}

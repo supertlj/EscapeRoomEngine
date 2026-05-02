@@ -87,7 +87,10 @@ export function defaultSave() {
       bgmVolume: 0.7,
       sfxVolume: 0.9,
       muted: false,
-      introSeen: false
+      introSeen: false,
+      // null = auto-detect from navigator.language at boot.
+      // Setting this to "en" or "zh-CN" pins the locale across reloads.
+      locale: null
     },
 
     meta: {

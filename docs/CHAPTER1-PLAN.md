@@ -60,6 +60,10 @@ This is a deliberate scope reduction from the original 20-room plan. The long-te
 | E7a | Cinematic skip | Auto-skip after first watch; "Replay intro" in settings |
 | E7b | Audio licenses | `audio/LICENSES.md` per-track tracking |
 | E7c | CI gate | Cloudflare Pages deploy gated on smoke test pass |
+| E8 | Orientation | **Landscape only** on web + future mobile. Rotate prompt shown on portrait phones/tablets (≤1023px width). Capacitor screenOrientation lock for mobile. |
+| E9 | UI layout | **Right sidebar** (84px): HINT button (top), inventory 2-column grid (middle), hub-back gear (bottom). Room name as quiet overlay top-left. **No visible timer.** Sidebar hugs canvas right edge (not viewport edge) via `--canvas-aspect` CSS variable set per-room. Internal `#timer` element kept hidden for engine compatibility. |
+| E10 | Room canvas size | **All NEW rooms (Hotel, Laundromat, Office, c2+) are designed at 1280×720 logical (16:9).** Apartment stays at 800×600 for now (gracefully letterboxes inside canvas-wrapper); native 1280×720 redesign deferred to Week 4 polish. |
+| E11 | Internationalization | i18n scaffold + English source + Simplified Chinese full translation. Locale auto-detect via `navigator.language`, persists in `settings.locale`. Hub language picker in footer. Cinematic captions, hub UI, end screen, error messages all localized. |
 
 ---
 
@@ -238,6 +242,8 @@ Once locked, no edits to that room until Phase 2 (Week 4).
 - **Audio mix** — BGM crossfades, SFX leveling, ambient loops at the right volume
 - **End-to-end pacing** — does the chapter feel right at ~45 min? Are there boring patches?
 - **Apartment-to-rest delta** — bring Hotel/Laundromat/Office to consistent quality with apartment slightly above. Don't push them to apartment level (overbudget).
+- **Apartment resolution refactor** — extend background SVG and reposition hotspots to native 1280×720 (eliminate the canvas-wrapper letterbox). Hotel/Laundromat/Office already native 1280×720; this brings the apartment in line.
+- **In-room hotspot label localization** — wire `Renderer`/`InputHandler` to read hotspot labels from i18n keys (currently still reads inline English `hotspot.label` in apartment.json). One refactor pass that benefits all 4 rooms.
 
 ---
 

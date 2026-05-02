@@ -8,19 +8,41 @@
 <link rel="stylesheet" href="css/play.css">
 </head>
 <body>
+<!-- Landscape-only: rotate prompt for portrait phones/tablets -->
+<div class="rotate-prompt" role="dialog" aria-label="Rotate device">
+  <svg class="rotate-prompt-icon" viewBox="0 0 92 92" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="14" y="6" width="64" height="80" rx="8"/>
+    <line x1="14" y1="20" x2="78" y2="20"/>
+    <line x1="14" y1="72" x2="78" y2="72"/>
+    <circle cx="46" cy="79" r="2"/>
+  </svg>
+  <h2>Rotate to Landscape</h2>
+  <p>Cipher 1892 plays in landscape mode. Turn your device sideways to continue.</p>
+</div>
+
 <div class="game-container" id="gameContainer">
-  <div class="game-topbar">
-    <span class="room-name" id="roomName">Loading...</span>
-    <span class="timer" id="timer">--:--</span>
-    <button class="hint-btn" id="hintBtn">HINT</button>
-  </div>
   <div class="canvas-wrapper">
     <canvas id="gameCanvas"></canvas>
     <div class="canvas-vignette"></div>
     <div class="canvas-ambient"></div>
+    <!-- Quiet room-name overlay, top-left of canvas (decorative) -->
+    <span class="room-name-overlay" id="roomName">Loading...</span>
   </div>
-  <!-- Inventory, Zoom, Dialogs, FX inserted dynamically -->
+  <!-- Right sidebar: HINT (top), inventory (middle, mounted by JS), hub-back (bottom) -->
+  <aside class="game-sidebar" id="gameSidebar">
+    <button class="hint-btn" id="hintBtn">HINT</button>
+    <div class="inventory-mount" id="inventoryMount"></div>
+    <a href="index.html" class="hub-back-btn" id="hubBack" aria-label="Back to Hub">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 12 L12 4 L21 12"/>
+        <path d="M5 11 L5 20 L19 20 L19 11"/>
+      </svg>
+    </a>
+  </aside>
 </div>
+
+<!-- Hidden timer element kept for engine compatibility (GameLoop emits timer:update) -->
+<span id="timer" style="display:none;">--:--</span>
 
 <!-- Debug overlay -->
 <div class="debug-info hidden" id="debugInfo"></div>
@@ -54,6 +76,7 @@ import ZoomViewUI from './js/game/ZoomViewUI.js';
 import VisualFX from './js/game/VisualFX.js';
 import EndScreen from './js/game/EndScreen.js';
 import CinematicPlayer from './js/game/CinematicPlayer.js';
+import { buildLocale, t } from './js/core/I18n.js';
 
 // Debug mode
 const params = new URLSearchParams(location.search.length > 1 ? location.search : location.hash.replace('#', '?'));
@@ -92,17 +115,37 @@ async function loadRoom() {
 async function init() {
   const roomParam = params.get('room') || 'apartment';
 
-  // Build chapter index first — must precede any room load.
+  // Load i18n FIRST so boot errors + UI render in the right language.
+  try {
+    const savedLocale = (() => {
+      try {
+        const raw = localStorage.getItem('ere_save_cipher-1892');
+        return raw ? JSON.parse(raw)?.settings?.locale : null;
+      } catch { return null; }
+    })();
+    await buildLocale(savedLocale);
+    // Static rotate-prompt elements pull from i18n now.
+    const rp = document.querySelector('.rotate-prompt');
+    if (rp) {
+      rp.querySelector('h2').textContent = t('rotatePrompt.title');
+      rp.querySelector('p').textContent  = t('rotatePrompt.body');
+    }
+    document.title = `${t('game.title')} — Play`;
+  } catch (err) {
+    console.warn('I18n boot failed; English fallback in effect:', err);
+  }
+
+  // Build chapter index — must precede any room load.
   try {
     await buildIndex();
   } catch (err) {
-    roomNameEl.textContent = 'Error';
+    roomNameEl.textContent = t('common.error');
     const msg = err instanceof ChapterIndexLoadError
-      ? 'Site is loading. Please refresh in a moment.'
+      ? t('boot.errorIndexLoad')
       : err instanceof ChapterManifestParseError
-        ? 'Game data is malformed. Please refresh; if this persists, contact the developer.'
+        ? t('boot.errorManifestParse')
         : err.message;
-    document.body.innerHTML += `<div class="message-overlay"><div class="message-box"><p>${msg}</p><button class="dismiss" onclick="location.reload()">Refresh</button></div></div>`;
+    document.body.innerHTML += `<div class="message-overlay"><div class="message-box"><p>${msg}</p><button class="dismiss" onclick="location.reload()">${t('common.refresh')}</button></div></div>`;
     console.error('ChapterIndex boot failed:', err);
     return;
   }
@@ -111,17 +154,24 @@ async function init() {
   try {
     room = await loadRoom();
   } catch (err) {
-    roomNameEl.textContent = 'Error';
+    roomNameEl.textContent = t('common.error');
     const msg = err instanceof RoomNotFoundError
-      ? `This room isn't ready yet: ${err.roomId}`
+      ? t('boot.errorRoomNotFound', { roomId: err.roomId })
       : err.message;
-    document.body.innerHTML += `<div class="message-overlay"><div class="message-box"><p>${msg}</p><a href="index.html"><button class="dismiss">Back</button></a></div></div>`;
+    document.body.innerHTML += `<div class="message-overlay"><div class="message-box"><p>${msg}</p><a href="index.html"><button class="dismiss">${t('common.back')}</button></a></div></div>`;
     return;
   }
 
   // Preload images (background + hotspot images)
   const assetManager = new AssetManager();
   await assetManager.preloadRoom(room);
+
+  // Lock the canvas-wrapper aspect ratio to the room so the sidebar
+  // hugs the right edge of the room art (instead of the viewport edge).
+  const canvasWrapper = document.querySelector('.canvas-wrapper');
+  if (canvasWrapper && room.width && room.height) {
+    canvasWrapper.style.setProperty('--canvas-aspect', `${room.width} / ${room.height}`);
+  }
 
   // State — keyed by game id, not per-room. Try to load existing save.
   const state = new StateManager();
@@ -140,12 +190,12 @@ async function init() {
     console.error('Save load failed:', err);
     const isVersionAhead = err.name === 'SaveVersionAheadError';
     const msg = isVersionAhead
-      ? 'Your save is from a newer version of the game. Please refresh.'
-      : 'Your save data is corrupt. Reset it to continue (your progress will be lost).';
+      ? t('boot.errorSaveVersionAhead')
+      : t('boot.errorSaveCorrupt');
     const buttons = isVersionAhead
-      ? `<button class="dismiss" onclick="location.reload()">Refresh</button>`
-      : `<button class="dismiss" onclick="localStorage.removeItem('ere_save_cipher-1892'); location.reload()">Reset Save Data</button>
-         <a href="index.html"><button class="dismiss" style="margin-left:8px">Back</button></a>`;
+      ? `<button class="dismiss" onclick="location.reload()">${t('common.refresh')}</button>`
+      : `<button class="dismiss" onclick="localStorage.removeItem('ere_save_cipher-1892'); location.reload()">${t('hub.resetSaveData')}</button>
+         <a href="index.html"><button class="dismiss" style="margin-left:8px">${t('common.back')}</button></a>`;
     document.body.innerHTML += `<div class="message-overlay"><div class="message-box"><p>${msg}</p>${buttons}</div></div>`;
     return;
   }
@@ -207,7 +257,9 @@ async function init() {
   const dialogUI = new DialogUI(container);
 
   // InventoryUI
-  const inventoryUI = new InventoryUI(container, state, room);
+  // Mount inventory inside the right sidebar (not the game container).
+  const inventoryMount = document.getElementById('inventoryMount');
+  const inventoryUI = new InventoryUI(inventoryMount, state, room);
 
   // ZoomViewUI
   const zoomViewUI = new ZoomViewUI(container, state);
@@ -232,16 +284,24 @@ async function init() {
       inventoryUI.setRoom(newRoom);
       hintSystem.setHints(newRoom.hints);
       renderer.markDirty();
+      roomNameEl.textContent = localizedRoomName(state.currentRoomId, newRoom.name);
     }
   });
   roomManager.registerRoom(room);
 
+  // --- UI helpers (locale-aware) ---
+  function localizedRoomName(roomLookupKey, fallback) {
+    const k = `rooms.${roomLookupKey}.name`;
+    const v = t(k);
+    return v === k ? fallback : v;
+  }
+
   // --- Update UI ---
-  roomNameEl.textContent = room.name;
+  roomNameEl.textContent = localizedRoomName(roomParam, room.name);
 
   function updateHintButton() {
     const remaining = hintSystem.getHintsRemaining();
-    hintBtn.textContent = `HINT (${remaining})`;
+    hintBtn.textContent = t('topbar.hintButton', { remaining });
   }
   updateHintButton();
 

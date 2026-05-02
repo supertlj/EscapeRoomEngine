@@ -8,7 +8,7 @@
       "backgroundAsset": "scenes/intro/01-newsroom.svg",
       "duration": 6500,
       "captions": [
-        { "text": "SAM REYES, 2024.", "delayIn": 1400, "duration": 4500, "style": "subtle" }
+        { "i18n": "cinematic.intro.scenes.newsroom.captions.0", "delayIn": 1400, "duration": 4500, "style": "subtle" }
       ]
     },
     {
@@ -16,7 +16,7 @@
       "backgroundAsset": "scenes/intro/02-fake-id.svg",
       "duration": 6000,
       "captions": [
-        { "text": "Eighteen months undercover.", "delayIn": 1100, "duration": 4400 }
+        { "i18n": "cinematic.intro.scenes.fakeId.captions.0", "delayIn": 1100, "duration": 4400 }
       ]
     },
     {
@@ -24,8 +24,8 @@
       "backgroundAsset": "scenes/intro/03-hotel.svg",
       "duration": 6500,
       "captions": [
-        { "text": "Three nights ago,", "delayIn": 1100, "duration": 2400 },
-        { "text": "your cover blew.", "delayIn": 3300, "duration": 2700 }
+        { "i18n": "cinematic.intro.scenes.hotel.captions.0", "delayIn": 1100, "duration": 2400 },
+        { "i18n": "cinematic.intro.scenes.hotel.captions.1", "delayIn": 3300, "duration": 2700 }
       ]
     },
     {
@@ -33,7 +33,7 @@
       "backgroundAsset": "scenes/intro/04-glass.svg",
       "duration": 5500,
       "captions": [
-        { "text": "They drugged you.", "delayIn": 1100, "duration": 4000 }
+        { "i18n": "cinematic.intro.scenes.glass.captions.0", "delayIn": 1100, "duration": 4000 }
       ]
     },
     {
@@ -41,7 +41,7 @@
       "backgroundAsset": "scenes/intro/05-white.svg",
       "duration": 4500,
       "captions": [
-        { "text": "You don't remember the last 72 hours.", "delayIn": 600, "duration": 3500, "style": "large" }
+        { "i18n": "cinematic.intro.scenes.white.captions.0", "delayIn": 600, "duration": 3500, "style": "large" }
       ]
     },
     {
@@ -49,7 +49,7 @@
       "backgroundAsset": "scenes/intro/06-ceiling.svg",
       "duration": 4000,
       "captions": [
-        { "text": "Wake up.", "delayIn": 1300, "duration": 2400, "style": "subtle" }
+        { "i18n": "cinematic.intro.scenes.ceiling.captions.0", "delayIn": 1300, "duration": 2400, "style": "subtle" }
       ]
     }
   ]

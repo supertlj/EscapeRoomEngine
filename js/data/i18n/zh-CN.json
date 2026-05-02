@@ -1,0 +1,171 @@
+{
+  "game": {
+    "title": "Cipher 1892",
+    "subtitle": "密室解谜悬疑"
+  },
+
+  "common": {
+    "back": "返回",
+    "refresh": "刷新",
+    "skip": "跳过",
+    "skipArrow": "跳过 ›",
+    "loading": "加载中...",
+    "error": "出错了",
+    "yes": "是",
+    "no": "否",
+    "cancel": "取消",
+    "confirm": "确认"
+  },
+
+  "rotatePrompt": {
+    "title": "请横屏游玩",
+    "body": "Cipher 1892 仅支持横屏。请将设备旋转为横向以继续。"
+  },
+
+  "hub": {
+    "playFresh": "开始游戏",
+    "continue": "继续游戏",
+    "newGame": "新游戏",
+    "newGameConfirm": "要开始新游戏吗?当前进度将丢失。",
+    "continueLabel": "继续",
+    "continueRoomLine": "房间:{room}",
+    "chapterListLabel": "章节",
+    "chapterCardTitle": "第 {order} 章:{title}",
+    "chapterCardRoomCount": "{count} 个房间",
+    "chapterCardRoomCountSingular": "1 个房间",
+    "chapterCardInDevelopment": "—— 开发中 ——",
+    "badgeAvailable": "可游玩",
+    "badgeComingSoon": "即将上线",
+    "badgeComplete": "✓ 已通关",
+    "resetSaveData": "重置存档",
+    "resetSaveConfirm": "确定要重置所有存档吗?此操作无法撤销。",
+    "editorDev": "编辑器(开发用)",
+    "importRoomJson": "导入房间(JSON)",
+    "importInvalidJson": "JSON 文件无效:{message}",
+    "language": "语言"
+  },
+
+  "boot": {
+    "errorIndexLoad": "游戏正在加载。请稍后刷新。",
+    "errorManifestParse": "游戏数据已损坏。请刷新页面;若问题持续,请联系开发者。",
+    "errorRoomNotFound": "该房间尚未上线:{roomId}",
+    "errorRoomLoadFailed": "无法加载房间:{roomId}",
+    "errorSaveCorrupt": "存档已损坏。重置存档以继续(进度将丢失)。",
+    "errorSaveVersionAhead": "您的存档来自更新版本的游戏。请刷新页面。",
+    "errorSaveQuota": "浏览器存储空间已满。请清理站点数据后继续。",
+    "errorAssetLoad": "部分游戏资源加载失败,显示可能不完整。",
+    "errorImportNotFound": "未找到导入的房间"
+  },
+
+  "topbar": {
+    "hintButton": "提示({remaining})",
+    "timer": "{minutes}:{seconds}"
+  },
+
+  "hint": {
+    "noHintsAvailable": "没有更多提示了。",
+    "cooldown": "{seconds} 秒后可再次使用提示"
+  },
+
+  "endScreen": {
+    "chapterCompleteLabel": "{chapterLabel} —— 完成",
+    "marcusLine1": "他还活着。",
+    "marcusLine2": "而且,他并不在你这一边。",
+    "nextChapterLabel": "第 {order} 章 —— {title}",
+    "nextChapterAvailable": "现已上线",
+    "nextChapterComingSoon": "即将上线",
+    "moreToCome": "未完待续",
+    "noNextChapter": "第二章正在开发中",
+    "replayButton": "重玩本章",
+    "hubButton": "返回主菜单",
+    "footerNote": "(片尾过场占位 —— Marcus 注视镜头将在第 4 周打磨阶段加入。)"
+  },
+
+  "cinematic": {
+    "skip": "跳过 ›",
+    "intro": {
+      "scenes": {
+        "newsroom": {
+          "captions": ["山姆·雷耶斯,2024 年。"]
+        },
+        "fakeId": {
+          "captions": ["卧底 18 个月。"]
+        },
+        "hotel": {
+          "captions": ["三天前,", "你的身份暴露了。"]
+        },
+        "glass": {
+          "captions": ["他们给你下了药。"]
+        },
+        "white": {
+          "captions": ["过去的 72 小时,你毫无记忆。"]
+        },
+        "ceiling": {
+          "captions": ["醒过来。"]
+        }
+      }
+    }
+  },
+
+  "chapters": {
+    "c01": { "title": "苏醒" },
+    "c02": { "title": "追踪" },
+    "c03": { "title": "潜伏" },
+    "c04": { "title": "反击" },
+    "c05": { "title": "金库" }
+  },
+
+  "rooms": {
+    "apartment": {
+      "name": "公寓",
+      "hotspots": {
+        "hs_painting_dark":  "深色画作",
+        "hs_painting_light": "浅色画作",
+        "hs_sofa":           "沙发",
+        "hs_desk":           "书桌",
+        "hs_chair":          "椅子",
+        "hs_rug":            "地毯",
+        "hs_bookshelf":      "书架",
+        "hs_plant":          "盆栽",
+        "hs_disturbed_soil": "翻动过的泥土",
+        "hs_brass_key":      "黄铜钥匙",
+        "hs_cabinet":        "柜子",
+        "hs_keyhole":        "钥匙孔",
+        "hs_upper_right_door": "右上柜门",
+        "hs_lockbox":        "保险箱",
+        "hs_right_door":     "右侧柜门",
+        "hs_paper":          "纸条",
+        "hs_cabinet_open":   "柜子(已打开)",
+        "hs_drawer_open":    "抽屉(已打开)",
+        "hs_upper_door_open": "上柜门(已打开)",
+        "hs_laptop":         "笔记本电脑",
+        "hs_laptop_unlocked": "笔记本电脑(已解锁)",
+        "hs_door":           "房门",
+        "hs_door_open":      "房门(已打开)"
+      },
+      "items": {
+        "item_brass_key":   "黄铜钥匙",
+        "item_keycard":     "门禁卡",
+        "item_paper_taki":  "纸条(TAKI)"
+      },
+      "messages": {
+        "drawerStuck":          "抽屉卡住了。",
+        "needKey":              "锁着的。需要一把钥匙。",
+        "tooDarkToRead":        "太暗了,看不清。",
+        "lockboxLocked":        "保险箱需要一个 4 位数密码。",
+        "doorLocked":           "门锁着。读卡器没有亮起。",
+        "cardReaderDark":       "读卡器没有通电。",
+        "noUseHere":            "这里用不上。",
+        "win":                  "你走出门外,踏入走廊。自由了。"
+      },
+      "hints": [
+        "在房间里仔细搜索。盆栽看起来最近被人动过。",
+        "盆栽的泥土里藏着一把钥匙。",
+        "用黄铜钥匙打开柜子的钥匙孔。",
+        "打开柜子的抽屉,寻找线索。",
+        "纸条上写着 \"TAKI\" —— 这是笔记本电脑的密码。",
+        "1892 是保险箱的密码。然后用门禁卡打开房门。"
+      ]
+    }
+  }
+}

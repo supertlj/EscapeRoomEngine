@@ -156,10 +156,53 @@
     gap: 6px;
   }
   .hub-footer .menu-btn { margin-bottom: 0; }
-  .hub-footer label.menu-btn input { display: none; }
+  .hub-footer label.menu-btn input[type="file"] { display: none; }
+
+  /* Language picker — label + select inline */
+  .hub-language {
+    display: flex !important;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+  }
+  .hub-language-label {
+    flex: 0 0 auto;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-dim);
+  }
+  .hub-language-select {
+    flex: 1 1 auto;
+    background: transparent;
+    color: var(--gold);
+    border: none;
+    font: inherit;
+    font-size: 12px;
+    cursor: pointer;
+    padding: 2px 0;
+    text-align: right;
+  }
+  .hub-language-select:focus { outline: none; }
+  .hub-language-select option {
+    background: var(--bg-deep);
+    color: var(--text);
+  }
 </style>
 </head>
 <body>
+<!-- Landscape-only: rotate prompt for portrait phones/tablets -->
+<div class="rotate-prompt" role="dialog" aria-label="Rotate device">
+  <svg class="rotate-prompt-icon" viewBox="0 0 92 92" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="14" y="6" width="64" height="80" rx="8"/>
+    <line x1="14" y1="20" x2="78" y2="20"/>
+    <line x1="14" y1="72" x2="78" y2="72"/>
+    <circle cx="46" cy="79" r="2"/>
+  </svg>
+  <h2>Rotate to Landscape</h2>
+  <p>Cipher 1892 plays in landscape mode. Turn your device sideways to continue.</p>
+</div>
+
 <div id="hubRoot">
   <div class="home">
     <h1>CIPHER 1892</h1>
@@ -169,20 +212,41 @@
 
 <script type="module">
   import { buildIndex, ChapterIndexLoadError, ChapterManifestParseError } from './js/core/ChapterIndex.js';
+  import { buildLocale, t } from './js/core/I18n.js';
   import HubUI from './js/game/HubUI.js';
 
   const root = document.getElementById('hubRoot');
 
   async function boot() {
+    // Load i18n FIRST so any error UI can be localized too.
+    try {
+      const savedLocale = (() => {
+        try {
+          const raw = localStorage.getItem('ere_save_cipher-1892');
+          return raw ? JSON.parse(raw)?.settings?.locale : null;
+        } catch { return null; }
+      })();
+      await buildLocale(savedLocale);
+      // Static rotate-prompt + page title pull from i18n now that it's loaded.
+      const rp = document.querySelector('.rotate-prompt');
+      if (rp) {
+        rp.querySelector('h2').textContent = t('rotatePrompt.title');
+        rp.querySelector('p').textContent  = t('rotatePrompt.body');
+      }
+      document.title = t('game.title');
+    } catch (err) {
+      console.warn('I18n boot failed; English fallback in effect:', err);
+    }
+
     try {
       await buildIndex();
     } catch (err) {
       const msg = err instanceof ChapterIndexLoadError
-        ? 'Site is loading. Please refresh in a moment.'
+        ? t('boot.errorIndexLoad')
         : err instanceof ChapterManifestParseError
-          ? 'Game data is malformed. Please refresh; if this persists, contact the developer.'
+          ? t('boot.errorManifestParse')
           : err.message;
-      root.innerHTML = `<div class="home"><h1>CIPHER 1892</h1><p class="subtitle">Error</p><p style="color:var(--text-dim); margin: 16px 0 24px; max-width: 360px;">${msg}</p><button class="menu-btn primary" onclick="location.reload()" style="max-width: 200px;">Refresh</button></div>`;
+      root.innerHTML = `<div class="home"><h1>${t('game.title')}</h1><p class="subtitle">${t('common.error')}</p><p style="color:var(--text-dim); margin: 16px 0 24px; max-width: 360px;">${msg}</p><button class="menu-btn primary" onclick="location.reload()" style="max-width: 200px;">${t('common.refresh')}</button></div>`;
       console.error('Hub boot failed:', err);
       return;
     }

@@ -9,7 +9,7 @@ export default class InventoryUI {
     this.state = state;
     this.room = room;
     this.selectedItemId = null;
-    this.maxSlots = 8;
+    this.maxSlots = 6;
     this._justReceived = null; // item ID that was just added (for flash)
 
     this._createElement();
